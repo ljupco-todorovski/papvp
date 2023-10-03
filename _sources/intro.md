@@ -1,11 +1,6 @@
-# Welcome to your Jupyter Book
+# Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
-
-Check out the content pages bundled with this sample book to see more.
+Tukaj bom med prvo izvedbo predmeta PAPVP sproti pripravljal zapiske za predavanja pri predmetu. To je moja prva, in morebiti ne tudi zadnja izkušnja z [Jupyterovimi knjigami](https://jupyterbook.org).
 
 ```{tableofcontents}
 ```
