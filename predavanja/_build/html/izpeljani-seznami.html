@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Izpeljani seznami (angl. list comprehensions) &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'izpeljani-seznami';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Fizpeljani-seznami.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/izpeljani-seznami.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Izpeljani seznami (angl. list comprehensions)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Izpeljani seznami (angl. <em>list comprehensions</em>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enostaven-primer-in-alternativi">Enostaven primer in alternativi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-s-pogojem">Primer s pogojem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnezdenje-izpeljanih-seznamov">Gnezdenje izpeljanih seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniranje-seznamov">Kombiniranje seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prednosti-in-slabosti-izpeljanih-seznamov">Prednosti in slabosti izpeljanih seznamov</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-visjega-reda">Funkcije višjega reda</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkciji-map-in-filter">Funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-argument">Funkcija kot argument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-rezultat">Funkcija kot rezultat</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="izpeljani-seznami-angl-list-comprehensions">
+<h1>Izpeljani seznami (angl. <em>list comprehensions</em>)<a class="headerlink" href="#izpeljani-seznami-angl-list-comprehensions" title="Permalink to this heading">#</a></h1>
+<p>Izpeljani seznami v programskem jeziku Python omogočajo <em>učinkovito</em> ustvarjanje novih seznamov. Splošna oblika izpeljanega seznama je <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator</span> <span class="pre">if</span> <span class="pre">pogoj]</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iterator</span></code> je <em>vir</em> za ustvarjanje elementov izpeljanega seznama: lahko je seznam ali poljuben iterator,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> je spremenljivka, ki predstavlja vrednost trenutnega elementa v viru <code class="docutils literal notranslate"><span class="pre">iterator</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">izraz</span></code> je Pythonovski izraz, ki na osnovi vrednosti <code class="docutils literal notranslate"><span class="pre">e</span></code> izračuna vrednost elementa izpeljanega seznama,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pogoj</span></code> je logični Pythonovski izraz, ki odloča o tem ali bo element vira <code class="docutils literal notranslate"><span class="pre">e</span></code> uporabljen za izračun elementa v izpeljanem seznamu.</p></li>
+</ul>
+<p>Zadnji del splošne oblike izpeljanega seznama <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">pogoj</span></code> ni obvezen. Poenostavljena oblika izpeljanega seznama je tako <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator]</span></code>.</p>
+<p>Pri podatkovni analizi bomo pogosto obravnavali podatke spravljene v tabelah in opravljali izračune na obstoječih stolpcih tabele ter izračunavali nove stolpce. Zato bodo izpeljani seznami pogosto prišli prav, četudi v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code> imamo na voljo funkcije, ki nam omogočajo dosego rezultatov brez uporabe izpeljanih seznamov. Kljub temu razumevanje koncepta izpeljanega seznama, ki se tesno navezuje na koncept funkcij višjega reda, je zelo pomemben za podatkovno analizo. Tako začnemo z ogrevanjem za “ta pravo” podatkovno analizo s Pythonom.</p>
+<section id="enostaven-primer-in-alternativi">
+<h2>Enostaven primer in alternativi<a class="headerlink" href="#enostaven-primer-in-alternativi" title="Permalink to this heading">#</a></h2>
+<p>Oglejmo si primer enostavnega izpeljanega seznama, ki vsebuje kvadrate prvih deset naravnih števil:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obstajata dva alternativna načina, da ustvarimo seznam <code class="docutils literal notranslate"><span class="pre">kvadrati</span></code> iz zgornjega primera. Prvi uporabi zanko:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati_a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">kvadrati_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Drugi način uporablja klic funkcije <code class="docutils literal notranslate"><span class="pre">map(f,</span> <span class="pre">iterator)</span></code>, ki kliče funkcijo <code class="docutils literal notranslate"><span class="pre">f</span></code> za vsak element iteratorja <code class="docutils literal notranslate"><span class="pre">iterator</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati_b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map object at 0x105c1c460&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hm, je nekaj narobe? Pravzaprav ni, rezultat funkcije <code class="docutils literal notranslate"><span class="pre">map</span></code> je iterabilni objekt, ki ga lahko s klicem funkcije <code class="docutils literal notranslate"><span class="pre">list</span></code> pretvorimo v seznam takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati_b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Primerjava alternativnih načinov tvorjenja seznama kvadratov naravnih števil pokaže prvo pomembno prednost izpeljanih seznamov pred alternativnimi načini za ustvarjanje tega seznama. Z uporabo izpeljanega seznama napišemo programsko kodo, ki je krajša in bolj razumljiva.</p>
+</section>
+<section id="primer-s-pogojem">
+<h2>Primer s pogojem<a class="headerlink" href="#primer-s-pogojem" title="Permalink to this heading">#</a></h2>
+<p>Ustvarimo zdaj seznam kvadratov za liha naravna števila, ki so manjša od 10:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati_lihi</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati_lihi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 9, 25, 49, 81]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo sestavi program, ki ustvari seznam <code class="docutils literal notranslate"><span class="pre">kvadrati_lihi_a</span></code> z zanko. Tukaj bomo sestavili program, ki to naredi s kombinacijo funkcij <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code>. Slednja namreč izbere elemente seznama, ki zadostujejo podanemu pogoju takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zdaj okrog tega klica funkcije <code class="docutils literal notranslate"><span class="pre">filter</span></code> ovijemo še klic funkcije <code class="docutils literal notranslate"><span class="pre">map</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kvadrati_lihi_b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kvadrati_lihi_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 9, 25, 49, 81]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gnezdenje-izpeljanih-seznamov">
+<h2>Gnezdenje izpeljanih seznamov<a class="headerlink" href="#gnezdenje-izpeljanih-seznamov" title="Permalink to this heading">#</a></h2>
+<p>Izpeljane sezname lahko poljubno gnezdimo na ta način tako, da je vrednost izraza <code class="docutils literal notranslate"><span class="pre">izraz</span></code> izpeljan seznam s svojim izrazom, pogojem in iteratorjem. Z ugnezdenimi izpeljanimi seznami lahko tvorimo izpeljane matrike. Primer ustvarjanja identične matrike dimenzije 3:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im_3</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">im_3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na tem mestu lahko opazujemo pomembno razliko med pogojem izpeljanega seznama in pogojem, ki smo ga v tem primeru uporabili znotraj izraza izpeljanega seznama. Slednji namreč določa <em>kako</em> izračunamo element izpeljanega seznama iz vira. Pogoj izpeljanega seznama pa določa <em>katere</em> elemente vira uporabimo za izračun elementov izpeljanega seznama.</p>
+<p>Zanke <code class="docutils literal notranslate"><span class="pre">for</span></code> lahko gnezdimo tudi brez gnezdenja seznamov, npr. takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0, 0, 0, 1, 0, 0, 0, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo primerjaj rezultata zadnjih dveh primerov kode in pojasni razliko.</p>
+<p>Zdaj, ko vemo kaj vse nam omogočajo izpeljani seznami, definirajmo funkcijo <code class="docutils literal notranslate"><span class="pre">diag</span></code>, ki ustvari diagonalno matriko iz podanega seznama elementov na diagonali.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diag</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">diag</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2, 0, 0, 0, 0], [0, -1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo napiši dve alternativni definiciji funkcije <code class="docutils literal notranslate"><span class="pre">diag</span></code>: ena naj uporablja zanke, druga pa funkcijo <code class="docutils literal notranslate"><span class="pre">map</span></code>. Primerjaj alternativni definiciji z zgornjo definicijo v smislu kratkosti in razumljivost kode ter učinkovitosti izvajanja. Kaj opažaš?</p>
+</section>
+<section id="kombiniranje-seznamov">
+<h2>Kombiniranje seznamov<a class="headerlink" href="#kombiniranje-seznamov" title="Permalink to this heading">#</a></h2>
+<p>Na prvi pogled izpeljani seznam je omejen na uporabo enega vira oziroma enega izvirnega seznama ali iteratorja. To je le navidezno, ker bi lahko z enim virom indeksirali in kombinirali več seznamov. Primer tukaj je funkcija <code class="docutils literal notranslate"><span class="pre">plus</span></code>, ki sešteva elemente dveh seznamov, pod predpostavko, da sta podana seznama enako dolga.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Napaka: Seznama </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> sta različnih dolžin.&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+
+<span class="n">plus</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo posploši funkcijo <code class="docutils literal notranslate"><span class="pre">plus</span></code>, tako, da lahko sprejme in sešteje elemente poljubnega števila seznamov in ne zgolj dveh. Namig: spomni se na kakšen način definiramo funkcijo v Pythonu, ki sprejme poljubno število argumentov, ki ni znano vnaprej.</p>
+</section>
+<section id="prednosti-in-slabosti-izpeljanih-seznamov">
+<h2>Prednosti in slabosti izpeljanih seznamov<a class="headerlink" href="#prednosti-in-slabosti-izpeljanih-seznamov" title="Permalink to this heading">#</a></h2>
+<p>Prednosti:</p>
+<ul class="simple">
+<li><p>Lahko poenostavijo programsko kodo in ji izboljšajo berljivost</p></li>
+<li><p>So običajno bolj učinkoviti od alternativnih načinov tvorjenja seznamov</p></li>
+</ul>
+<p>Slabosti:</p>
+<ul class="simple">
+<li><p>Če je pogojev veliko ali izračun novih elementov zapleten, lahko postane programska koda izpeljanega seznama preveč zapletena in težko berljiva</p></li>
+<li><p>Pri izračunu naslednjega elementa izpeljanega seznama ne moremo upoštevati vrednosti prejšnjih elementov</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="funkcije-visjega-reda">
+<h1>Funkcije višjega reda<a class="headerlink" href="#funkcije-visjega-reda" title="Permalink to this heading">#</a></h1>
+<p>V Pythonu so funkcije enakopravne ostalim podatkovnim tipom, kar nam omogoča, da eno funkcijo podamo kot argument druge funkcije ali pa celo to, da je funkcija rezultat neke funkcije. Funkcijam, ki kot argument sprejmejo funkcijo ali vrnejo funkcijo kot rezultat rečemo funkcije višjega reda.</p>
+<section id="funkciji-map-in-filter">
+<h2>Funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code><a class="headerlink" href="#funkciji-map-in-filter" title="Permalink to this heading">#</a></h2>
+<p>Primer funkcij višjega reda sta prej omenjeni funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code>: obe kot prvi argument sprejmeta funkcijo. Ti dve funkciji bi lahko implementirali z izpeljanimi seznami takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">map_is</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">iterator</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">filter_is</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">iterator</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">iterator</span> <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Argument <code class="docutils literal notranslate"><span class="pre">f</span></code> funkcije <code class="docutils literal notranslate"><span class="pre">filter_is</span></code> seveda mora biti funkcija, ki kot rezultat vrne Boolovo vrednost <code class="docutils literal notranslate"><span class="pre">true</span></code> ali <code class="docutils literal notranslate"><span class="pre">false</span></code>, saj njen rezultat uporabimo kot pogoj v izpeljanem seznamu.</p>
+<p>Preverimo, če funkciji delujeta po pričakovanjih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">map_is</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filter_is</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">2</span>  <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">map_is</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">filter_is</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">2</span>  <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[1, 3, 5, 7, 9]
+[1, 9, 25, 49, 81]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funkcija-kot-argument">
+<h2>Funkcija kot argument<a class="headerlink" href="#funkcija-kot-argument" title="Permalink to this heading">#</a></h2>
+<p>Funkcije višjega reda omogočajo definicijo splošnih algoritmov, ki so uporabni za različne funkcije. Primer take funkcije je numerični izračun integrala
+$<span class="math notranslate nohighlight">\(\int_{a}^{b} f(x) dx \)</span><span class="math notranslate nohighlight">\(
+podane funkcije \)</span>f\colon \mathbb{R} \to \mathbb{R} <span class="math notranslate nohighlight">\( na podanem intervalu \)</span>[a, b]$. Funkcijo za izracun dolocenega integrala s pomočjo trapezne formule lahko definiramo takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dolocen_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
+    
+    <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">interval</span>
+    <span class="k">assert</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;Napaka: Spodnja meja </span><span class="si">{a}</span><span class="s2"> ni manjša od zgornje </span><span class="si">{b}</span><span class="s2">.&quot;</span>
+
+    <span class="n">vmesne_tocke</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span><span class="p">))]</span>
+    <span class="n">ploscine_trapezov</span> <span class="o">=</span> <span class="p">[(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vmesne_tocke</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ploscine_trapezov</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dolocen_integral</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9999820650436648
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funkcija torej najprej iz podanega nabora <code class="docutils literal notranslate"><span class="pre">interval</span></code> prebere spodnjo in zgornjo mejo intervala. Nato preveri, če je spodnja meja <code class="docutils literal notranslate"><span class="pre">a</span></code> manjša od zgornje <code class="docutils literal notranslate"><span class="pre">b</span></code>. Na osnovi zgornje in spodnje meje uporabi izpeljan seznam za izračun vmesnih točke med <code class="docutils literal notranslate"><span class="pre">a</span></code> in <code class="docutils literal notranslate"><span class="pre">b</span></code> na medsebojni razdalji <code class="docutils literal notranslate"><span class="pre">h</span></code>. Nato še enkrat uporabi izpeljan seznam za izračun ploščin vseh nastalih trapezov. Vsota teh ploščin je približek za vrednost določenega integrala na podanem intervalu.</p>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">dolocen_integral</span></code> je torej splošno uporabna, ker namreč, kot njen prvi argument lahko podamo poljubno funkcijo <span class="math notranslate nohighlight">\(f\colon \mathbb{R} \to \mathbb{R}\)</span>.</p>
+</section>
+<section id="funkcija-kot-rezultat">
+<h2>Funkcija kot rezultat<a class="headerlink" href="#funkcija-kot-rezultat" title="Permalink to this heading">#</a></h2>
+<p>Spomnimo se kaj pomeni kompozitum <span class="math notranslate nohighlight">\(f \circ g\)</span> funkcij <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(f \circ g: x \mapsto f(g(x))\)</span>. Definirajmo funkcijo <span class="math notranslate nohighlight">\(f^2\)</span> kot kompozitum funkcije <span class="math notranslate nohighlight">\(f\)</span> same s sabo <span class="math notranslate nohighlight">\(f \circ f\)</span>. Podobno definirajmo funkcijo <span class="math notranslate nohighlight">\(f^n\)</span>, za poljubno naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> kot kompozitum <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(f^{n-1}\)</span>, torej <span class="math notranslate nohighlight">\(f^n(x) = f(f^{n-1}(x))\)</span>. Definirajmo zdaj funkcijo v Pythonu, ki za podano funkcijo <span class="math notranslate nohighlight">\(x\)</span> in naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> vrne funkcijo <span class="math notranslate nohighlight">\(f^n\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">kompozitum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fx</span>
+    
+    <span class="k">return</span> <span class="n">kompozitum</span>
+
+
+<span class="k">def</span> <span class="nf">povecaj</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">povecaj</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">povecaj</span><span class="p">,</span> <span class="mi">10</span><span class="p">)(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function fn.&lt;locals&gt;.kompozitum at 0x105c198a0&gt;
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p>V funkciji <code class="docutils literal notranslate"><span class="pre">fn</span></code> smo najprej definirali funkcijo <code class="docutils literal notranslate"><span class="pre">kompozitum</span></code>, ki za podano vrednost argumenta <span class="math notranslate nohighlight">\(x\)</span> izračuna in vrne vrednost kompozituma <span class="math notranslate nohighlight">\(f^n(x)\)</span>, nato smo funkcijo <code class="docutils literal notranslate"><span class="pre">kompozitum</span></code> vrnili kot rezultat <code class="docutils literal notranslate"><span class="pre">fn</span></code>. V definiciji ugnezdene funkcije <code class="docutils literal notranslate"><span class="pre">kompozitum</span></code> smo lahko uporabili vrednost argumenta <code class="docutils literal notranslate"><span class="pre">n</span></code> nadrejene funkcije <code class="docutils literal notranslate"><span class="pre">fn</span></code>.</p>
+<p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">fn</span></code> je tako funkcija, ki za podano vrednost <span class="math notranslate nohighlight">\(x\)</span> izračuna vrednost <span class="math notranslate nohighlight">\(f^n(x)\)</span>, kar je točno to kar smo si želeli. Če izpišemo vrednost izraza <code class="docutils literal notranslate"><span class="pre">fn(povecaj,</span> <span class="pre">10)</span></code>, dobimo funkcijo, vrednost izraza <code class="docutils literal notranslate"><span class="pre">fn(povecaj,</span> <span class="pre">10)(0)</span></code> pa sproži klic in izračun dobljene funkcije za podano vrednost argumenta (v tem primeru je podana vrednost 0).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Izpeljani seznami (angl. <em>list comprehensions</em>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enostaven-primer-in-alternativi">Enostaven primer in alternativi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-s-pogojem">Primer s pogojem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnezdenje-izpeljanih-seznamov">Gnezdenje izpeljanih seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniranje-seznamov">Kombiniranje seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prednosti-in-slabosti-izpeljanih-seznamov">Prednosti in slabosti izpeljanih seznamov</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-visjega-reda">Funkcije višjega reda</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkciji-map-in-filter">Funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-argument">Funkcija kot argument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-rezultat">Funkcija kot rezultat</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
