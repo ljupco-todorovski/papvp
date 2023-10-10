@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'podatkovni-tipi';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -531,7 +533,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_27031/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_27429/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -1297,6 +1299,25 @@ dtype: period[W-MON]
 </section>
 <section id="naloge-za-vajo">
 <h2>Naloge za vajo<a class="headerlink" href="#naloge-za-vajo" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Denimo, da smo Alešu, Barbari, Cirilu in Darji izmerili višine v centimetrih (180, 165, 160, 193) in teže v kilogramih (87, 58, 65, 100). Naredi dve zaporedji <code class="docutils literal notranslate"><span class="pre">v</span></code> in <code class="docutils literal notranslate"><span class="pre">t</span></code> z izmerjenimi podatki. Indeks telesne mase (ITM) izračunamo po formuli
+$<span class="math notranslate nohighlight">\( \text{ITM} = \frac{\text{teža v kilogramih}}{(\text{višina v metrih})^2}. \)</span>$
+Izračunaj zaporedje vrednosti ITM s poimenovanimi indeski za štiri osebe, kjer so indeksi elementov dejanska imena oseb (Aleš, Barbara, Ciril in Darja). Nato izračunaj zaporedje naravnih logaritmov vrednosti ITM. Na koncu izpiši zaporedje imen oseb, ki imajo ITM večji od 25, ter izračunaj njihov povprečni ITM.</p></li>
+<li><p>Sestavi zaporedja z naslednjimi elementi:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(3^1/1, 3^2/2, \ldots, 3^{50}/50\)</span>;</p></li>
+<li><p>“A1”, “A2”, <span class="math notranslate nohighlight">\(\ldots\)</span>, “A50”;</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^x \sin x\)</span> izračunanimi v točkah <span class="math notranslate nohighlight">\(x = 3, 3.1, 3.2, \ldots, 6\)</span>.<br><br></p></li>
+</ul>
+</li>
+<li><p>Podano je naravno število <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>. Z uporabo zaporedij definiraj funkcijo, ki kot argument sprejme naravno število <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>, vrne rezultat <code class="docutils literal notranslate"><span class="pre">True</span></code>, če je <code class="docutils literal notranslate"><span class="pre">x</span></code> praštevilo, in <code class="docutils literal notranslate"><span class="pre">False</span></code> sicer. Namig: zaporedje gradi postopoma. Najprej izračunaj zaporedje ostankov deljenja <code class="docutils literal notranslate"><span class="pre">x</span></code> z vsemi števili od <code class="docutils literal notranslate"><span class="pre">2</span></code> do <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">1</span></code>. Nato preveri, če je <code class="docutils literal notranslate"><span class="pre">0</span></code> element tega zaporedja.</p></li>
+<li><p>Izračunaj dve zaporedji <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> dolžine 250 tako, da s ponavljanjem naključno izbiraš naravna števila iz intervala <span class="math notranslate nohighlight">\([0, 999]\)</span>. Označimo z <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_{250}\)</span> in <span class="math notranslate nohighlight">\(y_1, y_2, \ldots, y_{250}\)</span> elemente zaporedij <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>. Izračunaj:</p>
+<ul class="simple">
+<li><p>Zaporedje z elementi <span class="math notranslate nohighlight">\(y_2 - x_1, y_3 - x_2, \ldots, y_{250} - x_{249}\)</span>.</p></li>
+<li><p>Vsoto <span class="math notranslate nohighlight">\(\sum_{i=1}^{249} e^{- x_{i+1}} / (x_i + 10)\)</span>.<br><br></p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
