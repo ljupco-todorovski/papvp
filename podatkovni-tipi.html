@@ -1,0 +1,1427 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Podatkovni tipi v knjižnici pandas &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'podatkovni-tipi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Izpeljani seznami (angl. list comprehensions)" href="izpeljani-seznami.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni tipi v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Fpodatkovni-tipi.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/podatkovni-tipi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Podatkovni tipi v knjižnici pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-podatkovni-tipi-v-zaporedjih">Osnovni podatkovni tipi v zaporedjih</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-zaporedij">Indeksiranje zaporedij</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastnosti-zaporedij-iloc-in-loc">Lastnosti zaporedij <code class="docutils literal notranslate"><span class="pre">iloc</span></code> in <code class="docutils literal notranslate"><span class="pre">loc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-tipih-elementov-zaporedja">O tipih elementov zaporedja</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategorije-angl-categories">Kategorije (angl. <em>categories</em>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dodatne-prednosti-kategorij">Dodatne prednosti kategorij</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dodajanje-novih-moznih-vrednosti">Dodajanje novih možnih vrednosti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#urejene-kategorije">Urejene kategorije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datum-in-cas">Datum in čas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovne-tocke">Časovne točke</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovne-razlike">Časovne razlike</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovna-obdobja">Časovna obdobja</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge-za-vajo">Naloge za vajo</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="podatkovni-tipi-v-knjiznici-pandas">
+<h1>Podatkovni tipi v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#podatkovni-tipi-v-knjiznici-pandas" title="Permalink to this heading">#</a></h1>
+<p>Knjižnica <a class="reference external" href="https://pandas.pydata.org/"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a> omogoča procesiranje, obdelavo in analizo podatkov, shranjenih v podatkovno tabelo. Na začetku dela s knjižnico bomo najprej spoznali osnovne podatkovne tipe za sestavljanje tabel: zaporedje (angl. <em>Series</em>) in podatkovni okvir (angl. <em>DataFrame</em>), ki ga bomo imenovali tudi podatkovna tabela.</p>
+<p>Podatkovna tabela v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> je sestavljena iz vrstic in stolpcev, imenovanih tudi spremenljivke. Vsak stolpec v tabeli je tipe zaporedje. Stolpci (spremenljivke) so v podatkovnih tabelah posebnega pomena, saj večina operacij podatkovne obdelave in analize poteka na stolpcih. Zato bomo najprej dobro spoznali podatkovni tip zaporedje in se naučili delati s posameznimi stolpci tabele, nato pa se naučili delati s podatkovnimi okviri. Pri obdelavi zaporedij bomo si pogosto pomagali z izpeljanimi seznami, o katerih smo govorili v okviru uvodnega predavanja.</p>
+<section id="osnovni-podatkovni-tipi-v-zaporedjih">
+<h2>Osnovni podatkovni tipi v zaporedjih<a class="headerlink" href="#osnovni-podatkovni-tipi-v-zaporedjih" title="Permalink to this heading">#</a></h2>
+<p>Podatkovni tip zaporedje (<em>Series</em>) v Pandasu je osnovna struktura za shranjevanje enodimenzionalnih podatkov. Zaporedje je podobno seznamu, vendar ima dodatne funkcionalnosti in je bolj prilagojeno obdelavi podatkov. Vsak element zaporedja je povezan z indeksom, kar olajša dostop do podatkov.</p>
+<p>Zaporedje lahko ustvarimo na več načinov, a najbolj pogosto si bomo pomagali s seznamom ali slovarjem. V primeru, ko zaporedje ustvarimo iz seznama so njegovi indeksi zaporedna naravna števila, pri čemer je indeks prvega elementa, tako kot pri seznamih, enak 0. Zaporedje ustvarimo s pomočjo konstruktorja <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    10
+1    20
+2    30
+3    40
+4    50
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spoznajmo na začetku nekaj ključnih lastnosti (atributov) zaporedij:
+* <code class="docutils literal notranslate"><span class="pre">size</span></code>: število elementov zaporedja, tudi dolžina zaporedja,
+* <code class="docutils literal notranslate"><span class="pre">values</span></code>: vrednosti elementov zaporedja,
+* <code class="docutils literal notranslate"><span class="pre">dtype</span></code>: podatkovni tip vrednosti v zaporedju, in
+* <code class="docutils literal notranslate"><span class="pre">index</span></code>: indeksi elementov v zaporedju,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Iz izpisa lahko torej ugotovimo, da ima zaporedje 5 elementov celoštevilskega tipa (<code class="docutils literal notranslate"><span class="pre">int64</span></code>). Poglejmo zdaj lastnost <code class="docutils literal notranslate"><span class="pre">values</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+[10 20 30 40 50]
+[10, 20, 30, 40, 50]
+&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lastnost je polje, kot ga definira knjižnica <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>). Izpis vrednosti nam pokaže elemente polja: dejstvo, da v izpisu ni vejic med zaporednimi elementi, nakazuje, da ne gre za navaden Pythonovski seznam. Slednjega lahko dobimo z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code>.</p>
+<p>Poglejmo si še lastnost <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.indexes.range.RangeIndex&#39;&gt;
+RangeIndex(start=0, stop=5, step=1)
+[0, 1, 2, 3, 4]
+&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo, da tudi ta lastnost je posebnega tipa, v tem primeru <code class="docutils literal notranslate"><span class="pre">RangeIndex</span></code>, ki ga lahko z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code> pretvorimo v navaden seznam.</p>
+<p>Kot smo povedali zgoraj so indeksi elementov zaporedja enaki prvim petim naravnim številom. Če želimo imeti poimenovane elemente, jim lahko imena dodamo na več načinov. En način, ki nam omogoča sprotno spreminjanje indeksov, je neposredno prirejanje, kot kaže ta primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">)</span>
+<span class="c1"># Lahko tudi s2 = pd.Series(range(10, 51, 10), index = list(&#39;abcde&#39;))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    10
+b    20
+c    30
+d    40
+e    50
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Izpis nazorno pokaže, da so indeksi zadaj enaki prvim petim črkam angleške abecede:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.indexes.base.Index&#39;&gt;
+Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&#39;object&#39;)
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indeksiranje-zaporedij">
+<h2>Indeksiranje zaporedij<a class="headerlink" href="#indeksiranje-zaporedij" title="Permalink to this heading">#</a></h2>
+<p>Posamezne elemente zaporedij lahko dobimo z uporabo običajnega indeksiranja, enakega tistemu za navadne Pythonovske sezname:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+20
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_27031/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  print(s2[1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bodite pozorni na opozorilo pri drugem indeksiranju. Namreč, izraz <code class="docutils literal notranslate"><span class="pre">s2[1]</span></code> nima ravno smisla, saj ima zaporedje <code class="docutils literal notranslate"><span class="pre">s2</span></code> poimenovane indekse in bi bilo pravilno uporabiti ustrezni indeks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Opozorila ni več. Če želimo dobiti vrednost <em>drugega elementa</em> zaporedja <code class="docutils literal notranslate"><span class="pre">s2</span></code>, kjer npr. ne poznamo njegovega indeksa, to lahko storimo na dva načina:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="n">s2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prvi sloni na očitni uporabi lastnosti <code class="docutils literal notranslate"><span class="pre">s2.index</span></code>: z indeksiranjem tega seznama indeksov dobimo pravi, poimenovani indeks drugega elementa zaporedja <code class="docutils literal notranslate"><span class="pre">s2</span></code>. Drugi način sloni na uporabi še enega načina indeksiranja zaporedij skozi lastnost <code class="docutils literal notranslate"><span class="pre">iloc</span></code>. Spoznajmo to lastnost bolj podrobno.</p>
+</section>
+<section id="lastnosti-zaporedij-iloc-in-loc">
+<h2>Lastnosti zaporedij <code class="docutils literal notranslate"><span class="pre">iloc</span></code> in <code class="docutils literal notranslate"><span class="pre">loc</span></code><a class="headerlink" href="#lastnosti-zaporedij-iloc-in-loc" title="Permalink to this heading">#</a></h2>
+<p>Zaporedja imajo dve lastnosti, ki so nam lahko v pomoč pri njihovem indeksiranju.</p>
+<p>Lastnost <code class="docutils literal notranslate"><span class="pre">iloc</span></code> uporabljamo za izbiranje elementov zaporedja <code class="docutils literal notranslate"><span class="pre">s</span></code> na podlagi njihovih <em>pozicij</em>, t.j., zaporednih celoštevilskih indeksov iz <code class="docutils literal notranslate"><span class="pre">range(s.size)</span></code> oz. seznama <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">s.size]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+b    20
+c    30
+dtype: int64
+b    20
+c    30
+dtype: int64
+a    10
+b    20
+c    30
+d    40
+e    50
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <em>pozor</em>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
+<p>Bodite tudi pozorni na razliko med prvim rezultatom, ki je enostavnega celoštevilskega tipa, ker smo pač indeksirali zgolj en element zaporedja in ostalih treh. Slednji so vsi tipa zaporedje. Za vajo premisli kako bi rezultat indeksiranja spremenil v navaden seznam.</p>
+<p>Lastnost <code class="docutils literal notranslate"><span class="pre">loc</span></code> je podobna <code class="docutils literal notranslate"><span class="pre">iloc</span></code> s pomembno razliko: omogoča nam indeksiranje zaporedij na osnovi <strong>poimenovanih indeksov</strong> in ne pozicijskih indeksov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+b    20
+c    30
+d    40
+dtype: int64
+a    10
+b    20
+c    30
+d    40
+e    50
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Čeprav se zdijo rezultati samoumevni, naj opozorim na eno stvar. Območje <code class="docutils literal notranslate"><span class="pre">'b':'d'</span></code> vključuje tudi zadnji indeks območja, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>. <em>Pozor</em>: to je drugače kot pri številskem območju <code class="docutils literal notranslate"><span class="pre">1:3</span></code>, kjer indeks <code class="docutils literal notranslate"><span class="pre">3</span></code>, t.j., zgornja meja območja, ni vključen v seznam zahtevanih indeksov.</p>
+</section>
+<section id="o-tipih-elementov-zaporedja">
+<h2>O tipih elementov zaporedja<a class="headerlink" href="#o-tipih-elementov-zaporedja" title="Permalink to this heading">#</a></h2>
+<p>Elementi zaporedja so lahko mešanih tipov. Za tvorjenje takega zaporedja, bomo uporabili funkcijo <code class="docutils literal notranslate"><span class="pre">concat</span></code>, ki elemente večjega števila zaporedij iz podanega nabora združi skupaj v eno zaporedje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_int</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">s_chr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))</span>
+<span class="n">s_cuden</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">s_int</span><span class="p">,</span> <span class="n">s_chr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_cuden</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    1
+2    2
+0    a
+1    b
+2    c
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dobljeni seznam je čuden na več načinov. Najprej, med združevanjem dveh seznamov s celoštevilskimi elementi in nizi znakov, poenoti tipe elementov tako, da celoštevilski elementi dobijo nove vrednosti splošnega tipa <code class="docutils literal notranslate"><span class="pre">object</span></code>. Še bolj nenavadno je, da se indeksi v novem zaporedju ponavljajo. Pogljemo kako poteka indeksiranje z uporabo lastnosti <code class="docutils literal notranslate"><span class="pre">loc</span></code> v takem seznamu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_cuden</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+0    a
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hecno je, da indeksiranje z enim samim indeksom vrne zaporedje dveh elementov. Seveda se temu lahko izognemo tako, da uporabljamo pozicijski indeks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_cuden</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo popravi indekse zaporedja <code class="docutils literal notranslate"><span class="pre">s_cuden</span></code> tako, da se ne ponavljajo.</p>
+<p>A pomemben nauk zgodbe je, da elementi zaporedja, tako kot elementi seznama, morajo biti istega tipa. Tip elementov nam pove lastnost zaporedja <code class="docutils literal notranslate"><span class="pre">dtype</span></code>: pogosto ta podatkovni tip imenujemo <strong>tip zaporedja</strong>. Poglejmo zdaj nekaj tipov zaporedij, ki pridejo prav pri podatkovni analizi.</p>
+</section>
+<section id="kategorije-angl-categories">
+<h2>Kategorije (angl. <em>categories</em>)<a class="headerlink" href="#kategorije-angl-categories" title="Permalink to this heading">#</a></h2>
+<p>V vseh dosedanjih primerih smo tvorili zaporedja celoštevilskega tipa ali zaporedja nizov znakov. Kategorije so posebni tip zaporedij, katerih vrednosti elementov so iz omejene množice možnih vrednosti. Primer takega zaporedja zapisuje barve opazovanih objektov, pri čemer je posamezen objekt lahko rdeče, zelene ali modre barve.</p>
+<p>Tako zaporedje bi seveda lahko zapisali kot navadno zaporedje nizov znakov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">seed</span><span class="p">,</span> <span class="n">sample</span>
+
+<span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">barve</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rdeča&#39;</span><span class="p">,</span> <span class="s1">&#39;zelena&#39;</span><span class="p">,</span> <span class="s1">&#39;modra&#39;</span><span class="p">]</span>
+<span class="n">s_barve</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">barve</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     modra
+1     rdeča
+2     rdeča
+3     modra
+4     rdeča
+5     rdeča
+6     modra
+7     rdeča
+8     modra
+9    zelena
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Slabost tega zaporedja je v tem, da pri spreminjanju vrednosti obstoječih elementov nimamo kontrole nad množico dovoljenih vrednosti. Lahko naredimo napako pri poimenovanju barve in pri tem ne dobimo nobenega opozorila:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;rdeca&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    modra
+1    rdeča
+2    rdeča
+3    modra
+4    rdeča
+5    rdeča
+6    modra
+7    rdeča
+8    modra
+9    rdeca
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če pa ustvarimo kategorijo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">barve</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     rdeča
+1    zelena
+2    zelena
+3     rdeča
+4     rdeča
+5     modra
+6     rdeča
+7     rdeča
+8    zelena
+9    zelena
+dtype: category
+Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>dobi ustvarjeno zaporedje lastnost, ki določa množico možnih vrednosti (glej zadnjo vrstico izpisa). Poskus prirejanja vrednosti elementa, ki ni v množici možnih vrednosti kategorije, se konča z napako <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/series.py:1228,</span> in <span class="ni">Series.__setitem__</span><span class="nt">(self, key, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span> <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="n">LossySetitemError</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span>     <span class="c1"># The key was OK, but we cannot set the value losslessly</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1228</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1230</span> <span class="k">except</span> <span class="n">InvalidIndexError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1231</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">MultiIndex</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1232</span>         <span class="c1"># cases with MultiIndex don&#39;t get here bc they raise KeyError</span>
+<span class="g g-Whitespace">   </span><span class="mi">1233</span>         <span class="c1"># e.g. test_basic_getitem_setitem_corner</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/series.py:1320,</span> in <span class="ni">Series._set_values</span><span class="nt">(self, key, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1317</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">Index</span><span class="p">,</span> <span class="n">Series</span><span class="p">)):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">_values</span>
+<span class="ne">-&gt; </span><span class="mi">1320</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">setitem</span><span class="p">(</span><span class="n">indexer</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1321</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maybe_update_cacher</span><span class="p">()</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:399,</span> in <span class="ni">BaseBlockManager.setitem</span><span class="nt">(self, indexer, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span>     <span class="c1"># No need to split if we either set all columns or on a single block</span>
+<span class="g g-Whitespace">    </span><span class="mi">396</span>     <span class="c1"># manager</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span>     <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">399</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;setitem&quot;</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354,</span> in <span class="ni">BaseBlockManager.apply</span><span class="nt">(self, f, align_keys, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>         <span class="n">applied</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">354</span>         <span class="n">applied</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="n">result_blocks</span> <span class="o">=</span> <span class="n">extend_blocks</span><span class="p">(</span><span class="n">applied</span><span class="p">,</span> <span class="n">result_blocks</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_blocks</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:1758,</span> in <span class="ni">EABackedBlock.setitem</span><span class="nt">(self, indexer, value, using_cow)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1755</span> <span class="n">check_setitem_lengths</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1757</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1758</span>     <span class="n">values</span><span class="p">[</span><span class="n">indexer</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+<span class="g g-Whitespace">   </span><span class="mi">1759</span> <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1760</span>     <span class="n">_catch_deprecated_value_error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/_mixins.py:253,</span> in <span class="ni">NDArrayBackedExtensionArray.__setitem__</span><span class="nt">(self, key, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span> <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">check_array_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">253</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_setitem_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_ndarray</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/categorical.py:1562,</span> in <span class="ni">Categorical._validate_setitem_value</span><span class="nt">(self, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1560</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_listlike</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1561</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1562</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_scalar</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/categorical.py:1587,</span> in <span class="ni">Categorical._validate_scalar</span><span class="nt">(self, fill_value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1585</span>     <span class="n">fill_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unbox_scalar</span><span class="p">(</span><span class="n">fill_value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1586</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1587</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1588</span>         <span class="s2">&quot;Cannot setitem on a Categorical with a new &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1589</span>         <span class="sa">f</span><span class="s2">&quot;category (</span><span class="si">{</span><span class="n">fill_value</span><span class="si">}</span><span class="s2">), set the categories first&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1590</span>     <span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1591</span> <span class="k">return</span> <span class="n">fill_value</span>
+
+<span class="ne">TypeError</span>: Cannot setitem on a Categorical with a new category (rdeca), set the categories first
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za razliko od tega, prirejanje vrednosti iz množice možnih vrednosti je uspešno:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeča&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
+0     rdeča
+1    zelena
+2    zelena
+3     rdeča
+4     rdeča
+5     modra
+6     rdeča
+7     rdeča
+8    zelena
+9     rdeča
+dtype: category
+Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dodatne-prednosti-kategorij">
+<h3>Dodatne prednosti kategorij<a class="headerlink" href="#dodatne-prednosti-kategorij" title="Permalink to this heading">#</a></h3>
+<p>Poleg kontrole nad množico možnih vrednosti, imajo kategorije še dve pomembni lastnosti, ki še posebej pridejo do izraza pri obdelavi in analizi podatkov.</p>
+<ul class="simple">
+<li><p>Zmanjšanje porabe pomnilnika: kategorije zasedajo manj pomnilnika kot nizi ali števila, saj se vsaka možna vrednost shrani samo enkrat, in nato se uporabijo celoštevilski indeksi za sklicevanje nanje.</p></li>
+<li><p>Hitrejše delovanje: ker so kategorije predhodno določene, so operacije, kot je iskanje ali filtriranje, običajno hitrejše v primerjavi z nizi znakov.</p></li>
+<li><p>Bolj pregledne statistične obdelave in vizualizacijo: lahko npr. izračunamo porazdelitev vrednosti zaporedja po kategorijah ali pa izračunamo povprečne vrednosti neke druge spremenljivke za različne kategorije in podobno.</p></li>
+</ul>
+<p><em>Pozor</em>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
+</section>
+<section id="dodajanje-novih-moznih-vrednosti">
+<h3>Dodajanje novih možnih vrednosti<a class="headerlink" href="#dodajanje-novih-moznih-vrednosti" title="Permalink to this heading">#</a></h3>
+<p>Kot smo videli v zgornjem primeru, je seznam možnih kategorij dosegljiv čez lastnost <code class="docutils literal notranslate"><span class="pre">cat</span></code> zaporedja tipa kategorije. Spomnimo se:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Isto lastnost lahko uporabimo tudi za spreminjanje nabora možnih vrednosti. Lahko dodamo novo barvo, ali zbrišemo obstoječo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span> <span class="o">=</span> <span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">add_categories</span><span class="p">(</span><span class="s2">&quot;rumena&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+<span class="n">s_barve</span> <span class="o">=</span> <span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">remove_categories</span><span class="p">(</span><span class="s2">&quot;rdeča&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     rdeča
+1    zelena
+2    zelena
+3     rdeča
+4     rdeča
+5     modra
+6     rdeča
+7     rdeča
+8    zelena
+9     rdeča
+dtype: category
+Categories (4, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;, &#39;rumena&#39;]
+0       NaN
+1    zelena
+2    zelena
+3       NaN
+4       NaN
+5     modra
+6       NaN
+7       NaN
+8    zelena
+9       NaN
+dtype: category
+Categories (3, object): [&#39;modra&#39;, &#39;rumena&#39;, &#39;zelena&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pojasni pojav neznanih vrednosti <code class="docutils literal notranslate"><span class="pre">NaN</span></code> v zadnjem zaporedju.</p>
+</section>
+<section id="urejene-kategorije">
+<h3>Urejene kategorije<a class="headerlink" href="#urejene-kategorije" title="Permalink to this heading">#</a></h3>
+<p>Možne vrednosti kategorije so v splošnem neurejene. V zgornjem primeru z barvami je to seveda prav, saj ne poznamo relacije urejenost med barvami, a pri kakšnih kategorijah je smiselno imeti urejenost možnih vrednosti. Vzemimo za primer starostne skupine:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">CategoricalDtype</span>
+
+<span class="n">starostne_skupine</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;otrok&quot;</span><span class="p">,</span> <span class="s2">&quot;najstnica&quot;</span><span class="p">,</span> <span class="s2">&quot;mladostnica&quot;</span><span class="p">,</span> <span class="s2">&quot;odrasla&quot;</span><span class="p">]</span>
+<span class="n">kat_ss</span> <span class="o">=</span> <span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">starostne_skupine</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">starost</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">starostne_skupine</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">starostne_skupine</span><span class="p">))],</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">s_starost</span> <span class="o">=</span> <span class="n">starost</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">kat_ss</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_starost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          otrok
+1        odrasla
+2      najstnica
+3        odrasla
+4    mladostnica
+5      najstnica
+6    mladostnica
+7      najstnica
+8          otrok
+9    mladostnica
+dtype: category
+Categories (4, object): [&#39;otrok&#39; &lt; &#39;najstnica&#39; &lt; &#39;mladostnica&#39; &lt; &#39;odrasla&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Znaki <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> v seznamu kategorij na koncu izpisa nakazujejo, da je kategorija starostna skupina urejena ter hkrati nakazujejo urejenost možnih vrednosti kategorije.</p>
+<p>Urejene kategorije pogosto tvorimo z <em>diskretizacijo</em> numeričnih vrednosti. Diskretizacija pomeni, da numerično spremenljivko (zaporedje) spremenimo v zaporedje diskretnih, običajno urejenih, vrednosti. V primeru starosti, pri osebah običajno opazujemo starost v letih. Z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> lahko starost podano v letih pretvorimo v starostne skupine iz prejšnjega primera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starost_v_letih</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">starost_v_letih</span><span class="p">)</span>
+<span class="n">starostne_meje</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">starost_kat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">starost_v_letih</span><span class="p">,</span> <span class="n">starostne_meje</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">starostne_skupine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">starost_kat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    20
+1    89
+2    54
+3    43
+4    35
+5    19
+6    27
+7    97
+8    13
+9    11
+dtype: int64
+0    mladostnica
+1        odrasla
+2        odrasla
+3        odrasla
+4        odrasla
+5      najstnica
+6    mladostnica
+7        odrasla
+8      najstnica
+9          otrok
+dtype: category
+Categories (4, object): [&#39;otrok&#39; &lt; &#39;najstnica&#39; &lt; &#39;mladostnica&#39; &lt; &#39;odrasla&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> je torej urejena kategorija, nabor določenih vrednosti pa sledi vrednosti argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. Drugi argument funkcije določa seznam mej med starostnimi skupinami in mora biti torej z ena daljši od argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. Prvi argument funkcije je pa originalno zaporedje z numeričnimi vrednostmi.</p>
+</section>
+</section>
+<section id="datum-in-cas">
+<h2>Datum in čas<a class="headerlink" href="#datum-in-cas" title="Permalink to this heading">#</a></h2>
+<p>V podatkovni analizi pogosto srečujemo časovna zaporedja, ki jih knjižnica <code class="docutils literal notranslate"><span class="pre">pandas</span></code> podpira s tremi podatkovnimi tipi:
+* <em>Časovna točka</em> (angl. <em>Date times</em>) je tipa <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>,
+* <em>Časovna razlika</em> (angl. <em>Time deltas</em>) je tipa <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code>, in
+* <em>Časovno obdobje</em> (angl. <em>Period</em>) je tipa <code class="docutils literal notranslate"><span class="pre">Period</span></code>.</p>
+<section id="casovne-tocke">
+<h3>Časovne točke<a class="headerlink" href="#casovne-tocke" title="Permalink to this heading">#</a></h3>
+<p>Časovno zaporedje lahko ustvarimo iz seznama nizov znakov, ki vsebuje datume zapisane v različnih formatih, s funkcijo <code class="docutils literal notranslate"><span class="pre">pd.to_datetime</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_datumi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Jul 31, 2009&quot;</span><span class="p">,</span> <span class="s2">&quot;Jan 10, 2010&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Oct-2023&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]),</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;mixed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ko izhodiščni seznam vključuje datume različnih formatov, je ključnega pomena, da pri pretvorbi nastavimo vrednost argumenta <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">=</span> <span class="pre">&quot;mixed&quot;</span></code>.</p>
+<p>Drugi, zelo pogosto način ustvarjanja časovnih zaporedij je z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">pd.date_range</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2023-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_ct1</span><span class="p">)</span>
+<span class="n">s_ct2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-09&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Mon&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_ct2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   2023-10-01
+1   2023-10-02
+2   2023-10-03
+3   2023-10-04
+4   2023-10-05
+5   2023-10-06
+6   2023-10-07
+7   2023-10-08
+8   2023-10-09
+9   2023-10-10
+dtype: datetime64[ns]
+0   2022-09-05
+1   2022-09-12
+2   2022-09-19
+3   2022-09-26
+4   2022-10-03
+5   2022-10-10
+6   2022-10-17
+7   2022-10-24
+8   2022-10-31
+9   2022-11-07
+dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>V prvem primeru smo ustvarili zaporedje desetih zaporednih dni na začetku oktobra 2023. V drugem primeru pa zaporedje desetih ponedeljkov od začetka septembra 2022.</p>
+<p>Časovno zaporedje lahko uporabimo tudi kot indeks za neko drugo zaporedje opazovanih vrednosti, pravzaprav časovno vrsto opazovanih vrednosti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">i</span> <span class="o">/</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">s_ct2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-09-05    0.0
+2022-09-12    0.1
+2022-09-19    0.2
+2022-09-26    0.3
+2022-10-03    0.4
+2022-10-10    0.5
+2022-10-17    0.6
+2022-10-24    0.7
+2022-10-31    0.8
+2022-11-07    0.9
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indeksiranje v takih primerih zelo prilagodljivo upošteva podan datum, tudi kot časovno obdobje. Tako na primer, zelo enostavno zajamemo del časovne vrste izmerjen v oktobru 2022:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_oktobra_22</span> <span class="o">=</span> <span class="n">cv</span><span class="p">[</span><span class="s2">&quot;2022-10&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cv_oktobra_22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-10-03    0.4
+2022-10-10    0.5
+2022-10-17    0.6
+2022-10-24    0.7
+2022-10-31    0.8
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Časovna zaporedja imajo lastnost <code class="docutils literal notranslate"><span class="pre">dt</span></code>, ki ima veliko različnih metod za računanje različnih datumskih funkcij:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_ct1</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_of_week</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_ct1</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    6
+1    0
+2    1
+3    2
+4    3
+5    4
+6    5
+7    6
+8    0
+9    1
+dtype: int32
+0       Sunday
+1       Monday
+2      Tuesday
+3    Wednesday
+4     Thursday
+5       Friday
+6     Saturday
+7       Sunday
+8       Monday
+9      Tuesday
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lahko torej za podan datum dobimo dan v tednu z indeksom ali imenom v angleščini. Indeks je na mojem računalniku izračunan tako, da vrednost <code class="docutils literal notranslate"><span class="pre">0</span></code> ustreza ponedeljku, <code class="docutils literal notranslate"><span class="pre">6</span></code> pa nedelji.</p>
+<p>Preveri indekse dneva v tednu na svojem računalniki. Za vajo napiši funkcijo, ki za podano datumsko zaporedje vrne zaporedje imen dni v tednu v slovenščini. Pri tem lahko seveda uporabiš zgornjo funkcijo, ki vrne indeks dneva v tednu.</p>
+<p>S pomočjo lastnosti časovne točke <code class="docutils literal notranslate"><span class="pre">dt</span></code> lahko izračunamo še veliko drugih časovnih in datumskih funkcij, na primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_ct2</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_ct2</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_of_year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    36
+1    37
+2    38
+3    39
+4    40
+5    41
+6    42
+7    43
+8    44
+9    45
+Name: week, dtype: UInt32
+0    248
+1    255
+2    262
+3    269
+4    276
+5    283
+6    290
+7    297
+8    304
+9    311
+dtype: int32
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="casovne-razlike">
+<h3>Časovne razlike<a class="headerlink" href="#casovne-razlike" title="Permalink to this heading">#</a></h3>
+<p>Časovna razlika nastane npr. z odštevanjem časovnih točk:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct1</span> <span class="o">-</span> <span class="n">s_ct2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   391 days
+1   385 days
+2   379 days
+3   373 days
+4   367 days
+5   361 days
+6   355 days
+7   349 days
+8   343 days
+9   337 days
+dtype: timedelta64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lahko jo tudi ustvarimo s funkcijami <code class="docutils literal notranslate"><span class="pre">pd.Timedelta</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_cr1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_cr1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1 days
+1    2 days
+2    3 days
+3    4 days
+4    5 days
+5    6 days
+6    7 days
+7    8 days
+8    9 days
+9   10 days
+dtype: timedelta64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>ali pa <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_cv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_cv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 days 00:00:01    0
+0 days 00:00:02    1
+0 days 00:00:03    2
+0 days 00:00:04    3
+0 days 00:00:05    4
+0 days 00:00:06    5
+0 days 00:00:07    6
+0 days 00:00:08    7
+0 days 00:00:09    8
+0 days 00:00:10    9
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Časovne razlike torej, tako kot časovne točke, lahko uporabljamo kot indekse zaporedja.</p>
+</section>
+<section id="casovna-obdobja">
+<h3>Časovna obdobja<a class="headerlink" href="#casovna-obdobja" title="Permalink to this heading">#</a></h3>
+<p>Morebiti manj uporaben podatkovni tip kot prejšnja dva je še časovno obdobje. Poglejmo uporabo funkcije <code class="docutils literal notranslate"><span class="pre">period_range</span></code> za ustvarjanje časovnih obdobij:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_co1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2023-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_co1</span><span class="p">)</span>
+<span class="n">s_co2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2022-09&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Mon&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_co2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    2023-10-01
+1    2023-10-02
+2    2023-10-03
+3    2023-10-04
+4    2023-10-05
+5    2023-10-06
+6    2023-10-07
+7    2023-10-08
+8    2023-10-09
+9    2023-10-10
+dtype: period[D]
+0    2022-08-30/2022-09-05
+1    2022-09-06/2022-09-12
+2    2022-09-13/2022-09-19
+3    2022-09-20/2022-09-26
+4    2022-09-27/2022-10-03
+5    2022-10-04/2022-10-10
+6    2022-10-11/2022-10-17
+7    2022-10-18/2022-10-24
+8    2022-10-25/2022-10-31
+9    2022-11-01/2022-11-07
+dtype: period[W-MON]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Primerjaj rezultat s primeri časovnih točk zgoraj. Delo s časovnimi obdobji je podobno delu s časovnimi točkami.</p>
+</section>
+</section>
+<section id="naloge-za-vajo">
+<h2>Naloge za vajo<a class="headerlink" href="#naloge-za-vajo" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="izpeljani-seznami.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Izpeljani seznami (angl. <em>list comprehensions</em>)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-podatkovni-tipi-v-zaporedjih">Osnovni podatkovni tipi v zaporedjih</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-zaporedij">Indeksiranje zaporedij</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastnosti-zaporedij-iloc-in-loc">Lastnosti zaporedij <code class="docutils literal notranslate"><span class="pre">iloc</span></code> in <code class="docutils literal notranslate"><span class="pre">loc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-tipih-elementov-zaporedja">O tipih elementov zaporedja</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategorije-angl-categories">Kategorije (angl. <em>categories</em>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dodatne-prednosti-kategorij">Dodatne prednosti kategorij</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dodajanje-novih-moznih-vrednosti">Dodajanje novih možnih vrednosti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#urejene-kategorije">Urejene kategorije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datum-in-cas">Datum in čas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovne-tocke">Časovne točke</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovne-razlike">Časovne razlike</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casovna-obdobja">Časovna obdobja</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge-za-vajo">Naloge za vajo</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
