@@ -1,0 +1,89 @@
+Traceback (most recent call last):
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+s_barve[9] = "rdeca"
+print(s_barve)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[18], line 1[0m
+[0;32m----> 1[0m [43ms_barve[49m[43m[[49m[38;5;241;43m9[39;49m[43m][49m [38;5;241m=[39m [38;5;124m"[39m[38;5;124mrdeca[39m[38;5;124m"[39m
+[1;32m      2[0m [38;5;28mprint[39m(s_barve)
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/series.py:1228[0m, in [0;36mSeries.__setitem__[0;34m(self, key, value)[0m
+[1;32m   1225[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mTypeError[39;00m, [38;5;167;01mValueError[39;00m, LossySetitemError):
+[1;32m   1226[0m     [38;5;66;03m# The key was OK, but we cannot set the value losslessly[39;00m
+[1;32m   1227[0m     indexer [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mindex[38;5;241m.[39mget_loc(key)
+[0;32m-> 1228[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_set_values[49m[43m([49m[43mindexer[49m[43m,[49m[43m [49m[43mvalue[49m[43m)[49m
+[1;32m   1230[0m [38;5;28;01mexcept[39;00m InvalidIndexError [38;5;28;01mas[39;00m err:
+[1;32m   1231[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(key, [38;5;28mtuple[39m) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m([38;5;28mself[39m[38;5;241m.[39mindex, MultiIndex):
+[1;32m   1232[0m         [38;5;66;03m# cases with MultiIndex don't get here bc they raise KeyError[39;00m
+[1;32m   1233[0m         [38;5;66;03m# e.g. test_basic_getitem_setitem_corner[39;00m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/series.py:1320[0m, in [0;36mSeries._set_values[0;34m(self, key, value)[0m
+[1;32m   1317[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(key, (Index, Series)):
+[1;32m   1318[0m     key [38;5;241m=[39m key[38;5;241m.[39m_values
+[0;32m-> 1320[0m [38;5;28mself[39m[38;5;241m.[39m_mgr [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mgr[49m[38;5;241;43m.[39;49m[43msetitem[49m[43m([49m[43mindexer[49m[38;5;241;43m=[39;49m[43mkey[49m[43m,[49m[43m [49m[43mvalue[49m[38;5;241;43m=[39;49m[43mvalue[49m[43m)[49m
+[1;32m   1321[0m [38;5;28mself[39m[38;5;241m.[39m_maybe_update_cacher()
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:399[0m, in [0;36mBaseBlockManager.setitem[0;34m(self, indexer, value)[0m
+[1;32m    395[0m     [38;5;66;03m# No need to split if we either set all columns or on a single block[39;00m
+[1;32m    396[0m     [38;5;66;03m# manager[39;00m
+[1;32m    397[0m     [38;5;28mself[39m [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mcopy()
+[0;32m--> 399[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43msetitem[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mindexer[49m[38;5;241;43m=[39;49m[43mindexer[49m[43m,[49m[43m [49m[43mvalue[49m[38;5;241;43m=[39;49m[43mvalue[49m[43m)[49m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354[0m, in [0;36mBaseBlockManager.apply[0;34m(self, f, align_keys, **kwargs)[0m
+[1;32m    352[0m         applied [38;5;241m=[39m b[38;5;241m.[39mapply(f, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    353[0m     [38;5;28;01melse[39;00m:
+[0;32m--> 354[0m         applied [38;5;241m=[39m [38;5;28;43mgetattr[39;49m[43m([49m[43mb[49m[43m,[49m[43m [49m[43mf[49m[43m)[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    355[0m     result_blocks [38;5;241m=[39m extend_blocks(applied, result_blocks)
+[1;32m    357[0m out [38;5;241m=[39m [38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39mfrom_blocks(result_blocks, [38;5;28mself[39m[38;5;241m.[39maxes)
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:1758[0m, in [0;36mEABackedBlock.setitem[0;34m(self, indexer, value, using_cow)[0m
+[1;32m   1755[0m check_setitem_lengths(indexer, value, values)
+[1;32m   1757[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 1758[0m     [43mvalues[49m[43m[[49m[43mindexer[49m[43m][49m [38;5;241m=[39m value
+[1;32m   1759[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mValueError[39;00m, [38;5;167;01mTypeError[39;00m) [38;5;28;01mas[39;00m err:
+[1;32m   1760[0m     _catch_deprecated_value_error(err)
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/_mixins.py:253[0m, in [0;36mNDArrayBackedExtensionArray.__setitem__[0;34m(self, key, value)[0m
+[1;32m    251[0m [38;5;28;01mdef[39;00m [38;5;21m__setitem__[39m([38;5;28mself[39m, key, value) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[1;32m    252[0m     key [38;5;241m=[39m check_array_indexer([38;5;28mself[39m, key)
+[0;32m--> 253[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_setitem_value[49m[43m([49m[43mvalue[49m[43m)[49m
+[1;32m    254[0m     [38;5;28mself[39m[38;5;241m.[39m_ndarray[key] [38;5;241m=[39m value
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/categorical.py:1562[0m, in [0;36mCategorical._validate_setitem_value[0;34m(self, value)[0m
+[1;32m   1560[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_validate_listlike(value)
+[1;32m   1561[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1562[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_scalar[49m[43m([49m[43mvalue[49m[43m)[49m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arrays/categorical.py:1587[0m, in [0;36mCategorical._validate_scalar[0;34m(self, fill_value)[0m
+[1;32m   1585[0m     fill_value [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_unbox_scalar(fill_value)
+[1;32m   1586[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1587[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[1;32m   1588[0m         [38;5;124m"[39m[38;5;124mCannot setitem on a Categorical with a new [39m[38;5;124m"[39m
+[1;32m   1589[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mcategory ([39m[38;5;132;01m{[39;00mfill_value[38;5;132;01m}[39;00m[38;5;124m), set the categories first[39m[38;5;124m"[39m
+[1;32m   1590[0m     ) [38;5;28;01mfrom[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1591[0m [38;5;28;01mreturn[39;00m fill_value
+
+[0;31mTypeError[0m: Cannot setitem on a Categorical with a new category (rdeca), set the categories first
+
