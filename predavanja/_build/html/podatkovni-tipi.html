@@ -420,11 +420,13 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Spoznajmo na začetku nekaj ključnih lastnosti (atributov) zaporedij:
-* <code class="docutils literal notranslate"><span class="pre">size</span></code>: število elementov zaporedja, tudi dolžina zaporedja,
-* <code class="docutils literal notranslate"><span class="pre">values</span></code>: vrednosti elementov zaporedja,
-* <code class="docutils literal notranslate"><span class="pre">dtype</span></code>: podatkovni tip vrednosti v zaporedju, in
-* <code class="docutils literal notranslate"><span class="pre">index</span></code>: indeksi elementov v zaporedju,</p>
+<p>Spoznajmo na začetku nekaj ključnih lastnosti (atributov) zaporedij:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: število elementov zaporedja, tudi dolžina zaporedja,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: podatkovni tip vrednosti v zaporedju,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span></code>: vrednosti elementov zaporedja, in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: indeksi elementov v zaporedju (podobno kot <code class="docutils literal notranslate"><span class="pre">keys</span></code> v slovarjih).</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
@@ -533,7 +535,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_27429/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_88593/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -600,7 +602,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <em>pozor</em>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
+<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <strong>pozor</strong>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
 <p>Bodite tudi pozorni na razliko med prvim rezultatom, ki je enostavnega celoštevilskega tipa, ker smo pač indeksirali zgolj en element zaporedja in ostalih treh. Slednji so vsi tipa zaporedje. Za vajo premisli kako bi rezultat indeksiranja spremenil v navaden seznam.</p>
 <p>Lastnost <code class="docutils literal notranslate"><span class="pre">loc</span></code> je podobna <code class="docutils literal notranslate"><span class="pre">iloc</span></code> s pomembno razliko: omogoča nam indeksiranje zaporedij na osnovi <strong>poimenovanih indeksov</strong> in ne pozicijskih indeksov:</p>
 <div class="cell docutils container">
@@ -627,7 +629,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Čeprav se zdijo rezultati samoumevni, naj opozorim na eno stvar. Območje <code class="docutils literal notranslate"><span class="pre">'b':'d'</span></code> vključuje tudi zadnji indeks območja, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>. <em>Pozor</em>: to je drugače kot pri številskem območju <code class="docutils literal notranslate"><span class="pre">1:3</span></code>, kjer indeks <code class="docutils literal notranslate"><span class="pre">3</span></code>, t.j., zgornja meja območja, ni vključen v seznam zahtevanih indeksov.</p>
+<p>Čeprav se zdijo rezultati samoumevni, naj opozorim na eno stvar. Območje <code class="docutils literal notranslate"><span class="pre">'b':'d'</span></code> vključuje tudi zadnji indeks območja, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>. <strong>Pozor</strong>: to je drugače kot pri številskem območju <code class="docutils literal notranslate"><span class="pre">1:3</span></code>, kjer indeks <code class="docutils literal notranslate"><span class="pre">3</span></code>, t.j., zgornja meja območja, ni vključen v seznam zahtevanih indeksov.</p>
 </section>
 <section id="o-tipih-elementov-zaporedja">
 <h2>O tipih elementov zaporedja<a class="headerlink" href="#o-tipih-elementov-zaporedja" title="Permalink to this heading">#</a></h2>
@@ -876,7 +878,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 <li><p>Hitrejše delovanje: ker so kategorije predhodno določene, so operacije, kot je iskanje ali filtriranje, običajno hitrejše v primerjavi z nizi znakov.</p></li>
 <li><p>Bolj pregledne statistične obdelave in vizualizacijo: lahko npr. izračunamo porazdelitev vrednosti zaporedja po kategorijah ali pa izračunamo povprečne vrednosti neke druge spremenljivke za različne kategorije in podobno.</p></li>
 </ul>
-<p><em>Pozor</em>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
+<p><strong>Pozor</strong>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
 </section>
 <section id="dodajanje-novih-moznih-vrednosti">
 <h3>Dodajanje novih možnih vrednosti<a class="headerlink" href="#dodajanje-novih-moznih-vrednosti" title="Permalink to this heading">#</a></h3>
@@ -1299,10 +1301,12 @@ dtype: period[W-MON]
 </section>
 <section id="naloge-za-vajo">
 <h2>Naloge za vajo<a class="headerlink" href="#naloge-za-vajo" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Denimo, da smo Alešu, Barbari, Cirilu in Darji izmerili višine v centimetrih (180, 165, 160, 193) in teže v kilogramih (87, 58, 65, 100). Naredi dve zaporedji <code class="docutils literal notranslate"><span class="pre">v</span></code> in <code class="docutils literal notranslate"><span class="pre">t</span></code> z izmerjenimi podatki. Indeks telesne mase (ITM) izračunamo po formuli
-$<span class="math notranslate nohighlight">\( \text{ITM} = \frac{\text{teža v kilogramih}}{(\text{višina v metrih})^2}. \)</span>$
-Izračunaj zaporedje vrednosti ITM s poimenovanimi indeski za štiri osebe, kjer so indeksi elementov dejanska imena oseb (Aleš, Barbara, Ciril in Darja). Nato izračunaj zaporedje naravnih logaritmov vrednosti ITM. Na koncu izpiši zaporedje imen oseb, ki imajo ITM večji od 25, ter izračunaj njihov povprečni ITM.</p></li>
+<ol class="arabic">
+<li><p>Denimo, da smo Alešu, Barbari, Cirilu in Darji izmerili višine v centimetrih (180, 165, 160, 193) in teže v kilogramih (87, 58, 65, 100). Naredi dve zaporedji <code class="docutils literal notranslate"><span class="pre">v</span></code> in <code class="docutils literal notranslate"><span class="pre">t</span></code> z izmerjenimi podatki. Indeks telesne mase (ITM) izračunamo po formuli</p>
+<div class="math notranslate nohighlight">
+\[ \text{ITM} = \frac{\text{teža v kilogramih}}{(\text{višina v metrih})^2}. \]</div>
+<p>Izračunaj zaporedje vrednosti ITM s poimenovanimi indeski za štiri osebe, kjer so indeksi elementov dejanska imena oseb (Aleš, Barbara, Ciril in Darja). Nato izračunaj zaporedje naravnih logaritmov vrednosti ITM. Na koncu izpiši zaporedje imen oseb, ki imajo ITM večji od 25, ter izračunaj njihov povprečni ITM.</p>
+</li>
 <li><p>Sestavi zaporedja z naslednjimi elementi:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(3^1/1, 3^2/2, \ldots, 3^{50}/50\)</span>;</p></li>
@@ -1310,13 +1314,50 @@ Izračunaj zaporedje vrednosti ITM s poimenovanimi indeski za štiri osebe, kjer
 <li><p><span class="math notranslate nohighlight">\(e^x \sin x\)</span> izračunanimi v točkah <span class="math notranslate nohighlight">\(x = 3, 3.1, 3.2, \ldots, 6\)</span>.<br><br></p></li>
 </ul>
 </li>
-<li><p>Podano je naravno število <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>. Z uporabo zaporedij definiraj funkcijo, ki kot argument sprejme naravno število <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>, vrne rezultat <code class="docutils literal notranslate"><span class="pre">True</span></code>, če je <code class="docutils literal notranslate"><span class="pre">x</span></code> praštevilo, in <code class="docutils literal notranslate"><span class="pre">False</span></code> sicer. Namig: zaporedje gradi postopoma. Najprej izračunaj zaporedje ostankov deljenja <code class="docutils literal notranslate"><span class="pre">x</span></code> z vsemi števili od <code class="docutils literal notranslate"><span class="pre">2</span></code> do <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">1</span></code>. Nato preveri, če je <code class="docutils literal notranslate"><span class="pre">0</span></code> element tega zaporedja.</p></li>
+<li><p>Z uporabo zaporedij definiraj funkcijo, ki kot argument sprejme naravno število <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>, vrne rezultat <code class="docutils literal notranslate"><span class="pre">True</span></code>, če je <code class="docutils literal notranslate"><span class="pre">x</span></code> praštevilo, in <code class="docutils literal notranslate"><span class="pre">False</span></code> sicer. Namig: zaporedje gradi postopoma. Najprej izračunaj zaporedje ostankov deljenja <code class="docutils literal notranslate"><span class="pre">x</span></code> z vsemi števili od <code class="docutils literal notranslate"><span class="pre">2</span></code> do <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">1</span></code>. Nato preveri, če je <code class="docutils literal notranslate"><span class="pre">0</span></code> element tega zaporedja.</p></li>
 <li><p>Izračunaj dve zaporedji <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> dolžine 250 tako, da s ponavljanjem naključno izbiraš naravna števila iz intervala <span class="math notranslate nohighlight">\([0, 999]\)</span>. Označimo z <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_{250}\)</span> in <span class="math notranslate nohighlight">\(y_1, y_2, \ldots, y_{250}\)</span> elemente zaporedij <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>. Izračunaj:</p>
 <ul class="simple">
 <li><p>Zaporedje z elementi <span class="math notranslate nohighlight">\(y_2 - x_1, y_3 - x_2, \ldots, y_{250} - x_{249}\)</span>.</p></li>
 <li><p>Vsoto <span class="math notranslate nohighlight">\(\sum_{i=1}^{249} e^{- x_{i+1}} / (x_i + 10)\)</span>.<br><br></p></li>
 </ul>
 </li>
+<li><p>Sestavi zaporedje tipa kategorija s tremi možnimi vrednostmi <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code> in <code class="docutils literal notranslate"><span class="pre">C</span></code>, ki bo vsebovalo po natanko pet (5) vrednosti iz vsake kategorije. Vrednosti naj nastopajo v zaporedju v naključnem vrstnem redu.</p></li>
+<li><p>Pri ocenjevanju izpitov na FMF pogosto uporabljamo odstotne točke. Študentka lahko doseže poljubno število odstotnih točk od 0 do 100 (obe meji vključeni). Nato njen dosežek prevedemo v oceno takole:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>dosežek v %</p></th>
+<th class="head"><p>ocena</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>več kot 90</p></td>
+<td><p>odlično (10)</p></td>
+</tr>
+<tr class="row-odd"><td><p>več kot 80 in največ 90</p></td>
+<td><p>prav dobro (9)</p></td>
+</tr>
+<tr class="row-even"><td><p>več kot 70 in največ 80</p></td>
+<td><p>prav dobro (8)</p></td>
+</tr>
+<tr class="row-odd"><td><p>več kot 60 in največ 70</p></td>
+<td><p>dobro (7)</p></td>
+</tr>
+<tr class="row-even"><td><p>več kot 50 in največ 60</p></td>
+<td><p>zadostno (6)</p></td>
+</tr>
+<tr class="row-odd"><td><p>največ 50</p></td>
+<td><p>nezadostno (5)</p></td>
+</tr>
+</tbody>
+</table>
+ <br>
+<ul class="simple">
+<li><p>Sestavi zaporedje <code class="docutils literal notranslate"><span class="pre">ot</span></code> z desetimi naključnimi celoštevilskimi dosežki študentov v odstotnih točkah.</p></li>
+<li><p>Pretvori zaporedje <code class="docutils literal notranslate"><span class="pre">ot</span></code> v zaporedje <code class="docutils literal notranslate"><span class="pre">ocena</span></code> tipa urejena kategorija, na osnovi prevajalne tabele zgoraj.<br><br></p></li>
+</ul>
+</li>
+<li><p>Definiraj funkcijo, ki za podano leto vrne zaporedje vseh ponedeljkovih datumov v tem letu. Definiraj bolj splošno funkcijo, ki poleg leta, sprejme tudi dan v tednu kot argument.</p></li>
+<li><p>Definiraj funkcijo, ki za podano leto in pozitivni naravni števili <code class="docutils literal notranslate"><span class="pre">od</span></code> in <code class="docutils literal notranslate"><span class="pre">do</span></code> vrne vse datume v tednih <code class="docutils literal notranslate"><span class="pre">od</span></code>, <code class="docutils literal notranslate"><span class="pre">od</span> <span class="pre">+</span> <span class="pre">1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">do</span></code> v podanem letu.</p></li>
 </ol>
 </section>
 </section>
