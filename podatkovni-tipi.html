@@ -535,7 +535,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_28098/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_88289/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -602,7 +602,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <em>pozor</em>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
+<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <strong>pozor</strong>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
 <p>Bodite tudi pozorni na razliko med prvim rezultatom, ki je enostavnega celoštevilskega tipa, ker smo pač indeksirali zgolj en element zaporedja in ostalih treh. Slednji so vsi tipa zaporedje. Za vajo premisli kako bi rezultat indeksiranja spremenil v navaden seznam.</p>
 <p>Lastnost <code class="docutils literal notranslate"><span class="pre">loc</span></code> je podobna <code class="docutils literal notranslate"><span class="pre">iloc</span></code> s pomembno razliko: omogoča nam indeksiranje zaporedij na osnovi <strong>poimenovanih indeksov</strong> in ne pozicijskih indeksov:</p>
 <div class="cell docutils container">
@@ -629,7 +629,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Čeprav se zdijo rezultati samoumevni, naj opozorim na eno stvar. Območje <code class="docutils literal notranslate"><span class="pre">'b':'d'</span></code> vključuje tudi zadnji indeks območja, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>. <em>Pozor</em>: to je drugače kot pri številskem območju <code class="docutils literal notranslate"><span class="pre">1:3</span></code>, kjer indeks <code class="docutils literal notranslate"><span class="pre">3</span></code>, t.j., zgornja meja območja, ni vključen v seznam zahtevanih indeksov.</p>
+<p>Čeprav se zdijo rezultati samoumevni, naj opozorim na eno stvar. Območje <code class="docutils literal notranslate"><span class="pre">'b':'d'</span></code> vključuje tudi zadnji indeks območja, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>. <strong>Pozor</strong>: to je drugače kot pri številskem območju <code class="docutils literal notranslate"><span class="pre">1:3</span></code>, kjer indeks <code class="docutils literal notranslate"><span class="pre">3</span></code>, t.j., zgornja meja območja, ni vključen v seznam zahtevanih indeksov.</p>
 </section>
 <section id="o-tipih-elementov-zaporedja">
 <h2>O tipih elementov zaporedja<a class="headerlink" href="#o-tipih-elementov-zaporedja" title="Permalink to this heading">#</a></h2>
@@ -878,7 +878,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 <li><p>Hitrejše delovanje: ker so kategorije predhodno določene, so operacije, kot je iskanje ali filtriranje, običajno hitrejše v primerjavi z nizi znakov.</p></li>
 <li><p>Bolj pregledne statistične obdelave in vizualizacijo: lahko npr. izračunamo porazdelitev vrednosti zaporedja po kategorijah ali pa izračunamo povprečne vrednosti neke druge spremenljivke za različne kategorije in podobno.</p></li>
 </ul>
-<p><em>Pozor</em>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
+<p><strong>Pozor</strong>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
 </section>
 <section id="dodajanje-novih-moznih-vrednosti">
 <h3>Dodajanje novih možnih vrednosti<a class="headerlink" href="#dodajanje-novih-moznih-vrednosti" title="Permalink to this heading">#</a></h3>
