@@ -1,0 +1,1352 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Podatkovni okviri (tudi podatkovne tabele) &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pt-podatkovni-okviri';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Naloge" href="pt-naloge.html" />
+    <link rel="prev" title="Zaporedja v knjižnici pandas" href="pt-zaporedja.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Namesto uvoda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v `pandas`</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni okviri (tudi podatkovne tabele)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Fpt-podatkovni-okviri.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pt-podatkovni-okviri.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Podatkovni okviri (tudi podatkovne tabele)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-podatkovnih-okvirov">Tvorjenje podatkovnih okvirov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atributi-podatkovnih-okvirov">Atributi podatkovnih okvirov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-podatkovnih-okvirov">Indeksiranje podatkovnih okvirov</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poravnava-indeksov">Poravnava indeksov</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samodejna-poravnava">Samodejna poravnava</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rocna-poravnava-ali-poravnava-na-zahtevo">Ročna poravnava ali poravnava na zahtevo</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p>Knjižnica <a class="reference external" href="https://pandas.pydata.org/"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a> omogoča procesiranje, obdelavo in analizo podatkov, shranjenih v podatkovno tabelo. Na začetku dela s knjižnico bomo najprej spoznali osnovne podatkovne tipe za sestavljanje tabel: zaporedje (angl. <em>Series</em>) in podatkovni okvir (angl. <em>DataFrame</em>), ki ga bomo imenovali tudi podatkovna tabela.</p>
+<p>Podatkovna tabela v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> je sestavljena iz vrstic in stolpcev, imenovanih tudi spremenljivke. Vsak stolpec v tabeli je tipe zaporedje. Stolpci (spremenljivke) so v podatkovnih tabelah posebnega pomena, saj večina operacij podatkovne obdelave in analize poteka na stolpcih. Zato bomo najprej dobro spoznali podatkovni tip zaporedje in se naučili delati s posameznimi stolpci tabele, nato pa se naučili delati s podatkovnimi okviri. Pri obdelavi zaporedij bomo si pogosto pomagali z izpeljanimi seznami, o katerih smo govorili v okviru uvodnega predavanja.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="podatkovni-okviri-tudi-podatkovne-tabele">
+<h1>Podatkovni okviri (tudi podatkovne tabele)<a class="headerlink" href="#podatkovni-okviri-tudi-podatkovne-tabele" title="Permalink to this heading">#</a></h1>
+<p>Pred analizo s knjižnico <code class="docutils literal notranslate"><span class="pre">pandas</span></code> podatke spravimo v tabelo. Ustrezni podatkovni tip je podatkovni okvir (<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>). V nadaljevanju bomo po eni strani spoznali ta podatkovni tip, po drugi pa običajno obliko tabel za shranjevanje podatkov za nadaljnjo analizo. <strong>Pozor</strong>: Med predavanji pri tem predmetu bomo podatkovni okvir poimenovali preprosto podatkovna tabela.</p>
+<section id="tvorjenje-podatkovnih-okvirov">
+<h2>Tvorjenje podatkovnih okvirov<a class="headerlink" href="#tvorjenje-podatkovnih-okvirov" title="Permalink to this heading">#</a></h2>
+<p>Podatkovni okvir ustvarimo s konstruktorjem <code class="docutils literal notranslate"><span class="pre">pd.dataframe</span></code>, ki kot prvi argument lahko sprejme slovar. Njegovi ključi določajo imena stolpcev, vrednosti ustrezajo podatkom urejenim po stolpcih:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">imena</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aleš&quot;</span><span class="p">,</span> <span class="s2">&quot;Brina&quot;</span><span class="p">,</span> <span class="s2">&quot;Ciril&quot;</span><span class="p">,</span> <span class="s2">&quot;Darja&quot;</span><span class="p">,</span> <span class="s2">&quot;Ema&quot;</span><span class="p">,</span> <span class="s2">&quot;Filip&quot;</span><span class="p">]</span>
+<span class="n">spoli</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;ž&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;ž&quot;</span><span class="p">,</span> <span class="s2">&quot;ž&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">]</span>
+
+<span class="n">pt1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;ime&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">imena</span><span class="p">),</span>
+    <span class="s2">&quot;spol&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">spoli</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol
+0   Aleš    m
+1  Brina    ž
+2  Ciril    m
+3  Darja    ž
+4    Ema    ž
+5  Filip    m
+</pre></div>
+</div>
+</div>
+</div>
+<p>V zgornjem primeru smo poskrbeli, da sta oba zaporedja enako dolga. Preveri za vajo, kaj se zgodi, če sta zaporedja različno dolga.</p>
+<p>Konstruktor lahko sprejme tudi podatke v obliki seznama seznamov. V tem primeru morajo biti podatki urejeni po vrsticah (in ne po stolpcih kot zgoraj).Imena stolpcev lahko nastavimo z uporabo argumenta <code class="docutils literal notranslate"><span class="pre">columns</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">po_vrsticah</span> <span class="o">=</span> <span class="p">[[</span><span class="n">imena</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">spoli</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">imena</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">po_vrsticah</span><span class="p">)</span>
+
+<span class="n">pt2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">po_vrsticah</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;Aleš&#39;, &#39;m&#39;], [&#39;Brina&#39;, &#39;ž&#39;], [&#39;Ciril&#39;, &#39;m&#39;], [&#39;Darja&#39;, &#39;ž&#39;], [&#39;Ema&#39;, &#39;ž&#39;], [&#39;Filip&#39;, &#39;m&#39;]]
+     ime spol
+0   Aleš    m
+1  Brina    ž
+2  Ciril    m
+3  Darja    ž
+4    Ema    ž
+5  Filip    m
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dimenzije tabele hrani atribut podatkovnega okvira <code class="docutils literal notranslate"><span class="pre">shape</span></code>, število shranjenih vrednosti pa atribut <code class="docutils literal notranslate"><span class="pre">size</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">nv</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span> <span class="o">=</span> <span class="n">pt1</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Število vrstic v pt1 je </span><span class="si">{</span><span class="n">nv</span><span class="si">}</span><span class="s2">, število stolpcev </span><span class="si">{</span><span class="n">ns</span><span class="si">}</span><span class="s2">, število vrednosti pa </span><span class="si">{</span><span class="n">pt1</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Število vrstic v pt1 je 6, število stolpcev 2, število vrednosti pa 12.
+</pre></div>
+</div>
+</div>
+</div>
+<p>V enem od naslednjem razdelkov bomo spoznali še več atributov podatkovne strukture podatkovni okvir. A preden nadaljujemo v to smer, poglejmo kako podatkovni tabeli dodajamo nove podatke.</p>
+<p>Dodajanje novega stolpca je zelo enostavno:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">seed</span>
+
+<span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">pt1</span><span class="p">[</span><span class="s2">&quot;visina&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">randint</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">220</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">ime</span><span class="o">.</span><span class="n">size</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina
+0   Aleš    m     164
+1  Brina    ž     153
+2  Ciril    m     185
+3  Darja    ž     181
+4    Ema    ž     178
+5  Filip    m     167
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dovolj je torej, da indeksiramo tabelo z imenom novega stolpca. <strong>Pozor</strong>: Če je ime novega stolpca enako imenu enega izmed obstoječih stolpcev v tabeli, potem ne bomo dobili novega stolpca, temveč bomo zamenjali vrednosti obstoječemu. Še ena podrobnost, ki jo razkrije zgornja koda: stolpec z imenom <code class="docutils literal notranslate"><span class="pre">s</span></code> v podatkovnem okviru <code class="docutils literal notranslate"><span class="pre">pt</span></code> lahko indeksiramo z <code class="docutils literal notranslate"><span class="pre">pt[s]</span></code> ali pa kot atribut okvira z notacijo <code class="docutils literal notranslate"><span class="pre">pt.s</span></code>. Poglejmo še enkrat:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt2</span><span class="p">[</span><span class="s2">&quot;visina&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pt1</span><span class="o">.</span><span class="n">visina</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina
+0   Aleš    m     164
+1  Brina    ž     153
+2  Ciril    m     185
+3  Darja    ž     181
+4    Ema    ž     178
+5  Filip    m     167
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dodajmo zdaj tabeli podatke o rojstnih datumih, ki jih bomo naključno izbrali med datumi v letih 2001 in 2022.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Določimo začetni in končni datum želenega obdobja</span>
+<span class="n">datum_od</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2001-01-01&quot;</span><span class="p">)</span>
+<span class="n">datum_do</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2002-12-31&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izračunamo število dni od začetka do konca obdobja</span>
+<span class="n">ndni</span> <span class="o">=</span> <span class="p">(</span><span class="n">datum_do</span> <span class="o">-</span> <span class="n">datum_od</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Ustvarimo potrebno število naključnih časovnih razlik v dnevih</span>
+<span class="n">casovne_razlike</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">([</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ndni</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">ime</span><span class="o">.</span><span class="n">size</span><span class="p">)],</span> <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="c1"># in jih prištejmo začetnemu datumu</span>
+<span class="n">datumi</span> <span class="o">=</span> <span class="n">datum_od</span> <span class="o">+</span> <span class="n">casovne_razlike</span>
+
+<span class="n">pt1</span><span class="p">[</span><span class="s2">&quot;datum_rojstva&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datumi</span>
+<span class="n">pt2</span><span class="p">[</span><span class="s2">&quot;datum_rojstva&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datumi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
+0   Aleš    m     164    2001-04-15
+1  Brina    ž     153    2002-11-24
+2  Ciril    m     185    2002-07-13
+3  Darja    ž     181    2001-03-31
+4    Ema    ž     178    2002-08-28
+5  Filip    m     167    2002-03-09
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zato, da tabeli dodamo nove vrstice bomo najprej spoznali atribute podatkovnih okvirov.</p>
+</section>
+<section id="atributi-podatkovnih-okvirov">
+<h2>Atributi podatkovnih okvirov<a class="headerlink" href="#atributi-podatkovnih-okvirov" title="Permalink to this heading">#</a></h2>
+<p>Spoznajmo zdaj nekaj koristnih atributov podatkovnih okvirov.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Atribut</p></th>
+<th class="head text-left"><p>Opis vrednosti</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<td class="text-left"><p>Nabor oblike (število vrstic, število stolpcev)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">size</span></code></p></td>
+<td class="text-left"><p>število elementov podatkovne tabele</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">columns</span></code></p></td>
+<td class="text-left"><p>imena (indeksi) stolpcev v podatkovni tabeli</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">dtypes</span></code></p></td>
+<td class="text-left"><p>podatkovni tipi stolpcev v tabeli</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">index</span></code></p></td>
+<td class="text-left"><p>indeksi (imena) vrstic v podatkovni tabeli</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">values</span></code></p></td>
+<td class="text-left"><p>polje tipa <code class="docutils literal notranslate"><span class="pre">np.array</span></code> z vrednostmi elementov tabele</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">at</span></code> in <code class="docutils literal notranslate"><span class="pre">iat</span></code></p></td>
+<td class="text-left"><p>indeksiranje <em>posameznih elementov tabele</em> z imeni ali pozicijskimi indeksi</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">loc</span></code> in <code class="docutils literal notranslate"><span class="pre">iloc</span></code></p></td>
+<td class="text-left"><p>indeksiranje <em>poljubnih izsekov tabele</em> z imeni ali pozicijskimi indeksi</p></td>
+</tr>
+</tbody>
+</table>
+<p>Nekaj atributov si podatkovni okviri delijo z zaporedji in te že (delno) poznamo. Poglejmo za začetek <code class="docutils literal notranslate"><span class="pre">columns</span></code> in <code class="docutils literal notranslate"><span class="pre">dtypes</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;ime&#39;, &#39;spol&#39;, &#39;visina&#39;, &#39;datum_rojstva&#39;], dtype=&#39;object&#39;)
+ime                      object
+spol                   category
+visina                    int64
+datum_rojstva    datetime64[ns]
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Atribut <code class="docutils literal notranslate"><span class="pre">columns</span></code> torej zaporedje tipa indeks z elementi enakimi imenom stolpcev v podatkovni tabeli. Atribut <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> pa vrne zaporedje z omenjenimi indeksi (imena stolpcev), kjer je vrednost posameznega elementa enaka tipu podatkov v stolpcu. Spomnimo se, da zaporedje lahko hitro spremenimo v seznam njegovih elementov z uporabo metode <code class="docutils literal notranslate"><span class="pre">to_list</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ime&#39;, &#39;spol&#39;, &#39;visina&#39;, &#39;datum_rojstva&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Atribut <code class="docutils literal notranslate"><span class="pre">index</span></code> je identičen po imenu in pomenu atributu zaporedij: vrne zaporedje tipa indeks z elementi enakimi indeksom vrstic v podatkovni tabeli. Na tem mestu je najbrž jasno, da je število elementov atributa <code class="docutils literal notranslate"><span class="pre">index</span></code> enako številu vrstic v tabeli, število elementov atributa <code class="docutils literal notranslate"><span class="pre">columns</span></code> pa številu stolpcev:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span> <span class="o">==</span> <span class="n">pt1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zmnožek obeh pa število elementov v podatkovni tabeli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">pt1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">pt1</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kot pove tabela, atribut <code class="docutils literal notranslate"><span class="pre">values</span></code> hrani polje tipa <code class="docutils literal notranslate"><span class="pre">np.array</span></code> z vrednostmi elementov podatkovne tabele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;Aleš&#39; &#39;m&#39; 164 Timestamp(&#39;2001-04-15 00:00:00&#39;)]
+ [&#39;Brina&#39; &#39;ž&#39; 153 Timestamp(&#39;2002-11-24 00:00:00&#39;)]
+ [&#39;Ciril&#39; &#39;m&#39; 185 Timestamp(&#39;2002-07-13 00:00:00&#39;)]
+ [&#39;Darja&#39; &#39;ž&#39; 181 Timestamp(&#39;2001-03-31 00:00:00&#39;)]
+ [&#39;Ema&#39; &#39;ž&#39; 178 Timestamp(&#39;2002-08-28 00:00:00&#39;)]
+ [&#39;Filip&#39; &#39;m&#39; 167 Timestamp(&#39;2002-03-09 00:00:00&#39;)]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indeksiranje-podatkovnih-okvirov">
+<h2>Indeksiranje podatkovnih okvirov<a class="headerlink" href="#indeksiranje-podatkovnih-okvirov" title="Permalink to this heading">#</a></h2>
+<p>Atributa <code class="docutils literal notranslate"><span class="pre">loc</span></code> in <code class="docutils literal notranslate"><span class="pre">iloc</span></code> prav tako poznamo iz zaporedij.</p>
+<p>Atribut <code class="docutils literal notranslate"><span class="pre">loc</span></code> uporabljamo za indeksiranje tabele z naborom dveh seznamov (ali zaporedij). Prvi seznam podaja imena indeksiranih vrstic, drugi imena indeksiranih stolpcev. Če je vrednost elementa nabora <code class="docutils literal notranslate"><span class="pre">:</span></code>, dobimo kot rezultat indeksiranja vse vrstice oziroma stolpce. Znak <code class="docutils literal notranslate"><span class="pre">:</span></code> lahko uporabljamo kot ločilo za določanje <em>rezin</em> indeksov, tako kot pri indeksiranju običajnih Pythonovih seznamov. Nekaj primerov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;ime&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ime&quot;</span><span class="p">:</span><span class="s2">&quot;visina&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;visina&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Aleš
+1    Brina
+2    Ciril
+3    Darja
+4      Ema
+5    Filip
+Name: ime, dtype: object
+     ime
+0   Aleš
+1  Brina
+2  Ciril
+3  Darja
+4    Ema
+5  Filip
+     ime spol  visina
+2  Ciril    m     185
+1  Brina    ž     153
+0   Aleš    m     164
+     ime  visina
+0   Aleš     164
+3  Darja     181
+3  Darja     181
+5  Filip     167
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo pojasni razliko med prvim in drugim primerom indeksiranja zgoraj. Nato pojasni napako, ki jo dobimo, ko poskušamo primerjati rezultata obeh indeksiranj:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;ime&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_5077/4100154151.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;ime&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">]]</span>
+
+<span class="nn">~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/ops/common.py</span> in <span class="ni">?</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                     <span class="k">return</span> <span class="bp">NotImplemented</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> 
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> 
+<span class="ne">---&gt; </span><span class="mi">76</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+<span class="nn">~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/arraylike.py</span> in <span class="ni">?</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__eq__&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">40</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">eq</span><span class="p">)</span>
+
+<span class="nn">~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/frame.py</span> in <span class="ni">?</span><span class="nt">(self, other, op)</span>
+<span class="g g-Whitespace">   </span><span class="mi">7628</span>     <span class="k">def</span> <span class="nf">_cmp_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">7629</span>         <span class="n">axis</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># only relevant for Series other case</span>
+<span class="g g-Whitespace">   </span><span class="mi">7630</span> 
+<span class="ne">-&gt; </span><span class="mi">7631</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_align_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">flex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">7632</span> 
+<span class="g g-Whitespace">   </span><span class="mi">7633</span>         <span class="c1"># See GH#4537 for discussion of scalar op behavior</span>
+<span class="g g-Whitespace">   </span><span class="mi">7634</span>         <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_frame_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="nn">~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/frame.py</span> in <span class="ni">?</span><span class="nt">(self, other, axis, flex, level)</span>
+<span class="g g-Whitespace">   </span><span class="mi">7935</span>             <span class="c1"># axis=1 is default for DataFrame-with-Series op</span>
+<span class="g g-Whitespace">   </span><span class="mi">7936</span>             <span class="n">axis</span> <span class="o">=</span> <span class="n">axis</span> <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">7937</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">flex</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">7938</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">7939</span>                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">7940</span>                         <span class="s2">&quot;Operands are not aligned. Do &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">7941</span>                         <span class="s2">&quot;`left, right = left.align(right, axis=1, copy=False)` &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">7942</span>                         <span class="s2">&quot;before operating.&quot;</span>
+
+<span class="ne">ValueError</span>: Operands are not aligned. Do `left, right = left.align(right, axis=1, copy=False)` before operating.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Atribut <code class="docutils literal notranslate"><span class="pre">loc</span></code> nam torej omogoča indeksiranje podatkovnih tabel (pa tudi zaporedij) s seznami ali zaporedji imen (indeksov) stolpcev in vrstic. To presega običajne zmožnosti indeksiranja običajnih Pythonovih seznamov.</p>
+<p>Podoben in zelo koristen presežek ponuja indeksiranje s seznami logičnih (Boolovih) vrednosti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
+1  Brina    ž     162    2002-07-04
+4    Ema    ž     183    2001-03-22
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na prvi pogled indeksiranje s seznamom Boolovih vrednosti ne zgleda ravno koristno. To možnost skoraj vedno uporabljamo v kombinaciji z zmožnostjo primerjave zaporedij in skalarjev, ki ga omogoča knjižnica <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">spol</span> <span class="o">==</span> <span class="s2">&quot;m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     True
+1    False
+2     True
+3    False
+4    False
+5     True
+Name: spol, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>S to kombinacijo lahko hitro napišemo zelo koristno indeksiranje, ki nam omogoča hitre podatkovne poizvedbe. Primer take poizvedbe je “Izpiši imena oseb moškega spola”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pt1</span><span class="o">.</span><span class="n">spol</span> <span class="o">==</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;ime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Aleš&#39;, &#39;Ciril&#39;, &#39;Filip&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>V zgornjem primeru kombiniramo indeksiranje vrstic s seznamom Boolovih vrednosti in indeksiranje stolpca z njegovim imenom. Dobljeno zaporedje z metodo <code class="docutils literal notranslate"><span class="pre">to_list</span></code> pretvorimo v seznam.</p>
+<p>Podobno lahko dobimo podatke za osebe, ki so rojene leta 2002 ali pozneje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pt1</span><span class="o">.</span><span class="n">datum_rojstva</span> <span class="o">&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2001-12-31&quot;</span><span class="p">)),</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
+0   Aleš    m     198    2002-04-16
+1  Brina    ž     162    2002-07-04
+3  Darja    ž     194    2002-01-23
+5  Filip    m     155    2002-07-20
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za razliko od atributa <code class="docutils literal notranslate"><span class="pre">loc</span></code>, <code class="docutils literal notranslate"><span class="pre">iloc</span></code> nam omogoča bolj enostavno, običajno Pythonovsko indeksiranje podatkovnih tabel s pozicijskimi indeksi (celimi števili) in rezinami (izrazi zgrajeni s kombinacijo celih števil in znaka <code class="docutils literal notranslate"><span class="pre">:</span></code>). Na primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol
+2  Ciril    m
+3  Darja    ž
+4    Ema    ž
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo zdaj kombinacijo atributov <code class="docutils literal notranslate"><span class="pre">iloc</span></code> in <code class="docutils literal notranslate"><span class="pre">shape</span></code>, ki nam omogoča dodajanje nove vrstice podatkovni tabeli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nova_vrstica</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Gregor&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2002-07-29&quot;</span><span class="p">)]</span>
+<span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pt1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nova_vrstica</span>
+<span class="n">pt2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pt2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nova_vrstica</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
+0   Aleš    m     198    2002-04-16
+1  Brina    ž     162    2002-07-04
+2  Ciril    m     195    2001-05-08
+3  Darja    ž     194    2002-01-23
+4    Ema    ž     183    2001-03-22
+5  Filip    m     155    2002-07-20
+      ime spol  visina datum_rojstva
+0    Aleš    m     198    2002-04-16
+1   Brina    ž     162    2002-07-04
+2   Ciril    m     195    2001-05-08
+3   Darja    ž     194    2002-01-23
+4     Ema    ž     183    2001-03-22
+5   Filip    m     155    2002-07-20
+6  Gregor    m     181    2002-07-29
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nazadnje, <code class="docutils literal notranslate"><span class="pre">at</span></code> in <code class="docutils literal notranslate"><span class="pre">iat</span></code> nam podobno kot <code class="docutils literal notranslate"><span class="pre">loc</span></code> in <code class="docutils literal notranslate"><span class="pre">iloc</span></code> omogočata indeksiranje posameznih elementov podatkovne tabele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ime&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt1</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Brina
+2002-07-29 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="poravnava-indeksov">
+<h1>Poravnava indeksov<a class="headerlink" href="#poravnava-indeksov" title="Permalink to this heading">#</a></h1>
+<p>Poravnava (angl. <em>allignment</em>) indeksov je postopek samodejnega usklajevanja imen (indeksov) vrstic in stolpcev med različnimi podatkovnimi strukturami, kot so zaporedja in podatkovne tabele. Poravnava poskrbi, da se elementi z enakimi indeksi poravnajo in upoštevajo njihove vrednosti. Elementi pri neobstoječih indeksih so označeni kot manjkajoči podatki (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>).</p>
+<section id="samodejna-poravnava">
+<h2>Samodejna poravnava<a class="headerlink" href="#samodejna-poravnava" title="Permalink to this heading">#</a></h2>
+<p>Poglejmo primer obravnave časovne vrste za prvih deset dni meseca oktobra leta 2023:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
+
+<span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">datumi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2023-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">vrednosti</span> <span class="o">=</span> <span class="p">[</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datumi</span><span class="p">))]</span>
+
+<span class="n">z0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">vrednosti</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">datumi</span><span class="p">)</span>
+<span class="c1">#z0 = pd.Series(vrednosti)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-01    0.278854
+2023-10-02   -0.949978
+2023-10-03   -0.449941
+2023-10-04   -0.553579
+2023-10-05    0.472942
+2023-10-06    0.353399
+2023-10-07    0.784359
+2023-10-08   -0.826122
+2023-10-09   -0.156156
+2023-10-10   -0.940406
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Denimo zdaj, da želimo sestaviti podatkovno tabelo s tremi stolpci <span class="math notranslate nohighlight">\(z_t\)</span>, <span class="math notranslate nohighlight">\(z_{t+1}\)</span> in <span class="math notranslate nohighlight">\(z_{t+2}\)</span> imenovanimi <code class="docutils literal notranslate"><span class="pre">Z_t</span></code>, <code class="docutils literal notranslate"><span class="pre">Z_t_1</span></code> in <code class="docutils literal notranslate"><span class="pre">Z_t_2</span></code>, kjer indeks hrani datum <code class="docutils literal notranslate"><span class="pre">t</span></code>, prvi stolpec hrani vrednost časovne vrste v časovni točki <code class="docutils literal notranslate"><span class="pre">t</span></code>, drugi stolpec vrednost v točki <code class="docutils literal notranslate"><span class="pre">t+1</span></code> in tretji vrednost v točki <code class="docutils literal notranslate"><span class="pre">t+2</span></code>.</p>
+<p>Prvi stolpec te podatkovne tabele smo že ustvarili v prejšnjem primeru, indeksi v zaporedju <code class="docutils literal notranslate"><span class="pre">z0</span></code> tečejo po datumih, vrednosti elementov so vrednosti časovne. Drugi stolpec želene tabele bi lahko dobili tako, da bi elemente tega zaporedja zamaknili za eno pozicijo levo (oziroma, če opazujemo izpis zaporedja, za eno pozicijo navzgor). Najprej naredimo funkcijo, ki naredi zamik zaporedja, nato originalno in oba zamaknjena zaporedja združimo v želeno podatkovno tabelo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zamik</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">z1</span> <span class="o">=</span> <span class="n">zamik</span><span class="p">(</span><span class="n">z0</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="n">zamik</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>
+
+<span class="n">pt_z</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Z_t&quot;</span><span class="p">:</span> <span class="n">z0</span><span class="p">,</span>
+    <span class="s2">&quot;Z_t_1&quot;</span><span class="p">:</span> <span class="n">z1</span><span class="p">,</span>
+    <span class="s2">&quot;Z_t_2&quot;</span><span class="p">:</span> <span class="n">z2</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt_z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Z_t     Z_t_1     Z_t_2
+2023-10-01  0.278854       NaN       NaN
+2023-10-02 -0.949978 -0.949978       NaN
+2023-10-03 -0.449941 -0.449941 -0.449941
+2023-10-04 -0.553579 -0.553579 -0.553579
+2023-10-05  0.472942  0.472942  0.472942
+2023-10-06  0.353399  0.353399  0.353399
+2023-10-07  0.784359  0.784359  0.784359
+2023-10-08 -0.826122 -0.826122 -0.826122
+2023-10-09 -0.156156 -0.156156 -0.156156
+2023-10-10 -0.940406 -0.940406 -0.940406
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rezultat ne ustreza našemu pričakovanju, saj bi si želeli, da so elementi prve vrstice podatkovne tabele enaki prvemu, drugemu in tretjemu elementu časovne vrste.</p>
+<p>Zakaj se to ni zgodilo? Prvič zato, ker iz zgornjega zapisa vidimo, da pri združevanju zaporedij v podatkovne tabele, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> upošteva indekse: elemente zaporedij v združeni tabeli <strong>poravna</strong> tako, da elementi zaporedij ohranijo indekse, torej delijo enak skupni indeks in so združeni v eni vrstici. Drugič zato, ker funkcija <code class="docutils literal notranslate"><span class="pre">zamik</span></code> vrne rezultat z naslednjimi indeksi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">zamik</span><span class="p">(</span><span class="n">z0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-02   -0.949978
+2023-10-03   -0.449941
+2023-10-04   -0.553579
+2023-10-05    0.472942
+2023-10-06    0.353399
+2023-10-07    0.784359
+2023-10-08   -0.826122
+2023-10-09   -0.156156
+2023-10-10   -0.940406
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Iz zgornjega izpisa lahko ugotovimo, da zamaknjena časovna vrsta nima ustreznih indeksov, saj bi mi želeli, da bi bila vrednost spremenljivke <span class="math notranslate nohighlight">\(z_{t+1}\)</span> enaka drugemu elementu časovne <span class="math notranslate nohighlight">\(z_2\)</span> v prvi časovni točki <code class="docutils literal notranslate"><span class="pre">2023-10-01</span></code>. Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">zamik</span></code> pa dodeli točki <code class="docutils literal notranslate"><span class="pre">z_2</span></code> indeks enak drugi časovni točki <code class="docutils literal notranslate"><span class="pre">2023-10-02</span></code>.</p>
+<p>Kako to popravimo? Tako, da smo previdni pri zamikanju elementov zaporedja:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zamik</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">zz</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">zz</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">zz</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">zamik</span><span class="p">(</span><span class="n">z0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-01   -0.949978
+2023-10-02   -0.449941
+2023-10-03   -0.553579
+2023-10-04    0.472942
+2023-10-05    0.353399
+2023-10-06    0.784359
+2023-10-07   -0.826122
+2023-10-08   -0.156156
+2023-10-09   -0.940406
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indeksi so zdaj pravilni, poskusimo še enkrat:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="n">zamik</span><span class="p">(</span><span class="n">z0</span><span class="p">)</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="n">zamik</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>
+
+<span class="n">pt_z</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Z_t&quot;</span><span class="p">:</span> <span class="n">z0</span><span class="p">,</span>
+    <span class="s2">&quot;Z_t_1&quot;</span><span class="p">:</span> <span class="n">z1</span><span class="p">,</span>
+    <span class="s2">&quot;Z_t_2&quot;</span><span class="p">:</span> <span class="n">z2</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt_z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Z_t     Z_t_1     Z_t_2
+2023-10-01  0.278854 -0.949978 -0.449941
+2023-10-02 -0.949978 -0.449941 -0.553579
+2023-10-03 -0.449941 -0.553579  0.472942
+2023-10-04 -0.553579  0.472942  0.353399
+2023-10-05  0.472942  0.353399  0.784359
+2023-10-06  0.353399  0.784359 -0.826122
+2023-10-07  0.784359 -0.826122 -0.156156
+2023-10-08 -0.826122 -0.156156 -0.940406
+2023-10-09 -0.156156 -0.940406       NaN
+2023-10-10 -0.940406       NaN       NaN
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rocna-poravnava-ali-poravnava-na-zahtevo">
+<h2>Ročna poravnava ali poravnava na zahtevo<a class="headerlink" href="#rocna-poravnava-ali-poravnava-na-zahtevo" title="Permalink to this heading">#</a></h2>
+<p>Klic funkcije <code class="docutils literal notranslate"><span class="pre">align</span></code> nam omogoča opraviti poravnavo indeksov dveh zaporedij pred njihovim združevanjem v podatkovno tabelo. Koristna je takrat, ko so elementi vsakega zaporedja opazovani pri različnih vrednostih indeksov.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če ta dva zaporedja združimo v podatkovno tabelo dobimo naslednji rezultat:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Z1   Z2
+0  4.0  2.0
+1  NaN  3.0
+2  3.0  NaN
+3  1.0  NaN
+4  NaN  4.0
+5  2.0  1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rezultat je pričakovan, saj pri združevanju zaporedij <code class="docutils literal notranslate"><span class="pre">pandas</span></code> opravi samodejno poravnavo indeksov zaporedij <code class="docutils literal notranslate"><span class="pre">z1</span></code> in <code class="docutils literal notranslate"><span class="pre">z2</span></code>. Tam, kjer manjka element z ustreznim indeksom ima element podatkovne tabele neznano vrednost <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p>Funkcija <code class="docutils literal notranslate"><span class="pre">align</span></code> nam omogoča ročno in hkrati bolj fleksibilno poravnavo indeksov z uporabo argumenta <code class="docutils literal notranslate"><span class="pre">join</span></code>. Slednji ima štiri možne vrednosti, ki določajo različne oblike poravnave:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code>: uporabi zgolj <em>indekse prvega (levega) zaporedja</em> in ohrani njihov vrstni red,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code>: uporabi zgolj <em>indekse drugega (desnega) zaporedja</em> in ohrani njihov vrstni red,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inner</span></code>: uporabi indekse, ki se <em>pojavijo v obeh zaporedjih</em>, in upoštevaj vrstni red indeksov v prvem zaporedju; ter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outer</span></code>, privzeta vrednost: uporabi indekse, ki se <em>pojavijo vsaj v enem zaporedju</em>, in uredi indekse leksikografsko, v “naravnem” vrstnem redu.</p></li>
+</ul>
+<p>Poglejmo primere različnih nastavitev argumenta <code class="docutils literal notranslate"><span class="pre">join</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1p</span><span class="p">,</span> <span class="n">z2p</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2p</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Z1   Z2
+3   1  NaN
+5   2  1.0
+2   3  NaN
+0   4  2.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1p</span><span class="p">,</span> <span class="n">z2p</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2p</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Z1  Z2
+5  2.0   1
+0  4.0   2
+1  NaN   3
+4  NaN   4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1p</span><span class="p">,</span> <span class="n">z2p</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2p</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Z1  Z2
+5   2   1
+0   4   2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1p</span><span class="p">,</span> <span class="n">z2p</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2p</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Z1   Z2
+0  4.0  2.0
+1  NaN  3.0
+2  3.0  NaN
+3  1.0  NaN
+4  NaN  4.0
+5  2.0  1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kot vidimo iz zgornjih primerov, samodejna poravnava zaporedij pri njihovem združevanju v podatkovno tabelo uporablja privzeto nastavitev argumenta <code class="docutils literal notranslate"><span class="pre">join</span> <span class="pre">=</span> <span class="pre">&quot;outer&quot;</span></code>.</p>
+<p>Drugi način poravnave indeksov, ki se izogne vpeljevanju neznanih vrednosti, ponuja funkcija <code class="docutils literal notranslate"><span class="pre">reindex</span></code>. S klicem te funkcije na novo indeksiramo elemente enega zaporedja s podanim indeksom drugega zaporedja. Pri tem imamo na voljo argument <code class="docutils literal notranslate"><span class="pre">method</span></code>: če nastavimo njegovo vrednost na <code class="docutils literal notranslate"><span class="pre">&quot;nearest&quot;</span></code>, bodo indeksi prvega zaporedja nastavljeni <em>čim bližje</em> podanim novim indeksom, t.j., indeksom drugega zaporedja. Pri uporabi te metode moramo poskrbeti, da so indeksi prvega zaporedja urejeni, kar lahko dosežemo z uporabo funkcije (metode) <code class="docutils literal notranslate"><span class="pre">sort_index</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1s</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zaporedje pred poravnavo:</span><span class="se">\n</span><span class="si">{</span><span class="n">z1s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">z1p</span> <span class="o">=</span> <span class="n">z1s</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">z2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Novi indeks:</span><span class="si">{</span><span class="n">z2</span><span class="o">.</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zaporedje po poravnavi:</span><span class="se">\n</span><span class="si">{</span><span class="n">z1p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zaporedje pred poravnavo:
+0    4
+2    3
+3    1
+5    2
+dtype: int64
+Novi indeks:Index([5, 0, 1, 4], dtype=&#39;int64&#39;)
+Zaporedje po poravnavi:
+5    2
+0    4
+1    3
+4    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo torej, da je zaporedje <code class="docutils literal notranslate"><span class="pre">z1</span></code> po poravnavi (ponovnem indeksiranju) ima enake indekse kot zaporedje <code class="docutils literal notranslate"><span class="pre">z2</span></code>, indeksi so tudi v istem vrstnem redu. Metoda <code class="docutils literal notranslate"><span class="pre">nearest</span></code> poskrbi za ustrezno nastatitev vrednosti elementov v poravnanem zaporedju. Element z novim indeksom 1 dobi vrednost elementa z najbližjim že obstoječim indeksom 2 (vrednost elementa s tem indeksom je 3). Podobno, element z novim indeksom 4 dobi vrednost elementa z najbližjim obstoječim indeksom 5. Iz zaporedja pred poravnavo izpadeta indeksa 2 in 3 (in ustrezna elementa).</p>
+<p>Tako poravnani zaporedji <code class="docutils literal notranslate"><span class="pre">z1</span></code> in <code class="docutils literal notranslate"><span class="pre">z2</span></code> lahko združimo v podatkovno tabelo takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Z1  Z2
+5   2   1
+0   4   2
+1   3   3
+4   2   4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo preveri, kaj se zgodi, če ponovno indeksiramo zaporedje <code class="docutils literal notranslate"><span class="pre">z2</span></code> na osnovi indeksov zaporedja <code class="docutils literal notranslate"><span class="pre">z1</span></code>. Ali je rezultat združevanja tako poravnanih zaporedij enak zgornjemu?</p>
+<p>Izpeljava poravnave v zgornjem primeru je pomnilniško potratna, saj iz <code class="docutils literal notranslate"><span class="pre">z1</span></code> ustvari novo zaporedje z urejenimi indeksi <code class="docutils literal notranslate"><span class="pre">z1s</span></code>, nato pa še zaporedje s poravnanimi indeksi <code class="docutils literal notranslate"><span class="pre">z1p</span></code>. Temu se lahko izognemo z uporabo Boolovega argumenta <code class="docutils literal notranslate"><span class="pre">inplace</span></code>. Nastavitev njegove vrednosti na <code class="docutils literal notranslate"><span class="pre">True</span></code> zahteva od <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, da spremembe opravi znotraj podanega zaporedja in torej zaporedje ustrezno spremeni, brez potrebe po ustvarjanju novega zaporedja. To je sicer možno le v primerih, ko spreminjamo vsebino podatkovne tabele in ne njenih indeksov, zato metoda <code class="docutils literal notranslate"><span class="pre">reindex</span></code> še vedno ustvari novo zaporedje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">z1p</span> <span class="o">=</span> <span class="n">z1</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">z2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Z1&quot;</span><span class="p">:</span> <span class="n">z1p</span><span class="p">,</span> <span class="s2">&quot;Z2&quot;</span><span class="p">:</span> <span class="n">z2</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Z1  Z2
+5   2   1
+0   4   2
+1   3   3
+4   2   4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pt-zaporedja.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pt-naloge.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Naloge</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-podatkovnih-okvirov">Tvorjenje podatkovnih okvirov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atributi-podatkovnih-okvirov">Atributi podatkovnih okvirov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-podatkovnih-okvirov">Indeksiranje podatkovnih okvirov</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poravnava-indeksov">Poravnava indeksov</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samodejna-poravnava">Samodejna poravnava</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rocna-poravnava-ali-poravnava-na-zahtevo">Ročna poravnava ali poravnava na zahtevo</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
