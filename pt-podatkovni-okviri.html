@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Podatkovni okviri (tudi podatkovne tabele) &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+    <title>Podatkovni okviri (tudi podatkovne tabele), DataFrame &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Naloge" href="pt-naloge.html" />
-    <link rel="prev" title="Zaporedja v knjižnici pandas" href="pt-zaporedja.html" />
+    <link rel="prev" title="Zaporedja, Series" href="pt-zaporedja.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,8 +175,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v `pandas`</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni okviri (tudi podatkovne tabele)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
 </ul>
@@ -362,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Podatkovni okviri (tudi podatkovne tabele)</h1>
+    <h1>Podatkovni okviri (tudi podatkovne tabele), DataFrame</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,7 +372,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-podatkovnih-okvirov">Tvorjenje podatkovnih okvirov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atributi-podatkovnih-okvirov">Atributi podatkovnih okvirov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-podatkovnih-okvirov">Indeksiranje podatkovnih okvirov</a></li>
@@ -397,8 +397,8 @@ document.write(`
                   
   <p>Knjižnica <a class="reference external" href="https://pandas.pydata.org/"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a> omogoča procesiranje, obdelavo in analizo podatkov, shranjenih v podatkovno tabelo. Na začetku dela s knjižnico bomo najprej spoznali osnovne podatkovne tipe za sestavljanje tabel: zaporedje (angl. <em>Series</em>) in podatkovni okvir (angl. <em>DataFrame</em>), ki ga bomo imenovali tudi podatkovna tabela.</p>
 <p>Podatkovna tabela v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> je sestavljena iz vrstic in stolpcev, imenovanih tudi spremenljivke. Vsak stolpec v tabeli je tipe zaporedje. Stolpci (spremenljivke) so v podatkovnih tabelah posebnega pomena, saj večina operacij podatkovne obdelave in analize poteka na stolpcih. Zato bomo najprej dobro spoznali podatkovni tip zaporedje in se naučili delati s posameznimi stolpci tabele, nato pa se naučili delati s podatkovnimi okviri. Pri obdelavi zaporedij bomo si pogosto pomagali z izpeljanimi seznami, o katerih smo govorili v okviru uvodnega predavanja.</p>
-<section class="tex2jax_ignore mathjax_ignore" id="podatkovni-okviri-tudi-podatkovne-tabele">
-<h1>Podatkovni okviri (tudi podatkovne tabele)<a class="headerlink" href="#podatkovni-okviri-tudi-podatkovne-tabele" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="podatkovni-okviri-tudi-podatkovne-tabele-dataframe">
+<h1>Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em><a class="headerlink" href="#podatkovni-okviri-tudi-podatkovne-tabele-dataframe" title="Permalink to this heading">#</a></h1>
 <p>Pred analizo s knjižnico <code class="docutils literal notranslate"><span class="pre">pandas</span></code> podatke spravimo v tabelo. Ustrezni podatkovni tip je podatkovni okvir (<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>). V nadaljevanju bomo po eni strani spoznali ta podatkovni tip, po drugi pa običajno obliko tabel za shranjevanje podatkov za nadaljnjo analizo. <strong>Pozor</strong>: Med predavanji pri tem predmetu bomo podatkovni okvir poimenovali preprosto podatkovna tabela.</p>
 <section id="tvorjenje-podatkovnih-okvirov">
 <h2>Tvorjenje podatkovnih okvirov<a class="headerlink" href="#tvorjenje-podatkovnih-okvirov" title="Permalink to this heading">#</a></h2>
@@ -713,7 +713,7 @@ Name: ime, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_5077/4100154151.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="nn">/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_5641/4100154151.py</span> in <span class="ni">?</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;ime&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pt1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">]]</span>
 
 <span class="nn">~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/ops/common.py</span> in <span class="ni">?</span><span class="nt">(self, other)</span>
@@ -762,8 +762,8 @@ Name: ime, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
-1  Brina    ž     162    2002-07-04
-4    Ema    ž     183    2001-03-22
+1  Brina    ž     153    2002-11-24
+4    Ema    ž     178    2002-08-28
 </pre></div>
 </div>
 </div>
@@ -810,10 +810,10 @@ Name: spol, dtype: bool
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
-0   Aleš    m     198    2002-04-16
-1  Brina    ž     162    2002-07-04
-3  Darja    ž     194    2002-01-23
-5  Filip    m     155    2002-07-20
+1  Brina    ž     153    2002-11-24
+2  Ciril    m     185    2002-07-13
+4    Ema    ž     178    2002-08-28
+5  Filip    m     167    2002-03-09
 </pre></div>
 </div>
 </div>
@@ -845,20 +845,13 @@ Name: spol, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ime spol  visina datum_rojstva
-0   Aleš    m     198    2002-04-16
-1  Brina    ž     162    2002-07-04
-2  Ciril    m     195    2001-05-08
-3  Darja    ž     194    2002-01-23
-4    Ema    ž     183    2001-03-22
-5  Filip    m     155    2002-07-20
-      ime spol  visina datum_rojstva
-0    Aleš    m     198    2002-04-16
-1   Brina    ž     162    2002-07-04
-2   Ciril    m     195    2001-05-08
-3   Darja    ž     194    2002-01-23
-4     Ema    ž     183    2001-03-22
-5   Filip    m     155    2002-07-20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol  visina datum_rojstva
+0    Aleš    m     164    2001-04-15
+1   Brina    ž     153    2002-11-24
+2   Ciril    m     185    2002-07-13
+3   Darja    ž     181    2001-03-31
+4     Ema    ž     178    2002-08-28
+5   Filip    m     167    2002-03-09
 6  Gregor    m     181    2002-07-29
 </pre></div>
 </div>
@@ -881,6 +874,7 @@ Name: spol, dtype: bool
 </div>
 </section>
 </section>
+<hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="poravnava-indeksov">
 <h1>Poravnava indeksov<a class="headerlink" href="#poravnava-indeksov" title="Permalink to this heading">#</a></h1>
 <p>Poravnava (angl. <em>allignment</em>) indeksov je postopek samodejnega usklajevanja imen (indeksov) vrstic in stolpcev med različnimi podatkovnimi strukturami, kot so zaporedja in podatkovne tabele. Poravnava poskrbi, da se elementi z enakimi indeksi poravnajo in upoštevajo njihove vrednosti. Elementi pri neobstoječih indeksih so označeni kot manjkajoči podatki (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>).</p>
@@ -1257,7 +1251,7 @@ dtype: int64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+        <p class="prev-next-title">Zaporedja, <em>Series</em></p>
       </div>
     </a>
     <a class="right-next"
@@ -1284,7 +1278,7 @@ dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-podatkovnih-okvirov">Tvorjenje podatkovnih okvirov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atributi-podatkovnih-okvirov">Atributi podatkovnih okvirov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeksiranje-podatkovnih-okvirov">Indeksiranje podatkovnih okvirov</a></li>
