@@ -1,0 +1,1495 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Od podatkov do podatkovnih tabel &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uvoz-urejanje-sql';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Naloge" href="pt-naloge.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Namesto uvoda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Od podatkov do podatkovnih tabel</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Fuvoz-urejanje-sql.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uvoz-urejanje-sql.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Od podatkov do podatkovnih tabel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Od podatkov do podatkovnih tabel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uvoz-neurejenih-podatkov">Uvoz neurejenih podatkov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urejeni-podatki-angl-tidy-data">Urejeni podatki (angl. <em>tidy data</em>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#urejanje-podatkov-v-pandas">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#razdruzevanje-vrednosti">Razdruževanje vrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-in-urejanje-tabele-studenti">Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-in-urejanje-tabele-studenti-ocene">Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#zdruzevanje-tabel-v-pandas-in-poizvedovalni-jezik-sql">Združevanje tabel v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in poizvedovalni jezik SQL</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacija-join-v-jeziku-sql-in-pandas">Operacija JOIN v jeziku SQL in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokoncno-urejanje-tabele-studenti-ocene">Dokončno urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="od-podatkov-do-podatkovnih-tabel">
+<h1>Od podatkov do podatkovnih tabel<a class="headerlink" href="#od-podatkov-do-podatkovnih-tabel" title="Permalink to this heading">#</a></h1>
+<p>Podatki za analizo lahko zbiramo na različne načine. Lahko jih pripravimo iz lastnih meritev in jih sami vnašamo v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> v obliki zaporedij in podatkovnih tabel. Lahko jih pridobimo v obliki preglednic Excel iz nekega standardnega vira statističnih podatkov, kot je <a class="reference external" href="https://pxweb.stat.si/">podatkovna baza SiStat</a> Statističnega urada Republike Slovenije, <a class="reference external" href="https://ec.europa.eu/eurostat/data/database">podatkovna baza Eurostat</a> evropskega statističnega urada ali pa <a class="reference external" href="https://data.un.org/">podatkovna baza undata</a> Organizacije združenih narodov. Spletna enciklopedija <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a> je tudi bogat vir podatkovnih tabel, kot je na primer <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)">tabela s podatki o bruto domačem proizvodu držav</a>.</p>
+<p>Kot bomo spoznali v nadaljevanju, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> ponuja priročne funkcije za branje podatkov iz datotek s preglednicami Excel ali iz podatkovnih tabel v spletni enciklopediji Wikipedia. Pridobivanje takih podatkov in njihovo branje oziroma transformacija v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> podatkovne tabele je zato relativno enostavno. Ker se običajno zaplete je, da imajo podatki pridobljeni iz različnih podatkovnih virov različno <em>strukturo</em>.</p>
+<section id="uvoz-neurejenih-podatkov">
+<h2>Uvoz neurejenih podatkov<a class="headerlink" href="#uvoz-neurejenih-podatkov" title="Permalink to this heading">#</a></h2>
+<p>Profesorica, ki na FMF izvaja dve-semestrski predmet, si je v datoteki <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/rezultati-kolokvijev.xlsx"><code class="docutils literal notranslate"><span class="pre">rezultati-kolokvijev.xlsx</span></code></a> zapisovala rezultate kolokvijev v prvem in drugem semestru. Naš cilj je napisati program v <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, ki prebere podatke iz vseh listov preglednice in jih uredi v podatkovne tabele za analizo.</p>
+<p>Uvoz podatkov iz preglednic v programu Excel nam omogoča funkcija <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html"><code class="docutils literal notranslate"><span class="pre">read_excel</span></code></a>. Običajno uporabimo prva dva argumenta funkcije, in sicer:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">io</span></code> določa enotni naslov (URL) podatkovnega vira, t.j., spletni naslov ali pa pot na disku do preglednice Excel, ki jo želimo uvoziti. Argument nima privzete vrednosti.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sheet_name</span></code> določa pozicijski indeks (celoštevilska vrednost) ali ime lista (niz znakov) iz preglednice, ki ga hočemo uvoziti. Lahko določimo tudi seznam, ki podaja kombinacijo imen in pozicijskih indeksov želenih listov. Z vrednostjo argumenta <code class="docutils literal notranslate"><span class="pre">None</span></code> zahtevamo uvoz vseh listov v slovar podatkovnih tabel. Privzeta vrednost argumenta je <code class="docutils literal notranslate"><span class="pre">0</span></code>, kar pomeni, da uvozimo prvi list preglednice.</p></li>
+</ul>
+<p>V našem primeru rabimo vse liste, zato bomo preglednico uvozili takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">vse_pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/rezultati-kolokvijev.xlsx&quot;</span><span class="p">,</span>
+    <span class="n">sheet_name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vse_pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;prvi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
+0     Ana      431            ž-19             80              97
+1  Branko      720            m-20             78              74
+2   David      141            m-19             75              68
+3     Eva      210            ž-20             63              82
+4   Franc      592            m-21             95              82, &#39;drugi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
+0     Ana      431            ž-19             82              95
+1  Cvetka      761            ž-21             63              87
+2   David      141            m-19             92              81
+3     Eva      210            ž-20             82              63
+4   Franc      592            m-21             99              54}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rezultat je torej slovar dveh elementov, kjer sta ključa imena listov (<code class="docutils literal notranslate"><span class="pre">prvi</span> <span class="pre">kolokvij</span></code> in <code class="docutils literal notranslate"><span class="pre">drugi</span> <span class="pre">kolokvij</span></code>), vsaka vrednost je podatkovna tabela s podatki iz ustreznega lista v preglednici.</p>
+<p>Če bi podatke hoteli uvoziti iz datoteke tipa CSV (angl. <em>comma separated values</em>, z vejico ločene vrednosti), bi lahko uporabili funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">read_csv</span></code></a>, ki je še bolj enostavna za uporabo kot zgoraj opisana funkcija za uvoz podatkov iz preglednice Excel.</p>
+<p>Če bi obe vrednosti v zgornjem slovarju takoj združili v skupno tabelo, bi zgubili informacijo o zaporedni številki kolokvija, na katerega se nanašajo podatki. Funkcija, ki nam omogoča združevanje tabel po vrsticah je <code class="docutils literal notranslate"><span class="pre">concat</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vse_pt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester
+0     Ana      431            ž-19             80              97
+1  Branko      720            m-20             78              74
+2   David      141            m-19             75              68
+3     Eva      210            ž-20             63              82
+4   Franc      592            m-21             95              82
+0     Ana      431            ž-19             82              95
+1  Cvetka      761            ž-21             63              87
+2   David      141            m-19             92              81
+3     Eva      210            ž-20             82              63
+4   Franc      592            m-21             99              54
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zato se bomo združevanja lotili drugače, najprej bomo vsaki podatkovni tabeli v slovarju dodali nov stolpec <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code>, ki si zapomni zaporedno številko kolokvija (pravzaprav ime lista v preglednici), nato pa uporabili <code class="docutils literal notranslate"><span class="pre">concat</span></code> za združevanje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">vse_pt</span><span class="p">:</span>
+    <span class="n">vse_pt</span><span class="p">[</span><span class="nb">list</span><span class="p">][</span><span class="s2">&quot;kolokvij&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vse_pt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester  \
+0     Ana      431            ž-19             80              97   
+1  Branko      720            m-20             78              74   
+2   David      141            m-19             75              68   
+3     Eva      210            ž-20             63              82   
+4   Franc      592            m-21             95              82   
+0     Ana      431            ž-19             82              95   
+1  Cvetka      761            ž-21             63              87   
+2   David      141            m-19             92              81   
+3     Eva      210            ž-20             82              63   
+4   Franc      592            m-21             99              54   
+
+         kolokvij  
+0   prvi kolokvij  
+1   prvi kolokvij  
+2   prvi kolokvij  
+3   prvi kolokvij  
+4   prvi kolokvij  
+0  drugi kolokvij  
+1  drugi kolokvij  
+2  drugi kolokvij  
+3  drugi kolokvij  
+4  drugi kolokvij  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na tem mestu se zdi, da smo podatke že uvozili in da lahko začnemo z njihovo analizo. A temu ni tako, saj moramo podatke urediti. Namreč, zgornja tabela ima nekaj zelo očitnih pomanjkljivosti:</p>
+<ul class="simple">
+<li><p>Vrednosti opazovanj za <code class="docutils literal notranslate"><span class="pre">spol</span></code> in <code class="docutils literal notranslate"><span class="pre">starost</span></code> so združene skupaj v vrednosti enega stolpca <code class="docutils literal notranslate"><span class="pre">spol</span> <span class="pre">in</span> <span class="pre">starost</span></code>.</p></li>
+<li><p>Osnovni podatki o študentih se po nepotrebnem ponovijo dvakrat.</p></li>
+<li><p>Podatek o zaporedni številki kolokvija je podan kot vrednost stolpca, podatek o zaporedni številki semestra pa kot ime stolpca.</p></li>
+</ul>
+<p>Preden nadaljujemo z odpravljanjem teh težav, spoznajmo najprej pojem <em>urejenih podatkov</em>.</p>
+</section>
+<section id="urejeni-podatki-angl-tidy-data">
+<h2>Urejeni podatki (angl. <em>tidy data</em>)<a class="headerlink" href="#urejeni-podatki-angl-tidy-data" title="Permalink to this heading">#</a></h2>
+<p>Dogovor o urejenih podatkih določa <strong>tri enostavna pravila za podatkovne tabele</strong>.</p>
+<ol class="arabic simple">
+<li><p>Vsak tip opazovane enote tvori svojo podatkovno tabelo.</p></li>
+<li><p>Vsaka opazovana enota tvori vrstico.</p></li>
+<li><p>Vsaka lastnost opazovanih enot je spremenljivka, ki tvori stolpec.</p></li>
+</ol>
+<p>Pri načrtovanju naših podatkovnih tabel začnemo s premislekom o prvem pravilu. Ključno vprašanje pri tem premisleku je <strong>Kateri tipi opazovanih enot se pojavljajo v naših podatkih?</strong> V našem primeru opažamo, da en del podatkov (ki se tudi po nepotrebnem podvaja) podaja osnovne podatke o študentih. Drugi del podatkov pa podaja rezultate, ki so jih dosegli na kolokvijih. Zato bi podatke ločili v dva tipa opazovanih enot oziroma v dve podatkovni tabeli:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">studenti</span></code> z osnovnimi podatki o študentih, ki niso vezani na njihove dosežke na kolokvijih; in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> s podatki o dosežkih študentov na kolokvijih.</p></li>
+</ul>
+<p>Drugo in tretje pravilo nama pomagata pri premisleku o vsebini posameznih tabel. Vsaka vrstica prve tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code> bo očitno vsebovala osnovne podatke o študentih. Vsaka vrstica v tej tabeli bo ustrezala enemu študentu, imela bo torej šest vrstic. Naši podatki iz preglednice vsebujejo štiri osnovne podatke o vsakem študentu: ime, telefon, spol in starost. Slednji seznam torej določa naše opazovane spremenljivke, zato bo tabela imela štiri ustrezno poimenovane stolpce. Torej prvi dve vrstici tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code> bosta:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>ime</p></th>
+<th class="head text-right"><p>telefon</p></th>
+<th class="head text-center"><p>spol</p></th>
+<th class="head text-right"><p>starost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Ana</p></td>
+<td class="text-right"><p>431</p></td>
+<td class="text-center"><p>ž</p></td>
+<td class="text-right"><p>19</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Branko</p></td>
+<td class="text-right"><p>720</p></td>
+<td class="text-center"><p>m</p></td>
+<td class="text-right"><p>20</p></td>
+</tr>
+</tbody>
+</table>
+<p>Spremenljivke v zgornji tabeli lahko razdelimo v dve skupini. V prvi skupini je spremenljivka <code class="docutils literal notranslate"><span class="pre">ime</span></code>, ki je <strong>fiksna spremenljivka</strong>, katere vrednost določa predmet opazovanja, v našem primeru tip objekta študent. Imenujemo jo tudi <strong>dimenzijska spremenljivka</strong>. Druge spremenljivke sodijo v skupino <strong>merjenih spremenljivk</strong>: njihove vrednost določimo z opazovanjem ali merjenjem izbranega predmeta opazovanja, v našem primeru z opazovanjem (ugotavljanjem) različnih podatkov o študentih. Imenujemo jih tudi <strong>vrednostne spremenljivke</strong>.</p>
+<p>Pri strukturi druge tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> je potreben malo daljši premislek, ker je možnosti več. Ena, enostavna možnost je, da bi vsaka vrstica v tabeli bila en študent. Za vsakega študenta bi opazovali štiri spremenljivke, ki ustrezajo posameznim kolokvijem, dvema kolokvijema v prvem in dvema v drugem semestru. Taki predstavitvi podatkov se izogibamo in raje sledimo standardom (ali bolj dogovorom) za urejanje podatkov za analizo.</p>
+<p>En tak standard imenujemo <em>urejeni podatki</em> (angl. <em>tidy data</em>): ni ravno standard, temveč dogovor o standardni obliki zapisovanja podatkov v podatkovne tabele, ki omogoča njihovo enostavno analizo s pomočjo standardnih funkcij za podatkovno analizo. Razvit je bil sicer za funkcije iz R-jevskih paketov knjižnice <a class="reference external" href="https://www.tidyverse.org/"><code class="docutils literal notranslate"><span class="pre">tidyverse</span></code></a>. Lahko ga uporabljamo tudi za podatkovno analizo s funkcijami Pythonovske knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, ki posnemajo funkcionalnost paketov iz <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> v R-ju. Več o standardu <em>urejeni podatki</em> lahko preberete v članku Wigham, H. (2014) Tidy Data. <em>Jorunal of Statistical Software 59(10)</em>: 1-23. DOI: <a class="reference external" href="https://doi.org/10.18637/jss.v059.i10">10.18637/jss.v059.i10</a>. Koristno branje je tudi članek <a class="reference external" href="https://en.wikipedia.org/wiki/Data_set">Data set</a> v spletni enciklopediji Wikipedia.</p>
+<p>Predlog zgoraj, da bi imeli za vsakega študenta štiri stolpce ne ustreza dogovoru <em>tidy data</em>. Slednji namreč določa, da spremenljivke ne ustrezajo opazovanim vrednostim v podatkih. Po taki interpretaciji stolpec <code class="docutils literal notranslate"><span class="pre">prvi</span> <span class="pre">kolokvij</span></code> ne ustreza pravi spremenljivki v urejenih podatkih, saj <code class="docutils literal notranslate"><span class="pre">prvi</span></code> je opazovana vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code>. Če upoštevamo to pravilo, potem bo imela podatkovna tabela z dosežki študentov štiri spremenljivke in ustrezne stolpce <code class="docutils literal notranslate"><span class="pre">ime</span></code>, <code class="docutils literal notranslate"><span class="pre">semester</span></code>, <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code> in <code class="docutils literal notranslate"><span class="pre">rezultat</span></code>. Poglejmo prvih nekaj vrstic take tabele:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>ime</p></th>
+<th class="head text-right"><p>semester</p></th>
+<th class="head text-right"><p>kolokvij</p></th>
+<th class="head text-right"><p>rezultat</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Ana</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>80</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Ana</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>97</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Ana</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>82</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Ana</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>95</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Branko</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>78</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Branko</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>74</p></td>
+</tr>
+</tbody>
+</table>
+<p>V tem primeru imam opravka s tremi dimenzijskimi spremenljivkami, ki določajo konkreten kolokvij (ime študentke, semester, zaporedna številka kolokvija v semestru) in eno vrednostno spremenljivko - rezultat, ki ga je študent dosegel na kolokviju določenem z vrednostmi dimenzijskih spremenljivk.</p>
+<p>Na tem mestu lahko tudi bolj formalno, matematično opredelimo osnovne pojme v sestavljeni tabeli:</p>
+<ul class="simple">
+<li><p><strong>Podatkovna tabela</strong> zapisuje podatke o opazovanih objektih <span class="math notranslate nohighlight">\(o\)</span>. Množico opazovanih objektov označimo z <span class="math notranslate nohighlight">\(O\)</span>. Za vsak opazovani objekt torej velja <span class="math notranslate nohighlight">\(o \in O\)</span>.</p></li>
+<li><p><strong>Spremenljivka</strong> <span class="math notranslate nohighlight">\(X\)</span> je preslikava <span class="math notranslate nohighlight">\(X\colon O \to D_X\)</span>, kjer je <span class="math notranslate nohighlight">\(D_X\)</span> domena spremenljivke, t.j., množica vseh njenih možnih vrednosti. Vrednost spremenljivke <span class="math notranslate nohighlight">\(\textrm{v}_X(o)\)</span> za podan objekt <span class="math notranslate nohighlight">\(o\)</span> dobimo torej kot rezultat funkcije, <span class="math notranslate nohighlight">\(X\colon o \mapsto \textrm{v}_X(o)\)</span>, pri čemer velja <span class="math notranslate nohighlight">\(\textrm{v}_X(o) \in D_X\)</span>.</p></li>
+<li><p>Podatkovna tabela vsebuje <span class="math notranslate nohighlight">\(p\)</span> spremenljivk: <span class="math notranslate nohighlight">\(d\)</span> dimenzijskih in <span class="math notranslate nohighlight">\(p-d\)</span> vrednostnih. Dimenzijske spremenljivke običajno ustrezajo prvim <span class="math notranslate nohighlight">\(d\)</span> stolpcem podatkovne tabele <span class="math notranslate nohighlight">\(X_1, X_2, \dots, X_d\)</span>, zadnjih <span class="math notranslate nohighlight">\(p-d\)</span> stolpcev pa ustreza vrednostnim spremenljivkam <span class="math notranslate nohighlight">\(X_{d+1}, \dots, X_{p}\)</span>.</p></li>
+<li><p>Podatkovna tabela je tabelarična predstavitev preslikave <span class="math notranslate nohighlight">\(f\colon D_1 \times D_2 \times \dots \times D_d \to D_{d+1} \times \dots \times D_{p} \)</span>, pri čemer je vsak <span class="math notranslate nohighlight">\(D_i\)</span> domena ustrezne spremenljivke <span class="math notranslate nohighlight">\(X_i\)</span>.</p></li>
+<li><p>Vsaka vrstica podatkovne tabele podaja vrednosti <span class="math notranslate nohighlight">\(\textrm{v}_{X_i}(o)\)</span> vseh spremenljivk <span class="math notranslate nohighlight">\(X_1, X_2, \dots X_p\)</span> za opazovani objekt <span class="math notranslate nohighlight">\(o\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="urejanje-podatkov-v-pandas">
+<h1>Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#urejanje-podatkov-v-pandas" title="Permalink to this heading">#</a></h1>
+<p>V nadaljevanju predavanja bomo skozi sestavljanje podatkovnih tabel <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> spoznali funkcije knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, ki jih uporabljamo pri urejanju podatkov iz osnovne tabele <code class="docutils literal notranslate"><span class="pre">pt</span></code> uvožene iz preglednice Excel.</p>
+<section id="razdruzevanje-vrednosti">
+<h2>Razdruževanje vrednosti<a class="headerlink" href="#razdruzevanje-vrednosti" title="Permalink to this heading">#</a></h2>
+<p>Najprej se bomo lotili problema v stolpcu <code class="docutils literal notranslate"><span class="pre">spol</span> <span class="pre">in</span> <span class="pre">starost</span></code>, ki združuje vrednosti dveh spremenljivk, spol in starost. V ta namen bomo uporabili funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html"><code class="docutils literal notranslate"><span class="pre">str.split</span></code></a>, ki je pravzaprav metoda podatkovnega tipa zaporedje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    [ž, 19]
+1    [m, 20]
+2    [m, 19]
+3    [ž, 20]
+4    [m, 21]
+0    [ž, 19]
+1    [ž, 21]
+2    [m, 19]
+3    [ž, 20]
+4    [m, 21]
+Name: spol in starost, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rezultat funkcije je torej zaporedje seznamov. Če nastavimo argument <code class="docutils literal notranslate"><span class="pre">expand</span></code> te funkcije na vrednost <code class="docutils literal notranslate"><span class="pre">True</span></code>, dobimo kot rezultat podatkovno tabelo z ločenimi stolpci:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0   1
+0  ž  19
+1  m  20
+2  m  19
+3  ž  20
+4  m  21
+0  ž  19
+1  ž  21
+2  m  19
+3  ž  20
+4  m  21
+</pre></div>
+</div>
+</div>
+</div>
+<p>S preprostim prirejanjem tega rezultata in posebnim indeksiranjem, ki smo ga spoznali na prejšnjih predavanjih, ga lahko pretvorimo v dva nova stolpca podatkovne tabele <code class="docutils literal notranslate"><span class="pre">pt</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span><span class="p">[[</span><span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester  \
+0     Ana      431            ž-19             80              97   
+1  Branko      720            m-20             78              74   
+2   David      141            m-19             75              68   
+3     Eva      210            ž-20             63              82   
+4   Franc      592            m-21             95              82   
+0     Ana      431            ž-19             82              95   
+1  Cvetka      761            ž-21             63              87   
+2   David      141            m-19             92              81   
+3     Eva      210            ž-20             82              63   
+4   Franc      592            m-21             99              54   
+
+         kolokvij spol starost  
+0   prvi kolokvij    ž      19  
+1   prvi kolokvij    m      20  
+2   prvi kolokvij    m      19  
+3   prvi kolokvij    ž      20  
+4   prvi kolokvij    m      21  
+0  drugi kolokvij    ž      19  
+1  drugi kolokvij    ž      21  
+2  drugi kolokvij    m      19  
+3  drugi kolokvij    ž      20  
+4  drugi kolokvij    m      21  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tvorjenje-in-urejanje-tabele-studenti">
+<h2>Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code><a class="headerlink" href="#tvorjenje-in-urejanje-tabele-studenti" title="Permalink to this heading">#</a></h2>
+<p>Zdaj lahko z uporabo indeksiranja preprosto izberemo stolpce, ki tvorijo tabelo <code class="docutils literal notranslate"><span class="pre">studenti</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
+0     Ana    ž      19      431
+1  Branko    m      20      720
+2   David    m      19      141
+3     Eva    ž      20      210
+4   Franc    m      21      592
+0     Ana    ž      19      431
+1  Cvetka    ž      21      761
+2   David    m      19      141
+3     Eva    ž      20      210
+4   Franc    m      21      592
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ta tabela še vedno po nepotrebnem dva krat ponavlja vrstico za vsako študentko. Na prvi pogled, bi lahko zadevo rešili tako, da izberemo zgolj prvih pet vrstic tabele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
+0     Ana    ž      19      431
+0     Ana    ž      19      431
+1  Branko    m      20      720
+1  Cvetka    ž      21      761
+2   David    m      19      141
+2   David    m      19      141
+3     Eva    ž      20      210
+3     Eva    ž      20      210
+4   Franc    m      21      592
+4   Franc    m      21      592
+1  Branko    m      20      720
+1  Cvetka    ž      21      761
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zaradi ponavljajočih se indeksov vrstic ta poskus ni bil uspešen. Lahko bi pa to naredili s pozicijskimi indeksi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
+0     Ana    ž      19      431
+1  Branko    m      20      720
+2   David    m      19      141
+3     Eva    ž      20      210
+4   Franc    m      21      592
+1  Cvetka    ž      21      761
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kar je malo zoprno, ker moramo šteti na roke. Tega seveda ne moremo narediti za velike tabele s podatki.</p>
+<p>Pravi pristop sloni na uporabi funkcije oziroma metode podatkovnega tipa podatkovna tabela <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html"><code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>, ki zbriše podvojene vrstice v podani podatkovni tabeli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
+0     Ana    ž      19      431
+1  Branko    m      20      720
+2   David    m      19      141
+3     Eva    ž      20      210
+4   Franc    m      21      592
+1  Cvetka    ž      21      761
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri urejanju podatkov običajno poskrbimo, da so vrstice urejene v naraščajočem vrstnem redu glede na vrednost dimenzijske spremenljivke. V ta namen bomo uporabili metodo podatkovnega tipa podatkovna tabela <code class="docutils literal notranslate"><span class="pre">sort_values</span></code>(<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html</a>). Njen prvi argument <code class="docutils literal notranslate"><span class="pre">by</span></code> nastavimo na ime stolpca (ali seznam imen stolpcev) za urejanje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
+0     Ana    ž      19      431
+1  Branko    m      20      720
+1  Cvetka    ž      21      761
+2   David    m      19      141
+3     Eva    ž      20      210
+4   Franc    m      21      592
+</pre></div>
+</div>
+</div>
+</div>
+<p>Preverimo zdaj tipe stolpcev v podatkovni tabeli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime        object
+spol       object
+starost    object
+telefon     int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dva stolpca imata napačna tipa. Stolpec spol bi mogel biti tipa kategorija, stolpec starost pa celoštevilskega tipa. Z indeksiranjem in prirejanjem lahko to uredimo takole (preverite zapiske iz prejšnjih predavanj):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">CategoricalDtype</span>
+
+<span class="n">studenti</span><span class="o">.</span><span class="n">spol</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">spol</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">spol</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()))</span>
+<span class="n">studenti</span><span class="o">.</span><span class="n">starost</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">starost</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int64&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol  starost  telefon
+0     Ana    ž       19      431
+1  Branko    m       20      720
+1  Cvetka    ž       21      761
+2   David    m       19      141
+3     Eva    ž       20      210
+4   Franc    m       21      592
+ime          object
+spol       category
+starost       int64
+telefon       int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zadnja podrobnost je indeksiranje. Za vajo spremenite indekse vrstic v zadnji tabeli <code class="docutils literal notranslate"><span class="pre">studenti</span></code> na dva načina. Najprej tako, da bodo indeksi vrstic naravna števila od <code class="docutils literal notranslate"><span class="pre">0</span></code> do <code class="docutils literal notranslate"><span class="pre">5</span></code>, brez ponavljanja. Nato pa tako, da so indeksi vrstic imena študentov.</p>
+</section>
+<section id="tvorjenje-in-urejanje-tabele-studenti-ocene">
+<h2>Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code><a class="headerlink" href="#tvorjenje-in-urejanje-tabele-studenti-ocene" title="Permalink to this heading">#</a></h2>
+<p>Pripravimo zdaj podatke o dosežkih študentov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">pt</span><span class="p">[[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;prvi semester&quot;</span><span class="p">,</span> <span class="s2">&quot;drugi semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  prvi semester  drugi semester        kolokvij
+0     Ana             80              97   prvi kolokvij
+1  Branko             78              74   prvi kolokvij
+2   David             75              68   prvi kolokvij
+3     Eva             63              82   prvi kolokvij
+4   Franc             95              82   prvi kolokvij
+0     Ana             82              95  drugi kolokvij
+1  Cvetka             63              87  drugi kolokvij
+2   David             92              81  drugi kolokvij
+3     Eva             82              63  drugi kolokvij
+4   Franc             99              54  drugi kolokvij
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zamenjajmo najprej vrednosti v zadnjem stolpcu s celoštevilskimi vrednostmi. Uporabimo funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.replace.html"><code class="docutils literal notranslate"><span class="pre">replace</span></code></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="s2">&quot;prvi kolokvij&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;drugi kolokvij&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  prvi semester  drugi semester  kolokvij
+0     Ana             80              97         1
+1  Branko             78              74         1
+2   David             75              68         1
+3     Eva             63              82         1
+4   Franc             95              82         1
+0     Ana             82              95         2
+1  Cvetka             63              87         2
+2   David             92              81         2
+3     Eva             82              63         2
+4   Franc             99              54         2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spomnimo se še, da je naslednja težava tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> v tem, da bi imeni spremenljivk <code class="docutils literal notranslate"><span class="pre">prvi</span> <span class="pre">semester</span></code> in <code class="docutils literal notranslate"><span class="pre">drugi</span> <span class="pre">semester</span></code> morali pravzaprav biti vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code>. Za pretvorbo imen stolpcev v spremenljivko uporabljamo funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"><code class="docutils literal notranslate"><span class="pre">melt</span></code></a> z naslednjimi argumenti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> je ime podatkovne tabele, ki jo hočemo spremeniti;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code> je nabor ali seznam imen stolpcev, ki identificirajo vrstice in katerih vrednost se ne bo spreminjala;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_vars</span></code> je nabor ali seznam imen stolpcev, ki predstavljajo podatkovne vrednosti (privzeta vrednost so vsi stolpci <code class="docutils literal notranslate"><span class="pre">frame</span></code>, ki niso v seznamu <code class="docutils literal notranslate"><span class="pre">id_vars</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var_name</span></code> je ime nove spremenljivke (stolpca), ki prevzame podatkovne vrednosti iz imena stolpca; in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_name</span></code> je ime spremenljivke (stolpca), ki prevzame vrednosti v stolpcih <code class="docutils literal notranslate"><span class="pre">value_vars</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">],</span>
+    <span class="n">value_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prvi semester&quot;</span><span class="p">,</span> <span class="s2">&quot;drugi semester&quot;</span><span class="p">],</span>
+    <span class="n">var_name</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  kolokvij        semester  rezultat
+0      Ana         1   prvi semester        80
+1   Branko         1   prvi semester        78
+2    David         1   prvi semester        75
+3      Eva         1   prvi semester        63
+4    Franc         1   prvi semester        95
+5      Ana         2   prvi semester        82
+6   Cvetka         2   prvi semester        63
+7    David         2   prvi semester        92
+8      Eva         2   prvi semester        82
+9    Franc         2   prvi semester        99
+10     Ana         1  drugi semester        97
+11  Branko         1  drugi semester        74
+12   David         1  drugi semester        68
+13     Eva         1  drugi semester        82
+14   Franc         1  drugi semester        82
+15     Ana         2  drugi semester        95
+16  Cvetka         2  drugi semester        87
+17   David         2  drugi semester        81
+18     Eva         2  drugi semester        63
+19   Franc         2  drugi semester        54
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zamenjajmo vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code> kot smo to storili zgoraj za <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="s2">&quot;prvi semester&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;drugi semester&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  kolokvij  semester  rezultat
+0      Ana         1         1        80
+1   Branko         1         1        78
+2    David         1         1        75
+3      Eva         1         1        63
+4    Franc         1         1        95
+5      Ana         2         1        82
+6   Cvetka         2         1        63
+7    David         2         1        92
+8      Eva         2         1        82
+9    Franc         2         1        99
+10     Ana         1         2        97
+11  Branko         1         2        74
+12   David         1         2        68
+13     Eva         1         2        82
+14   Franc         1         2        82
+15     Ana         2         2        95
+16  Cvetka         2         2        87
+17   David         2         2        81
+18     Eva         2         2        63
+19   Franc         2         2        54
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uredimo stolpce v želenem vrstnem redu in vrstice v naraščajočem vrstnem redu glede na vrednosti dimenzijskih spremenljivk:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">[[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">]]</span>
+<span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij  rezultat
+0      Ana         1         1        80
+5      Ana         1         2        82
+10     Ana         2         1        97
+15     Ana         2         2        95
+1   Branko         1         1        78
+11  Branko         2         1        74
+6   Cvetka         1         2        63
+16  Cvetka         2         2        87
+2    David         1         1        75
+7    David         1         2        92
+12   David         2         1        68
+17   David         2         2        81
+3      Eva         1         1        63
+8      Eva         1         2        82
+13     Eva         2         1        82
+18     Eva         2         2        63
+4    Franc         1         1        95
+9    Franc         1         2        99
+14   Franc         2         1        82
+19   Franc         2         2        54
+</pre></div>
+</div>
+</div>
+</div>
+<p>In preverimo tipe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime         object
+semester     int64
+kolokvij     int64
+rezultat     int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>S tipi je načeloma vse v redu. Vseeno za vajo pretvori spremenljivki <code class="docutils literal notranslate"><span class="pre">semester</span></code> in <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code> v kategoriji. Nadalje, za vajo izračunaj domeno (množico ali seznam možnih vrednosti) posamezne spremenljivke v tabeli.</p>
+<p>Zadnja stvar, ki še ostaja neurejena, je, da podatkovna tabela (in pripadajoča preslikava) ne pokriva vseh možnih kombinacij vrednosti dimenzijskih spremenljivk. Tako, na primer, ne vemo kakšen je bil dosežek Branka na drugem kolokviju v prvem semestru. Domnevamo lahko, da Branko ni pristopil k temu kolokviju in zato nima ocene. Bolj korekten zapis tega dejstva bi bila nova vrstica v tabeli <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> z vrednostmi <code class="docutils literal notranslate"><span class="pre">Branko</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code> in <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Tako bomo prepričani, da pomanjkanje vrstice ni posledica napake pri vnosu ali prenosu podatkov.</p>
+<p>Zato, da dosežemo zahtevno dopolnjevanje podatkovne tabele, moramo najprej spoznati nekaj osnov poizvedovalnega jezika SQL.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="zdruzevanje-tabel-v-pandas-in-poizvedovalni-jezik-sql">
+<h1>Združevanje tabel v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in poizvedovalni jezik SQL<a class="headerlink" href="#zdruzevanje-tabel-v-pandas-in-poizvedovalni-jezik-sql" title="Permalink to this heading">#</a></h1>
+<p>SQL (<em>Structured Query Language</em>) je posebna <strong>vrsta programskega jezika za poizvedovanje po podatkih</strong> shranjenih v podatkovnih bazah. Ker so podatki v bazah običajno shranjeni v večjem številu tabel, nam SQL ponuja številne možnosti za združevanje podatkov iz različnih tabel v eno in operacije, ki obravnavajo tabele kot množice, katerih elementi ustrezajo vrsticam v tabelah. V nadaljevanju tega poglavja bomo videli zakaj nam to koristi pri urejanju tabel za analizo podatkov.</p>
+<section id="operacija-join-v-jeziku-sql-in-pandas">
+<h2>Operacija JOIN v jeziku SQL in <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#operacija-join-v-jeziku-sql-in-pandas" title="Permalink to this heading">#</a></h2>
+<p>Združevanje tabel v jeziku SQL opravi operacija JOIN. Operacijo v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code> opravlja funkcija <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.merge.html"><code class="docutils literal notranslate"><span class="pre">merge</span></code></a>. Funkcija združi dve tabeli tako, da naredi kartezični produkt vrstic prve (leve) in druge (desne) tabele. Število stolpcev združene tabele ima toliko stolpcev, kot je seštevek števila stolpcev v prvi in drugi tabeli. Taka operacija bi bila sicer omejeno uporabna, ker JOIN uporabljamo takrat, ko hočemo v kartezičnem produktu ohraniti zgolj tiste vrstice, ki imajo isto vrednost skupnih stolpcev v obeh tabelah.</p>
+<p>Preden si ogledamo primer, ki bodo razjasnile pomen opisa zgoraj, poglejmo argumente funkcije <code class="docutils literal notranslate"><span class="pre">merge</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code> podaja ime prve (leve) podatkovne tabele za združevanje.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> podaja ime druge (desne) podatkovne tabele za združevanje.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on</span></code> podaja ime ali seznam imen <em>izbranih</em> spremenljivk (stolpcev), katerih vrednosti v združeni tabeli hočemo, da so enake.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">how</span></code> določa način združevanja in je lahko <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">outer</span></code>, <code class="docutils literal notranslate"><span class="pre">inner</span></code> ali <code class="docutils literal notranslate"><span class="pre">cross</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code> v združeno tabelo upošteva vrednosti <em>izbranih</em> spremenljivk iz leve tabele;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> v združeno tabelo upošteva vrednosti <em>izbranih</em> spremenljivk iz desne tabele;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inner</span></code> v združeno tabelo upošteva zgolj <em>presek</em> množic vrednosti <em>izbranih</em> spremenljivk iz leve in desne tabele;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outer</span></code> v združeno tabelo upošteva zgolj <em>unijo</em> množic vrednosti <em>izbranih</em> spremenljivk iz leve in desne tabele; in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cross</span></code> v združeni tabeli naredi kartezični produkt podanih podatkovnih tabel.</p></li>
+</ul>
+</li>
+</ul>
+<p>Naredimo zdaj dve tabeli in poglejmo rezultate različnih načinov združevanja, kjer bo izbrana spremenljivka <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+  <span class="s2">&quot;vrednost&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;x11&quot;</span><span class="p">,</span> <span class="s2">&quot;x12&quot;</span><span class="p">,</span> <span class="s2">&quot;x21&quot;</span><span class="p">,</span> <span class="s2">&quot;x22&quot;</span><span class="p">,</span> <span class="s2">&quot;x3&quot;</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="p">)</span>
+
+<span class="n">dt_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
+  <span class="s2">&quot;vrednost&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;y1&quot;</span><span class="p">,</span> <span class="s2">&quot;y21&quot;</span><span class="p">,</span> <span class="s2">&quot;y22&quot;</span><span class="p">,</span> <span class="s2">&quot;y41&quot;</span><span class="p">,</span> <span class="s2">&quot;y42&quot;</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dt_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost
+0   1      x11
+1   1      x12
+2   2      x21
+3   2      x22
+4   3       x3
+   id vrednost
+0   1       y1
+1   2      y21
+2   2      y22
+3   4      y41
+4   4      y42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Levo združevanje ohrani vse vrstice iz leve tabele <code class="docutils literal notranslate"><span class="pre">dt_x</span></code>. Če v desni tabeli ni vrstice z vrednostjo izbrane spremenljivke iz leve tabele, potem je vrednost <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
+0   1        x11         y1
+1   1        x12         y1
+2   2        x21        y21
+3   2        x21        y22
+4   2        x22        y21
+5   2        x22        y22
+6   3         x3        NaN
+</pre></div>
+</div>
+</div>
+</div>
+<p>Desno združevanje naredi obratno in ohrani vse vrstice iz desne tabele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
+0   1        x11         y1
+1   1        x12         y1
+2   2        x21        y21
+3   2        x22        y21
+4   2        x21        y22
+5   2        x22        y22
+6   4        NaN        y41
+7   4        NaN        y42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo še <code class="docutils literal notranslate"><span class="pre">inner</span></code> in <code class="docutils literal notranslate"><span class="pre">outer</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
+0   1        x11         y1
+1   1        x12         y1
+2   2        x21        y21
+3   2        x21        y22
+4   2        x22        y21
+5   2        x22        y22
+   id vrednost_x vrednost_y
+0   1        x11         y1
+1   1        x12         y1
+2   2        x21        y21
+3   2        x21        y22
+4   2        x22        y21
+5   2        x22        y22
+6   3         x3        NaN
+7   4        NaN        y41
+8   4        NaN        y42
+</pre></div>
+</div>
+</div>
+</div>
+<p>Po pričakovanjih, podatkovna tabela združena z <code class="docutils literal notranslate"><span class="pre">inner</span></code> nima neznanih vrednosti, saj upošteva zgolj vrednosti izbrane spremenljivke <code class="docutils literal notranslate"><span class="pre">id</span></code>, ki so skupne obema tabelama. Podatkovna tabela združena z <code class="docutils literal notranslate"><span class="pre">outer</span></code> pa vključuje vse vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">id</span></code> in zato vpelje tri neznane vrednosti.</p>
+<p>Nenazadnje združevanje tipa <code class="docutils literal notranslate"><span class="pre">cross</span></code> vrne kartezični produkt vrstic leve in desne tabele, ne da bi pri tem upoštevali izbrane skupne spremenljivke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    id_x vrednost_x  id_y vrednost_y
+0      1        x11     1         y1
+1      1        x11     2        y21
+2      1        x11     2        y22
+3      1        x11     4        y41
+4      1        x11     4        y42
+5      1        x12     1         y1
+6      1        x12     2        y21
+7      1        x12     2        y22
+8      1        x12     4        y41
+9      1        x12     4        y42
+10     2        x21     1         y1
+11     2        x21     2        y21
+12     2        x21     2        y22
+13     2        x21     4        y41
+14     2        x21     4        y42
+15     2        x22     1         y1
+16     2        x22     2        y21
+17     2        x22     2        y22
+18     2        x22     4        y41
+19     2        x22     4        y42
+20     3         x3     1         y1
+21     3         x3     2        y21
+22     3         x3     2        y22
+23     3         x3     4        y41
+24     3         x3     4        y42
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dokoncno-urejanje-tabele-studenti-ocene">
+<h2>Dokončno urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code><a class="headerlink" href="#dokoncno-urejanje-tabele-studenti-ocene" title="Permalink to this heading">#</a></h2>
+<p>Zdaj imamo v rokah vsa orodja za dokončno urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> z dodajanjem manjkajočih vrstic, tako, da bo podatkovna tabela vsebovala vrstico za vse možne kombinacije vrednosti dimenzijskih spremenljivk. Najprej bomo izračunali tabelo vseh možnih kombinacij tako, da bomo izračunali kartezični produkt domen dimenzijskih spremenljivk:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d_ime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;ime&quot;</span><span class="p">:</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">ime</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="p">})</span>
+<span class="n">d_semester</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;semester&quot;</span><span class="p">:</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="p">})</span>
+<span class="n">d_kolokvij</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;kolokvij&quot;</span><span class="p">:</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="n">d_vse</span> <span class="o">=</span> <span class="n">d_ime</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_semester</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_kolokvij</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d_vse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij
+0      Ana         1         1
+1      Ana         1         2
+2      Ana         2         1
+3      Ana         2         2
+4   Branko         1         1
+5   Branko         1         2
+6   Branko         2         1
+7   Branko         2         2
+8   Cvetka         1         1
+9   Cvetka         1         2
+10  Cvetka         2         1
+11  Cvetka         2         2
+12   David         1         1
+13   David         1         2
+14   David         2         1
+15   David         2         2
+16     Eva         1         1
+17     Eva         1         2
+18     Eva         2         1
+19     Eva         2         2
+20   Franc         1         1
+21   Franc         1         2
+22   Franc         2         1
+23   Franc         2         2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Po pričakovanjih, ima tabela s kartezičnim produktom 24 vrstic (za vajo ugotovi zakaj oziroma kako na osnovi vrednosti dimenzijskih spremenljivk v tabeli <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> pridemo do tega števila vrstic).</p>
+<p>Zdaj lahko dopolnimo tabelo <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> tako, da jo s klicem funkcije <code class="docutils literal notranslate"><span class="pre">merge</span></code> združimo z zgornjo tabelo in tako torej tabeli s kartezičnim produktom dodamo rezultate kolokvijev:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">d_vse</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij  rezultat
+0      Ana         1         1      80.0
+1      Ana         1         2      82.0
+2      Ana         2         1      97.0
+3      Ana         2         2      95.0
+4   Branko         1         1      78.0
+5   Branko         1         2       NaN
+6   Branko         2         1      74.0
+7   Branko         2         2       NaN
+8   Cvetka         1         1       NaN
+9   Cvetka         1         2      63.0
+10  Cvetka         2         1       NaN
+11  Cvetka         2         2      87.0
+12   David         1         1      75.0
+13   David         1         2      92.0
+14   David         2         1      68.0
+15   David         2         2      81.0
+16     Eva         1         1      63.0
+17     Eva         1         2      82.0
+18     Eva         2         1      82.0
+19     Eva         2         2      63.0
+20   Franc         1         1      95.0
+21   Franc         1         2      99.0
+22   Franc         2         1      82.0
+23   Franc         2         2      54.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo lahko, da ima sedaj tabela <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> vseh 24 vrstic, ki ustrezajo vsem možnim kombinacijam vrednosti njenih dimenzijskih spremenljivk. S tem je urejanje podatkov o rezultatih kolokvijev končano. Tabeli <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> sta pripravljeni za podatkovno analizo in vizualizacijo.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="naloge">
+<h1>Naloge<a class="headerlink" href="#naloge" title="Permalink to this heading">#</a></h1>
+<ol class="arabic">
+<li><p>V datoteki <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/izidi.xlsx"><code class="docutils literal notranslate"><span class="pre">izidi.xlsx</span></code></a> je preglednica s podatki o numeričnih izidih uporabe dveh različnih terapij na treh pacientih. Prazne celice ustrezajo neznanim vrednostim izidov. Napiši program, ki prebere podatke iz preglednice in iz njih sestavi podatkovno tabelo z urejenimi podatki. Namig: rabiš sestaviti eno tabelo z dvema dimenzijskima in eno merjeno spremenljivko.</p></li>
+<li><p>V nekem bistroju poimenovanem Mafija strežejo tri vrste kavnih napitkov: črno kavo, kavo z mlekom in kavo s smetano. Pri izdelavi letne bilance si zapišejo koliko skodelic vsake vrste kavnega napitka so postregli v opazovanem letu. Spodnja tabela podaja podatke o petih letnih bilancah bistroja Mafija:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Vrsta kavnega napitka</p></th>
+<th class="head text-right"><p>2018</p></th>
+<th class="head text-right"><p>2019</p></th>
+<th class="head text-right"><p>2020</p></th>
+<th class="head text-right"><p>2021</p></th>
+<th class="head text-right"><p>2022</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Črna kava</p></td>
+<td class="text-right"><p>23,100</p></td>
+<td class="text-right"><p>3,500</p></td>
+<td class="text-right"><p>6,200</p></td>
+<td class="text-right"><p>18,700</p></td>
+<td class="text-right"><p>21,400</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Kava z mlekom</p></td>
+<td class="text-right"><p>18,300</p></td>
+<td class="text-right"><p>2,800</p></td>
+<td class="text-right"><p>4,900</p></td>
+<td class="text-right"><p>14,000</p></td>
+<td class="text-right"><p>18,000</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Kava s smetano</p></td>
+<td class="text-right"><p>11,500</p></td>
+<td class="text-right"><p>1,600</p></td>
+<td class="text-right"><p>3,400</p></td>
+<td class="text-right"><p>7,600</p></td>
+<td class="text-right"><p>11,100</p></td>
+</tr>
+</tbody>
+</table>
+<p>Premisli kako bi iz zgornje tabele sestavili podatkovne tabele urejenih podatkov. Sestavi ustrezne podatkovne tabele v <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+</li>
+<li><p>Statistični urad Slovenije v svoji podatkovni bazi <a class="reference external" href="https://pxweb.stat.si/">SiStat</a> ponuja podatke o selitvenem gibanju prebivalstva v Sloveniji med regijami in tujino. Bazo teh podatkov lahko najdemo v področju <em>Regionalni pregled</em> pod rubriko <em>Statistične regije</em> in <em>Prebivalstvo - statistične regije</em>. Podatki iz te baze so na voljo v preglednici <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/05I2004S_20221025-231704.xlsx"><code class="docutils literal notranslate"><span class="pre">05I2004S_20221025-231704.xlsx</span></code></a>. Napiši program, ki sestavi urejeno tabelo s podatki o selitvenem gibanju prebivalstva v Sloveniji.</p></li>
+<li><p>Spletna stran <a class="reference external" href="https://covid-19.sledilnik.org/">Covid-19 sledilnik</a> ponuja dnevno osvežene podatke o stanju epidemije Covid-19 v Sloveniji. Podatki o dnevnem številu okužb ponujajo tudi skozi spletne storitve <a class="reference external" href="https://github.com/sledilnik/data/blob/master/csv/stats.csv">GitHub</a>: ti podatki so v obliki CSV dostopni na naslovu <a class="reference external" href="https://raw.githubusercontent.com/sledilnik/data/master/csv/stats.csv">https://raw.githubusercontent.com/sledilnik/data/master/csv/stats.csv</a>.</p>
+<p>Napiši program, ki iz teh podatkov sestavi podatkovno tabelo z urejenimi dnevnimi podatki o številu okužb v posameznih regijah in celotni Sloveniji. Podatkovna tabela naj vsebuje naslednje tri spremenljivke:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">datum</span></code> je dimenzijska spremenljivka z datumom opazovanega števila okužb.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regija</span></code> je dimenzijska spremenljivka, ki poda statistično regijo v kateri opazujemo število okužb. Domena spremenljivke naj vključuje vseh <a class="reference external" href="https://sl.wikipedia.org/wiki/Statisti%C4%8Dne_regije_Slovenije">statističnih regij Slovenije</a> ter Slovenijo kot celoto.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kumulativne_okuzbe</span></code> je merjena spremenljivka, ki za izbrano regijo poda kumulatinvo število okužb Covid-19 do izbranega datuma.</p></li>
+</ul>
+</li>
+<li><p>Statistični urad Slovenije v svoji podatkovni bazi <a class="reference external" href="https://pxweb.stat.si/">SiStat</a> ponuja podatke o številu prebivalcev v posameznih statističnih regijah in celotni Sloveniji po polletjih. Poišči te podatke v bazi in jih izvozi v obliko preglednice Excel: pri tem upoštevaj vse razpoložljive podatke od prvega polletja 2020. Nato jih uredi v podatkovno tabelo s stolpci <code class="docutils literal notranslate"><span class="pre">polletje</span></code>, <code class="docutils literal notranslate"><span class="pre">regija</span></code> in <code class="docutils literal notranslate"><span class="pre">prebivalstvo</span></code>.</p>
+<p>Uporabi podatke iz te tabele in tabele sestavljene v prejšnji nalogi za izračun <em>deleža</em> okuženih prebivalcev v posamezni regiji in celotni Sloveniji.</p>
+</li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pt-naloge.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Naloge</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Od podatkov do podatkovnih tabel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uvoz-neurejenih-podatkov">Uvoz neurejenih podatkov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urejeni-podatki-angl-tidy-data">Urejeni podatki (angl. <em>tidy data</em>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#urejanje-podatkov-v-pandas">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#razdruzevanje-vrednosti">Razdruževanje vrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-in-urejanje-tabele-studenti">Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tvorjenje-in-urejanje-tabele-studenti-ocene">Tvorjenje in urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#zdruzevanje-tabel-v-pandas-in-poizvedovalni-jezik-sql">Združevanje tabel v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in poizvedovalni jezik SQL</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacija-join-v-jeziku-sql-in-pandas">Operacija JOIN v jeziku SQL in <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dokoncno-urejanje-tabele-studenti-ocene">Dokončno urejanje tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
