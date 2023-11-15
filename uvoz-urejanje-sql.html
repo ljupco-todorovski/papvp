@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'uvoz-urejanje-sql';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Urejanje besedilnih podatkov in regularni izrazi" href="uvoz-urejanje-ri.html" />
     <link rel="prev" title="Naloge" href="pt-naloge.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,6 +186,12 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
 </ul>
 
     </div>
@@ -915,7 +922,7 @@ dtype: object
 <p>Spomnimo se še, da je naslednja težava tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> v tem, da bi imeni spremenljivk <code class="docutils literal notranslate"><span class="pre">prvi</span> <span class="pre">semester</span></code> in <code class="docutils literal notranslate"><span class="pre">drugi</span> <span class="pre">semester</span></code> morali pravzaprav biti vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code>. Za pretvorbo imen stolpcev v spremenljivko uporabljamo funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"><code class="docutils literal notranslate"><span class="pre">melt</span></code></a> z naslednjimi argumenti:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> je ime podatkovne tabele, ki jo hočemo spremeniti;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code> je nabor ali seznam imen stolpcev, ki identificirajo vrstice in katerih vrednost se ne bo spreminjala;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code> je nabor ali seznam imen stolpcev, ki identificirajo vrstice, in katerih vrednosti se ne bodo spreminjale;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">value_vars</span></code> je nabor ali seznam imen stolpcev, ki predstavljajo podatkovne vrednosti (privzeta vrednost so vsi stolpci <code class="docutils literal notranslate"><span class="pre">frame</span></code>, ki niso v seznamu <code class="docutils literal notranslate"><span class="pre">id_vars</span></code>);</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">var_name</span></code> je ime nove spremenljivke (stolpca), ki prevzame podatkovne vrednosti iz imena stolpca; in</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">value_name</span></code> je ime spremenljivke (stolpca), ki prevzame vrednosti v stolpcih <code class="docutils literal notranslate"><span class="pre">value_vars</span></code>.</p></li>
@@ -1405,6 +1412,15 @@ dtype: object
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Naloge</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="uvoz-urejanje-ri.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Urejanje besedilnih podatkov in regularni izrazi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

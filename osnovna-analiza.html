@@ -867,7 +867,7 @@ Name: x, dtype: object
 {&#39;a&#39;: [0, 1, 4, 6, 15, 16, 17], &#39;b&#39;: [2, 3, 5, 10, 11, 13, 14, 18, 19]}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_2855/2589392432.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_35227/2589392432.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   pt_k = pt.groupby(&quot;k&quot;)
 </pre></div>
 </div>
@@ -992,7 +992,7 @@ Wednesday  70.0
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(&#39;a&#39;, &#39;Friday&#39;): [0], (&#39;a&#39;, &#39;Saturday&#39;): [16], (&#39;a&#39;, &#39;Sunday&#39;): [1, 6], (&#39;a&#39;, &#39;Tuesday&#39;): [15, 17], (&#39;a&#39;, &#39;Wednesday&#39;): [4], (&#39;b&#39;, &#39;Friday&#39;): [3, 11, 14, 19], (&#39;b&#39;, &#39;Monday&#39;): [2, 5, 10, 18], (&#39;b&#39;, &#39;Saturday&#39;): [13], (nan, &#39;Friday&#39;): [8], (nan, &#39;Monday&#39;): [7, 12], (nan, &#39;Saturday&#39;): [9]}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_2855/1087440675.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_35227/1087440675.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   print(pt.groupby([&quot;k&quot;, pt.d.dt.day_name()]).groups)
 </pre></div>
 </div>
@@ -1053,9 +1053,6 @@ studenti_ocene =
 21   Franc         1         2      99.0
 22   Franc         2         1      82.0
 23   Franc         2         2      54.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1237,40 +1234,53 @@ Franc       82.5
 23   Franc                 4      54.0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
 </div>
 </div>
-</div>
-<p>Zdaj pa moramo vrednosti stolpca <code class="docutils literal notranslate"><span class="pre">rezultat</span></code> razdeliti v štiri nove stolpce na osnovi zaporedne številke kolokvija. To nam omogoča funkcija <code class="docutils literal notranslate"><span class="pre">pivot_wider</span></code>, ki opravi obratno pretvorbo podatkovne tabele kot funkcija <code class="docutils literal notranslate"><span class="pre">pivot_longer</span></code>, ki smo jo spoznali pri urejanju podatkov. Argument <code class="docutils literal notranslate"><span class="pre">names_from</span></code> nastavimo na <code class="docutils literal notranslate"><span class="pre">zap_st_kolokvija</span></code>, saj so imena novih stolpcev zasnovana na zaporednih številkah kolokvijev, ki jim dodamo predpono <code class="docutils literal notranslate"><span class="pre">kolokvij_</span></code> (glej vrednost argumenta <code class="docutils literal notranslate"><span class="pre">names_prefix</span></code>). Argument <code class="docutils literal notranslate"><span class="pre">values_from</span></code> nastavimo na <code class="docutils literal notranslate"><span class="pre">rezultat</span></code>, t.j. stolpev, ki vsebuje vrednosti, ki jih razdelimo v nove stolpce:</p>
+<p>Zdaj pa moramo vrednosti stolpca <code class="docutils literal notranslate"><span class="pre">rezultat</span></code> razdeliti v štiri nove stolpce na osnovi zaporedne številke kolokvija. To nam omogoča funkcija <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html"><code class="docutils literal notranslate"><span class="pre">pivot</span></code></a> z naslednjimi argumenti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frame</span></code> je ime podatkovne tabele, ki jo hočemo spremeniti (v spodnjem primeru funkcijo kličemo kot metodo razreda podatkovna tabela);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> je ime stolpca, nabor ali seznam imen stolpcev, ki identificirajo vrstice, in katerih vrednosti se ne bodo spreminjale;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> je ime stolpca, nabor ali seznam imen stolpcev, ki vsebujejo vrednosti za tvorjenje imen novih stolpcev;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span></code> je ime stolpca, katerega vrednosti bodo postali (se bodo porazdelili med) vrednosti novih stolpcev.</p></li>
+</ul>
+<p>Argument <code class="docutils literal notranslate"><span class="pre">columns</span></code> nastavimo na <code class="docutils literal notranslate"><span class="pre">zap_st_kolokvija</span></code>, saj so imena novih stolpcev zasnovana na zaporednih številkah kolokvijev, ki jim dodamo predpono <code class="docutils literal notranslate"><span class="pre">kolokvij_</span></code> (to opravimo v vrstici, ki sledi klicu metode <code class="docutils literal notranslate"><span class="pre">pivot</span></code>). Argument <code class="docutils literal notranslate"><span class="pre">values</span></code> nastavimo na <code class="docutils literal notranslate"><span class="pre">rezultat</span></code>, t.j. ime stolpca, ki vsebuje vrednosti razdeljene med nove stolpce:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">so_objava</span> <span class="o">=</span> <span class="n">so_1</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">],</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
     <span class="n">columns</span> <span class="o">=</span> <span class="s2">&quot;zap_st_kolokvija&quot;</span><span class="p">,</span>
     <span class="n">values</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span>
 <span class="p">)</span>
 <span class="n">so_objava</span> <span class="o">=</span> <span class="n">so_objava</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s2">&quot;kolokvij_&quot;</span><span class="p">)</span>
-<span class="n">so_objava</span><span class="p">[</span><span class="s2">&quot;povprecje&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">so_objava</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># izračun povprečij po vrsticah</span>
+<span class="n">so_objava</span><span class="p">[</span><span class="s2">&quot;povprecje&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">so_objava</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># poskrbimo za dodajanje telefonskih številk</span>
+<span class="n">so_objava</span> <span class="o">=</span> <span class="n">so_objava</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">so_objava</span> <span class="o">=</span> <span class="n">so_objava</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij_1&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij_2&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij_3&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij_4&quot;</span><span class="p">]]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">so_objava</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zap_st_kolokvija  kolokvij_1  kolokvij_2  kolokvij_3  kolokvij_4  povprecje
-ime                                                                        
-Ana                     80.0        82.0        97.0        95.0       88.5
-Branko                  78.0         0.0        74.0         0.0       38.0
-Cvetka                   0.0        63.0         0.0        87.0       37.5
-David                   75.0        92.0        68.0        81.0       79.0
-Eva                     63.0        82.0        82.0        63.0       72.5
-Franc                   95.0        99.0        82.0        54.0       82.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon  kolokvij_1  kolokvij_2  kolokvij_3  kolokvij_4
+0     Ana      431        80.0        82.0        97.0        95.0
+1  Branko      720        78.0         0.0        74.0         0.0
+2  Cvetka      761         0.0        63.0         0.0        87.0
+3   David      141        75.0        92.0        68.0        81.0
+4     Eva      210        63.0        82.0        82.0        63.0
+5   Franc      592        95.0        99.0        82.0        54.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pojasni argumenta mean, dodaj telefonsko številko iz tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code>.</p>
+<p>S klicem funkcije (metode) <code class="docutils literal notranslate"><span class="pre">mean</span></code> smo izračunali povprečja posameznih vrstic v tabeli. Da določimo izračun povprečij po vrsticah moramo nastaviti vrednost argumenta <code class="docutils literal notranslate"><span class="pre">axis</span></code> na <code class="docutils literal notranslate"><span class="pre">1</span></code>. Spomnimo se namreč, da bi običajna uporaba metode <code class="docutils literal notranslate"><span class="pre">mean</span></code> računala povprečja po stolpcih in ne po vrsticah, kot rabimo v tem primeru.</p>
+<p>Na koncu še s klicem funkcije <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html"><code class="docutils literal notranslate"><span class="pre">merge</span></code></a> dodamo vsaki vrstici telefonsko številko iz tabele <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in nato z ustreznim indeksiranjem izberemo spremenljivke (stolpce), ki jih hočemo ohraniti v končni različici tabele <code class="docutils literal notranslate"><span class="pre">so_objava</span></code>.</p>
 </section>
 </section>
 <section id="naloge">
