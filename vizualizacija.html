@@ -495,10 +495,10 @@ studenti_ocene =
 </div>
 </div>
 </div>
-<p>Uporabili smo dve funkciji knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. V klicu funkcije <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> smo določili prvi element slovnice, podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">data</span></code>. S klicem funkcije <code class="docutils literal notranslate"><span class="pre">aes</span></code> smo določili drugi element slovnice, estetski preslikavi za spremenljivki <code class="docutils literal notranslate"><span class="pre">ime</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">x</span></code>) in <code class="docutils literal notranslate"><span class="pre">rezultat</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">y</span></code>).</p>
+<p>Uporabili smo dve funkciji knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. V klicu funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.ggplot.html"><code class="docutils literal notranslate"><span class="pre">ggplot</span></code></a> smo določili prvi element slovnice, podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">data</span></code>. S klicem funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.mapping.aes.html"><code class="docutils literal notranslate"><span class="pre">aes</span></code></a> smo določili drugi element slovnice, estetski preslikavi za spremenljivki <code class="docutils literal notranslate"><span class="pre">ime</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">x</span></code>) in <code class="docutils literal notranslate"><span class="pre">rezultat</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">y</span></code>).</p>
 <section id="geometrijski-objekt-tocka">
 <h3>Geometrijski objekt točka<a class="headerlink" href="#geometrijski-objekt-tocka" title="Permalink to this heading">#</a></h3>
-<p>A diagram je prazen. Zato, ker nismo določili tretje komponente slovnice, <strong>geometrijski objekt</strong> <code class="docutils literal notranslate"><span class="pre">geom</span></code>. To storimo s klicem tretje funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code>, ki določi, da je vsak rezultat študentov ponazorjen s točko:</p>
+<p>A diagram je prazen. Zato, ker nismo določili tretje komponente slovnice, <strong>geometrijski objekt</strong> <code class="docutils literal notranslate"><span class="pre">geom</span></code>. To storimo s klicem tretje funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_point.html"><code class="docutils literal notranslate"><span class="pre">geom_point</span></code></a>, ki določi, da je vsak rezultat študentov ponazorjen s točko:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -519,7 +519,7 @@ studenti_ocene =
 </div>
 </div>
 </div>
-<p>Pri izbiri geometrijskega objekta maramo upoštevati razpoložljiv nabor njegovih estetskih lastnosti. Estetske lastnosti točke lahko dobimo z vpogledom v dokumentacijo funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code> (spomnimo se, lahko poiščemo pomoč za ustrezno funkcijo knjižnice <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>). Poglejmo celoten seznam estetskih lastnosti geometrijskega objekta točka:</p>
+<p>Pri izbiri geometrijskega objekta maramo upoštevati razpoložljiv nabor njegovih estetskih lastnosti. Estetske lastnosti točke lahko dobimo z vpogledom v dokumentacijo funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_point.html"><code class="docutils literal notranslate"><span class="pre">geom_point</span></code></a> (spomnimo se, lahko poiščemo pomoč za ustrezno funkcijo knjižnice <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>). Poglejmo celoten seznam estetskih lastnosti geometrijskega objekta točka:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code> in <code class="docutils literal notranslate"><span class="pre">fill</span></code> smo že spoznali;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> določa <em>stopnjo prozornosti</em> barve objekta (vrednost je med 0 in 1), nižje vrednosti povečujejo prozornost;</p></li>
@@ -662,7 +662,7 @@ studenti_ocene =
 </section>
 <section id="geometrijski-objekt-stolpec">
 <h3>Geometrijski objekt stolpec<a class="headerlink" href="#geometrijski-objekt-stolpec" title="Permalink to this heading">#</a></h3>
-<p>Poskusimo zdaj zamenjati geometrijski objekt iz točke v pravokotnik, ki ga v <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> imenujemo stolpec, po angleško <code class="docutils literal notranslate"><span class="pre">col</span></code> od <em>column</em>:</p>
+<p>Z uporabo funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_col.html"><code class="docutils literal notranslate"><span class="pre">geom_col</span></code></a> zamenjati geometrijski objekt iz točke v pravokotnik, ki ga v <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> imenujemo stolpec, po angleško <code class="docutils literal notranslate"><span class="pre">col</span></code> od <em>column</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -757,7 +757,7 @@ studenti_ocene =
 </section>
 <section id="geometrijski-objekt-crta">
 <h3>Geometrijski objekt črta<a class="headerlink" href="#geometrijski-objekt-crta" title="Permalink to this heading">#</a></h3>
-<p>Poskusimo še en osnovni geometrijski objekt, črto s funkcijo <code class="docutils literal notranslate"><span class="pre">geom_line</span></code>:</p>
+<p>Poskusimo še en osnovni geometrijski objekt, črto s funkcijo <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_line.html"><code class="docutils literal notranslate"><span class="pre">geom_line</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -857,7 +857,7 @@ studenti_ocene =
 </section>
 <section id="geometrijski-objekt-skatla">
 <h3>Geometrijski objekt škatla<a class="headerlink" href="#geometrijski-objekt-skatla" title="Permalink to this heading">#</a></h3>
-<p>Poskusimo nazadnje še geometrijski objekt škatla, <code class="docutils literal notranslate"><span class="pre">boxplot</span></code>:</p>
+<p>Poskusimo nazadnje še geometrijski objekt škatla, <code class="docutils literal notranslate"><span class="pre">boxplot</span></code> z uporabo funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_boxplot.html"><code class="docutils literal notranslate"><span class="pre">geom_boxplot</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
