@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Vizualicacija podatkov &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+    <title>Vizualizacija podatkov &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
   
   
   
@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'vizualizacija';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -186,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vizualicacija podatkov</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vizualizacija podatkov</a></li>
 </ul>
 
     </div>
@@ -370,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vizualicacija podatkov</h1>
+    <h1>Vizualizacija podatkov</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,6 +382,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podatkovna-tabela-data-estetska-preslikava-spremenljivke-aes-in-geometrijski-objekt-geom">Podatkovna tabela <code class="docutils literal notranslate"><span class="pre">data</span></code>, estetska preslikava spremenljivke <code class="docutils literal notranslate"><span class="pre">aes</span></code> in geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-tocka">Geometrijski objekt točka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-stolpec">Geometrijski objekt stolpec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-crta">Geometrijski objekt črta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-skatla">Geometrijski objekt škatla</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plasti-angl-layers-statisticnega-diagrama">Plasti (angl. <em>layers</em>) statističnega diagrama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lestvice-legende-koordinatne-osi-in-koordinatni-sistemi">Lestvice, legende, koordinatne osi in koordinatni sistemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-koordinatne-osi-in-koordinatni-sistem">Funkcije za koordinatne osi in koordinatni sistem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-legende">Funkcije za legende</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
             </nav>
@@ -392,12 +409,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vizualicacija-podatkov">
-<h1>Vizualicacija podatkov<a class="headerlink" href="#vizualicacija-podatkov" title="Permalink to this heading">#</a></h1>
-<p>V pripravi</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="vizualizacija-podatkov">
+<h1>Vizualizacija podatkov<a class="headerlink" href="#vizualizacija-podatkov" title="Permalink to this heading">#</a></h1>
+<p>Vizualizacija podatkov je faza analize podatkov, kjer poskrbimo za grafično ponazoritev tabelaričnih podatkov. Osnovno orodje pri vizualizaciji je <strong>statistični diagram</strong>. Slednji je preslikava spremenljivk podatkovne tabele v estetske lastnosti geometrijskih objektov. Tako, na primer, <em>razsevni diagram</em> preslika vrednosti numeričnih spremenljivk <span class="math notranslate nohighlight">\(X\)</span> in <span class="math notranslate nohighlight">\(Y\)</span> v pozicije (estetske lastnosti) točk (geometrijske objekte): vrednost spremenljivke <span class="math notranslate nohighlight">\(X\)</span> preslika v horizontalno pozicijo (na osi <span class="math notranslate nohighlight">\(x\)</span>), <span class="math notranslate nohighlight">\(Y\)</span> pa v vertikalno pozicijo (na osi <span class="math notranslate nohighlight">\(y\)</span> diagrama). Primeri geometrijskih objektov, ki jih pogosto uporabljamo v diagramih, so točka, črta ali pravokotnik. Estetske lastnosti točke so njena (horizontalna in vertikalna) pozicija ali lega, velikost, oblika in barva.</p>
+<p>Običajni pristop k sestavljanju statističnih diagramov predvideva izbor oblike diagrama iz neke knjižnice možnih oblik in njihovo povezovanje s spremenljivkami podatkovne množice. Tak pristop uporabljajo programi za delo s preglednicami, kot sta, na primer, <em>MS Excel</em> ali <em>Google Sheets</em>.</p>
+<p>Python-ovska knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> uporablja drugačen pristop, ki sloni na <strong>slovnici statističnih diagramov</strong> definirani v članku <a class="reference external" href="https://doi.org/10.1198/jcgs.2009.07098">(Wickham 2010)</a>. Slovnica določa množico <strong>osnovnih sestavnih elementov diagramov</strong>, ki jih lahko sami sestavljamo v statistične diagrame. Slovnica tako omogoča, da presežemo specifiko vnaprej pripravljenih diagramov (npr. zgoraj omenjeni razsevni diagram za dve numerični spremenljivki v programu za delo s preglednicami) z bolj splošnimi elementi za sestavljanje statističnih diagramov poljubne oblike. Slovnico implementira knjižnica <a class="reference external" href="https://ggplot2.tidyverse.org/"><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></a> v R-ju: knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> implementira funkcionalnosti <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> in slovnice statističnih diagramov v Python-u. Ker je <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> daleč bolj znana in popularna knjižnica, boste veliko lažje našli ustrezne informacije, če pri iskanju uporabljate ključno besedo <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> namesto <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>.</p>
+<p>V podpoglavjih spodaj bomo spoznali elemente slovnice statističnih diagramov na konkretnih primerih. Python-ovska knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> nam omogoča enostavno in postopno sestavljanje elementov z (neobičajno) uporabo operatorja <code class="docutils literal notranslate"><span class="pre">+</span></code>. Ker je vsak element definiran v svojem razdelku klica funkcije, ločenem z operatorjem <code class="docutils literal notranslate"><span class="pre">+</span></code>, lahko vsak element oblikujemo neodvisno od ostalih in (obliko) diagram(a) razvijamo po korakih. Pred nadaljevanjem pripravimo knjižnice in podatke za vizualizacijo, t.j., rezultate študentov na kolokvijih:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">p9</span>
 
 <span class="n">studenti</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/studenti.csv&quot;</span><span class="p">)</span>
 <span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/studenti_ocene.csv&quot;</span><span class="p">)</span>
@@ -446,7 +467,441 @@ studenti_ocene =
 </div>
 </div>
 </div>
-<p>…</p>
+<p>Elemente statističnih diagramov bomo sproti ilustrirali na vizualizacijah podatkov iz teh tabel.</p>
+<section id="podatkovna-tabela-data-estetska-preslikava-spremenljivke-aes-in-geometrijski-objekt-geom">
+<h2>Podatkovna tabela <code class="docutils literal notranslate"><span class="pre">data</span></code>, estetska preslikava spremenljivke <code class="docutils literal notranslate"><span class="pre">aes</span></code> in geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom</span></code><a class="headerlink" href="#podatkovna-tabela-data-estetska-preslikava-spremenljivke-aes-in-geometrijski-objekt-geom" title="Permalink to this heading">#</a></h2>
+<p>Podatke za vizualizacijo običajno uredimo v podatkovno tabelo formata <em>tidy data</em>. <strong>Podatkovna tabela</strong> je seveda ključni element diagrama, a še enkrat je treba spomniti na neodvisnost elementov v slovnici statističnih diagramov. Strukturo diagrama, ki smo jo pripravili za eno podatkovno tabelo in vsebuje tudi vse druge potrebne elemente slovnice, lahko brez omejitev (a le če je smiselno) uporabimo na različnih, tudi drugih podatkovnih tabelah.</p>
+<p>Drugi pomemben element slovnice je <strong>estetska preslikava</strong> (angl. <em>aesthetic mapping</em>), ki vzpostavi povezavo med izbrano spremenljivko <code class="docutils literal notranslate"><span class="pre">X</span></code> podatkovne tabele in izbrano estetsko lastnostjo <code class="docutils literal notranslate"><span class="pre">e</span></code>. Bolj formalno, je preslikava <span class="math notranslate nohighlight">\(f_{e}: D_X \to D_e\)</span>, kjer je <span class="math notranslate nohighlight">\(D_X\)</span> domena (množica možnih) vrednosti spremenljivke <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(D_e\)</span> pa domena vrednosti estetske lastnosti <span class="math notranslate nohighlight">\(e\)</span>. Najbolj pogosto uporabljane estetske lastnosti so</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> z domenami <span class="math notranslate nohighlight">\(D_\mathtt{x}, D_\mathtt{y} \subseteq \mathbb{R}\)</span> določata pozicijo (lego) geometrijskega objekta, ki ponazori vrednost spremenljivke <span class="math notranslate nohighlight">\(X\)</span> na x-osi oziroma y-osi statističnega diagrama;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> določi obliko objekta, <span class="math notranslate nohighlight">\(D_\mathtt{shape}\)</span> je množica možnih oblik;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> določi velikost objekta, <span class="math notranslate nohighlight">\(D_\mathtt{size} \subseteq \mathbb{R}^{+}\)</span>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> oziroma <code class="docutils literal notranslate"><span class="pre">fill</span></code> določi barvo roba in notranjosti objekta, <span class="math notranslate nohighlight">\(D_\mathtt{color} = D_\texttt{fill}\)</span> je množica možnih barv.</p></li>
+</ul>
+<p>Za uporabo teh dveh elementov slovnice poskusimo narisati diagram, kjer bodo na x-osi imena študentov, na <span class="math notranslate nohighlight">\(y\)</span> osi pa njihovi rezultati na kolokvijih:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/947bded3c414e79aa738be965c6e8c7fb8bdeaf72e1b863d04016b22d3250650.png" src="_images/947bded3c414e79aa738be965c6e8c7fb8bdeaf72e1b863d04016b22d3250650.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uporabili smo dve funkciji knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. V klicu funkcije <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> smo določili prvi element slovnice, podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">data</span></code>. S klicem funkcije <code class="docutils literal notranslate"><span class="pre">aes</span></code> smo določili drugi element slovnice, estetski preslikavi za spremenljivki <code class="docutils literal notranslate"><span class="pre">ime</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">x</span></code>) in <code class="docutils literal notranslate"><span class="pre">rezultat</span></code> (pozicija <code class="docutils literal notranslate"><span class="pre">y</span></code>).</p>
+<section id="geometrijski-objekt-tocka">
+<h3>Geometrijski objekt točka<a class="headerlink" href="#geometrijski-objekt-tocka" title="Permalink to this heading">#</a></h3>
+<p>A diagram je prazen. Zato, ker nismo določili tretje komponente slovnice, <strong>geometrijski objekt</strong> <code class="docutils literal notranslate"><span class="pre">geom</span></code>. To storimo s klicem tretje funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code>, ki določi, da je vsak rezultat študentov ponazorjen s točko:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/0f5925787dc5080db9a371d1b1b869ee2e50150071dd8b93f7e4daefe29f520c.png" src="_images/0f5925787dc5080db9a371d1b1b869ee2e50150071dd8b93f7e4daefe29f520c.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri izbiri geometrijskega objekta maramo upoštevati razpoložljiv nabor njegovih estetskih lastnosti. Estetske lastnosti točke lahko dobimo z vpogledom v dokumentacijo funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code> (spomnimo se, lahko poiščemo pomoč za ustrezno funkcijo knjižnice <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>). Poglejmo celoten seznam estetskih lastnosti geometrijskega objekta točka:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code> in <code class="docutils literal notranslate"><span class="pre">fill</span></code> smo že spoznali;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> določa <em>stopnjo prozornosti</em> barve objekta (vrednost je med 0 in 1), nižje vrednosti povečujejo prozornost;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">storke</span></code> določa debelino črte, ki ponazori rob objekta (točke).</p></li>
+</ul>
+<p>Poglejmo dodatne primere uporabe estetskih lastnosti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/dee316a3c48fe44c21eb6028df54c7f31291fddb5da6e785617f34c9e43d8a52.png" src="_images/dee316a3c48fe44c21eb6028df54c7f31291fddb5da6e785617f34c9e43d8a52.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo estetsko preslikavo za barvo, ki jo ponazori lestvica na desni strani diagrama. Vidimo, da je lestvica pripravljena za katerokoli vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code> na intervalu <span class="math notranslate nohighlight">\([1,2]\)</span>. To je zato, ker je spremenljivka <code class="docutils literal notranslate"><span class="pre">semester</span></code> numeričnega tipa. Če tip te spremenljivke spremenimo v faktor, bi dobili boljši (in bolj ustrezen, pa tudi bolj pravilen) diagram:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/e6d31a65ccda93c13988eb2742297ec609b77459a8d9f7fdc54c76cef75e5f9c.png" src="_images/e6d31a65ccda93c13988eb2742297ec609b77459a8d9f7fdc54c76cef75e5f9c.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Estetska preslikava torej preslika diskretno spremenljivko <span class="math notranslate nohighlight">\(X\)</span> v končno množico barv <span class="math notranslate nohighlight">\(D_\texttt{color}\)</span> za katero velja <span class="math notranslate nohighlight">\(|D_\texttt{color}| = |D_X|\)</span>.</p>
+<p>V estetsko lastnost oblike lahko preslikamo zgolj diskretne spremenljivke, zato bomo poskrbeli še za pretvorbo tipa spremenljivke <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/138f4dec9fc1a6ed116450953f78fdb20d66f0c46881de3e2b65b90ca2dc3845.png" src="_images/138f4dec9fc1a6ed116450953f78fdb20d66f0c46881de3e2b65b90ca2dc3845.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poskrbimo zdaj za velikost točk na diagramu: denimo, da želimo povečati vse točke na diagramu, ne glede na to, katere podatke ponazorijo. Torej zdaj ne gre za definiranje estetske preslikave (med podatki in estetsko lastnostjo), temveč rabimo zgolj <em>nastavljanje estetske lastnosti</em> geometrijskih objektov. Slednje opravimo znotraj klica funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code> takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/0e9e94aaeb07fdfcec2efd76f225e30dd3875be543eb592d90e2b8013122a5d9.png" src="_images/0e9e94aaeb07fdfcec2efd76f225e30dd3875be543eb592d90e2b8013122a5d9.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za zaporedni številki semestra in kolokvija smo uporabili dve estetski lastnosti, kar se zdi potratno, glede na to, da gre za štiri zaporedne kolokvije. Namesto dveh oblik in dveh barv, bi lahko uporabili štiri barve. Zato, da to dosežemo, moramo izračunati novo spremenljivko, ki bo združevala semester in kolokvij. Na primer takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+  <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;category&quot;</span>
+<span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/343c5c10071bbb9985468cd274cd60df6785eb230f2ade149d1917baed3e110c.png" src="_images/343c5c10071bbb9985468cd274cd60df6785eb230f2ade149d1917baed3e110c.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="geometrijski-objekt-stolpec">
+<h3>Geometrijski objekt stolpec<a class="headerlink" href="#geometrijski-objekt-stolpec" title="Permalink to this heading">#</a></h3>
+<p>Poskusimo zdaj zamenjati geometrijski objekt iz točke v pravokotnik, ki ga v <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> imenujemo stolpec, po angleško <code class="docutils literal notranslate"><span class="pre">col</span></code> od <em>column</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/358f5359c3ab1af838a6e741c73c8ab013ed6d328cddc6ff93a750c26382a296.png" src="_images/358f5359c3ab1af838a6e741c73c8ab013ed6d328cddc6ff93a750c26382a296.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Spomnimo se, da <code class="docutils literal notranslate"><span class="pre">color</span></code> določa le barvo <strong>roba</strong> geometrijskega objekta. Če hočemo spreminjati tudi barvo <strong>notranjosti</strong> objekta, uporabiti moramo estetsko lastnost <code class="docutils literal notranslate"><span class="pre">fill</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/12e3ee9765d5dd9cf949649d6c207ed58b57b0b368aa6971ae5c463f6d4dee2f.png" src="_images/12e3ee9765d5dd9cf949649d6c207ed58b57b0b368aa6971ae5c463f6d4dee2f.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na diagramu lahko opazimo nenavadno razporeditev kolokvijev: prvi kolokvij v prvem semestru je na vrhu stolpcev, zadnji kolokvij (drugi v drugem semestru) je pa na dnu. Ta razporeditev ni naravne, za vrednosti v stolpcih diagrama pričakujemo, da so razporejene v vrstnem redu od spodaj navzgor. Pričakovali bi, torej, da so rezultati prvega kolokvija v prvem semestru na dnu stolpcev. Razpored kolokvijev je posledica vrstnega reda kategorij spremenljivke <code class="docutils literal notranslate"><span class="pre">semester_kolokvij</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kategorije</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1_1&#39;, &#39;1_2&#39;, &#39;2_1&#39;, &#39;2_2&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">reorder_categories</span><span class="p">(</span>
+  <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/edc5b105036f1b3d4de8d8c4d1a9281e3ae9e5ee961e61a054c02493b372e588.png" src="_images/edc5b105036f1b3d4de8d8c4d1a9281e3ae9e5ee961e61a054c02493b372e588.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="geometrijski-objekt-crta">
+<h3>Geometrijski objekt črta<a class="headerlink" href="#geometrijski-objekt-crta" title="Permalink to this heading">#</a></h3>
+<p>Poskusimo še en osnovni geometrijski objekt, črto s funkcijo <code class="docutils literal notranslate"><span class="pre">geom_line</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14825c0d5f9d130c5e5c61ed976d8b32d9549144a15e1490c9d247d62851b4bb.png" src="_images/14825c0d5f9d130c5e5c61ed976d8b32d9549144a15e1490c9d247d62851b4bb.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nepričakovan rezultat: črte so namreč vertikalne in povezujejo vrednosti rezultatov za vsakega študenta posebej. Prej bi pričakovali, da bi črte povezovale dosežke različnih študentov pri istem kolokviju. Zato imamo na voljo še eno estetsko lastnost <code class="docutils literal notranslate"><span class="pre">group</span></code>, ki določa skupine podatkov. Če želimo, da se črte nanašajo na posamezne kolokvije, bomo uporabili:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c144aa70672f984bbaf57e394143eedde6025e3db56f51e549811329975f8498.png" src="_images/c144aa70672f984bbaf57e394143eedde6025e3db56f51e549811329975f8498.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zato, da izboljšamo berljivost diagrama (na zgornjem diagramu ne moremo razlikovati kolokvijev, saj so vse črte enake barve), lahko skupine pobarvamo z različnimi barvami, črte odebelimo in črtam dodamo še točke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/4b30428c916ed857fae73430560cffc4d618ad5da5b8cf6ab880449161676f96.png" src="_images/4b30428c916ed857fae73430560cffc4d618ad5da5b8cf6ab880449161676f96.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če zaradi tiskanja dokumenta želimo črno-belo različico zgornjega diagrama, lahko barve črt in točk nadomestimo z oblikami <code class="docutils literal notranslate"><span class="pre">linetype</span></code> in <code class="docutils literal notranslate"><span class="pre">shape</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scale_linetype.py:50: PlotnineWarning: Using linetype for an ordinal variable is not advised.
+/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scale_shape.py:89: PlotnineWarning: Using shapes for an ordinal variable is not advised.
+/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/24e777206fc2c5f3bf7d27f1633dcd2ee12c4872e520e4cd30b78bb3b494b1c9.png" src="_images/24e777206fc2c5f3bf7d27f1633dcd2ee12c4872e520e4cd30b78bb3b494b1c9.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="geometrijski-objekt-skatla">
+<h3>Geometrijski objekt škatla<a class="headerlink" href="#geometrijski-objekt-skatla" title="Permalink to this heading">#</a></h3>
+<p>Poskusimo nazadnje še geometrijski objekt škatla, <code class="docutils literal notranslate"><span class="pre">boxplot</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:284: PlotnineWarning: stat_boxplot : Removed 4 rows containing non-finite values.
+</pre></div>
+</div>
+<img alt="_images/27e3551aad2c0d14debad6c0f78ce9530690514dc548d52403ac46e6ee40c248.png" src="_images/27e3551aad2c0d14debad6c0f78ce9530690514dc548d52403ac46e6ee40c248.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ta diagram nam prikaže porazdelitve rezultatov štirih kolokvijev za vsako študentko (vsakega študenta) posebej. Takemu diagramu rečemo tudi škatla z brki. Zadebeljena črta v sredini škatle ustreza mediani (srednji vrednosti) spremenljivke. Višina škatle ustreza medkvartilnim razmikom: zgornji rob škatle ustreza tretjemu, spodnji rob pa prvemu kvartilu opazovanih vrednosti spremenljivke. Brki (črte) se raztezajo pod in nad škatlo vse do minimalne oziroma maksimalne opazovane vrednosti.</p>
+</section>
+</section>
+<section id="plasti-angl-layers-statisticnega-diagrama">
+<h2>Plasti (angl. <em>layers</em>) statističnega diagrama<a class="headerlink" href="#plasti-angl-layers-statisticnega-diagrama" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="lestvice-legende-koordinatne-osi-in-koordinatni-sistemi">
+<h2>Lestvice, legende, koordinatne osi in koordinatni sistemi<a class="headerlink" href="#lestvice-legende-koordinatne-osi-in-koordinatni-sistemi" title="Permalink to this heading">#</a></h2>
+<section id="funkcije-za-koordinatne-osi-in-koordinatni-sistem">
+<h3>Funkcije za koordinatne osi in koordinatni sistem<a class="headerlink" href="#funkcije-za-koordinatne-osi-in-koordinatni-sistem" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="funkcije-za-legende">
+<h3>Funkcije za legende<a class="headerlink" href="#funkcije-za-legende" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="prilagajanje-pozicije-angl-position-adjustment">
+<h2>Prilagajanje pozicije, angl. <em>position adjustment</em><a class="headerlink" href="#prilagajanje-pozicije-angl-position-adjustment" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="vec-vidikov-angl-faceting">
+<h2>Več vidikov, angl. <em>faceting</em><a class="headerlink" href="#vec-vidikov-angl-faceting" title="Permalink to this heading">#</a></h2>
+</section>
 <section id="naloge">
 <h2>Naloge<a class="headerlink" href="#naloge" title="Permalink to this heading">#</a></h2>
 <p>V pripravi.</p>
@@ -507,6 +962,21 @@ studenti_ocene =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podatkovna-tabela-data-estetska-preslikava-spremenljivke-aes-in-geometrijski-objekt-geom">Podatkovna tabela <code class="docutils literal notranslate"><span class="pre">data</span></code>, estetska preslikava spremenljivke <code class="docutils literal notranslate"><span class="pre">aes</span></code> in geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-tocka">Geometrijski objekt točka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-stolpec">Geometrijski objekt stolpec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-crta">Geometrijski objekt črta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrijski-objekt-skatla">Geometrijski objekt škatla</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plasti-angl-layers-statisticnega-diagrama">Plasti (angl. <em>layers</em>) statističnega diagrama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lestvice-legende-koordinatne-osi-in-koordinatni-sistemi">Lestvice, legende, koordinatne osi in koordinatni sistemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-koordinatne-osi-in-koordinatni-sistem">Funkcije za koordinatne osi in koordinatni sistem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-legende">Funkcije za legende</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
   </nav></div>
