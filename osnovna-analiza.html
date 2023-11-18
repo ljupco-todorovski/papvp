@@ -181,12 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Od podatkov do podatkovnih tabel</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
 <ul class="current nav bd-sidenav">
@@ -504,28 +500,16 @@ document.write(`
 <td class="text-left"><p>Produkt vrednosti</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.std.html"><code class="docutils literal notranslate"><span class="pre">std</span></code></a></p></td>
-<td class="text-left"><p>Standardni odklon, nepristranski</p></td>
+<td class="text-left"><p>Standardni odklon vrednosti, nepristranski</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.var.html"><code class="docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
-<td class="text-left"><p>Standardna variance, nepristranska</p></td>
+<td class="text-left"><p>Varianca vrednosti, nepristranska</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.skew.html"><code class="docutils literal notranslate"><span class="pre">skew</span></code></a></p></td>
 <td class="text-left"><p>Asimetrija, nepristranska, tretji moment</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.kurt.html"><code class="docutils literal notranslate"><span class="pre">kurt</span></code></a></p></td>
 <td class="text-left"><p>Sploščenost, nepristranska, četrti moment</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.cumsum.html"><code class="docutils literal notranslate"><span class="pre">cumsum</span></code></a></p></td>
-<td class="text-left"><p>Kumulativne vsote</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.cumprod.html"><code class="docutils literal notranslate"><span class="pre">cumprod</span></code></a></p></td>
-<td class="text-left"><p>Kumulativni produkti</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.cummax.html"><code class="docutils literal notranslate"><span class="pre">cummax</span></code></a></p></td>
-<td class="text-left"><p>Kumulativne maksimalne vrednosti</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.cummin.html"><code class="docutils literal notranslate"><span class="pre">cummin</span></code></a></p></td>
-<td class="text-left"><p>Kumulativne minimalne vrednosti</p></td>
 </tr>
 </tbody>
 </table>
@@ -847,7 +831,7 @@ Name: x, dtype: object
 </section>
 <section id="skupine-elementov-oziroma-vrstic">
 <h2>Skupine elementov oziroma vrstic<a class="headerlink" href="#skupine-elementov-oziroma-vrstic" title="Permalink to this heading">#</a></h2>
-<p>Izračun statistik je že sam po sebi uporaben. A pogostokrat nas ne zanimajo vrednosti agregatnih statistik za vse elemente zaporedja ali vse vrstice podatkovne tabele, temveč bi želeli agregatne statistike izračunati za skupine vrstic. Na primer, za dosežke študentov na kolokvijih nas zanima povprečna vrednost dosežka za vsakega študenta posebej. Podobno v tabeli z umetnimi podatki iz prejšnji razdelkov, bi nas lahka zanimalo kakšna je povprečna vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">x</span></code> za različne kategorije <code class="docutils literal notranslate"><span class="pre">k</span></code> ali za različne mesece iz datumov v <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
+<p>Izračun statistik je že sam po sebi uporaben. A pogostokrat nas ne zanimajo vrednosti agregatnih statistik za vse elemente zaporedja ali vse vrstice podatkovne tabele, temveč bi želeli agregatne statistike izračunati za skupine vrstic. Na primer, za dosežke študentov na kolokvijih nas zanima povprečna vrednost dosežka za vsakega študenta posebej. Podobno v tabeli z umetnimi podatki iz prvega razdelka, bi nas lahka zanimalo kakšna je povprečna vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">x</span></code> za različne kategorije <code class="docutils literal notranslate"><span class="pre">k</span></code> ali za različne mesece iz datumov v <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
 <p>Take izračune na podani podatkovni tabeli lahko opravimo z uporabo funkcije <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code class="docutils literal notranslate"><span class="pre">groupby</span></code></a>. Rezultat funkcije je objekt razreda <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code>, ki razdeli vrstice v tabeli na osnovi vrednosti podane spremenljivke (ali kombinacije spremenljivk podane kot seznam): v eni skupini so vse vrstice z enako vrednostjo podane spremenljivke, skupin pa je toliko, kot je različnih vrednosti podane spremenljivke.  Če na tem objektu izračunamo agregatno statistiko, bo njen izračun izveden za vsako skupino posebej.</p>
 <p>Poglejmo enostaven primer:</p>
 <div class="cell docutils container">
@@ -864,7 +848,7 @@ Name: x, dtype: object
 {&#39;a&#39;: [0, 1, 4, 6, 15, 16, 17], &#39;b&#39;: [2, 3, 5, 10, 11, 13, 14, 18, 19]}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_35518/2589392432.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_2858/2589392432.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   pt_k = pt.groupby(&quot;k&quot;)
 </pre></div>
 </div>
@@ -989,7 +973,7 @@ Wednesday  70.0
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(&#39;a&#39;, &#39;Friday&#39;): [0], (&#39;a&#39;, &#39;Saturday&#39;): [16], (&#39;a&#39;, &#39;Sunday&#39;): [1, 6], (&#39;a&#39;, &#39;Tuesday&#39;): [15, 17], (&#39;a&#39;, &#39;Wednesday&#39;): [4], (&#39;b&#39;, &#39;Friday&#39;): [3, 11, 14, 19], (&#39;b&#39;, &#39;Monday&#39;): [2, 5, 10, 18], (&#39;b&#39;, &#39;Saturday&#39;): [13], (nan, &#39;Friday&#39;): [8], (nan, &#39;Monday&#39;): [7, 12], (nan, &#39;Saturday&#39;): [9]}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_35518/1087440675.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_2858/1087440675.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   print(pt.groupby([&quot;k&quot;, pt.d.dt.day_name()]).groups)
 </pre></div>
 </div>
@@ -1269,6 +1253,9 @@ Franc       82.5
 3   David      141        75.0        92.0        68.0        81.0
 4     Eva      210        63.0        82.0        82.0        63.0
 5   Franc      592        95.0        99.0        82.0        54.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
