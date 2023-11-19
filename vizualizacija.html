@@ -730,7 +730,7 @@ studenti_ocene =
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">reorder_categories</span><span class="p">(</span>
-  <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span>
 <span class="p">)</span>
 <span class="p">(</span>
   <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
@@ -748,7 +748,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/edc5b105036f1b3d4de8d8c4d1a9281e3ae9e5ee961e61a054c02493b372e588.png" src="_images/edc5b105036f1b3d4de8d8c4d1a9281e3ae9e5ee961e61a054c02493b372e588.png" />
+<img alt="_images/01d24158ba8875bd430a0558f1744ee0133134b3c9c58546a9bf853f8b848898.png" src="_images/01d24158ba8875bd430a0558f1744ee0133134b3c9c58546a9bf853f8b848898.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -818,7 +818,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/4b30428c916ed857fae73430560cffc4d618ad5da5b8cf6ab880449161676f96.png" src="_images/4b30428c916ed857fae73430560cffc4d618ad5da5b8cf6ab880449161676f96.png" />
+<img alt="_images/19b8d322eb1ac32c2017ae995560ca587aab86d1a9fb3e5b39d7ed9c91827d8e.png" src="_images/19b8d322eb1ac32c2017ae995560ca587aab86d1a9fb3e5b39d7ed9c91827d8e.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -843,9 +843,7 @@ studenti_ocene =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scale_linetype.py:50: PlotnineWarning: Using linetype for an ordinal variable is not advised.
-/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scale_shape.py:89: PlotnineWarning: Using shapes for an ordinal variable is not advised.
-/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
 </pre></div>
 </div>
 <img alt="_images/24e777206fc2c5f3bf7d27f1633dcd2ee12c4872e520e4cd30b78bb3b494b1c9.png" src="_images/24e777206fc2c5f3bf7d27f1633dcd2ee12c4872e520e4cd30b78bb3b494b1c9.png" />
@@ -886,6 +884,137 @@ studenti_ocene =
 </section>
 <section id="plasti-angl-layers-statisticnega-diagrama">
 <h2>Plasti (angl. <em>layers</em>) statističnega diagrama<a class="headerlink" href="#plasti-angl-layers-statisticnega-diagrama" title="Permalink to this heading">#</a></h2>
+<p>Četrti element slovnice statističnih diagramov je <strong>plast</strong>. Slednji nam omogočajo dvoje: kombiniranje več tipov geometrijskih objektov in/ ali kombiniranje podatkov iz različnih podatkovnih tabel. V takih primerih se vsaka plast prinese v diagram en tip geometrijskih objektov in eno podatkovno tabelo.</p>
+<p>Večina diagramov predstavljenih v prejšnjem razdelku je <strong>enoplastnih</strong>. Enoplastni diagram vsebuje (1) geometrijske objekte enega tipa in (2) podatke iz ene podatkovne tabele. Izjema sta dva diagrama, ki kombinirata po dva tipa geometrijskih objektov. Poglejmo enega od njih, kjer ena plast vizualizira podatke s točkami, druga pa s črtami:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/57a79ffb0851b4b760bc0e9e6682b578e2f402af1c87d67608d42f931fecb1da.png" src="_images/57a79ffb0851b4b760bc0e9e6682b578e2f402af1c87d67608d42f931fecb1da.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obe plasti diagrama si delita tako podatkovno tabelo kot vse estetske preslikave. Slednje so v zgornjem diagramu definirane s klicem funkcije <code class="docutils literal notranslate"><span class="pre">aes</span></code>, ki je skupen vsem plastem.</p>
+<p>Plasti nam omogočajo bolj fleksibilno geometrijskih objektov z različnimi estetskimi preslikavami. Preslikave, ki so skupne vsem geometrijskim objektom, imenujemo <em>globalne estetske preslikave</em> in jih definiramo tako kot v zgornjih primerih, s klicem funkcije <code class="docutils literal notranslate"><span class="pre">aes</span></code>, ki je skupen vsem plastem. Vsakemu tipu geometrijskih objektov lahko definiramo <em>lokalne estetske preslikave</em>, ki se nanašajo zgolj na plast z objekti tega tipa. Lokalne preslikave definiramo s klicem funkcije <code class="docutils literal notranslate"><span class="pre">aes</span></code> pri nastavitvi vrednosti argumenta <code class="docutils literal notranslate"><span class="pre">mapping</span></code> funkcije s predpono <code class="docutils literal notranslate"><span class="pre">geom_</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">),</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/4b2e6c98d02cb531694a1b63d9f4a33edfdd5080ccdf5474884fc86d1de29f46.png" src="_images/4b2e6c98d02cb531694a1b63d9f4a33edfdd5080ccdf5474884fc86d1de29f46.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo ugotovi, kaj se zgodi, če preslikavo za estetsko lastnost <code class="docutils literal notranslate"><span class="pre">color</span></code> v zgornjem primeru prestavimo med globalne estetske preslikave.</p>
+<p>Denimo, da bi hoteli diagram enak prejšnjemu, kjer bi za posamezno študentko ali posameznega študenta pobarvali zgolj tisto točko, ki ustreza njegovemu najboljšemu dosežku. Pri tem bi za študente uporabili eno, za študentke pa drugo barvo. Izračunajmo najprej najboljše dosežke za posameznega študenta ali študentko ter taki tabeli dodajmo še spol, ki ga rabimo za določanje barve ustrezne točke na diagramu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ime&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">naj_rezultat</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">))</span>
+<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">]]</span>
+<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+  <span class="n">studenti_ocene</span><span class="p">,</span>
+  <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">],</span>
+  <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">],</span>
+  <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+<span class="p">)</span>
+<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">studenti_naj_ocene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol  naj_rezultat semester_kolokvij
+0     Ana    ž          97.0               2_1
+1  Branko    m          78.0               1_1
+2  Cvetka    ž          87.0               2_2
+3   David    m          92.0               1_2
+4     Eva    ž          82.0               1_2
+5     Eva    ž          82.0               2_1
+6   Franc    m          99.0               1_2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zdaj bomo prvemu diagramu iz tega razdelka dodali nov plast, ki uporablja podatke iz tabele <code class="docutils literal notranslate"><span class="pre">studenti_naj_ocene</span></code>. Tako kot smo prej za plast definirali lokalne estetske preslikave, bomo zdaj definirali lokalno podatkovno tabelo znotraj klica funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+  <span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="p">,</span>
+      <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;spol&quot;</span>
+      <span class="p">),</span>
+      <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/bb88c2a12b5d98fea3a63c9727c9748ab1cc90ab2e56922a7526655426f02626.png" src="_images/bb88c2a12b5d98fea3a63c9727c9748ab1cc90ab2e56922a7526655426f02626.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>V vseh dosedanjih primerih so bile izbire npr. uporabljenih barv samodejno. Knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> samodejno določa privzete množice možnih vrednosti estetskih lastnosti, ki jih diagram uporablja. Zato, da spremenimo privzete množice, moramo spoznati peti element slovnice statističnih izrazov, lestvice.</p>
 </section>
 <section id="lestvice-legende-koordinatne-osi-in-koordinatni-sistemi">
 <h2>Lestvice, legende, koordinatne osi in koordinatni sistemi<a class="headerlink" href="#lestvice-legende-koordinatne-osi-in-koordinatni-sistemi" title="Permalink to this heading">#</a></h2>
