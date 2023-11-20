@@ -395,6 +395,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-legende">Funkcije za legende</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koordinatni-sistem">Koordinatni sistem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
@@ -482,8 +483,8 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -502,9 +503,9 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -529,13 +530,13 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -555,13 +556,13 @@ studenti_ocene =
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
 <span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -582,14 +583,14 @@ studenti_ocene =
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
 <span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -608,14 +609,14 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -634,17 +635,17 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-  <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-  <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;category&quot;</span>
+    <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;category&quot;</span>
 <span class="p">)</span>
 <span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -666,13 +667,13 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -691,13 +692,13 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -730,16 +731,16 @@ studenti_ocene =
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">reorder_categories</span><span class="p">(</span>
-  <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span>
+    <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span>
 <span class="p">)</span>
 <span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -761,9 +762,9 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -779,13 +780,13 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -801,15 +802,15 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -828,16 +829,16 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -859,12 +860,12 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -889,16 +890,16 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -918,19 +919,19 @@ studenti_ocene =
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
-    <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">),</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
-  <span class="p">)</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">),</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -945,61 +946,108 @@ studenti_ocene =
 </div>
 </div>
 </div>
-<p>Za vajo ugotovi, kaj se zgodi, če preslikavo za estetsko lastnost <code class="docutils literal notranslate"><span class="pre">color</span></code> v zgornjem primeru prestavimo med globalne estetske preslikave.</p>
-<p>Denimo, da bi hoteli diagram enak prejšnjemu, kjer bi za posamezno študentko ali posameznega študenta pobarvali zgolj tisto točko, ki ustreza njegovemu najboljšemu dosežku. Pri tem bi za študente uporabili eno, za študentke pa drugo barvo. Izračunajmo najprej najboljše dosežke za posameznega študenta ali študentko ter taki tabeli dodajmo še spol, ki ga rabimo za določanje barve ustrezne točke na diagramu:</p>
+<p>Za vajo ugotovi, kaj se zgodi, če preslikavo za estetsko lastnost <code class="docutils literal notranslate"><span class="pre">color</span></code> v zgornjem primeru prestavimo med globalne estetske preslikave (to smo pravzaprav že naredili v prejšnjem razdelku).</p>
+<p>Denimo, da bi hoteli diagram enak prejšnjemu, kjer bi na črti za posamezen kolokvij pobarvali zgolj eno točko, ki ustreza najboljšemu rezultatu na tem kolokviju. Pri tem bi za študentke uporabili eno, za študente pa drugo barvo. Izračunajmo najprej tabelo z najboljšimi rezultati na posameznem kolokviju. Nato tej tabeli dodajmo še ime in spol študentke (študenta), ki je ta rezultat dosegla:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ime&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">naj_rezultat</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">))</span>
-<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
-<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">]]</span>
-<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-  <span class="n">studenti_ocene</span><span class="p">,</span>
-  <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">],</span>
-  <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">],</span>
-  <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naj_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">naj_rezultat</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">))</span>
+<span class="n">naj_ocene</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">,</span>
+    <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">],</span>
+    <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">],</span>
+    <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
 <span class="p">)</span>
-<span class="n">studenti_naj_ocene</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">]]</span>
+<span class="n">naj_ocene</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;ime&quot;</span><span class="p">]]</span>
+<span class="n">naj_ocene</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">naj_ocene</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">]]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_naj_ocene</span><span class="p">)</span>
+<span class="n">naj_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol  naj_rezultat semester_kolokvij
-0     Ana    ž          97.0               2_1
-1  Branko    m          78.0               1_1
-2  Cvetka    ž          87.0               2_2
-3   David    m          92.0               1_2
-4     Eva    ž          82.0               1_2
-5     Eva    ž          82.0               2_1
-6   Franc    m          99.0               1_2
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_3216/3229582693.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
 </pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>semester_kolokvij</th>
+      <th>naj_rezultat</th>
+      <th>ime</th>
+      <th>spol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2_2</td>
+      <td>95.0</td>
+      <td>Ana</td>
+      <td>ž</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2_1</td>
+      <td>97.0</td>
+      <td>Ana</td>
+      <td>ž</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1_2</td>
+      <td>99.0</td>
+      <td>Franc</td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1_1</td>
+      <td>95.0</td>
+      <td>Franc</td>
+      <td>m</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-<p>Zdaj bomo prvemu diagramu iz tega razdelka dodali nov plast, ki uporablja podatke iz tabele <code class="docutils literal notranslate"><span class="pre">studenti_naj_ocene</span></code>. Tako kot smo prej za plast definirali lokalne estetske preslikave, bomo zdaj definirali lokalno podatkovno tabelo znotraj klica funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code>:</p>
+<p>Zdaj bomo prvemu diagramu iz tega razdelka dodali nov plast, ki uporablja podatke iz tabele <code class="docutils literal notranslate"><span class="pre">naj_ocene</span></code>. Tako kot smo prej za plast definirali lokalne estetske preslikave, bomo zdaj definirali še lokalno podatkovno tabelo znotraj klica funkcije <code class="docutils literal notranslate"><span class="pre">geom_point</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
-  <span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
-  <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
-      <span class="n">data</span> <span class="o">=</span> <span class="n">studenti_naj_ocene</span><span class="p">,</span>
-      <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
         <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;spol&quot;</span>
-      <span class="p">),</span>
-      <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
-  <span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+          <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+          <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;spol&quot;</span>
+        <span class="p">),</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1008,25 +1056,414 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/bb88c2a12b5d98fea3a63c9727c9748ab1cc90ab2e56922a7526655426f02626.png" src="_images/bb88c2a12b5d98fea3a63c9727c9748ab1cc90ab2e56922a7526655426f02626.png" />
+<img alt="_images/95abf32d43c1e8d423b4c4985cfb80c2d25e04b1a27926d189ff2527b7ddd1fc.png" src="_images/95abf32d43c1e8d423b4c4985cfb80c2d25e04b1a27926d189ff2527b7ddd1fc.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>V vseh dosedanjih primerih so bile izbire npr. uporabljenih barv samodejno. Knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> samodejno določa privzete množice možnih vrednosti estetskih lastnosti, ki jih diagram uporablja. Zato, da spremenimo privzete množice, moramo spoznati peti element slovnice statističnih izrazov, lestvice.</p>
+<p>Diagram nam pokaže, da je oba kolokvija v drugem semestru najboljše opravila Ana (dva njena dosežka pobarvana modro), v drugem pa Franc (dva njegova dosežka pobarvana rdeče).</p>
+<p>V vseh dosedanjih primerih so bile izbire uporabljenih barv samodejne. Knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> namreč samodejno določa privzete množice možnih vrednosti estetskih lastnosti, ki jih diagram uporablja. Zato, da spremenimo privzete množice, moramo spoznati peti element slovnice statističnih izrazov, lestvice.</p>
 </section>
 <section id="lestvice-legende-koordinatne-osi-in-koordinatni-sistemi">
 <h2>Lestvice, legende, koordinatne osi in koordinatni sistemi<a class="headerlink" href="#lestvice-legende-koordinatne-osi-in-koordinatni-sistemi" title="Permalink to this heading">#</a></h2>
+<p>Peti element slovnice statističnih diagramov je <strong>lestvica</strong> (angl. <em>scale</em>), ki definira preslikavo med spremenljivko in estetsko lastnostjo tako, da vsaki možni vrednosti spremenljivke dodeli vrednost estetske lastnosti. Vsaka estetska lastnost v neki plasti diagrama ima svojo lestvico. Lokalne estetske lastnosti imajo posebno lestvico za tisto plast, kjer so uporabljene, globalne pa imajo eno lestvico, ki velja čez vse plasti.</p>
+<p>Bolj formalno, lestvico tvori trojica <span class="math notranslate nohighlight">\((f, g, \theta)\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f: D_X \to D_e\)</span> je funkcija, ki preslika vrednosti spremenljivke <span class="math notranslate nohighlight">\(X\)</span> v vrednosti estetske lastnosti <span class="math notranslate nohighlight">\(e\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(g: D_e \to D_X\)</span> je funkcija, inverzna funkciji <span class="math notranslate nohighlight">\(f\)</span>, ki prelika vrednost estetske lastnosti <span class="math notranslate nohighlight">\(e\)</span> v vrednost funkcije <span class="math notranslate nohighlight">\(X\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> so vrednosti parametrov, ki določajo funkciji <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(g\)</span>.</p></li>
+</ul>
+<p>Na primer, barvna lestvica za numerično spremenljivko preslika interval realnih števil (ki vsebuje vrednosti spremenljivke <span class="math notranslate nohighlight">\(X\)</span>) v <em>pot</em> skozi izbrani barvni prostor. Parametri preslikave so (1) oblika poti, (2) barvni prostor (<a class="reference external" href="https://en.wikipedia.org/wiki/RGB_color_spaces">RGB</a> ali <a class="reference external" href="https://en.wikipedia.org/wiki/CIELUV">LUV</a>) ter (3) začetna in končna barva na poti, ki ustrezata spodnji in zgornji meji intervala realnih števil.</p>
+<p>Lestvična inverzna funkcija <span class="math notranslate nohighlight">\(g\)</span> omogoča risanje <em>vodiča</em>, ki grafično ponazori (pojasni) lestvico. Vodič je lahko:</p>
+<ul class="simple">
+<li><p><strong>koordinatna os</strong> za lestvice, ki ustrezajo lastnostim pozicije (lege), <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>;</p></li>
+<li><p><strong>legenda</strong> za lestvice, ki ustrezajo drugim estetskim lastnostim.</p></li>
+</ul>
+<p>Funkcije <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> nastavijo lestvice, koordinatne osi in legende samodejno na osnovi podanih podatkovnih tabel. Nastavitve lahko spreminjamo s funkcijami opisanimi v nadaljevanju.</p>
 <section id="funkcije-za-koordinatne-osi-in-koordinatni-sistem">
 <h3>Funkcije za koordinatne osi in koordinatni sistem<a class="headerlink" href="#funkcije-za-koordinatne-osi-in-koordinatni-sistem" title="Permalink to this heading">#</a></h3>
+<p>Meji koordinatne osi lahko nastavljamo s funkcijami <code class="docutils literal notranslate"><span class="pre">xlim</span></code> in <code class="docutils literal notranslate"><span class="pre">ylim</span></code>. Vsaka prejme dva argumenta, spodnjo in zgornjo mejo osi. Če za argument podamo neznano vrednost <code class="docutils literal notranslate"><span class="pre">NA</span></code>, zahtevamo, da R samodejno nastavi mejo. Funkcija <code class="docutils literal notranslate"><span class="pre">expand_limits</span></code> omogoča nastavitev mej za obe osi in sprejme dva argumenta, <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>. Za vsak argument lahko podamo skalarno vrednost, ki nastavi spodnjo mejo ustrezne osi, ali vektor dveh elementov, ki nastavita vrednost spodnje in zgornje meje.</p>
+<p>Nadaljnji dve funkciji, ki nam omogočata oblikovanje x- in y-osi diagramov sta <code class="docutils literal notranslate"><span class="pre">scale_x_continuous</span></code> in <code class="docutils literal notranslate"><span class="pre">scale_y_continuous</span></code>. Končnica <code class="docutils literal notranslate"><span class="pre">_continuous</span></code> nakazuje, da se funkciji nanašata na koordinatne osi, ki nastanejo na osnovi numeričnih spremenljivk. Za osi, ki ustrezajo kvalitativne spremenljivke, lahko uporabimo funkciji <code class="docutils literal notranslate"><span class="pre">scale_x_discrete</span></code> in <code class="docutils literal notranslate"><span class="pre">scale_y_discrete</span></code>.</p>
+<p>Poglejmo najprej nekaj koristnih argumentov funkcij <code class="docutils literal notranslate"><span class="pre">scale_?_contunuous</span></code>, kjer je <code class="docutils literal notranslate"><span class="pre">?</span></code> oznaka za os, torej <code class="docutils literal notranslate"><span class="pre">x</span></code> ali <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> določa naslov osi, ki se pojavi pod oziroma desno od osi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> določa pozicije <em>glavnih oznak</em> (angl. <em>major ticks</em>) na osi. Vrednost <code class="docutils literal notranslate"><span class="pre">NULL</span></code> ukine vse oznake na osi. Vrednost <code class="docutils literal notranslate"><span class="pre">waiver()</span></code> določi privzete (samodejne) oznake, ki bi jih dobili, če oznak ne bi ročno nastavljali. Če želimo pozicije oznak ročno nastaviti, njihove pozicije podamo kot numerični vektor, kjer vsak element določa pozicijo ene oznake.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minor_breaks</span></code> določa pozicije <em>pomožnih oznak</em> (angl. minor ticks_) na isti način kot parameter <code class="docutils literal notranslate"><span class="pre">breaks</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n.breaks</span></code> ima celoštevilčno numerično vrednosti, ki določa število glavnih oznak na osi. Uporabljamo jo le takrat, ko je vrednost <code class="docutils literal notranslate"><span class="pre">breaks</span> <span class="pre">=</span> <span class="pre">waiver()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> je numeričen vektor dolžine dve, ki določata spodnjo in zgornjo mejo osi. Če ima element vektorja neznano vrednost <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, zahtevamo, da R samodejno nastavi ustrezno mejo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na.value</span></code> določa vrednost, ki pri pripravi diagrama, zamenja neznane vrednosti spremenljivke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trans</span></code> določa transformacijo vrednosti na osi. Pogosto uporabljene transformacije so <code class="docutils literal notranslate"><span class="pre">log10</span></code>, <code class="docutils literal notranslate"><span class="pre">log2</span></code> (logaritmični transformaciji z osnovo 10 oziroma 2), <code class="docutils literal notranslate"><span class="pre">reverse</span></code> (obratni vrstni red vrednosti, od največje do najmanjše) ali <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> (transformacija s kvadratnim korenom osnovnih vrednosti).</p></li>
+</ul>
+<p>Nato pa še nekaj koristnih argumentov funkcij <code class="docutils literal notranslate"><span class="pre">scale_?_discrete</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">breaks</span></code> in <code class="docutils literal notranslate"><span class="pre">labels</span></code> in enako kot zgoraj za funkciji s končnico <code class="docutils literal notranslate"><span class="pre">_continuous</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> uporabimo za določanje vrstnega reda vrednosti diskretne spremenljivke na osi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na.translate</span></code> je logična vrednost, ki določi kako prikažemo neznane vrednosti. Privzeta vrednost <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> določa, da se neznana vrednost <code class="docutils literal notranslate"><span class="pre">NA</span></code> pojavi kot ena od možnih vrednosti kvalitativne (diskretne) spremenljivke. Vrednost <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> določi, da se neznane vrednosti odstranijo tako kot pri numeričnih spremenljivkah.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na.value</span></code> je vrednost s katero zamenjamo neznane vrednosti in je upoštevana takrat, ko je <code class="docutils literal notranslate"><span class="pre">na.translate</span> <span class="pre">=</span> <span class="pre">TRUE</span></code>.</p></li>
+</ul>
+<p>Funkciji <code class="docutils literal notranslate"><span class="pre">xlab</span></code> in <code class="docutils literal notranslate"><span class="pre">ylab</span></code> omogočata hitro nastavitev naslovov osi <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>. Vsaka sprejme en argument, ki določi naslov ustrezne osi. Na tem mestu bomo omenili še funkcijo <code class="docutils literal notranslate"><span class="pre">labs</span></code>, ki omogoča nastavitev ostalih naslovov grafa in načeloma ne sodi v to poglavje o oseh in koordinatnih sistemih, a vseeno sodi zraven funkcij <code class="docutils literal notranslate"><span class="pre">xlab</span></code> in <code class="docutils literal notranslate"><span class="pre">ylab</span></code>. Pogosto uporabljeni argumenti funkcije <code class="docutils literal notranslate"><span class="pre">labs</span></code> so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>, ki določi naslov celotnega diagrama,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subtitle</span></code>, ki določi podnaslov, kjer običajno pojasni glavne izsledke prikazanega grafikona,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">caption</span></code>, ki ponuja dodatne informacije o diagramu, običajno podatkovne vire.</p></li>
+</ul>
+<p>Poglejmo uporabo vseh zgoraj opisanih funkcij na primeru:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_boxplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_x_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Študent-ka&quot;</span><span class="p">,</span>
+        <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cvetka&quot;</span><span class="p">,</span> <span class="s2">&quot;Branko&quot;</span><span class="p">,</span> <span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="s2">&quot;David&quot;</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Franc&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Dosežene točke na kolokvijih&quot;</span><span class="p">,</span>
+        <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+        <span class="n">na_value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">labs</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Rezultati kolokvijev pri predmetu X&quot;</span><span class="p">,</span>
+        <span class="n">subtitle</span> <span class="o">=</span> <span class="s2">&quot;Od šestih študentov so štirije uspešno opravili izpit s kolokviji&quot;</span><span class="p">,</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;Podatki vir je datoteka rezultati_kolokvijev.xlsx.&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7b6a451b3f0ca29f59684bf594e4e46c6e5dcf7ec22bcb39c3ecfa809b1b9534.png" src="_images/7b6a451b3f0ca29f59684bf594e4e46c6e5dcf7ec22bcb39c3ecfa809b1b9534.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="funkcije-za-legende">
 <h3>Funkcije za legende<a class="headerlink" href="#funkcije-za-legende" title="Permalink to this heading">#</a></h3>
+<p>Funkcije za nastavljanje legend s predpono <code class="docutils literal notranslate"><span class="pre">scale_</span></code> so podobne funkcijam za nastavljanje osi. Tudi njihovi argumenti so enaki. Poglejmo primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/118d76967b19f7bee8e3573fb312156ea07e973292a26ed4f6b4abb75088fb42.png" src="_images/118d76967b19f7bee8e3573fb312156ea07e973292a26ed4f6b4abb75088fb42.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo, da nastavitev legende za estetsko lastnost <code class="docutils literal notranslate"><span class="pre">fill</span></code> ne vpliva na legendo za estetsko lastnost <code class="docutils literal notranslate"><span class="pre">color</span></code>. Slednjo lahko ukinemo, saj nam ne pove nič novega o barvah, ki so enake kot barve za <code class="docutils literal notranslate"><span class="pre">fill</span></code>. Kontrolo nad prikazovanjem legend nam omogoča funkcija <code class="docutils literal notranslate"><span class="pre">guides</span></code>. Klic te funkcije z nastavitvijo vrednosti ustreznega argumenta na <code class="docutils literal notranslate"><span class="pre">None</span></code> prepreči prikazovanje legende:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/9d287a07fa03d71ef556512c8215fc7c6853c6a319087eebc8b7f515cbc2b567.png" src="_images/9d287a07fa03d71ef556512c8215fc7c6853c6a319087eebc8b7f515cbc2b567.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo še enkrat primer nastavljanja besedila v legendah za barve, oblike točk in tipe črt. Legendo za barvno lestvico pri nastavljanju barv in njihovih besedilnih oznak uporabimo klic funkcije <code class="docutils literal notranslate"><span class="pre">scale_color_discrete</span></code> in kombinacijo vrednosti argumentov <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">limits</span></code>, <code class="docutils literal notranslate"><span class="pre">labels</span></code> in <code class="docutils literal notranslate"><span class="pre">type</span></code>. Drugo legendo za dve estetski lastnosti oblik točk in tipov črt nastavimo s pomočjo dveh klicev <code class="docutils literal notranslate"><span class="pre">scale_shape_manual</span></code>, ki si delita isti vrednosti argumentov <code class="docutils literal notranslate"><span class="pre">name</span></code> in <code class="docutils literal notranslate"><span class="pre">labels</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">naj_ocene</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+          <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+          <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;naj_rezultat&quot;</span><span class="p">,</span>
+          <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;spol&quot;</span>
+        <span class="p">),</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_color_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Spol&quot;</span><span class="p">,</span>
+        <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ž&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">],</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ženske&quot;</span><span class="p">,</span> <span class="s2">&quot;moški&quot;</span><span class="p">],</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_shape_manual</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_linetype_manual</span><span class="p">(</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))],</span>
+      <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scale.py:143: PlotnineWarning: scale_color_hue could not recognise parameter `type`
+/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/f4fd2b8f63b912a49835a98f3f597265268a352dae338b05bb060e7298d39160.png" src="_images/f4fd2b8f63b912a49835a98f3f597265268a352dae338b05bb060e7298d39160.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>S klicem funkcije <code class="docutils literal notranslate"><span class="pre">theme</span></code> in nastavitvijo argumenta <code class="docutils literal notranslate"><span class="pre">legend.position</span></code> omogoča spreminjanje pozicije legend na <code class="docutils literal notranslate"><span class="pre">&quot;bottom&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;top&quot;</span></code> ali pa na poljubno pozicijo na diagramu <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> določeno s koordinatami <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/65f5d2f5f1c0d1d5554634e9a09d6ffdd317d79687a85204e85a86f64144bfa1.png" src="_images/65f5d2f5f1c0d1d5554634e9a09d6ffdd317d79687a85204e85a86f64144bfa1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sicer je <code class="docutils literal notranslate"><span class="pre">theme</span></code> funkcija, ki določa način prikazovanja elementov diagrama, ki se ne nanašajo na podatke, kot so že omenjene legende, a tudi naslovi, oznake, pisave, ozadje in vodilne črte v ozadju. Namesto napornega nastavljanja vsakega argumenta posebej, lahko uporabljamo funkcije s predpono <code class="docutils literal notranslate"><span class="pre">theme</span></code>, ki nam omogočajo enostavno nastavitev več teh parametrov hkrati z nastavitvami, ki so drugačne od običajnih. Na primer, <code class="docutils literal notranslate"><span class="pre">theme_classic</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/fdb54a02970491199615200722ef799b3e1956c940bcc2991ae5c7a1ec39aaaf.png" src="_images/fdb54a02970491199615200722ef799b3e1956c940bcc2991ae5c7a1ec39aaaf.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo poskusi še druge načine prikazovanja, <code class="docutils literal notranslate"><span class="pre">theme_bw</span></code>, <code class="docutils literal notranslate"><span class="pre">theme_minimal</span></code> ali <code class="docutils literal notranslate"><span class="pre">theme_void</span></code>.</p>
 </section>
+</section>
+<section id="koordinatni-sistem">
+<h2>Koordinatni sistem<a class="headerlink" href="#koordinatni-sistem" title="Permalink to this heading">#</a></h2>
+<p>Spoznajmo na tem mestu še eno sestavino slovnice statističnih diagramov, koordinatni sistem. Knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> vsem diagramom samodejno določi <em>kartezični</em> koordinatni sistem. Velikosti enot na vsaki osi sta tudi samodejno določeni, kar lahko povzroči popačenje dobljenega diagrama v primerih, ko je pomembno, da sta enoti enaki (poglejmo diagram, ki ga <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> nariše iz podatkov za enotsko krožnico):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">ys_p</span> <span class="o">=</span> <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+<span class="n">ys_n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+
+<span class="n">kroznica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">xs</span> <span class="o">+</span> <span class="n">xs</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">ys_n</span> <span class="o">+</span> <span class="n">ys_p</span>
+<span class="p">})</span>
+
+<span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">kroznica</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4891d5d3c02254d71abc9ec21f881e6e39bf85cccce884d5b4b8fc3c452516de.png" src="_images/4891d5d3c02254d71abc9ec21f881e6e39bf85cccce884d5b4b8fc3c452516de.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Diagram namesto pričakovane krožnice prikazuje elipso. Enaki enoti na obeh oseh lahko dosežemo z uporabo koordinatnega sistema <code class="docutils literal notranslate"><span class="pre">coord_equal</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">kroznica</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">coord_equal</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/59defb2c30694f889b13bd0ecc5c768347ef2a9e04ad3ff3802c7c9700581fcb.png" src="_images/59defb2c30694f889b13bd0ecc5c768347ef2a9e04ad3ff3802c7c9700581fcb.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>V statističnih diagramih lahko uporabljamo tudi <em>polarni</em> koordinatni sistem. Če v polarnem koordinatnem sistemu narišemo stolpčni diagram nastane tortni diagram, ki ga poznamo iz programov za delo s preglednicami:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ocene_ana</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">ime</span> <span class="o">==</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">ocene_ana</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">coord_polar</span><span class="p">(</span><span class="n">theta</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ocene_ana</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">ime</span> <span class="o">==</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">ocene_ana</span><span class="p">)</span> <span class="o">+</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="p">)</span> <span class="o">+</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span> <span class="o">+</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">p9</span><span class="o">.</span><span class="n">coord_polar</span><span class="p">(</span><span class="n">theta</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="p">)</span>
+
+<span class="ne">AttributeError</span>: module &#39;plotnine&#39; has no attribute &#39;coord_polar&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>V tem trenutku <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> ne omogoča uporabe polarnega koordinatnega sistema.</p>
 </section>
 <section id="prilagajanje-pozicije-angl-position-adjustment">
 <h2>Prilagajanje pozicije, angl. <em>position adjustment</em><a class="headerlink" href="#prilagajanje-pozicije-angl-position-adjustment" title="Permalink to this heading">#</a></h2>
+<p>V statističnih diagramih pogosto, zaradi prevelike gostote prikazanih geometrijskih objektov in njihove premajhne medsebojne razdalje, se objekti začnejo prekrivati in skrivati en drugega. V takih primerih moramo izbrati metodo, ki <strong>prerazporedi pozicije objektov</strong> tako, da prekrivanje omili ali se mu popolnoma izogne. Tej metodi rečemo <em>prilagajanje pozicije</em> in predstavlja nadaljnji element slovnice statističnih diagramov.</p>
+<p>Tako, na primer, v stolpčnih diagramih lahko postavimo stolpce, ki ustrezajo različnim spremenljivkam en zraven drugega (<code class="docutils literal notranslate"><span class="pre">dodge</span></code>) ali pa jih naložimo en na drugega (<code class="docutils literal notranslate"><span class="pre">stack</span></code> oziroma <code class="docutils literal notranslate"><span class="pre">fill</span></code>). Za omilitev prekrivanja točk pa lahko uporabimo <code class="docutils literal notranslate"><span class="pre">jitter</span></code>, t.j., naključno prilagajanje pozicije.</p>
+<p>Primer geometrijskih objektov, kjer skoraj vedno pride do prekrivanja je <code class="docutils literal notranslate"><span class="pre">geom_col</span></code>, ki smo ga uporabili v zadnjem primeru prejšnjega razdelka. Pravzaprav imajo vsi geometrijski objekti (pravokotniki), ki ustrezajo Ani isto vrednost estetske lastnosti <code class="docutils literal notranslate"><span class="pre">x</span></code> in različne vrednosti <code class="docutils literal notranslate"><span class="pre">y</span></code>. Zato bi se morali vsi štirje pravokotniki za Ano prekrivati, tako da so vsa njihova oglišča levo spodaj biti na poziciji <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>. A kot vidimo na diagramu, se to ne zgodi, ker <code class="docutils literal notranslate"><span class="pre">geom_col</span></code> samodejno spremeni pozicije pravokotnikov v <code class="docutils literal notranslate"><span class="pre">stack</span></code>. To nastavitev lahko spremenimo z nastavitvijo argumenta <code class="docutils literal notranslate"><span class="pre">position</span></code>, katere vrednost dobimo s klicem ustrezne funkcije s predpono <code class="docutils literal notranslate"><span class="pre">position_</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">position_dodge</span><span class="p">())</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_col : Removed 4 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/da6ad3ea801abf5cf1b4a613fd18d78e5229da700807d0aea366994afa237845.png" src="_images/da6ad3ea801abf5cf1b4a613fd18d78e5229da700807d0aea366994afa237845.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo poskusi klice funkcij <code class="docutils literal notranslate"><span class="pre">position_fill()</span></code> in <code class="docutils literal notranslate"><span class="pre">position_jitter()</span></code> in ugotovi, katere nastavitve so smiselne za stolpčne diagrame.</p>
 </section>
 <section id="vec-vidikov-angl-faceting">
 <h2>Več vidikov, angl. <em>faceting</em><a class="headerlink" href="#vec-vidikov-angl-faceting" title="Permalink to this heading">#</a></h2>
@@ -1104,6 +1541,7 @@ studenti_ocene =
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcije-za-legende">Funkcije za legende</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koordinatni-sistem">Koordinatni sistem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
