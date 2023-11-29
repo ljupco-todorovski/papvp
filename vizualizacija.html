@@ -397,7 +397,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koordinatni-sistem">Koordinatni sistem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov">Več vidikov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
             </nav>
@@ -412,7 +412,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vizualizacija-podatkov">
 <h1>Vizualizacija podatkov<a class="headerlink" href="#vizualizacija-podatkov" title="Permalink to this heading">#</a></h1>
-<p>Vizualizacija podatkov je faza analize podatkov, kjer poskrbimo za grafično ponazoritev tabelaričnih podatkov. Osnovno orodje pri vizualizaciji je <strong>statistični diagram</strong>. Slednji je preslikava spremenljivk podatkovne tabele v estetske lastnosti geometrijskih objektov. Tako, na primer, <em>razsevni diagram</em> preslika vrednosti numeričnih spremenljivk <span class="math notranslate nohighlight">\(X\)</span> in <span class="math notranslate nohighlight">\(Y\)</span> v pozicije (estetske lastnosti) točk (geometrijske objekte): vrednost spremenljivke <span class="math notranslate nohighlight">\(X\)</span> preslika v horizontalno pozicijo (na osi <span class="math notranslate nohighlight">\(x\)</span> diagrama), <span class="math notranslate nohighlight">\(Y\)</span> pa v vertikalno pozicijo (na osi <span class="math notranslate nohighlight">\(y\)</span>). Primeri geometrijskih objektov, ki jih pogosto uporabljamo v diagramih, so točka, črta ali pravokotnik. Estetske lastnosti točke so njena (horizontalna in vertikalna) pozicija ali lega, velikost, oblika in barva.</p>
+<p>Vizualizacija je faza podatkovne analize, kjer poskrbimo za grafično ponazoritev tabelaričnih podatkov. Osnovno orodje pri vizualizaciji je <strong>statistični diagram</strong>. Slednji je preslikava spremenljivk podatkovne tabele v estetske lastnosti geometrijskih objektov. Tako, na primer, <em>razsevni diagram</em> preslika vrednosti numeričnih spremenljivk <span class="math notranslate nohighlight">\(X\)</span> in <span class="math notranslate nohighlight">\(Y\)</span> v pozicije (estetske lastnosti) točk (geometrijske objekte): vrednost spremenljivke <span class="math notranslate nohighlight">\(X\)</span> preslika v horizontalno pozicijo (na osi <span class="math notranslate nohighlight">\(x\)</span> diagrama), <span class="math notranslate nohighlight">\(Y\)</span> pa v vertikalno pozicijo (na osi <span class="math notranslate nohighlight">\(y\)</span>). Primeri geometrijskih objektov, ki jih pogosto uporabljamo v diagramih, so točka, črta ali pravokotnik. Estetske lastnosti točke so njena (horizontalna in vertikalna) pozicija ali lega, velikost, oblika in barva.</p>
 <p>Običajni pristop k sestavljanju statističnih diagramov predvideva izbor oblike diagrama iz neke knjižnice možnih oblik in njihovo povezovanje s spremenljivkami podatkovne množice. Tak pristop uporabljajo programi za delo s preglednicami, kot sta, na primer, <em>MS Excel</em> ali <em>Google Sheets</em>.</p>
 <p>Python-ovska knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> uporablja drugačen pristop, ki sloni na <strong>slovnici statističnih diagramov</strong> definirani v članku <a class="reference external" href="https://doi.org/10.1198/jcgs.2009.07098">(Wickham 2010)</a>. Slovnica določa množico <strong>osnovnih sestavnih elementov diagramov</strong>, ki jih lahko sami sestavljamo v statistične diagrame. Slovnica tako omogoča, da presežemo specifiko vnaprej pripravljenih diagramov (npr. zgoraj omenjeni razsevni diagram za dve numerični spremenljivki v programu za delo s preglednicami) z bolj splošnimi elementi za sestavljanje statističnih diagramov poljubne oblike. Slovnico implementira knjižnica <a class="reference external" href="https://ggplot2.tidyverse.org/"><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></a> v R-ju, ki je dobila tudi svojo Python-ovsko različico <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. Ker je <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> daleč bolj znana in popularna knjižnica, boste veliko lažje našli ustrezne informacije, če pri iskanju uporabljate ključno besedo <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> namesto <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>.</p>
 <p>V podpoglavjih spodaj bomo spoznali elemente slovnice statističnih diagramov na konkretnih primerih. Python-ovska knjižnica <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> nam omogoča enostavno in postopno sestavljanje elementov z (neobičajno) uporabo operatorja <code class="docutils literal notranslate"><span class="pre">+</span></code>. Ker je vsak element definiran v svojem razdelku klica funkcije, ločenem z operatorjem <code class="docutils literal notranslate"><span class="pre">+</span></code>, lahko vsak element oblikujemo neodvisno od ostalih in (obliko) diagram(a) razvijamo po korakih. Pred nadaljevanjem pripravimo knjižnice in podatke za vizualizacijo, t.j., rezultate študentov na kolokvijih:</p>
@@ -727,6 +727,7 @@ studenti_ocene =
 </div>
 </div>
 </div>
+<p>Če tore zamenjajmo vrstni red kategorij z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">reorder_categories</span></code>, bomo dobili želeno razporeditev vrednosti v stolpcih diagrama:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
@@ -965,7 +966,7 @@ studenti_ocene =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_7117/3229582693.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_42792/3229582693.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1025,7 +1026,7 @@ studenti_ocene =
 </table>
 </div></div></div>
 </div>
-<p>Zdaj bomo prvemu diagramu iz tega razdelka dodali nov plast, ki uporablja podatke iz tabele <code class="docutils literal notranslate"><span class="pre">naj_ocene</span></code>. Tako kot smo prej za plast definirali lokalne estetske preslikave, bomo zdaj definirali še lokalno podatkovno tabelo znotraj klica funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_point.html"><code class="docutils literal notranslate"><span class="pre">geom_point</span></code></a>:</p>
+<p>Zdaj bomo prvemu diagramu iz tega razdelka dodali novo plast, ki uporablja podatke iz tabele <code class="docutils literal notranslate"><span class="pre">naj_ocene</span></code>. Tako kot smo prej za plast definirali lokalne estetske preslikave, bomo zdaj definirali še lokalno podatkovno tabelo znotraj klica funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_point.html"><code class="docutils literal notranslate"><span class="pre">geom_point</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1147,7 +1148,7 @@ studenti_ocene =
 </section>
 <section id="funkcije-za-legende">
 <h3>Funkcije za legende<a class="headerlink" href="#funkcije-za-legende" title="Permalink to this heading">#</a></h3>
-<p>Funkcije za nastavljanje legend s predpono <code class="docutils literal notranslate"><span class="pre">scale_</span></code> so podobne funkcijam za nastavljanje osi. Tudi njihovi argumenti so enaki. Poglejmo primer:</p>
+<p>Funkcije za nastavljanje legend imajo predpono <code class="docutils literal notranslate"><span class="pre">scale_</span></code> in so podobne funkcijam za nastavljanje osi. Tudi njihovi argumenti so enaki. Poglejmo primer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1161,7 +1162,7 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
@@ -1171,7 +1172,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/118d76967b19f7bee8e3573fb312156ea07e973292a26ed4f6b4abb75088fb42.png" src="_images/118d76967b19f7bee8e3573fb312156ea07e973292a26ed4f6b4abb75088fb42.png" />
+<img alt="_images/2d2784352351be92d5014e48a283535c08ab3e6c160c37987837b6ea91d7daa3.png" src="_images/2d2784352351be92d5014e48a283535c08ab3e6c160c37987837b6ea91d7daa3.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1191,7 +1192,7 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
 <span class="p">)</span>
@@ -1202,7 +1203,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/9d287a07fa03d71ef556512c8215fc7c6853c6a319087eebc8b7f515cbc2b567.png" src="_images/9d287a07fa03d71ef556512c8215fc7c6853c6a319087eebc8b7f515cbc2b567.png" />
+<img alt="_images/3c27338ab6257aae466242fcee74efa5e80a5f33a3dce5f5fac902a8d6a7c805.png" src="_images/3c27338ab6257aae466242fcee74efa5e80a5f33a3dce5f5fac902a8d6a7c805.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1240,12 +1241,12 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_shape_manual</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
         <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">]</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_linetype_manual</span><span class="p">(</span>
       <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
       <span class="n">values</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))],</span>
-      <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+      <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">]</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
@@ -1256,14 +1257,14 @@ studenti_ocene =
 /Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/f4fd2b8f63b912a49835a98f3f597265268a352dae338b05bb060e7298d39160.png" src="_images/f4fd2b8f63b912a49835a98f3f597265268a352dae338b05bb060e7298d39160.png" />
+<img alt="_images/d01f006cfc9365e37fc210323b276c4946edd6e1755f38461bde04560634b837.png" src="_images/d01f006cfc9365e37fc210323b276c4946edd6e1755f38461bde04560634b837.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>Pozor, vrednost argumenta <code class="docutils literal notranslate"><span class="pre">values</span></code> funkcije <code class="docutils literal notranslate"><span class="pre">scale_shape_manual</span></code> je seznam oblik točk. Oznake za možne oblike točk definira knjižnica <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> in jih imenuje <a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">označevalce</a> (angl. <em>markers</em>).</p>
-<p>S klicem funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.themes.theme.html"><code class="docutils literal notranslate"><span class="pre">theme</span></code></a> in nastavitvijo argumenta <code class="docutils literal notranslate"><span class="pre">legend.position</span></code> omogoča spreminjanje pozicije legend na <code class="docutils literal notranslate"><span class="pre">&quot;bottom&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;top&quot;</span></code> ali pa na poljubno pozicijo na diagramu <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> določeno s koordinatami <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<p>S klicem funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.themes.theme.html"><code class="docutils literal notranslate"><span class="pre">theme</span></code></a> in nastavitvijo argumenta <code class="docutils literal notranslate"><span class="pre">legend.position</span></code> lahko spreminjamo pozicije legend na <code class="docutils literal notranslate"><span class="pre">&quot;bottom&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;top&quot;</span></code> ali pa na poljubno pozicijo na diagramu <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> določeno s koordinatami <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -1277,7 +1278,7 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
@@ -1289,7 +1290,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/65f5d2f5f1c0d1d5554634e9a09d6ffdd317d79687a85204e85a86f64144bfa1.png" src="_images/65f5d2f5f1c0d1d5554634e9a09d6ffdd317d79687a85204e85a86f64144bfa1.png" />
+<img alt="_images/29746ceba051fc3125cfe3a647b4b3511be775f1592316130b039d9ff2e40845.png" src="_images/29746ceba051fc3125cfe3a647b4b3511be775f1592316130b039d9ff2e40845.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1309,7 +1310,7 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">()</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -1322,7 +1323,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:344: PlotnineWarning: position_stack : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/fdb54a02970491199615200722ef799b3e1956c940bcc2991ae5c7a1ec39aaaf.png" src="_images/fdb54a02970491199615200722ef799b3e1956c940bcc2991ae5c7a1ec39aaaf.png" />
+<img alt="_images/36cb50950314ec015ad1f8a02a142493e1ffdbd82d7865541d250a5c4e86a1c3.png" src="_images/36cb50950314ec015ad1f8a02a142493e1ffdbd82d7865541d250a5c4e86a1c3.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1445,7 +1446,7 @@ studenti_ocene =
     <span class="n">p9</span><span class="o">.</span><span class="n">geom_col</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">position_dodge</span><span class="p">())</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">scale_fill_discrete</span><span class="p">(</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zap. št. kolokvija&quot;</span><span class="p">,</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -1458,7 +1459,7 @@ studenti_ocene =
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_col : Removed 4 rows containing missing values.
 </pre></div>
 </div>
-<img alt="_images/da6ad3ea801abf5cf1b4a613fd18d78e5229da700807d0aea366994afa237845.png" src="_images/da6ad3ea801abf5cf1b4a613fd18d78e5229da700807d0aea366994afa237845.png" />
+<img alt="_images/4363bc177ae68c1a37fc93cf1433f48532b95133b0563c4439e82e3b14bb5762.png" src="_images/4363bc177ae68c1a37fc93cf1433f48532b95133b0563c4439e82e3b14bb5762.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1466,8 +1467,105 @@ studenti_ocene =
 </div>
 <p>Za vajo poskusi klice funkcij <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.positions.position_fill.html"><code class="docutils literal notranslate"><span class="pre">position_fill</span></code></a> in <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.positions.position_jitter.html"><code class="docutils literal notranslate"><span class="pre">position_jitter</span></code></a> in ugotovi, katere nastavitve so smiselne za stolpčne diagrame.</p>
 </section>
-<section id="vec-vidikov-angl-faceting">
-<h2>Več vidikov, angl. <em>faceting</em><a class="headerlink" href="#vec-vidikov-angl-faceting" title="Permalink to this heading">#</a></h2>
+<section id="vec-vidikov">
+<h2>Več vidikov<a class="headerlink" href="#vec-vidikov" title="Permalink to this heading">#</a></h2>
+<p>Zadnji element slovnice statističnih diagramov, <strong>več vidikov</strong> (angl. <em>faceting</em>) uporabimo takrat, ko hočemo pripraviti več diagramov iste oblike za različne dele podatkovne tabele. Običajno jih uporabljamo takrat, ko hočemo te dele medsebojno primerjati. Več vidikov določimo z uporabo funkcije s predpono <code class="docutils literal notranslate"><span class="pre">facet_</span></code> in navedbo diskretnih spremenljivk, katerih vrednosti bodo razdelile podatkovno tabelo na več delov, podobno kot to naredi funkcija <code class="docutils literal notranslate"><span class="pre">groupby</span></code>.</p>
+<p>Oglejmo si primer uporabe funkcije <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.facets.facet_wrap.html"><code class="docutils literal notranslate"><span class="pre">facet_wrap</span></code></a> za risanje diagrama, ki prikazuje dosežke posameznih študentk in študentov (te ustrezajo različnim vidikom) na kolokvijih:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Rezultat na kolokviju&quot;</span><span class="p">,</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+        <span class="n">na_value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_x_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zaporedna št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">facet_wrap</span><span class="p">(</span>
+        <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">nrow</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scales.py:50: PlotnineWarning: Scale for &#39;y&#39; is already present.
+Adding another scale for &#39;y&#39;,
+which will replace the existing scale.
+</pre></div>
+</div>
+<img alt="_images/b06293faa6b950c7e8b0ff7da4f06fb901d69999e6ea60b3856f5fd391d78f6c.png" src="_images/b06293faa6b950c7e8b0ff7da4f06fb901d69999e6ea60b3856f5fd391d78f6c.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Z nastavitvijo argumenta <code class="docutils literal notranslate"><span class="pre">nrow</span> <span class="pre">=</span> <span class="pre">3</span></code> dosežemo, da so diagrami za posameznike razporejeni v treh vrsticah. Opažamo, da je vrstni red nenavaden, zato obrnemo kategorije spremenljivke <code class="docutils literal notranslate"><span class="pre">semester_kolokvij</span></code> tako, kot smo jih prej v prvem delu teh zapiskov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kategorije</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">kategorije</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">semester_kolokvij</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">reorder_categories</span><span class="p">(</span>
+    <span class="n">new_categories</span> <span class="o">=</span> <span class="n">kategorije</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In ponovno narišemo isti diagram, a tokrat v dveh vrsticah:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;semester_kolokvij&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_line</span><span class="p">(</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_y_continuous</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Rezultat na kolokviju&quot;</span><span class="p">,</span>
+        <span class="n">breaks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+        <span class="n">na_value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">scale_x_discrete</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Zaporedna št. kolokvija&quot;</span><span class="p">,</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">facet_wrap</span><span class="p">(</span>
+        <span class="s2">&quot;ime&quot;</span><span class="p">,</span>
+        <span class="n">nrow</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/scales/scales.py:50: PlotnineWarning: Scale for &#39;y&#39; is already present.
+Adding another scale for &#39;y&#39;,
+which will replace the existing scale.
+</pre></div>
+</div>
+<img alt="_images/e9c28174624b765c3bb45d491aafbd925bf812529e00ad8db138a963c43e1685.png" src="_images/e9c28174624b765c3bb45d491aafbd925bf812529e00ad8db138a963c43e1685.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="naloge">
 <h2>Naloge<a class="headerlink" href="#naloge" title="Permalink to this heading">#</a></h2>
@@ -1544,7 +1642,7 @@ studenti_ocene =
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koordinatni-sistem">Koordinatni sistem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prilagajanje-pozicije-angl-position-adjustment">Prilagajanje pozicije, angl. <em>position adjustment</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov-angl-faceting">Več vidikov, angl. <em>faceting</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vec-vidikov">Več vidikov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
   </nav></div>
