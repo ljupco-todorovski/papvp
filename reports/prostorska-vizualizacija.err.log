@@ -1,0 +1,94 @@
+Traceback (most recent call last):
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+temp_svet.columns = ["country", "avg_temp"]
+temp_svet.avg_tem = temp_svet.avg_temp.astype("float")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[13], line 2[0m
+[1;32m      1[0m temp_svet[38;5;241m.[39mcolumns [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mcountry[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mavg_temp[39m[38;5;124m"[39m]
+[0;32m----> 2[0m temp_svet[38;5;241m.[39mavg_tem [38;5;241m=[39m [43mtemp_svet[49m[38;5;241;43m.[39;49m[43mavg_temp[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mfloat[39;49m[38;5;124;43m"[39;49m[43m)[49m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6532[0m, in [0;36mNDFrame.astype[0;34m(self, dtype, copy, errors)[0m
+[1;32m   6528[0m     results [38;5;241m=[39m [ser[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy) [38;5;28;01mfor[39;00m _, ser [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mitems()]
+[1;32m   6530[0m [38;5;28;01melse[39;00m:
+[1;32m   6531[0m     [38;5;66;03m# else, only a single dtype is given[39;00m
+[0;32m-> 6532[0m     new_data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mgr[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m[43m [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m)[49m
+[1;32m   6533[0m     res [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_constructor_from_mgr(new_data, axes[38;5;241m=[39mnew_data[38;5;241m.[39maxes)
+[1;32m   6534[0m     [38;5;28;01mreturn[39;00m res[38;5;241m.[39m__finalize__([38;5;28mself[39m, method[38;5;241m=[39m[38;5;124m"[39m[38;5;124mastype[39m[38;5;124m"[39m)
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:414[0m, in [0;36mBaseBlockManager.astype[0;34m(self, dtype, copy, errors)[0m
+[1;32m    411[0m [38;5;28;01melif[39;00m using_copy_on_write():
+[1;32m    412[0m     copy [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[0;32m--> 414[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m
+[1;32m    415[0m [43m    [49m[38;5;124;43m"[39;49m[38;5;124;43mastype[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    416[0m [43m    [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m
+[1;32m    417[0m [43m    [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m
+[1;32m    418[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
+[1;32m    419[0m [43m    [49m[43musing_cow[49m[38;5;241;43m=[39;49m[43musing_copy_on_write[49m[43m([49m[43m)[49m[43m,[49m
+[1;32m    420[0m [43m[49m[43m)[49m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354[0m, in [0;36mBaseBlockManager.apply[0;34m(self, f, align_keys, **kwargs)[0m
+[1;32m    352[0m         applied [38;5;241m=[39m b[38;5;241m.[39mapply(f, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    353[0m     [38;5;28;01melse[39;00m:
+[0;32m--> 354[0m         applied [38;5;241m=[39m [38;5;28;43mgetattr[39;49m[43m([49m[43mb[49m[43m,[49m[43m [49m[43mf[49m[43m)[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    355[0m     result_blocks [38;5;241m=[39m extend_blocks(applied, result_blocks)
+[1;32m    357[0m out [38;5;241m=[39m [38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39mfrom_blocks(result_blocks, [38;5;28mself[39m[38;5;241m.[39maxes)
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:616[0m, in [0;36mBlock.astype[0;34m(self, dtype, copy, errors, using_cow)[0m
+[1;32m    596[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[1;32m    597[0m [38;5;124;03mCoerce to the new dtype.[39;00m
+[1;32m    598[0m 
+[0;32m   (...)[0m
+[1;32m    612[0m [38;5;124;03mBlock[39;00m
+[1;32m    613[0m [38;5;124;03m"""[39;00m
+[1;32m    614[0m values [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mvalues
+[0;32m--> 616[0m new_values [38;5;241m=[39m [43mastype_array_safe[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m[43m [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m)[49m
+[1;32m    618[0m new_values [38;5;241m=[39m maybe_coerce_values(new_values)
+[1;32m    620[0m refs [38;5;241m=[39m [38;5;28;01mNone[39;00m
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:238[0m, in [0;36mastype_array_safe[0;34m(values, dtype, copy, errors)[0m
+[1;32m    235[0m     dtype [38;5;241m=[39m dtype[38;5;241m.[39mnumpy_dtype
+[1;32m    237[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 238[0m     new_values [38;5;241m=[39m [43mastype_array[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m)[49m
+[1;32m    239[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mValueError[39;00m, [38;5;167;01mTypeError[39;00m):
+[1;32m    240[0m     [38;5;66;03m# e.g. _astype_nansafe can fail on object-dtype of strings[39;00m
+[1;32m    241[0m     [38;5;66;03m#  trying to convert to float[39;00m
+[1;32m    242[0m     [38;5;28;01mif[39;00m errors [38;5;241m==[39m [38;5;124m"[39m[38;5;124mignore[39m[38;5;124m"[39m:
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:183[0m, in [0;36mastype_array[0;34m(values, dtype, copy)[0m
+[1;32m    180[0m     values [38;5;241m=[39m values[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy)
+[1;32m    182[0m [38;5;28;01melse[39;00m:
+[0;32m--> 183[0m     values [38;5;241m=[39m [43m_astype_nansafe[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m)[49m
+[1;32m    185[0m [38;5;66;03m# in pandas we don't store numpy str dtypes, so convert to object[39;00m
+[1;32m    186[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(dtype, np[38;5;241m.[39mdtype) [38;5;129;01mand[39;00m [38;5;28missubclass[39m(values[38;5;241m.[39mdtype[38;5;241m.[39mtype, [38;5;28mstr[39m):
+
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:134[0m, in [0;36m_astype_nansafe[0;34m(arr, dtype, copy, skipna)[0m
+[1;32m    130[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    132[0m [38;5;28;01mif[39;00m copy [38;5;129;01mor[39;00m arr[38;5;241m.[39mdtype [38;5;241m==[39m [38;5;28mobject[39m [38;5;129;01mor[39;00m dtype [38;5;241m==[39m [38;5;28mobject[39m:
+[1;32m    133[0m     [38;5;66;03m# Explicit copy, or required since NumPy can't view from / to object.[39;00m
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m [43marr[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[1;32m    136[0m [38;5;28;01mreturn[39;00m arr[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy)
+
+[0;31mValueError[0m: could not convert string to float: '−0.70'
+

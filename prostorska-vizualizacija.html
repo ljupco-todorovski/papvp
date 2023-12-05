@@ -1,0 +1,2189 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Prostorska vizualizacija podatkov &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'prostorska-vizualizacija';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Vizualizacija podatkov" href="vizualizacija.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Namesto uvoda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="urejanje-podatkov.html">Od podatkov do podatkovnih tabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vizualizacija.html">Vizualizacija podatkov</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prostorska vizualizacija podatkov</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Fprostorska-vizualizacija.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/prostorska-vizualizacija.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prostorska vizualizacija podatkov</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viri-zemljepisnih-podatkov">Viri zemljepisnih podatkov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljepis-sveta-in-evrope">Zemljepis sveta in Evrope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave">Mapa povprečnih temperatur zraka za Evropske države</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevidi-administrativnih-enot-slovenije">Zemljevidi administrativnih enot Slovenije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prostorska-vizualizacija-podatkov">
+<h1>Prostorska vizualizacija podatkov<a class="headerlink" href="#prostorska-vizualizacija-podatkov" title="Permalink to this heading">#</a></h1>
+<p>Pri vizualizaciji podatkov se pogosto srečujemo z dimenzijskimi spremenljivkami, ki ustrezajo prostorsko-zemljepisnimi vrednostmi. Primer take spremenljivke je <code class="docutils literal notranslate"><span class="pre">drzava</span></code> za podatke, ki se nanašajo na več držav. Tudi <code class="docutils literal notranslate"><span class="pre">regija</span></code> za podatke, ki se nanašajo na Slovenijo. Vizualizacija takih podatkov je bolj nazorna, če podatke prikažemo na zemljevidu. Pogosto uporabljena estetska lastnost zemljevidov je barva: v statističnem diagramu državo ali regijo pobarvamo tako, da z intenziteto barve ponazorimo vrednost izbrane numerične ali diskretne spremenljivke.</p>
+<p>Za prostorsko vizualizacijo podatkov s knjižnico <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> uporabljamo geometrijski objekt <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_map.html"><code class="docutils literal notranslate"><span class="pre">geom_map</span></code></a>. Ta geometrijski objekt rabi posebno podatkovno tabelo, kjer vsaka vrstica ustreza eni zemljepisni enoti (npr. državi, regiji ali občini). Vrednosti ene od spremenljivk v taki podatkovni tabeli, ki je običajno poimenovana <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, definirajo poligone, ki definirajo robove (meje) za izris pripadajoče zemljepisne enote.</p>
+<p>Zemljepisni podatki so običajno zbrani v okviru <a class="reference external" href="https://en.wikipedia.org/wiki/Geographic_information_system">geografskih informacijskih sistemov, GIS</a>. Področje GIS je široko in za uporabo podatkov GIS je potrebno veliko predznanja o različnih formatih zemljepisnih podatkov. Različne knjižnice nam omogočajo, da iz javno dostopnih GIS pridelamo poligone, ki orišejo zemljepisne enote v naših podatkih. Python-ovska knjižnica, ki nam omogoča delo s podatki GIS je <a class="reference external" href="https://geopandas.org/"><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></a>. Format zemljepisnih podatkov, ki ga bomo uporabljali za risanje prostorskih diagramov je <a class="reference external" href="https://en.wikipedia.org/wiki/Shapefile"><code class="docutils literal notranslate"><span class="pre">shapefile</span></code></a>.</p>
+<section id="viri-zemljepisnih-podatkov">
+<h2>Viri zemljepisnih podatkov<a class="headerlink" href="#viri-zemljepisnih-podatkov" title="Permalink to this heading">#</a></h2>
+<p>Poglejmo nekaj virov za pridobivanje javno dostopnih zemljepisnih podatkov:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.naturalearthdata.com/downloads/">Natural Earth Data</a> ponuja zemljepisne podatke za svet. Podatki so v treh resolucijah, 10, 50 in 110 metrov. Za nas so še posebej zanimivi podatki tipa <code class="docutils literal notranslate"><span class="pre">Cultural</span></code>, ki definirajo poligone za zemljepisne enote, ki ustrezajo državam sveta. Format podatkov je zgoraj omenjeni <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/ned/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
+<li><p><a class="reference external" href="https://ipi.eprostor.gov.si/jgp/data">Portal e-prostor</a> ponuja podatke za različne zemljepisne enote v Sloveniji (regije, občine, volilne enote in podobno). Format podatkov je zgoraj omenjeni <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/eprostor/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
+<li><p><a class="reference external" href="https://ec.europa.eu/eurostat/web/nuts/background">Portal Eurostat</a> ponuja podatke za zemljepisne enote v Evropi, države in regije. Podatki so na voljo v različnih formatih, v formatu <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>, so dostopni <a class="reference external" href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">tukaj</a>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/nuts/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
+</ul>
+</section>
+<section id="zemljepis-sveta-in-evrope">
+<h2>Zemljepis sveta in Evrope<a class="headerlink" href="#zemljepis-sveta-in-evrope" title="Permalink to this heading">#</a></h2>
+<p>Poglejmo najprej podatke, ki jih ponuja portal Natural Earth Data. Za prebiranje podatkov v formatu <code class="docutils literal notranslate"><span class="pre">shapefile</span></code> uporabimo funkcijo <a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.read_file.html"><code class="docutils literal notranslate"><span class="pre">read_file</span></code></a> knjižnice <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">p9</span>
+
+<span class="n">gp_svet</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/ned/10m/ne_10m_admin_0_countries.shp&quot;</span><span class="p">)</span>
+<span class="n">gp_svet</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>featurecla</th>
+      <th>scalerank</th>
+      <th>LABELRANK</th>
+      <th>SOVEREIGNT</th>
+      <th>SOV_A3</th>
+      <th>ADM0_DIF</th>
+      <th>LEVEL</th>
+      <th>TYPE</th>
+      <th>TLC</th>
+      <th>ADMIN</th>
+      <th>...</th>
+      <th>FCLASS_TR</th>
+      <th>FCLASS_ID</th>
+      <th>FCLASS_PL</th>
+      <th>FCLASS_GR</th>
+      <th>FCLASS_IT</th>
+      <th>FCLASS_NL</th>
+      <th>FCLASS_SE</th>
+      <th>FCLASS_BD</th>
+      <th>FCLASS_UA</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Indonesia</td>
+      <td>IDN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Sovereign country</td>
+      <td>1</td>
+      <td>Indonesia</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>MULTIPOLYGON (((117.70361 4.16341, 117.70361 4...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Malaysia</td>
+      <td>MYS</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Sovereign country</td>
+      <td>1</td>
+      <td>Malaysia</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>MULTIPOLYGON (((117.70361 4.16341, 117.69711 4...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Chile</td>
+      <td>CHL</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Sovereign country</td>
+      <td>1</td>
+      <td>Chile</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>MULTIPOLYGON (((-69.51009 -17.50659, -69.50611...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Bolivia</td>
+      <td>BOL</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Sovereign country</td>
+      <td>1</td>
+      <td>Bolivia</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POLYGON ((-69.51009 -17.50659, -69.51009 -17.5...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Peru</td>
+      <td>PER</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Sovereign country</td>
+      <td>1</td>
+      <td>Peru</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>MULTIPOLYGON (((-69.51009 -17.50659, -69.63832...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>Admin-0 country</td>
+      <td>0</td>
+      <td>4</td>
+      <td>China</td>
+      <td>CH1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Country</td>
+      <td>1</td>
+      <td>Macao S.A.R</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>MULTIPOLYGON (((113.55860 22.16303, 113.56943 ...</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>Admin-0 country</td>
+      <td>6</td>
+      <td>5</td>
+      <td>Australia</td>
+      <td>AU1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Dependency</td>
+      <td>1</td>
+      <td>Ashmore and Cartier Islands</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POLYGON ((123.59702 -12.42832, 123.59775 -12.4...</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>Admin-0 country</td>
+      <td>6</td>
+      <td>8</td>
+      <td>Bajo Nuevo Bank (Petrel Is.)</td>
+      <td>BJN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Indeterminate</td>
+      <td>1</td>
+      <td>Bajo Nuevo Bank (Petrel Is.)</td>
+      <td>...</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>POLYGON ((-79.98929 15.79495, -79.98782 15.796...</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>Admin-0 country</td>
+      <td>6</td>
+      <td>5</td>
+      <td>Serranilla Bank</td>
+      <td>SER</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Indeterminate</td>
+      <td>1</td>
+      <td>Serranilla Bank</td>
+      <td>...</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>Unrecognized</td>
+      <td>POLYGON ((-78.63707 15.86209, -78.64041 15.864...</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>Admin-0 country</td>
+      <td>6</td>
+      <td>6</td>
+      <td>Scarborough Reef</td>
+      <td>SCR</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Indeterminate</td>
+      <td>1</td>
+      <td>Scarborough Reef</td>
+      <td>...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POLYGON ((117.75389 15.15437, 117.75569 15.151...</td>
+    </tr>
+  </tbody>
+</table>
+<p>258 rows × 169 columns</p>
+</div></div></div>
+</div>
+<p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">read_file</span></code> je torej podatkovna tabela (tipa <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>). V tem primeru ima tabela 258 vrstic, ki ustrezajo vsem administrativnim enotam sveta. Večina teh je suverenih držav, kakšne so zgolj administrativna območja brez dokončnega mednarodnega statusa. Izpis zgoraj kaže nekaj od 169 spremenljivk podatkovne tabele.</p>
+<p>Za izris administrativnih enot je ključna zadnja spremenljivka <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. To spremenljivko uporabi geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom_map</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. Poglejmo osnovni izris te podatkovne tabele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gp_svet</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c734bb2df98ced1777fa521919fc172e01346a142517712c0e4ca030fc9e4961.png" src="_images/c734bb2df98ced1777fa521919fc172e01346a142517712c0e4ca030fc9e4961.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo pregled stolpcev podatkovne tabele <code class="docutils literal notranslate"><span class="pre">gp_svet</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gp_svet</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;featurecla&#39;, &#39;scalerank&#39;, &#39;LABELRANK&#39;, &#39;SOVEREIGNT&#39;, &#39;SOV_A3&#39;, &#39;ADM0_DIF&#39;, &#39;LEVEL&#39;, &#39;TYPE&#39;, &#39;TLC&#39;, &#39;ADMIN&#39;, &#39;ADM0_A3&#39;, &#39;GEOU_DIF&#39;, &#39;GEOUNIT&#39;, &#39;GU_A3&#39;, &#39;SU_DIF&#39;, &#39;SUBUNIT&#39;, &#39;SU_A3&#39;, &#39;BRK_DIFF&#39;, &#39;NAME&#39;, &#39;NAME_LONG&#39;, &#39;BRK_A3&#39;, &#39;BRK_NAME&#39;, &#39;BRK_GROUP&#39;, &#39;ABBREV&#39;, &#39;POSTAL&#39;, &#39;FORMAL_EN&#39;, &#39;FORMAL_FR&#39;, &#39;NAME_CIAWF&#39;, &#39;NOTE_ADM0&#39;, &#39;NOTE_BRK&#39;, &#39;NAME_SORT&#39;, &#39;NAME_ALT&#39;, &#39;MAPCOLOR7&#39;, &#39;MAPCOLOR8&#39;, &#39;MAPCOLOR9&#39;, &#39;MAPCOLOR13&#39;, &#39;POP_EST&#39;, &#39;POP_RANK&#39;, &#39;POP_YEAR&#39;, &#39;GDP_MD&#39;, &#39;GDP_YEAR&#39;, &#39;ECONOMY&#39;, &#39;INCOME_GRP&#39;, &#39;FIPS_10&#39;, &#39;ISO_A2&#39;, &#39;ISO_A2_EH&#39;, &#39;ISO_A3&#39;, &#39;ISO_A3_EH&#39;, &#39;ISO_N3&#39;, &#39;ISO_N3_EH&#39;, &#39;UN_A3&#39;, &#39;WB_A2&#39;, &#39;WB_A3&#39;, &#39;WOE_ID&#39;, &#39;WOE_ID_EH&#39;, &#39;WOE_NOTE&#39;, &#39;ADM0_ISO&#39;, &#39;ADM0_DIFF&#39;, &#39;ADM0_TLC&#39;, &#39;ADM0_A3_US&#39;, &#39;ADM0_A3_FR&#39;, &#39;ADM0_A3_RU&#39;, &#39;ADM0_A3_ES&#39;, &#39;ADM0_A3_CN&#39;, &#39;ADM0_A3_TW&#39;, &#39;ADM0_A3_IN&#39;, &#39;ADM0_A3_NP&#39;, &#39;ADM0_A3_PK&#39;, &#39;ADM0_A3_DE&#39;, &#39;ADM0_A3_GB&#39;, &#39;ADM0_A3_BR&#39;, &#39;ADM0_A3_IL&#39;, &#39;ADM0_A3_PS&#39;, &#39;ADM0_A3_SA&#39;, &#39;ADM0_A3_EG&#39;, &#39;ADM0_A3_MA&#39;, &#39;ADM0_A3_PT&#39;, &#39;ADM0_A3_AR&#39;, &#39;ADM0_A3_JP&#39;, &#39;ADM0_A3_KO&#39;, &#39;ADM0_A3_VN&#39;, &#39;ADM0_A3_TR&#39;, &#39;ADM0_A3_ID&#39;, &#39;ADM0_A3_PL&#39;, &#39;ADM0_A3_GR&#39;, &#39;ADM0_A3_IT&#39;, &#39;ADM0_A3_NL&#39;, &#39;ADM0_A3_SE&#39;, &#39;ADM0_A3_BD&#39;, &#39;ADM0_A3_UA&#39;, &#39;ADM0_A3_UN&#39;, &#39;ADM0_A3_WB&#39;, &#39;CONTINENT&#39;, &#39;REGION_UN&#39;, &#39;SUBREGION&#39;, &#39;REGION_WB&#39;, &#39;NAME_LEN&#39;, &#39;LONG_LEN&#39;, &#39;ABBREV_LEN&#39;, &#39;TINY&#39;, &#39;HOMEPART&#39;, &#39;MIN_ZOOM&#39;, &#39;MIN_LABEL&#39;, &#39;MAX_LABEL&#39;, &#39;LABEL_X&#39;, &#39;LABEL_Y&#39;, &#39;NE_ID&#39;, &#39;WIKIDATAID&#39;, &#39;NAME_AR&#39;, &#39;NAME_BN&#39;, &#39;NAME_DE&#39;, &#39;NAME_EN&#39;, &#39;NAME_ES&#39;, &#39;NAME_FA&#39;, &#39;NAME_FR&#39;, &#39;NAME_EL&#39;, &#39;NAME_HE&#39;, &#39;NAME_HI&#39;, &#39;NAME_HU&#39;, &#39;NAME_ID&#39;, &#39;NAME_IT&#39;, &#39;NAME_JA&#39;, &#39;NAME_KO&#39;, &#39;NAME_NL&#39;, &#39;NAME_PL&#39;, &#39;NAME_PT&#39;, &#39;NAME_RU&#39;, &#39;NAME_SV&#39;, &#39;NAME_TR&#39;, &#39;NAME_UK&#39;, &#39;NAME_UR&#39;, &#39;NAME_VI&#39;, &#39;NAME_ZH&#39;, &#39;NAME_ZHT&#39;, &#39;FCLASS_ISO&#39;, &#39;TLC_DIFF&#39;, &#39;FCLASS_TLC&#39;, &#39;FCLASS_US&#39;, &#39;FCLASS_FR&#39;, &#39;FCLASS_RU&#39;, &#39;FCLASS_ES&#39;, &#39;FCLASS_CN&#39;, &#39;FCLASS_TW&#39;, &#39;FCLASS_IN&#39;, &#39;FCLASS_NP&#39;, &#39;FCLASS_PK&#39;, &#39;FCLASS_DE&#39;, &#39;FCLASS_GB&#39;, &#39;FCLASS_BR&#39;, &#39;FCLASS_IL&#39;, &#39;FCLASS_PS&#39;, &#39;FCLASS_SA&#39;, &#39;FCLASS_EG&#39;, &#39;FCLASS_MA&#39;, &#39;FCLASS_PT&#39;, &#39;FCLASS_AR&#39;, &#39;FCLASS_JP&#39;, &#39;FCLASS_KO&#39;, &#39;FCLASS_VN&#39;, &#39;FCLASS_TR&#39;, &#39;FCLASS_ID&#39;, &#39;FCLASS_PL&#39;, &#39;FCLASS_GR&#39;, &#39;FCLASS_IT&#39;, &#39;FCLASS_NL&#39;, &#39;FCLASS_SE&#39;, &#39;FCLASS_BD&#39;, &#39;FCLASS_UA&#39;, &#39;geometry&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nekaj stolpcev (spremenljivk) te tabele je ključnih za nadaljnjo uporabo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code> je ime države oziroma administrativne enote.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTINENT</span></code> je ime celine, kamor pripada opazovana administrativna enota.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ISO_A2</span></code> in <code class="docutils literal notranslate"><span class="pre">ISO_A3</span></code> sta kratici (dve črkovna in tri črkovna) <a class="reference external" href="https://en.wikipedia.org/wiki/International_Organization_for_Standardization">ISO</a> opazovane administrativne enote.</p></li>
+<li><p>Spremenljivke s predpono <code class="docutils literal notranslate"><span class="pre">MAPCOLOR</span></code> ponujajo smiselno številčenje držav za barvanje mape tako, da sosednje države so čim bolj kontrastnih barv. Vrednosti spremenljivk so celoštevilčne, pred uporabo jih moramo sami poskrbeti za njihovo pretvorbo v kategorije (spodaj je primer).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geomety</span></code> vsebuje definicije poligonov, s katerimi izrišemo obrobo izbrane administrativne enote.</p></li>
+</ul>
+<p>Poglejmo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_svet</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;CONTINENT&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO_A3&quot;</span><span class="p">,</span> <span class="s2">&quot;ISO_A2&quot;</span><span class="p">,</span> <span class="s2">&quot;MAPCOLOR7&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NAME</th>
+      <th>CONTINENT</th>
+      <th>ISO_A3</th>
+      <th>ISO_A2</th>
+      <th>MAPCOLOR7</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Indonesia</td>
+      <td>Asia</td>
+      <td>IDN</td>
+      <td>ID</td>
+      <td>6</td>
+      <td>MULTIPOLYGON (((117.70361 4.16341, 117.70361 4...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Malaysia</td>
+      <td>Asia</td>
+      <td>MYS</td>
+      <td>MY</td>
+      <td>2</td>
+      <td>MULTIPOLYGON (((117.70361 4.16341, 117.69711 4...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chile</td>
+      <td>South America</td>
+      <td>CHL</td>
+      <td>CL</td>
+      <td>5</td>
+      <td>MULTIPOLYGON (((-69.51009 -17.50659, -69.50611...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bolivia</td>
+      <td>South America</td>
+      <td>BOL</td>
+      <td>BO</td>
+      <td>1</td>
+      <td>POLYGON ((-69.51009 -17.50659, -69.51009 -17.5...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Peru</td>
+      <td>South America</td>
+      <td>PER</td>
+      <td>PE</td>
+      <td>4</td>
+      <td>MULTIPOLYGON (((-69.51009 -17.50659, -69.63832...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>Macao</td>
+      <td>Asia</td>
+      <td>MAC</td>
+      <td>MO</td>
+      <td>4</td>
+      <td>MULTIPOLYGON (((113.55860 22.16303, 113.56943 ...</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>Ashmore and Cartier Is.</td>
+      <td>Oceania</td>
+      <td>-99</td>
+      <td>-99</td>
+      <td>1</td>
+      <td>POLYGON ((123.59702 -12.42832, 123.59775 -12.4...</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>Bajo Nuevo Bank</td>
+      <td>North America</td>
+      <td>-99</td>
+      <td>-99</td>
+      <td>3</td>
+      <td>POLYGON ((-79.98929 15.79495, -79.98782 15.796...</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>Serranilla Bank</td>
+      <td>North America</td>
+      <td>-99</td>
+      <td>-99</td>
+      <td>3</td>
+      <td>POLYGON ((-78.63707 15.86209, -78.64041 15.864...</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>Scarborough Reef</td>
+      <td>Asia</td>
+      <td>-99</td>
+      <td>-99</td>
+      <td>3</td>
+      <td>POLYGON ((117.75389 15.15437, 117.75569 15.151...</td>
+    </tr>
+  </tbody>
+</table>
+<p>258 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Pred nadaljnjo uporabo popravimo tip spremenljivke <code class="docutils literal notranslate"><span class="pre">MAPCOLOR7</span></code> v kategorijo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_svet</span><span class="o">.</span><span class="n">MAPCOLOR7</span> <span class="o">=</span> <span class="n">gp_svet</span><span class="o">.</span><span class="n">MAPCOLOR7</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Narišimo zdaj zemljevid sveta, kjer administrativne enote pobarvamo tako, da bodo barve držav ustrezale celini. Zato uporabimo estetsko lastnost <code class="docutils literal notranslate"><span class="pre">fill</span></code> geometrijskega objekta <code class="docutils literal notranslate"><span class="pre">geom_map</span></code> tako, kot smo se učili na predavanjih o vizualizaciji podatkov:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gp_svet</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;CONTINENT&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/528823c45620a8d23af84587a0bf33509cfa7573aaf4698c2ff754720eb3af48.png" src="_images/528823c45620a8d23af84587a0bf33509cfa7573aaf4698c2ff754720eb3af48.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Narišimo zdaj mapo Evrope. To dosežemo tako, da iz podatkovne tabele <code class="docutils literal notranslate"><span class="pre">gp_svet</span></code> izberemo tiste vrstice, kjer je vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">CONTINENT</span></code> enaka <code class="docutils literal notranslate"><span class="pre">Europe</span></code>. Za barvanje administrativnih enote tokrat izberemo spremenljivko <code class="docutils literal notranslate"><span class="pre">MAPCOLOR7</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_evropa</span> <span class="o">=</span> <span class="n">gp_svet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gp_svet</span><span class="o">.</span><span class="n">CONTINENT</span> <span class="o">==</span> <span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gp_evropa</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;MAPCOLOR7&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/77eac3a25c9598c0ccd77655418bb8de76d428136760f6fd19c59967e18520a5.png" src="_images/77eac3a25c9598c0ccd77655418bb8de76d428136760f6fd19c59967e18520a5.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vidimo, da je Evropa široko raztegnjena čez celotni zemljevid sveta. Z uporabo funkcij <code class="docutils literal notranslate"><span class="pre">xlim</span></code> in <code class="docutils literal notranslate"><span class="pre">ylim</span></code> lahko ustrezno zožimo obseg zemljevida na <em>celinsko</em> Evropo takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">gp_evropa</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;MAPCOLOR7&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2dbbcff43e23c86ec158a2ec0112268b7079eecf4a82027e781d736db078cd08.png" src="_images/2dbbcff43e23c86ec158a2ec0112268b7079eecf4a82027e781d736db078cd08.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo zdaj, kako na zemljevidu dodamo administrativnim enotam dve črkovni kratici ISO. Pripravimo najprej podatkovno tabelo s tremi spremenljivkami. Prvi dve sta <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> koordinati centralne točke (centroida) poligonov, ki omejujejo državo, tretja spremenljivka je <code class="docutils literal notranslate"><span class="pre">ime</span></code>, katere vrednost je enaka dve črkovna kratica ISO za državo. Pri tem uporabimo atribut <a class="reference external" href="https://geopandas.org/en/stable/docs/user_guide/geometric_manipulations.html#GeoSeries.centroid"><code class="docutils literal notranslate"><span class="pre">centroid</span></code></a> spremenljivke <code class="docutils literal notranslate"><span class="pre">geometry</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroid_ime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+    <span class="s2">&quot;ime&quot;</span><span class="p">:</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">ISO_A2</span>
+<span class="p">})</span>
+
+<span class="n">centroid_ime</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_8975/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+
+/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_8975/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>ime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>21</th>
+      <td>-2.755221</td>
+      <td>42.180107</td>
+      <td>-99</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>31.255306</td>
+      <td>49.160078</td>
+      <td>UA</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>28.033567</td>
+      <td>53.531880</td>
+      <td>BY</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>23.888249</td>
+      <td>55.327024</td>
+      <td>LT</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>96.627588</td>
+      <td>61.966853</td>
+      <td>RU</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>15.314103</td>
+      <td>49.732448</td>
+      <td>CZ</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>10.381494</td>
+      <td>51.106364</td>
+      <td>DE</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>25.535793</td>
+      <td>58.671014</td>
+      <td>EE</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>24.908622</td>
+      <td>56.851819</td>
+      <td>LV</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>15.409599</td>
+      <td>68.794273</td>
+      <td>-99</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>16.754466</td>
+      <td>62.777100</td>
+      <td>SE</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>26.270795</td>
+      <td>64.495359</td>
+      <td>FI</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>6.071764</td>
+      <td>49.766824</td>
+      <td>LU</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>4.639961</td>
+      <td>50.637462</td>
+      <td>BE</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>21.683830</td>
+      <td>41.595005</td>
+      <td>MK</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>20.053819</td>
+      <td>41.142482</td>
+      <td>AL</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>20.873743</td>
+      <td>42.572883</td>
+      <td>-99</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>-3.652637</td>
+      <td>40.227234</td>
+      <td>ES</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>10.051390</td>
+      <td>55.965377</td>
+      <td>DK</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>24.972942</td>
+      <td>45.853464</td>
+      <td>RO</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>19.396759</td>
+      <td>47.163244</td>
+      <td>HU</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>19.480383</td>
+      <td>48.704935</td>
+      <td>SK</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>19.394322</td>
+      <td>52.124772</td>
+      <td>PL</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>-8.145044</td>
+      <td>53.178222</td>
+      <td>IE</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>-2.886951</td>
+      <td>54.147048</td>
+      <td>GB</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>22.974819</td>
+      <td>39.051181</td>
+      <td>GR</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>14.130673</td>
+      <td>47.585657</td>
+      <td>AT</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>12.071907</td>
+      <td>42.786434</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>8.215354</td>
+      <td>46.798957</td>
+      <td>CH</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>5.216814</td>
+      <td>52.069792</td>
+      <td>NL</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>9.540900</td>
+      <td>47.138206</td>
+      <td>LI</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>20.789252</td>
+      <td>44.222148</td>
+      <td>RS</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>16.395725</td>
+      <td>45.067505</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>14.808104</td>
+      <td>46.116119</td>
+      <td>SI</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>25.217513</td>
+      <td>42.768523</td>
+      <td>BG</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>12.442223</td>
+      <td>43.936466</td>
+      <td>SM</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>7.398974</td>
+      <td>43.739846</td>
+      <td>MC</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>1.560756</td>
+      <td>42.541327</td>
+      <td>AD</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>19.238500</td>
+      <td>42.785818</td>
+      <td>ME</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>17.773408</td>
+      <td>44.171734</td>
+      <td>BA</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>-8.590838</td>
+      <td>39.587147</td>
+      <td>PT</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>28.461397</td>
+      <td>47.195101</td>
+      <td>MD</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>-5.346700</td>
+      <td>36.129464</td>
+      <td>GI</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>12.453418</td>
+      <td>41.903312</td>
+      <td>VA</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>-18.596446</td>
+      <td>64.998316</td>
+      <td>IS</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>14.403754</td>
+      <td>35.921027</td>
+      <td>MT</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>-2.127431</td>
+      <td>49.221064</td>
+      <td>JE</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>-2.530480</td>
+      <td>49.484373</td>
+      <td>GG</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>-4.533695</td>
+      <td>54.229102</td>
+      <td>IM</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>20.055583</td>
+      <td>60.186447</td>
+      <td>AX</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>-6.870555</td>
+      <td>62.074027</td>
+      <td>FO</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Zdaj lahko narišemo dvoplastni diagram. Prva plast uporablja geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom_map</span></code> in podatkovna tabela <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code> zato, da nariše zemljevid Evropski držav, kot je pokazal prejšnji primer. Druga plast uporablja ravnokar pripravljeno podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">centorid_ime</span></code> in geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom_text</span></code> zato, da na zemljevid postavimo oznake posameznih administrativnih enot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;MAPCOLOR7&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_text</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">centroid_ime</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span>
+        <span class="p">),</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#444444&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_void</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_text : Removed 1 rows containing missing values.
+</pre></div>
+</div>
+<img alt="_images/4239980364b3e0c4c0341689ddaac4adef59764612c19b074b2236ad28e2d0cd.png" src="_images/4239980364b3e0c4c0341689ddaac4adef59764612c19b074b2236ad28e2d0cd.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>V naslednjem podpoglavju bomo države pobarvali tako, da bo barva ustrezala letni povprečni temperaturi zraka.</p>
+</section>
+<section id="mapa-povprecnih-temperatur-zraka-za-evropske-drzave">
+<h2>Mapa povprečnih temperatur zraka za Evropske države<a class="headerlink" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave" title="Permalink to this heading">#</a></h2>
+<p>Pripravimo najprej podatkovno tabelo s povprečnimi letnimi temperaturami zraka v državah sveta. V ta namen uporabimo podatke, ki jih ponuja članek <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">List of countries by average yearly temperature</a> splete enciklopedije Wikipedia:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabele</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature&quot;</span><span class="p">)</span>
+<span class="n">temp_svet</span> <span class="o">=</span> <span class="n">tabele</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">temp_svet</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Average yearly temperature (1961–1990 Celsius)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Burkina Faso</td>
+      <td>28.29</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mali</td>
+      <td>28.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Kiribati</td>
+      <td>28.20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Djibouti</td>
+      <td>28.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Maldives</td>
+      <td>28.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>Finland</td>
+      <td>01.55</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>Norway [note 2]</td>
+      <td>01.50</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>Iceland</td>
+      <td>−0.70</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>Canada</td>
+      <td>−5.10</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>Russia</td>
+      <td>−5.35</td>
+    </tr>
+  </tbody>
+</table>
+<p>192 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Dobimo torej tabelo z dvema spremenljivkama, <code class="docutils literal notranslate"><span class="pre">Country</span></code> je dimenzijska spremenljivka, ki imenuje državo, in <code class="docutils literal notranslate"><span class="pre">Average</span> <span class="pre">yearly</span> <span class="pre">temperature</span> <span class="pre">(1961–1990</span> <span class="pre">Celsius)</span></code>. Tip slednje je napačen: niz znakov namesto numerični:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country                                           object
+Average yearly temperature (1961–1990 Celsius)    object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poenostavimo imeni spremenljivk in popravimo tip druge spremenljivke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
+<span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6532,</span> in <span class="ni">NDFrame.astype</span><span class="nt">(self, dtype, copy, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6528</span>     <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">ser</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">ser</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="g g-Whitespace">   </span><span class="mi">6530</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6531</span>     <span class="c1"># else, only a single dtype is given</span>
+<span class="ne">-&gt; </span><span class="mi">6532</span>     <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6533</span>     <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_from_mgr</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">new_data</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6534</span>     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;astype&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:414,</span> in <span class="ni">BaseBlockManager.astype</span><span class="nt">(self, dtype, copy, errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="k">elif</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">--&gt; </span><span class="mi">414</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span>     <span class="s2">&quot;astype&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>     <span class="n">using_cow</span><span class="o">=</span><span class="n">using_copy_on_write</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span> <span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354,</span> in <span class="ni">BaseBlockManager.apply</span><span class="nt">(self, f, align_keys, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>         <span class="n">applied</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">354</span>         <span class="n">applied</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="n">result_blocks</span> <span class="o">=</span> <span class="n">extend_blocks</span><span class="p">(</span><span class="n">applied</span><span class="p">,</span> <span class="n">result_blocks</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_blocks</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:616,</span> in <span class="ni">Block.astype</span><span class="nt">(self, dtype, copy, errors, using_cow)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span><span class="sd"> Coerce to the new dtype.</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd"> Block</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span> <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
+<span class="ne">--&gt; </span><span class="mi">616</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array_safe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">maybe_coerce_values</span><span class="p">(</span><span class="n">new_values</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="n">refs</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:238,</span> in <span class="ni">astype_array_safe</span><span class="nt">(values, dtype, copy, errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">numpy_dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="c1"># e.g. _astype_nansafe can fail on object-dtype of strings</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="c1">#  trying to convert to float</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;ignore&quot;</span><span class="p">:</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:183,</span> in <span class="ni">astype_array</span><span class="nt">(values, dtype, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_astype_nansafe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="c1"># in pandas we don&#39;t store numpy str dtypes, so convert to object</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:134,</span> in <span class="ni">_astype_nansafe</span><span class="nt">(arr, dtype, copy, skipna)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">or</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1"># Explicit copy, or required since NumPy can&#39;t view from / to object.</span>
+<span class="ne">--&gt; </span><span class="mi">134</span>     <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: could not convert string to float: &#39;−0.70&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Težava je v tem, da je predznak <code class="docutils literal notranslate"><span class="pre">-</span></code> v vrednostih spremenljivke <code class="docutils literal notranslate"><span class="pre">avg_temp</span></code> je zapisan z znakom Unicode <a class="reference external" href="https://www.compart.com/en/unicode/U+2212"><code class="docutils literal notranslate"><span class="pre">−</span></code></a>, ki ga Python ne razume in ne interpretira kot operator <code class="docutils literal notranslate"><span class="pre">-</span></code>. To rešimo tako, da na spremenljivki <code class="docutils literal notranslate"><span class="pre">avg_temp</span></code> uporabimo funkcijo <code class="docutils literal notranslate"><span class="pre">replace</span></code> zato, da vse znake <code class="docutils literal notranslate"><span class="pre">−</span></code> zamenjamo z navadnim znakom <code class="docutils literal notranslate"><span class="pre">-</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;−&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">temp_svet</span><span class="p">[</span><span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prepričajmo se, da so tipi spremenljivk v podatkovni tabeli zdaj pravilni:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country      object
+avg_temp    float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zdaj lahko uporabimo podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>, ki smo jo pripravili v prejšnjem razdelku. Tukaj jo bomo združili s podatkovno tabelo s povprečnimi temperaturami:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_evropa</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">temp_svet</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ter narisali tako, da bomo definirali estetsko preslikavo, ki povprečno letno temperaturo prelika v barvo zemljepisne enote <code class="docutils literal notranslate"><span class="pre">fill</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">temp_evropa</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;avg_temp&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f9ec5b288c5b6ef7c06c9d987f0e62338705e27dfd6a0c1903b119c71c262230.png" src="_images/f9ec5b288c5b6ef7c06c9d987f0e62338705e27dfd6a0c1903b119c71c262230.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Opažamo, da nekaj administrativnih enot (Norveška, Danska, Češka, Bosna in Hercegovina ter Kosovo) so ostale brez ustrezne barve. Preverimo zakaj. Norveška in Danska so v tabeli, ki smo jo prenesli iz spletne enciklopedije Wikipedia, navedene z opombo v oglatih oklepajih. Zato bomo najprej iz stolpca <code class="docutils literal notranslate"><span class="pre">contry</span></code> odstranili opombe v oglatih oklepajih: pri tem bomo uporabili regularni izraz <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">\[.*\]&quot;</span></code>. Nadalje, lahko opazimo, da imena Bosne in Hercegovine ter Češke so različno navedena v obeh tabelah, zato bomo popravili njihovi imeni v tabeli <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>. Nazadnje, lahko ugotovimo, da tabela s povprečnimi temperaturami ne vsebuje podatkov o Kosovu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;country&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">country</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot; \[.*\]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Bosnia and Herz.&quot;</span><span class="p">,</span> <span class="s2">&quot;Bosnia and Herzegovina&quot;</span><span class="p">)</span>
+<span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Czechia&quot;</span><span class="p">,</span> <span class="s2">&quot;Czech Republic&quot;</span><span class="p">)</span>
+
+<span class="n">temp_evropa</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">temp_svet</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">temp_evropa</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;avg_temp&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/10bbee056836f1bfcee8b3b18ac01d49c946fe551244d9b971d5200f95f148a6.png" src="_images/10bbee056836f1bfcee8b3b18ac01d49c946fe551244d9b971d5200f95f148a6.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo popravi zgornji diagram tako, da spremeniš naslov legende “avg_temp”.</p>
+</section>
+<section id="zemljevidi-administrativnih-enot-slovenije">
+<h2>Zemljevidi administrativnih enot Slovenije<a class="headerlink" href="#zemljevidi-administrativnih-enot-slovenije" title="Permalink to this heading">#</a></h2>
+<p>Poglejmo zdaj uporabo podatkov o slovenskih administrativnih enotah iz portala e-prostor. Preberimo najprej podatke o statističnih regijah:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slo_regije</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/eprostor/stat-regije/RPE_SLO_PROSTORSKE_ENOTE_STATISTICNE_REGIJE_poligon.shp&quot;</span><span class="p">)</span>
+<span class="n">slo_regije</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FEATUREID</th>
+      <th>EID_STATIS</th>
+      <th>SIFRA</th>
+      <th>NAZIV</th>
+      <th>DATUM_SYS</th>
+      <th>NAZIV_DJ</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>STATISTICNE_REGIJE.110900000214281675</td>
+      <td>110900000214281675</td>
+      <td>3</td>
+      <td>Koroška</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((516913.870 138847.370, 516838.310 13...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>STATISTICNE_REGIJE.110900000214281832</td>
+      <td>110900000214281832</td>
+      <td>5</td>
+      <td>Zasavska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((506409.350 104183.540, 506417.620 10...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>STATISTICNE_REGIJE.110900000214281329</td>
+      <td>110900000214281329</td>
+      <td>1</td>
+      <td>Pomurska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((572368.450 161457.150, 572366.590 16...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>STATISTICNE_REGIJE.110900000214282301</td>
+      <td>110900000214282301</td>
+      <td>10</td>
+      <td>Primorsko-notranjska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((428959.670 42240.640, 428964.170 422...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>STATISTICNE_REGIJE.110900000214282483</td>
+      <td>110900000214282483</td>
+      <td>11</td>
+      <td>Goriška</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((393669.030 88317.310, 393674.210 883...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>STATISTICNE_REGIJE.110900000214281592</td>
+      <td>110900000214281592</td>
+      <td>2</td>
+      <td>Podravska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((530520.910 138137.010, 530524.400 13...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>STATISTICNE_REGIJE.110900000214281758</td>
+      <td>110900000214281758</td>
+      <td>4</td>
+      <td>Savinjska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((530760.290 137967.880, 530776.060 13...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>STATISTICNE_REGIJE.110900000214281915</td>
+      <td>110900000214281915</td>
+      <td>6</td>
+      <td>Posavska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((529250.230 79385.060, 529254.760 793...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>STATISTICNE_REGIJE.110900000214282137</td>
+      <td>110900000214282137</td>
+      <td>8</td>
+      <td>Osrednjeslovenska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((442617.150 79895.390, 442566.670 798...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>STATISTICNE_REGIJE.110900000214282210</td>
+      <td>110900000214282210</td>
+      <td>9</td>
+      <td>Gorenjska</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((433189.780 96482.330, 433189.510 964...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>STATISTICNE_REGIJE.110900000214282566</td>
+      <td>110900000214282566</td>
+      <td>12</td>
+      <td>Obalno-kraška</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((409211.050 33358.340, 409209.520 333...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>STATISTICNE_REGIJE.110900000214282053</td>
+      <td>110900000214282053</td>
+      <td>7</td>
+      <td>Jugovzhodna Slovenija</td>
+      <td>2023-10-06</td>
+      <td>None</td>
+      <td>POLYGON ((512355.370 31659.370, 512272.330 316...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Podatkovna tabela torej vsebuje podatke o dvanajstih statističnih regij Slovenije. Narišimo njihov zemljevid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">slo_regije</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/681a1ea6e1305094db4da4934f78effacaaeddae05880c5a8afa49e70033a5a2.png" src="_images/681a1ea6e1305094db4da4934f78effacaaeddae05880c5a8afa49e70033a5a2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dodajmo barve in oznake, tako kot pri zemljevidu Evrope:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centorid_ime_regije</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">slo_regije</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">slo_regije</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+    <span class="s2">&quot;ime&quot;</span><span class="p">:</span> <span class="n">slo_regije</span><span class="o">.</span><span class="n">NAZIV</span>
+<span class="p">})</span>
+<span class="n">slo_regije</span><span class="o">.</span><span class="n">SIFRA</span> <span class="o">=</span> <span class="n">slo_regije</span><span class="o">.</span><span class="n">SIFRA</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">slo_regije</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;SIFRA&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_text</span><span class="p">(</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">centorid_ime_regije</span><span class="p">,</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span>
+        <span class="p">),</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#222222&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5a1e766a168b0ae068be147f5cd25c5b8f3238b0a00c484b71f0641ddc35f72d.png" src="_images/5a1e766a168b0ae068be147f5cd25c5b8f3238b0a00c484b71f0641ddc35f72d.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Preberimo zdaj še podatke o statističnih regijah:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slo_obcine</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/eprostor/obcine/RPE_SLO_PROSTORSKE_ENOTE_OBCINE_poligon.shp&quot;</span><span class="p">)</span>
+<span class="n">slo_obcine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FEATUREID</th>
+      <th>EID_OBCINA</th>
+      <th>SIFRA</th>
+      <th>NAZIV</th>
+      <th>OZNAKA_MES</th>
+      <th>DATUM_SYS</th>
+      <th>NAZIV_DJ</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>OBCINE.110200000110281016</td>
+      <td>110200000110281016</td>
+      <td>143</td>
+      <td>Zavrč</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((579225.460 138876.780, 579267.400 13...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>OBCINE.110200000110281289</td>
+      <td>110200000110281289</td>
+      <td>146</td>
+      <td>Železniki</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((430515.060 114887.380, 430491.690 11...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>OBCINE.110200000110267882</td>
+      <td>110200000110267882</td>
+      <td>25</td>
+      <td>Dravograd</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((495724.740 161303.880, 495693.070 16...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>OBCINE.110200000110268344</td>
+      <td>110200000110268344</td>
+      <td>30</td>
+      <td>Gornji Grad</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((481459.630 131780.380, 481496.710 13...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>OBCINE.110200000110269078</td>
+      <td>110200000110269078</td>
+      <td>37</td>
+      <td>Ig</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((458682.950 86331.980, 458677.310 863...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>OBCINE.110200000110280554</td>
+      <td>110200000110280554</td>
+      <td>99</td>
+      <td>Radeče</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((515804.630 102246.420, 515827.040 10...</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>OBCINE.110200000110280638</td>
+      <td>110200000110280638</td>
+      <td>135</td>
+      <td>Videm</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((566374.510 138795.960, 566384.710 13...</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>OBCINE.110200000110280711</td>
+      <td>110200000110280711</td>
+      <td>137</td>
+      <td>Vitanje</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((517804.050 139748.070, 517862.600 13...</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>OBCINE.110200000110280802</td>
+      <td>110200000110280802</td>
+      <td>139</td>
+      <td>Vojnik</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((519680.710 130133.340, 519669.450 13...</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>OBCINE.110200000110280984</td>
+      <td>110200000110280984</td>
+      <td>141</td>
+      <td>Vuzenica</td>
+      <td>0</td>
+      <td>2023-06-06</td>
+      <td>None</td>
+      <td>POLYGON ((510865.650 161365.830, 510985.870 16...</td>
+    </tr>
+  </tbody>
+</table>
+<p>212 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>Podatkovna tabela ponuja podatke za 212 občin. Narišimo in preverimo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">slo_obcine</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_map</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/86a6f68931c96d6d48ee548fa78df7fe9d66edc8c74d55b89cae09df511b56a4.png" src="_images/86a6f68931c96d6d48ee548fa78df7fe9d66edc8c74d55b89cae09df511b56a4.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="naloge">
+<h2>Naloge<a class="headerlink" href="#naloge" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Nariši statistični diagram z zemljepisom Slovenije in njenih štirih sosednjih držav. Pobarvaj države z različnimi barvami. Posamezno državo označi z njenim imenom: oznake postavi v centralne toče ustreznih zemljepisnih enot.</p>
+<p>Za vsako države na tem zemljevidu preveri, če podatki Eurostat o evropskih regijah vključujejo regije države. Če so podatki o regijah na voljo, zgornjemu zemljevidu dodaj novo plast, ki ponazori regije držav.</p>
+</li>
+<li><p>Zadnji zemljevid Slovenije s predavanj, ki vsebuje oznake njenih statističnih regij, pobarvaj tako, da bo barva regije ponazorila število prebivalcev v regiji. Spreminjaj barve regij in oznak toliko časa, da bo diagram čim bolj berljiv v smislu vidnosti oznak in vidnosti razlik med številom prebivalcev v regijah.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vizualizacija.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vizualizacija podatkov</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viri-zemljepisnih-podatkov">Viri zemljepisnih podatkov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljepis-sveta-in-evrope">Zemljepis sveta in Evrope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave">Mapa povprečnih temperatur zraka za Evropske države</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevidi-administrativnih-enot-slovenije">Zemljevidi administrativnih enot Slovenije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
