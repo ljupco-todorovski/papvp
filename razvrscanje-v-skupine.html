@@ -1,0 +1,1542 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Razvrščanje v skupine &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'razvrscanje-v-skupine';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Prostorska vizualizacija podatkov" href="prostorska-vizualizacija.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Namesto uvoda</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="urejanje-podatkov.html">Od podatkov do podatkovnih tabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vizualizacija.html">Vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prostorska-vizualizacija.html">Prostorska vizualizacija podatkov</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Razvrščanje v skupine</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ljupco-todorovski/papvp/issues/new?title=Issue%20on%20page%20%2Frazvrscanje-v-skupine.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/razvrscanje-v-skupine.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Razvrščanje v skupine</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalna-definicija-razvrscanja-v-skupine">Formalna definicija razvrščanja v skupine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-razdalje">Funkcija razdalje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-podatkov-za-razvrscanje-v-skupine">Primer podatkov za razvrščanje v skupine</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritem-hac">Algoritem HAC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-razdalje-med-skupinami">Funkcija razdalje med skupinami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-uporabe-algoritma-hac">Primer uporabe algoritma HAC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="razvrscanje-v-skupine">
+<h1>Razvrščanje v skupine<a class="headerlink" href="#razvrscanje-v-skupine" title="Permalink to this heading">#</a></h1>
+<p>Razvrščanje v skupine (angl. <em>clustering</em>), imenujemo ga tudi gručenje ali rojenje, je iskanje takega <em>razbitja</em> množice podanih objektov v skupine, kjer so objekti v isti skupini bolj <em>podobni</em> drug drugemu, kot pa objektom iz drugih skupin.</p>
+<section id="formalna-definicija-razvrscanja-v-skupine">
+<h2>Formalna definicija razvrščanja v skupine<a class="headerlink" href="#formalna-definicija-razvrscanja-v-skupine" title="Permalink to this heading">#</a></h2>
+<p>Nalogo razvrščanja v skupine definiramo skozi vhodne in izhodne podatke. Vhodni podatki za razvrščanje v skupine so:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S\)</span> je <strong>množica objektov</strong> <span class="math notranslate nohighlight">\(u\)</span>, ki jih imenujemo jih tudi enote ali primeri.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\colon S \times S \to \mathbb{R}^{+}_0\)</span> je <strong>funkcija razdalje</strong>, ki za podani par objektov <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span> vrne nenegativno realno število, ki izmeri razdaljo <span class="math notranslate nohighlight">\(d(u, v)\)</span> med objektoma.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> je želeno <strong>število skupin</strong>.</p></li>
+</ul>
+<p>Rezultat razvrščanja v skupine je razbitje <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> množice <span class="math notranslate nohighlight">\(S\)</span> v <span class="math notranslate nohighlight">\(k\)</span> podmnožic, ki jih imenujemo skupine. <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> je torej množica <span class="math notranslate nohighlight">\(k\)</span>-tih podmnožic <span class="math notranslate nohighlight">\(S\)</span> za katere velja:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\cup_{C \in \mathbb{C}} = S\)</span>, t.j., unija vseh skupin iz razbitja je enaka <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall C_1, C_2 \in \mathbb{C}, C_1 \neq C_2: C_1 \cap C_2 = \emptyset\)</span>, t.j., skupine so paroma disjunktne.</p></li>
+<li><p>Za objekte iz ene skupine <span class="math notranslate nohighlight">\(C \in \mathbb{C}\)</span> velja, da so njihove razdalje do (a) objektov v isti skupini <span class="math notranslate nohighlight">\(C\)</span> čim manjše in (b) objektov v drugih skupinah iz <span class="math notranslate nohighlight">\(\mathbb{C} \setminus \{ C \}\)</span> čim večje.</p></li>
+</ol>
+<p>Prvi dve lastnosti razbitja <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> določata, da je vsak objekt iz <span class="math notranslate nohighlight">\(S\)</span> element natanko ene skupine iz <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>. Tretja lastnost določa, da so skupine v razbitju čim bolj <em>kompaktne</em>.</p>
+<section id="funkcija-razdalje">
+<h3>Funkcija razdalje<a class="headerlink" href="#funkcija-razdalje" title="Permalink to this heading">#</a></h3>
+<p>Pri razvrščanju v skupine pogosto predpostavimo, da so opazovani objekti vektorji numeričnih vrednosti iz množice <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span>. V tem primeru razdaljo med objekti lahko merimo z različnimi predstavniki splošne razdalje Minkowskega:</p>
+<div class="math notranslate nohighlight">
+\[ d(u, v) = \left( \sum_{i=1}^p |u_i - v_i|^q \right)^{\frac{1}{q}}, \]</div>
+<p>kjer je <span class="math notranslate nohighlight">\(q\)</span> pozitivno realno število ter <span class="math notranslate nohighlight">\(u_i\)</span> in <span class="math notranslate nohighlight">\(v_i\)</span> sta <span class="math notranslate nohighlight">\(i\)</span>-ti komponenti vektorjev <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span>. Dva posebna primera te razdalje sta:</p>
+<ul class="simple">
+<li><p>Evklidska razdalja, <span class="math notranslate nohighlight">\(q = 2\)</span>: <span class="math notranslate nohighlight">\( d_E(u, v) = \sqrt{\sum_{i=1}^p (u_i - v_i)^2} \)</span> in</p></li>
+<li><p>Manhattanska razdalja, <span class="math notranslate nohighlight">\(q = 1\)</span>: <span class="math notranslate nohighlight">\( d_M(u, v) = \sum_{i=1}^p |u_i - v_i| \)</span>.</p></li>
+</ul>
+<p>Funkcija <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html"><code class="docutils literal notranslate"><span class="pre">pairwise_distances</span></code></a></p>
+</section>
+<section id="primer-podatkov-za-razvrscanje-v-skupine">
+<h3>Primer podatkov za razvrščanje v skupine<a class="headerlink" href="#primer-podatkov-za-razvrscanje-v-skupine" title="Permalink to this heading">#</a></h3>
+<p>Pripravimo zdaj umetne podatke za razvrščanje v skupine. Podakte bom vzorčili tako, da si zberemo nekaj točk v prostoru <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, ki jih bomo poimenovali <code class="docutils literal notranslate"><span class="pre">centri</span></code>. V okolici vsakega centra bomo vzorčili točke iz dve-razsežnostne normalne porazdelitve z vektorjem povprečij enakem centru in enotsko kovariančno matriko.</p>
+<p>V ta namen bomo uporabili funkcije, ki jih ponuja modul <code class="docutils literal notranslate"><span class="pre">np.random</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Najprej s funkcijo <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html"><code class="docutils literal notranslate"><span class="pre">default_rng</span></code></a> tega modula inicializiramo generator naključnih števil <code class="docutils literal notranslate"><span class="pre">ng</span></code>. Nato v okolici vsakega centra <code class="docutils literal notranslate"><span class="pre">c</span></code> iz <code class="docutils literal notranslate"><span class="pre">centri</span></code> z metodo generatorja <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.multinomial.html"><code class="docutils literal notranslate"><span class="pre">multivariate_normal</span></code></a> vzorčimo <code class="docutils literal notranslate"><span class="pre">n</span></code> točk. Pri klicu metode podamo tri argumente: seznam (vektor) povprečij, enotsko kovariančno matriko in <code class="docutils literal notranslate"><span class="pre">size</span></code>, ki določa število želenih vzorcev. Nato dimenziji vzorčenih točk razdelimo v zaporedji <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>, temu dodamo še zaporedje <code class="docutils literal notranslate"><span class="pre">ids</span></code>, ki določi ozanko vsaki točki in vse skupaj združimo v podatkovno tabelo <code class="docutils literal notranslate"><span class="pre">krogi</span></code>. Poglejmo rezultat:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">vzorci_kroge</span><span class="p">(</span><span class="n">centri</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">crke</span> <span class="o">=</span> <span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">centri</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">crke</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Preveč centrov </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">centri</span><span class="p">)</span><span class="si">}</span><span class="s2">, največ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">crke</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">({</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">centri</span><span class="p">})</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Vsi centri morajo biti enakih dimenzij.&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">centri</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Vsi centri morajo imeti dve dimenziji.&quot;</span>
+
+    <span class="n">ng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">xy</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ng</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)),</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">centri</span>
+    <span class="p">]</span>
+
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">crke</span><span class="p">[</span><span class="n">ci</span><span class="p">]</span><span class="si">}{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centri</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">ids</span><span class="p">,</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">xy</span><span class="p">]),</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">xy</span><span class="p">])</span>
+    <span class="p">})</span>
+
+
+<span class="n">centri</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="n">krogi</span> <span class="o">=</span> <span class="n">vzorci_kroge</span><span class="p">(</span><span class="n">centri</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">krogi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A1</td>
+      <td>-4.695283</td>
+      <td>-1.039984</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>-4.249549</td>
+      <td>0.940565</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A3</td>
+      <td>-6.951035</td>
+      <td>-1.302180</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A4</td>
+      <td>-4.872160</td>
+      <td>-0.316243</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A5</td>
+      <td>-5.016801</td>
+      <td>-0.853044</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A6</td>
+      <td>-4.120602</td>
+      <td>0.777792</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A7</td>
+      <td>-4.933969</td>
+      <td>1.127241</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A8</td>
+      <td>-4.532491</td>
+      <td>-0.859292</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A9</td>
+      <td>-4.631249</td>
+      <td>-0.958883</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>A10</td>
+      <td>-4.121550</td>
+      <td>-0.049926</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>B1</td>
+      <td>-0.184862</td>
+      <td>1.319070</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>B2</td>
+      <td>1.222541</td>
+      <td>1.845471</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>B3</td>
+      <td>-0.428328</td>
+      <td>1.647866</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>B4</td>
+      <td>0.532309</td>
+      <td>2.365444</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>B5</td>
+      <td>0.412733</td>
+      <td>2.430821</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>B6</td>
+      <td>2.141648</td>
+      <td>1.593585</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>B7</td>
+      <td>-0.512243</td>
+      <td>1.186227</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>B8</td>
+      <td>0.615979</td>
+      <td>3.128972</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>B9</td>
+      <td>-0.113947</td>
+      <td>1.159844</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>B10</td>
+      <td>-0.824481</td>
+      <td>2.650593</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>C1</td>
+      <td>3.743254</td>
+      <td>0.543154</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>C2</td>
+      <td>2.334490</td>
+      <td>0.232161</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>C3</td>
+      <td>3.116686</td>
+      <td>0.218689</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>C4</td>
+      <td>3.871429</td>
+      <td>0.223596</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>C5</td>
+      <td>3.678914</td>
+      <td>0.067579</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>C6</td>
+      <td>3.289119</td>
+      <td>0.631288</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>C7</td>
+      <td>1.542844</td>
+      <td>-0.319671</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>C8</td>
+      <td>2.529627</td>
+      <td>-0.638878</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>C9</td>
+      <td>2.724858</td>
+      <td>1.494941</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>C10</td>
+      <td>2.134169</td>
+      <td>0.968278</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Zdaj smo skoraj pripravljeni vizualizirati podatke. Pred vizualizacijo dodamo podatkovni tabeli še stolpec z oznako centra <code class="docutils literal notranslate"><span class="pre">krog_id</span></code> okoli katerega je bil vzorčena posamezna podatkovna točka:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">krogi</span><span class="p">[</span><span class="s2">&quot;krog_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">krogi</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+<span class="n">krogi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>x</th>
+      <th>y</th>
+      <th>krog_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A1</td>
+      <td>-4.695283</td>
+      <td>-1.039984</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>-4.249549</td>
+      <td>0.940565</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A3</td>
+      <td>-6.951035</td>
+      <td>-1.302180</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A4</td>
+      <td>-4.872160</td>
+      <td>-0.316243</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A5</td>
+      <td>-5.016801</td>
+      <td>-0.853044</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A6</td>
+      <td>-4.120602</td>
+      <td>0.777792</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A7</td>
+      <td>-4.933969</td>
+      <td>1.127241</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A8</td>
+      <td>-4.532491</td>
+      <td>-0.859292</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A9</td>
+      <td>-4.631249</td>
+      <td>-0.958883</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>A10</td>
+      <td>-4.121550</td>
+      <td>-0.049926</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>B1</td>
+      <td>-0.184862</td>
+      <td>1.319070</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>B2</td>
+      <td>1.222541</td>
+      <td>1.845471</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>B3</td>
+      <td>-0.428328</td>
+      <td>1.647866</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>B4</td>
+      <td>0.532309</td>
+      <td>2.365444</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>B5</td>
+      <td>0.412733</td>
+      <td>2.430821</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>B6</td>
+      <td>2.141648</td>
+      <td>1.593585</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>B7</td>
+      <td>-0.512243</td>
+      <td>1.186227</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>B8</td>
+      <td>0.615979</td>
+      <td>3.128972</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>B9</td>
+      <td>-0.113947</td>
+      <td>1.159844</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>B10</td>
+      <td>-0.824481</td>
+      <td>2.650593</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>C1</td>
+      <td>3.743254</td>
+      <td>0.543154</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>C2</td>
+      <td>2.334490</td>
+      <td>0.232161</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>C3</td>
+      <td>3.116686</td>
+      <td>0.218689</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>C4</td>
+      <td>3.871429</td>
+      <td>0.223596</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>C5</td>
+      <td>3.678914</td>
+      <td>0.067579</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>C6</td>
+      <td>3.289119</td>
+      <td>0.631288</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>C7</td>
+      <td>1.542844</td>
+      <td>-0.319671</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>C8</td>
+      <td>2.529627</td>
+      <td>-0.638878</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>C9</td>
+      <td>2.724858</td>
+      <td>1.494941</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>C10</td>
+      <td>2.134169</td>
+      <td>0.968278</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Zdaj uporabimo funkcije knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code> za pripravo statističnega diagrama z vzorčenimi točkami, kjer barva označuje center iz katerega je bila točka vzorčena. Vsaki točki na diagramu dodamo oznako z uporabo geometrijskega objekta <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_label.html"><code class="docutils literal notranslate"><span class="pre">geom_label</span></code></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotnine</span> <span class="k">as</span> <span class="nn">p9</span>
+
+<span class="n">g_krogi</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">krogi</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;krog_id&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_label</span><span class="p">(</span>
+        <span class="n">nudge_x</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">nudge_y</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">coord_equal</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">g_krogi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ac8cf430eec45a75e722dc5f983c9231bce03c6f814a2120731b65513d53d9d7.png" src="_images/ac8cf430eec45a75e722dc5f983c9231bce03c6f814a2120731b65513d53d9d7.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo še kako bi lahko uporabili funkcijo <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.annotate.html"><code class="docutils literal notranslate"><span class="pre">annotate</span></code></a> za opremljanje statističnega diagrama s krogi, ki označujejo območja vzorčenja za izbrane centre:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">centri</span><span class="p">:</span>
+    <span class="n">g_krogi</span> <span class="o">+=</span> <span class="p">(</span>
+        <span class="n">p9</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#444444&quot;</span><span class="p">,</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">],</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">g_krogi</span> <span class="o">+=</span> <span class="p">(</span>
+        <span class="n">p9</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#444444&quot;</span><span class="p">,</span>
+            <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">],</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">g_krogi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7843dcdce179de75d61817093c1738871185961feba246d7dd357b1c9fe55071.png" src="_images/7843dcdce179de75d61817093c1738871185961feba246d7dd357b1c9fe55071.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prvi argument klicev <a class="reference external" href="https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.annotate.html"><code class="docutils literal notranslate"><span class="pre">annotate</span></code></a> določa obliko oznake: v tem primeru smo uporabili <code class="docutils literal notranslate"><span class="pre">path</span></code>, t.j., črto, ki povezuje podane točke. Točke na krožnicah izračunamo tako, da centru prištejemo sinus in kosinus kotov iz intervala <span class="math notranslate nohighlight">\([0, 2 \pi]\)</span>.</p>
+</section>
+</section>
+<section id="algoritem-hac">
+<h2>Algoritem HAC<a class="headerlink" href="#algoritem-hac" title="Permalink to this heading">#</a></h2>
+<p>Hierarhično razvrščanje v skupine od spodaj navzgor (angl. <em>Hierarchical Anglomerative Clustering, HAC</em>).</p>
+<ol class="arabic">
+<li><p>Nastavi začetno razbitje <span class="math notranslate nohighlight">\(\mathbb{C} = \{\{u\}: u \in S\}\)</span> tako, da je vsak objekt <span class="math notranslate nohighlight">\(u \in S\)</span> tvori svojo skupino.</p></li>
+<li><p>Ponavljaj naslednje tri korake <span class="math notranslate nohighlight">\(|S|-1\)</span> krat:</p>
+<p>a. Izberi dve skupini <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span> iz <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> tako, da je njihova medsebojna razdalja <span class="math notranslate nohighlight">\(D(C_1, C_2)\)</span> najmanjša: $<span class="math notranslate nohighlight">\( \left&lt; C_1, C_2 \right&gt; = \text{argmin}_{C_1 \in \mathbb{C}, \, C_2 \in \mathbb{C}, \, C_1 \neq C_2} D(C_1, C_2). \)</span>$</p>
+<p>b. Združi skupini <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span> v novo skupino <span class="math notranslate nohighlight">\(C = C_1 \cup C_2\)</span> ter si zapomni <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span>.</p>
+<p>c. Zamenjaj skupini <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span> v razbitju <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> z novo skupino <span class="math notranslate nohighlight">\(C\)</span>, t.j., <span class="math notranslate nohighlight">\(\mathbb{C} = \mathbb{C} \setminus \{ C_1, C_2 \} \cup \{ C \}\)</span>.</p>
+</li>
+</ol>
+<p>Rezultat algoritma je drevesna struktura imenovana dendrogram, ki ponazori združevanje skupin od spodaj navzgor. Primer in rezanje dendrograma.</p>
+<section id="funkcija-razdalje-med-skupinami">
+<h3>Funkcija razdalje med skupinami<a class="headerlink" href="#funkcija-razdalje-med-skupinami" title="Permalink to this heading">#</a></h3>
+<p>Algoritem HAC uporablja funkcijo razdalje <span class="math notranslate nohighlight">\(D\)</span> med skupinami objektov (angl. <em>linkage</em>), ki jo še moramo definirati. Namreč funkcija razdalje <span class="math notranslate nohighlight">\(d\)</span> izračuna razdaljo med objekti. Funkcija <span class="math notranslate nohighlight">\(D\colon 2^S \times 2^S \to R^{+}_0\)</span> za podani množici objektov (torej podmnožici množice S) izračuna razdaljo med njima.</p>
+<p>En način izračuna funkcije <span class="math notranslate nohighlight">\(D\)</span> za dve skupini <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span> je ta, da izračunamo razdalje med vsemi pari objektov iz kartezičnega produkta <span class="math notranslate nohighlight">\(C_1 \times C_2\)</span> in nato uporabimo funkcijo agregacije zato, da združimo vrednosti izračunanih razdalj. Tri funkcije združevanja so pogosto v uporabi za definicijo naslednjih treh razdalje med skupinami:</p>
+<ul class="simple">
+<li><p>Celovita (maksimalna): <span class="math notranslate nohighlight">\( D(C_1, C_2) = \max _{(u, v) \in C_1 \times C_2} d(u, v) \)</span>;</p></li>
+<li><p>Enojna (minimalna): <span class="math notranslate nohighlight">\( D(C_1, C_2) = \min _{(u, v) \in C_1 \times C_2} d(u, v) \)</span>;</p></li>
+<li><p>Povprečna: $<span class="math notranslate nohighlight">\( D(C_1, C_2) = \frac{1}{|C_1| |C_2|} \sum _{(u, v) \in C_1 \times C_2} d(u, v). \)</span>$</p></li>
+</ul>
+<p>Ker na vsakem koraku algoritma HAC združujemo dve skupini v eno, lahko funkcijo <span class="math notranslate nohighlight">\(D\)</span> definiramo rekurzivno s splošno formulo:</p>
+<div class="math notranslate nohighlight">
+\[ D(C_1 \cup C_2, C) = f(D(C_1, C), D(C_2, C), D(C_1, C_2)), \]</div>
+<p>pri čemer robni pogoj rekurzije definira vrednost funkcije <span class="math notranslate nohighlight">\( D(\{u\}, \{v\}) = d(u, v)\)</span> za primere, ko sta oba argumenta funkcije <span class="math notranslate nohighlight">\(D\)</span> množici z enim elementom, t.j., enojci <span class="math notranslate nohighlight">\(\{u\}\)</span> in <span class="math notranslate nohighlight">\(\{v\}\)</span>.</p>
+<p>Ward je leta 1963 predlagal naslednjo linearno obliko funkcije <span class="math notranslate nohighlight">\(f\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ D(C_1 \cup C_2, C) = \alpha_1 D(C_1, C) + \alpha_2 D(C_2, C) + \beta D(C_1, C_2) \]</div>
+<p>in določil vrednosti linearnih koeficientov takole:</p>
+<div class="math notranslate nohighlight">
+\[
+    \alpha_1 = \frac{|C_1| + |C|}{|C_1| + |C_2| + |C|}, \;
+    \alpha_2 = \frac{|C_2| + |C|}{|C_1| + |C_2| + |C|}, \; \text{in} \;
+    \beta = - \frac{|C|}{|C_1| + |C_2| + |C|}.
+\]</div>
+<p>Primeri dendrogramov za različne funkcije razdalje med skupinami.</p>
+</section>
+<section id="primer-uporabe-algoritma-hac">
+<h3>Primer uporabe algoritma HAC<a class="headerlink" href="#primer-uporabe-algoritma-hac" title="Permalink to this heading">#</a></h3>
+<p>Za razvrščanje v skupine bomo uporabili implementacijo algoritma HAC v knjižnici za strojno učenje <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> s krajšim imenom <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> (daljše ime moramo uporabljati pri instalaciji knjižnice, krajše pri njenem uvozu). Iz modula <code class="docutils literal notranslate"><span class="pre">sklearn.cluster</span></code> te knjižnice bomo uvozili in uporabili funkcijo <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html"><code class="docutils literal notranslate"><span class="pre">AgglomerativeClustering</span></code></a>, ki je pravzaprav implementacija algoritma HAC.</p>
+<p>Najprej s klicem te funkcije pripravimo objekt <code class="docutils literal notranslate"><span class="pre">hac</span></code> razreda za razvrščanje v skupine. Pri inicializaciji objekta določimo zaželeno število skupin, <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>, mero razdalje med točkami za razvrščanje <code class="docutils literal notranslate"><span class="pre">metric</span></code> in mero razdalje med skupinami <code class="docutils literal notranslate"><span class="pre">linkage</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">AgglomerativeClustering</span>
+
+<span class="n">hac</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">linkage</span> <span class="o">=</span> <span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">hac</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sklearn.cluster._agglomerative.AgglomerativeClustering
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za razvrščanje podatkov iz podatkovne tabele <code class="docutils literal notranslate"><span class="pre">krogi</span></code> uporabimo metodo <code class="docutils literal notranslate"><span class="pre">fit</span></code> tega razreda. Pri določanju podatkovne tabele moramo biti previdni in paziti, da iz tabele uporabimo zgolj tiste numerične stolpce, ki določajo vrednosti podatkov (in torej izločimo stolpce z oznakami). Rezultat metode <code class="docutils literal notranslate"><span class="pre">fit</span></code> je objekt istega razreda <code class="docutils literal notranslate"><span class="pre">AgglomerativeClustering</span></code>. Tokrat nam njegova lastnost <code class="docutils literal notranslate"><span class="pre">labels_</span></code> poda seznam oznak, ki vsaki vrstici naše podatkovne tabele določajo pripadnost eni izmed skupin za razvrščanje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_hac</span> <span class="o">=</span> <span class="n">hac</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">krogi</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]])</span>
+<span class="n">k_hac</span><span class="o">.</span><span class="n">labels_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definirajmo zdaj tabelo, ki oznako skupine doda kot novi stolpec originalni podatkovni tabeli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">krogi_skupine</span> <span class="o">=</span> <span class="n">krogi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">krogi_skupine</span><span class="p">[</span><span class="s2">&quot;skupina&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">k_hac</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="n">krogi_skupine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>x</th>
+      <th>y</th>
+      <th>krog_id</th>
+      <th>skupina</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A1</td>
+      <td>-4.695283</td>
+      <td>-1.039984</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>-4.249549</td>
+      <td>0.940565</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A3</td>
+      <td>-6.951035</td>
+      <td>-1.302180</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A4</td>
+      <td>-4.872160</td>
+      <td>-0.316243</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A5</td>
+      <td>-5.016801</td>
+      <td>-0.853044</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A6</td>
+      <td>-4.120602</td>
+      <td>0.777792</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A7</td>
+      <td>-4.933969</td>
+      <td>1.127241</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A8</td>
+      <td>-4.532491</td>
+      <td>-0.859292</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A9</td>
+      <td>-4.631249</td>
+      <td>-0.958883</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>A10</td>
+      <td>-4.121550</td>
+      <td>-0.049926</td>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>B1</td>
+      <td>-0.184862</td>
+      <td>1.319070</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>B2</td>
+      <td>1.222541</td>
+      <td>1.845471</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>B3</td>
+      <td>-0.428328</td>
+      <td>1.647866</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>B4</td>
+      <td>0.532309</td>
+      <td>2.365444</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>B5</td>
+      <td>0.412733</td>
+      <td>2.430821</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>B6</td>
+      <td>2.141648</td>
+      <td>1.593585</td>
+      <td>B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>B7</td>
+      <td>-0.512243</td>
+      <td>1.186227</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>B8</td>
+      <td>0.615979</td>
+      <td>3.128972</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>B9</td>
+      <td>-0.113947</td>
+      <td>1.159844</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>B10</td>
+      <td>-0.824481</td>
+      <td>2.650593</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>C1</td>
+      <td>3.743254</td>
+      <td>0.543154</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>C2</td>
+      <td>2.334490</td>
+      <td>0.232161</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>C3</td>
+      <td>3.116686</td>
+      <td>0.218689</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>C4</td>
+      <td>3.871429</td>
+      <td>0.223596</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>C5</td>
+      <td>3.678914</td>
+      <td>0.067579</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>C6</td>
+      <td>3.289119</td>
+      <td>0.631288</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>C7</td>
+      <td>1.542844</td>
+      <td>-0.319671</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>C8</td>
+      <td>2.529627</td>
+      <td>-0.638878</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>C9</td>
+      <td>2.724858</td>
+      <td>1.494941</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>C10</td>
+      <td>2.134169</td>
+      <td>0.968278</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In uporabimo tabelo za vizualizacijo dobljenih skupin:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_krogi_skupine</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">ggplot</span><span class="p">(</span><span class="n">krogi_skupine</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">aes</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;skupina&quot;</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_label</span><span class="p">(</span>
+        <span class="n">nudge_x</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">nudge_y</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">coord_equal</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">centri</span><span class="p">:</span>
+    <span class="n">g_krogi_skupine</span> <span class="o">+=</span> <span class="p">(</span>
+        <span class="n">p9</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#444444&quot;</span><span class="p">,</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">],</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">g_krogi_skupine</span> <span class="o">+=</span> <span class="p">(</span>
+        <span class="n">p9</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">,</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#444444&quot;</span><span class="p">,</span>
+            <span class="n">linetype</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">],</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phis</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">g_krogi_skupine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5b37e2d8a6f197a31ddffaa76737299c425fbe84b07753f6b05869b8aa55c55b.png" src="_images/5b37e2d8a6f197a31ddffaa76737299c425fbe84b07753f6b05869b8aa55c55b.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo poskusi spremeniti nastavitve algoritma HAC tako, da razvrstiš podatke v dve ali štiri skupine. Poskusi tudi različne mere razdalje med točkami in skupinami. Vizualno primerjaj različna razvrščanja v skupine, ki jih dobiš z različnimi nastavitvami.</p>
+</section>
+</section>
+<section id="naloge">
+<h2>Naloge<a class="headerlink" href="#naloge" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Za funkcijo razdalje <span class="math notranslate nohighlight">\(d\)</span> velja trikotniška neenakost, če za vse <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(w\)</span> velja <span class="math notranslate nohighlight">\(d(u,v) \leq d(u, w) + d(w, v)\)</span>. Dokaži, da trikotniška neenakost velja za Evklidsko in Manhattansko razdaljo. Ali velja tudi za razdaljo Minkowskega z vrednostjo <span class="math notranslate nohighlight">\(q = 1/2\)</span>?</p></li>
+<li><p>Za umetne podatke iz teh predavanj sestavi dendrogram z Wardovo mero razdalje med skupinami. Z uporabo dobljenega dendrograma razvrsti točke v štiri skupine. Sestavi podatkovno tabelo z dvema stolpcema, v prvem naj bo oznaka <code class="docutils literal notranslate"><span class="pre">id</span></code> točke, v drugem pa indeks skupine <code class="docutils literal notranslate"><span class="pre">skupina</span></code>, kjer točka pripada.</p>
+<p>Sestavi še eno podatkovno tabelo s štirimi stolpci, kjer prejšnji tabeli dodamo še stolpca <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> s koordinatami točke v prostoru <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. Uporabi to tabelo za vizualizacijo pripadnosti točk skupinam v prostoru <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+</li>
+<li><p>Članek <a class="reference external" href="https://en.wikipedia.org/wiki/Eurovision_Song_Contest_2022">Eurovision Song Contest 2022</a> iz spletne enciklopedije Wikipedia podaja tabelo z rezultati telefonskega glasovanja držav na finalni večer pesmi Evrovizije 2022 (tabela z naslovom <em>Detailed televoting results of the final</em>).</p>
+<p>S pomočjo te tabele razvrstite države, ki so glasovale na finalni večer, v <strong>štiri</strong> skupine glede na podobnost porazdelitve točk iz telefonskega glasovanja med tekmovalnimi državami. Na zemljevidu vseh držav, ki so glasovale na finalni večer, razen Avstralije, pobarvaj posamezne države glede na njihovo pripadnost štirim skupinam.</p>
+<p>Ugotovi kateri skupini pripada Slovenija in sestavi seznam z imeni držav iz te skupine. Preveri kako se elementi seznama spreminjajo s spreminjanjem mere razdalje med skupinami v algoritmu HAC.</p>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prostorska-vizualizacija.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Prostorska vizualizacija podatkov</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalna-definicija-razvrscanja-v-skupine">Formalna definicija razvrščanja v skupine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-razdalje">Funkcija razdalje</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-podatkov-za-razvrscanje-v-skupine">Primer podatkov za razvrščanje v skupine</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritem-hac">Algoritem HAC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-razdalje-med-skupinami">Funkcija razdalje med skupinami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-uporabe-algoritma-hac">Primer uporabe algoritma HAC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ljupčo Todorovski
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
