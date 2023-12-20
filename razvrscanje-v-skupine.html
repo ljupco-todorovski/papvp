@@ -431,10 +431,9 @@ document.write(`
 \[ d(u, v) = \left( \sum_{i=1}^p |u_i - v_i|^q \right)^{\frac{1}{q}}, \]</div>
 <p>kjer je <span class="math notranslate nohighlight">\(q\)</span> pozitivno realno število ter <span class="math notranslate nohighlight">\(u_i\)</span> in <span class="math notranslate nohighlight">\(v_i\)</span> sta <span class="math notranslate nohighlight">\(i\)</span>-ti komponenti vektorjev <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span>. Dva posebna primera te razdalje sta:</p>
 <ul class="simple">
-<li><p>Evklidska razdalja, <span class="math notranslate nohighlight">\(q = 2\)</span>: <span class="math notranslate nohighlight">\( d_E(u, v) = \sqrt{\sum_{i=1}^p (u_i - v_i)^2} \)</span> in</p></li>
-<li><p>Manhattanska razdalja, <span class="math notranslate nohighlight">\(q = 1\)</span>: <span class="math notranslate nohighlight">\( d_M(u, v) = \sum_{i=1}^p |u_i - v_i| \)</span>.</p></li>
+<li><p>Evklidska razdalja, <span class="math notranslate nohighlight">\(q = 2\)</span>: <span class="math notranslate nohighlight">\(d_E(u, v) = \sqrt{\sum_{i=1}^p (u_i - v_i)^2}\)</span> in</p></li>
+<li><p>Manhattanska razdalja, <span class="math notranslate nohighlight">\(q = 1\)</span>: <span class="math notranslate nohighlight">\(d_M(u, v) = \sum_{i=1}^p |u_i - v_i|\)</span>.</p></li>
 </ul>
-<p>Funkcija <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html"><code class="docutils literal notranslate"><span class="pre">pairwise_distances</span></code></a></p>
 </section>
 <section id="primer-podatkov-za-razvrscanje-v-skupine">
 <h3>Primer podatkov za razvrščanje v skupine<a class="headerlink" href="#primer-podatkov-za-razvrscanje-v-skupine" title="Permalink to this heading">#</a></h3>
@@ -1019,9 +1018,9 @@ document.write(`
 <p>Algoritem HAC uporablja funkcijo razdalje <span class="math notranslate nohighlight">\(D\)</span> med skupinami objektov (angl. <em>linkage</em>), ki jo še moramo definirati. Namreč funkcija razdalje <span class="math notranslate nohighlight">\(d\)</span> izračuna razdaljo med objekti. Funkcija <span class="math notranslate nohighlight">\(D\colon 2^S \times 2^S \to R^{+}_0\)</span> za podani množici objektov (torej podmnožici množice S) izračuna razdaljo med njima.</p>
 <p>En način izračuna funkcije <span class="math notranslate nohighlight">\(D\)</span> za dve skupini <span class="math notranslate nohighlight">\(C_1\)</span> in <span class="math notranslate nohighlight">\(C_2\)</span> je ta, da izračunamo razdalje med vsemi pari objektov iz kartezičnega produkta <span class="math notranslate nohighlight">\(C_1 \times C_2\)</span> in nato uporabimo funkcijo agregacije zato, da združimo vrednosti izračunanih razdalj. Tri funkcije združevanja so pogosto v uporabi za definicijo naslednjih treh razdalje med skupinami:</p>
 <ul class="simple">
-<li><p>Celovita (maksimalna): <span class="math notranslate nohighlight">\( D(C_1, C_2) = \max _{(u, v) \in C_1 \times C_2} d(u, v) \)</span>;</p></li>
-<li><p>Enojna (minimalna): <span class="math notranslate nohighlight">\( D(C_1, C_2) = \min _{(u, v) \in C_1 \times C_2} d(u, v) \)</span>;</p></li>
-<li><p>Povprečna: $<span class="math notranslate nohighlight">\( D(C_1, C_2) = \frac{1}{|C_1| |C_2|} \sum _{(u, v) \in C_1 \times C_2} d(u, v). \)</span>$</p></li>
+<li><p>Celovita (maksimalna): <span class="math notranslate nohighlight">\(D(C_1, C_2) = \max _{(u, v) \in C_1 \times C_2} d(u, v)\)</span>;</p></li>
+<li><p>Enojna (minimalna): <span class="math notranslate nohighlight">\(D(C_1, C_2) = \min _{(u, v) \in C_1 \times C_2} d(u, v)\)</span>;</p></li>
+<li><p>Povprečna: <span class="math notranslate nohighlight">\(D(C_1, C_2) = \frac{1}{|C_1| |C_2|} \sum _{(u, v) \in C_1 \times C_2} d(u, v)\)</span>.</p></li>
 </ul>
 <p>Ker na vsakem koraku algoritma HAC združujemo dve skupini v eno, lahko funkcijo <span class="math notranslate nohighlight">\(D\)</span> definiramo rekurzivno s splošno formulo:</p>
 <div class="math notranslate nohighlight">
@@ -1037,7 +1036,6 @@ document.write(`
     \alpha_2 = \frac{|C_2| + |C|}{|C_1| + |C_2| + |C|}, \; \text{in} \;
     \beta = - \frac{|C|}{|C_1| + |C_2| + |C|}.
 \]</div>
-<p>Primeri dendrogramov za različne funkcije razdalje med skupinami.</p>
 </section>
 <section id="primer-uporabe-algoritma-hac">
 <h3>Primer uporabe algoritma HAC<a class="headerlink" href="#primer-uporabe-algoritma-hac" title="Permalink to this heading">#</a></h3>
