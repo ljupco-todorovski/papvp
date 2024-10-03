@@ -171,12 +171,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v `pandas`</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="urejanje-podatkov.html">Od podatkov do podatkovnih tabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vizualizacija.html">Vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prostorska-vizualizacija.html">Prostorska vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="razvrscanje-v-skupine.html">Razvrščanje v skupine</a></li>
 </ul>
 
     </div>
@@ -375,6 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnezdenje-izpeljanih-seznamov">Gnezdenje izpeljanih seznamov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniranje-seznamov">Kombiniranje seznamov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prednosti-in-slabosti-izpeljanih-seznamov">Prednosti in slabosti izpeljanih seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izpeljane-mnozice">Izpeljane množice</a></li>
 </ul>
             </nav>
         </div>
@@ -388,14 +402,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="izpeljani-seznami-angl-list-comprehensions">
 <h1>Izpeljani seznami (angl. <em>list comprehensions</em>)<a class="headerlink" href="#izpeljani-seznami-angl-list-comprehensions" title="Permalink to this heading">#</a></h1>
-<p>Izpeljani seznami v programskem jeziku Python omogočajo <em>učinkovito</em> ustvarjanje novih seznamov. Splošna oblika izpeljanega seznama je <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator</span> <span class="pre">if</span> <span class="pre">pogoj]</span></code>:</p>
+<p>Izpeljani seznami v programskem jeziku Python omogočajo <em>enostavno in učinkovito</em> ustvarjanje novih seznamov. Splošna oblika izpeljanega seznama je <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator</span> <span class="pre">if</span> <span class="pre">pogoj]</span></code>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iterator</span></code> je <em>vir</em> za ustvarjanje elementov izpeljanega seznama: lahko je seznam ali poljuben iterator,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iterator</span></code> je <em>vir</em> za ustvarjanje elementov izpeljanega seznama, lahko je seznam ali poljuben iterator,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> je spremenljivka, ki predstavlja vrednost trenutnega elementa v viru <code class="docutils literal notranslate"><span class="pre">iterator</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">izraz</span></code> je Pythonovski izraz, ki na osnovi vrednosti <code class="docutils literal notranslate"><span class="pre">e</span></code> izračuna vrednost elementa izpeljanega seznama,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pogoj</span></code> je logični Pythonovski izraz, ki odloča o tem ali bo element vira <code class="docutils literal notranslate"><span class="pre">e</span></code> uporabljen za izračun elementa v izpeljanem seznamu.</p></li>
 </ul>
-<p>Zadnji del splošne oblike izpeljanega seznama <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">pogoj</span></code> ni obvezen. Poenostavljena oblika izpeljanega seznama je tako <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator]</span></code>.</p>
+<p>Zadnji del splošne oblike izpeljanega seznama <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">pogoj</span></code> ni obvezen. Poenostavljena oblika izpeljanega seznama je tako <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator]</span></code>. V tem primeru ima izpeljani seznam toliko elementov kot je število elementov v viru <code class="docutils literal notranslate"><span class="pre">iterator</span></code>.</p>
 <p>Pri podatkovni analizi bomo pogosto obravnavali podatke spravljene v tabelah in opravljali izračune na obstoječih stolpcih tabele ter izračunavali nove stolpce. Zato bodo izpeljani seznami pogosto prišli prav, četudi v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code> imamo na voljo funkcije, ki nam omogočajo dosego rezultatov brez uporabe izpeljanih seznamov. Kljub temu razumevanje koncepta izpeljanega seznama, ki se tesno navezuje na koncept funkcij višjega reda, je zelo pomemben za podatkovno analizo. Tako začnemo z ogrevanjem za “ta pravo” podatkovno analizo s Pythonom.</p>
 <section id="enostaven-primer-in-alternativi">
 <h2>Enostaven primer in alternativi<a class="headerlink" href="#enostaven-primer-in-alternativi" title="Permalink to this heading">#</a></h2>
@@ -438,7 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map object at 0x1061d8310&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map object at 0x110c61d20&gt;
 </pre></div>
 </div>
 </div>
@@ -587,6 +601,24 @@ document.write(`
 <li><p>Pri izračunu naslednjega elementa izpeljanega seznama ne moremo upoštevati vrednosti prejšnjih elementov</p></li>
 </ul>
 </section>
+<section id="izpeljane-mnozice">
+<h2>Izpeljane množice<a class="headerlink" href="#izpeljane-mnozice" title="Permalink to this heading">#</a></h2>
+<p>Če v splošni obliki izpeljanega seznama <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator</span> <span class="pre">if</span> <span class="pre">pogoj]</span></code> zamenjamo oglate oklepaje z zavitimi, dobimo izpeljano množico. Je posebej uporabna takrat, ko se hočemo izogniti podvajanju elementov.</p>
+<p>Poglejmo primer, ko iz podanega seznama naslovov e-pošte hočemo izluščiti seznam različnih internetnih domen teh naslovov. Internetna domena naslova e-pošte je del tega naslova, ki sledi znaku <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. Tako je internetna domena naslova <code class="docutils literal notranslate"><span class="pre">ljupco.todorovski&#64;fmf.uni-lj.si</span></code> je <code class="docutils literal notranslate"><span class="pre">fmf.uni-lj.si</span></code>.</p>
+<p>Za začetek napišimo funkcijo, ki vrne internetno domeno podanega naslova. Pri tem uporabimo metodo <code class="docutils literal notranslate"><span class="pre">split</span></code>, ki razdeli niz znakov v seznam podnizov ločenih s podanim ločilom. Poglejmo najprej primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ljupco.todorovski@fmf.uni-lj.si&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ljupco.todorovski&#39;, &#39;fmf.uni-lj.si&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -657,6 +689,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnezdenje-izpeljanih-seznamov">Gnezdenje izpeljanih seznamov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniranje-seznamov">Kombiniranje seznamov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prednosti-in-slabosti-izpeljanih-seznamov">Prednosti in slabosti izpeljanih seznamov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izpeljane-mnozice">Izpeljane množice</a></li>
 </ul>
   </nav></div>
 
