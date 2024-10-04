@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'uvod-funkcije-visjega-reda';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Zaporedja v knjižnici pandas" href="pt-zaporedja.html" />
+    <link rel="next" title="Zaporedja, Series" href="pt-zaporedja.html" />
     <link rel="prev" title="Izpeljani seznami (angl. list comprehensions)" href="uvod-izpeljani-seznami.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,12 +173,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Funkcije višjega reda</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v `pandas`</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="urejanje-podatkov.html">Od podatkov do podatkovnih tabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vizualizacija.html">Vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prostorska-vizualizacija.html">Prostorska vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="razvrscanje-v-skupine.html">Razvrščanje v skupine</a></li>
 </ul>
 
     </div>
@@ -374,7 +387,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkciji-map-in-filter">Funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-argument">Funkcija kot argument</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-rezultat">Funkcija kot rezultat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napredna-tema-funkcija-kot-rezultat">Napredna tema: Funkcija kot rezultat</a></li>
 </ul>
             </nav>
         </div>
@@ -421,6 +434,8 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Definiraj funkcijo <code class="docutils literal notranslate"><span class="pre">reduce</span></code>, ki prejme tri argumente, funkcijo <code class="docutils literal notranslate"><span class="pre">f</span></code>,enoto <code class="docutils literal notranslate"><span class="pre">e</span></code> in seznam <code class="docutils literal notranslate"><span class="pre">s</span></code>. Funkcija <code class="docutils literal notranslate"><span class="pre">f</span></code> združi vrednosti dveh podanih argumentov v eno vrednost, ki je potem rezultat funkcije. Primer take funkcije je <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">a,</span> <span class="pre">b:</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>. Enota <code class="docutils literal notranslate"><span class="pre">e</span></code> je taka vrednost argumenta funkcije <code class="docutils literal notranslate"><span class="pre">f</span></code>, da sta rezultata klicev <code class="docutils literal notranslate"><span class="pre">f(a,</span> <span class="pre">e)</span></code> in <code class="docutils literal notranslate"><span class="pre">f(e,</span> <span class="pre">a)</span></code> enaka <code class="docutils literal notranslate"><span class="pre">a</span></code>. Enota za prej podan primer funkcije je <code class="docutils literal notranslate"><span class="pre">0</span></code>. Funkcija <code class="docutils literal notranslate"><span class="pre">reduce</span></code> naj zaporedoma uporabi funkcijo <code class="docutils literal notranslate"><span class="pre">f</span></code> na elementih seznama <code class="docutils literal notranslate"><span class="pre">s</span></code>, tako da jih združi v eno vrednost, ki jo vrne kot rezultat.</p>
+<p>Premisli kakšne lastnosti mora imeti funkcija <code class="docutils literal notranslate"><span class="pre">f</span></code>, da je zgoraj opisana operacija združevanja <code class="docutils literal notranslate"><span class="pre">reduce</span></code> dobro definirana.</p>
 </section>
 <section id="funkcija-kot-argument">
 <h2>Funkcija kot argument<a class="headerlink" href="#funkcija-kot-argument" title="Permalink to this heading">#</a></h2>
@@ -453,9 +468,9 @@ document.write(`
 <p>Funkcija torej najprej iz podanega nabora <code class="docutils literal notranslate"><span class="pre">interval</span></code> prebere spodnjo in zgornjo mejo intervala. Nato preveri, če je spodnja meja <code class="docutils literal notranslate"><span class="pre">a</span></code> manjša od zgornje <code class="docutils literal notranslate"><span class="pre">b</span></code>. Na osnovi zgornje in spodnje meje uporabi izpeljan seznam za izračun vmesnih točke med <code class="docutils literal notranslate"><span class="pre">a</span></code> in <code class="docutils literal notranslate"><span class="pre">b</span></code> na medsebojni razdalji <code class="docutils literal notranslate"><span class="pre">h</span></code>. Nato še enkrat uporabi izpeljan seznam za izračun ploščin vseh nastalih trapezov. Vsota teh ploščin je približek za vrednost določenega integrala na podanem intervalu.</p>
 <p>Funkcija <code class="docutils literal notranslate"><span class="pre">dolocen_integral</span></code> je torej splošno uporabna, ker namreč, kot njen prvi argument lahko podamo poljubno funkcijo <span class="math notranslate nohighlight">\(f\colon \mathbb{R} \to \mathbb{R}\)</span>.</p>
 </section>
-<section id="funkcija-kot-rezultat">
-<h2>Funkcija kot rezultat<a class="headerlink" href="#funkcija-kot-rezultat" title="Permalink to this heading">#</a></h2>
-<p>Spomnimo se kaj pomeni kompozitum <span class="math notranslate nohighlight">\(f \circ g\)</span> funkcij <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(f \circ g: x \mapsto f(g(x))\)</span>. Definirajmo funkcijo <span class="math notranslate nohighlight">\(f^2\)</span> kot kompozitum funkcije <span class="math notranslate nohighlight">\(f\)</span> same s sabo <span class="math notranslate nohighlight">\(f \circ f\)</span>. Podobno definirajmo funkcijo <span class="math notranslate nohighlight">\(f^n\)</span>, za poljubno naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> kot kompozitum <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(f^{n-1}\)</span>, torej <span class="math notranslate nohighlight">\(f^n(x) = f(f^{n-1}(x))\)</span>. Definirajmo zdaj funkcijo v Pythonu, ki za podano funkcijo <span class="math notranslate nohighlight">\(x\)</span> in naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> vrne funkcijo <span class="math notranslate nohighlight">\(f^n\)</span>.</p>
+<section id="napredna-tema-funkcija-kot-rezultat">
+<h2>Napredna tema: Funkcija kot rezultat<a class="headerlink" href="#napredna-tema-funkcija-kot-rezultat" title="Permalink to this heading">#</a></h2>
+<p>Spomnimo se definicije kompozituma <span class="math notranslate nohighlight">\(f \circ g\)</span> funkcij <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(g\)</span>: <span class="math notranslate nohighlight">\(f \circ g: x \mapsto f(g(x))\)</span>. Definirajmo funkcijo <span class="math notranslate nohighlight">\(f^2\)</span> kot kompozitum funkcije <span class="math notranslate nohighlight">\(f\)</span> same s sabo <span class="math notranslate nohighlight">\(f \circ f\)</span>. Podobno definirajmo funkcijo <span class="math notranslate nohighlight">\(f^n\)</span>, za poljubno naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> kot kompozitum <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(f^{n-1}\)</span>, torej <span class="math notranslate nohighlight">\(f^n(x) = f(f^{n-1}(x))\)</span>. Definirajmo zdaj funkcijo v Pythonu, ki za podano funkcijo <span class="math notranslate nohighlight">\(x\)</span> in naravno število <span class="math notranslate nohighlight">\(n &gt; 2\)</span> izračuna vrednost funkcije <span class="math notranslate nohighlight">\(f^n\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -477,7 +492,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function fn.&lt;locals&gt;.kompozitum at 0x104115260&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function fn.&lt;locals&gt;.kompozitum at 0x10516dc60&gt;
 10
 </pre></div>
 </div>
@@ -532,7 +547,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Zaporedja v knjižnici <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+        <p class="prev-next-title">Zaporedja, <em>Series</em></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -553,7 +568,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkciji-map-in-filter">Funkciji <code class="docutils literal notranslate"><span class="pre">map</span></code> in <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-argument">Funkcija kot argument</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcija-kot-rezultat">Funkcija kot rezultat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napredna-tema-funkcija-kot-rezultat">Napredna tema: Funkcija kot rezultat</a></li>
 </ul>
   </nav></div>
 
