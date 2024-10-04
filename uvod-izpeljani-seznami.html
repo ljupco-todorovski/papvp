@@ -452,7 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map object at 0x110c61d20&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map object at 0x1079606d0&gt;
 </pre></div>
 </div>
 </div>
@@ -605,7 +605,7 @@ document.write(`
 <h2>Izpeljane množice<a class="headerlink" href="#izpeljane-mnozice" title="Permalink to this heading">#</a></h2>
 <p>Če v splošni obliki izpeljanega seznama <code class="docutils literal notranslate"><span class="pre">[izraz</span> <span class="pre">for</span> <span class="pre">e</span> <span class="pre">in</span> <span class="pre">iterator</span> <span class="pre">if</span> <span class="pre">pogoj]</span></code> zamenjamo oglate oklepaje z zavitimi, dobimo izpeljano množico. Je posebej uporabna takrat, ko se hočemo izogniti podvajanju elementov.</p>
 <p>Poglejmo primer, ko iz podanega seznama naslovov e-pošte hočemo izluščiti seznam različnih internetnih domen teh naslovov. Internetna domena naslova e-pošte je del tega naslova, ki sledi znaku <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. Tako je internetna domena naslova <code class="docutils literal notranslate"><span class="pre">ljupco.todorovski&#64;fmf.uni-lj.si</span></code> je <code class="docutils literal notranslate"><span class="pre">fmf.uni-lj.si</span></code>.</p>
-<p>Za začetek napišimo funkcijo, ki vrne internetno domeno podanega naslova. Pri tem uporabimo metodo <code class="docutils literal notranslate"><span class="pre">split</span></code>, ki razdeli niz znakov v seznam podnizov ločenih s podanim ločilom. Poglejmo najprej primer:</p>
+<p>Za začetek definirajmo funkcijo, ki vrne internetno domeno podanega naslova. Pri tem uporabimo metodo <code class="docutils literal notranslate"><span class="pre">split</span></code>, ki razdeli niz znakov v seznam podnizov ločenih s podanim ločilom. Poglejmo najprej primer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ljupco.todorovski@fmf.uni-lj.si&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">))</span>
@@ -614,6 +614,44 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ljupco.todorovski&#39;, &#39;fmf.uni-lj.si&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Želeno funkcijo zdaj definiramo takole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">domena</span><span class="p">(</span><span class="n">naslov</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">naslov</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">domena</span><span class="p">(</span><span class="s2">&quot;ljupco.todorovski@fmf.uni-lj.si&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fmf.uni-lj.si
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funkcijo uporabimo v kombinaciji z izpeljano množico, da dobimo želeni rezultat:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naslovi</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;ljupco.todorovski@fmf.uni-lj.si&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ajda.lampe@fmf.uni-lj.si&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ajda.lampe@fri.uni-lj.si&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Katja.StembergerBrizani@pf.uni-lj.si&quot;</span>
+    <span class="s2">&quot;ljupco@gmail.com&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">domene</span> <span class="o">=</span> <span class="p">{</span><span class="n">domena</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">naslovi</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">domene</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fri.uni-lj.si&#39;, &#39;fmf.uni-lj.si&#39;, &#39;gmail.com&#39;}
 </pre></div>
 </div>
 </div>
