@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Zapiski pri predmetu Podatkovna analiza in pravno varstvo podatkov
+                    Zapiski s predavanj pri predmetu Podatkovna analiza in pravno varstvo podatkov, PAPVP
                 </a>
             </li>
         </ul>
@@ -171,10 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvod v pandas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Zaporedja, <em>Series</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-uvod.html">Knjižnica <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in tabelarični podatki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-zaporedja.html">Podatkovni tip zaporedje, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni tip podatkovni okvir (tudi podatkovna tabela), <em>DataFrame</em></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
 </ul>
@@ -1003,9 +1004,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_11050/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_9298/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 
-/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_11050/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_9298/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1414,69 +1415,81 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>Country</th>
-      <th>Temp (C)</th>
+      <th>Temperature (°C)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>1</td>
       <td>Burkina Faso</td>
-      <td>28.29</td>
+      <td>30.40 °C (86.72 °F)</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>2</td>
       <td>Mali</td>
-      <td>28.25</td>
+      <td>29.21 °C (84.58 °F)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Kiribati</td>
-      <td>28.20</td>
+      <td>3</td>
+      <td>Aruba</td>
+      <td>29.17 °C (84.51 °F)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Djibouti</td>
-      <td>28.00</td>
+      <td>4</td>
+      <td>Senegal</td>
+      <td>28.90 °C (84.02 °F)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Maldives</td>
-      <td>28.00</td>
+      <td>5</td>
+      <td>Mauritania</td>
+      <td>28.82 °C (83.88 °F)</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>187</th>
-      <td>Finland</td>
-      <td>01.55</td>
+      <th>229</th>
+      <td>231</td>
+      <td>Mongolia</td>
+      <td>1.07 °C (33.93 °F)</td>
     </tr>
     <tr>
-      <th>188</th>
-      <td>Norway [note 2]</td>
-      <td>01.50</td>
-    </tr>
-    <tr>
-      <th>189</th>
-      <td>Iceland</td>
-      <td>−0.70</td>
-    </tr>
-    <tr>
-      <th>190</th>
-      <td>Canada</td>
-      <td>−5.10</td>
-    </tr>
-    <tr>
-      <th>191</th>
+      <th>230</th>
+      <td>232</td>
       <td>Russia</td>
-      <td>−5.35</td>
+      <td>−3.79 °C (25.18 °F)</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>233</td>
+      <td>Canada</td>
+      <td>−4.03 °C (24.75 °F)</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>234</td>
+      <td>Svalbard and Jan Mayen</td>
+      <td>−6.78 °C (19.80 °F)</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>235</td>
+      <td>Greenland</td>
+      <td>−18.68 °C (−1.62 °F)</td>
     </tr>
   </tbody>
 </table>
-<p>192 rows × 2 columns</p>
+<p>234 rows × 3 columns</p>
 </div></div></div>
 </div>
 <p>Dobimo torej tabelo z dvema spremenljivkama, <code class="docutils literal notranslate"><span class="pre">Country</span></code> je dimenzijska spremenljivka, ki imenuje državo, in <code class="docutils literal notranslate"><span class="pre">Average</span> <span class="pre">yearly</span> <span class="pre">temperature</span> <span class="pre">(1961–1990</span> <span class="pre">Celsius)</span></code>. Tip slednje je napačen: niz znakov namesto numerični:</p>
@@ -1487,8 +1500,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country     object
-Temp (C)    object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unnamed: 0           int64
+Country             object
+Temperature (°C)    object
 dtype: object
 </pre></div>
 </div>
@@ -1505,72 +1519,43 @@ dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6532,</span> in <span class="ni">NDFrame.astype</span><span class="nt">(self, dtype, copy, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6528</span>     <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">ser</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">ser</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-<span class="g g-Whitespace">   </span><span class="mi">6530</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6531</span>     <span class="c1"># else, only a single dtype is given</span>
-<span class="ne">-&gt; </span><span class="mi">6532</span>     <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6533</span>     <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_from_mgr</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">new_data</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6534</span>     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;astype&quot;</span><span class="p">)</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6216,</span> in <span class="ni">NDFrame.__setattr__</span><span class="nt">(self, name, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6214</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6215</span>     <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6216</span>     <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6217</span> <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6218</span>     <span class="k">pass</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:414,</span> in <span class="ni">BaseBlockManager.astype</span><span class="nt">(self, dtype, copy, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="k">elif</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="ne">--&gt; </span><span class="mi">414</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span>     <span class="s2">&quot;astype&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>     <span class="n">using_cow</span><span class="o">=</span><span class="n">using_copy_on_write</span><span class="p">(),</span>
-<span class="g g-Whitespace">    </span><span class="mi">420</span> <span class="p">)</span>
+<span class="nn">File properties.pyx:69,</span> in <span class="ni">pandas._libs.properties.AxisProperty.__set__</span><span class="nt">()</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354,</span> in <span class="ni">BaseBlockManager.apply</span><span class="nt">(self, f, align_keys, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span>         <span class="n">applied</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">354</span>         <span class="n">applied</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="n">result_blocks</span> <span class="o">=</span> <span class="n">extend_blocks</span><span class="p">(</span><span class="n">applied</span><span class="p">,</span> <span class="n">result_blocks</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_blocks</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:767,</span> in <span class="ni">NDFrame._set_axis</span><span class="nt">(self, axis, labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span><span class="sd"> This is called from the cython code when we set the `index` attribute</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span><span class="sd"> directly, e.g. `series.index = [1, 2, 3]`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">767</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clear_item_cache</span><span class="p">()</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:616,</span> in <span class="ni">Block.astype</span><span class="nt">(self, dtype, copy, errors, using_cow)</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">597</span><span class="sd"> Coerce to the new dtype.</span>
-<span class="g g-Whitespace">    </span><span class="mi">598</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd"> Block</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span> <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
-<span class="ne">--&gt; </span><span class="mi">616</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array_safe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">maybe_coerce_values</span><span class="p">(</span><span class="n">new_values</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="n">refs</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:227,</span> in <span class="ni">BaseBlockManager.set_axis</span><span class="nt">(self, axis, new_labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">def</span> <span class="nf">set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">AxisInt</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="c1"># Caller is responsible for ensuring we have an Index object.</span>
+<span class="ne">--&gt; </span><span class="mi">227</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_labels</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:238,</span> in <span class="ni">astype_array_safe</span><span class="nt">(values, dtype, copy, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">numpy_dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="c1"># e.g. _astype_nansafe can fail on object-dtype of strings</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="c1">#  trying to convert to float</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;ignore&quot;</span><span class="p">:</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/base.py:85,</span> in <span class="ni">DataManager._validate_set_axis</span><span class="nt">(self, axis, new_labels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">elif</span> <span class="n">new_len</span> <span class="o">!=</span> <span class="n">old_len</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">85</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="sa">f</span><span class="s2">&quot;Length mismatch: Expected axis has </span><span class="si">{</span><span class="n">old_len</span><span class="si">}</span><span class="s2"> elements, new &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="sa">f</span><span class="s2">&quot;values have </span><span class="si">{</span><span class="n">new_len</span><span class="si">}</span><span class="s2"> elements&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="p">)</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:183,</span> in <span class="ni">astype_array</span><span class="nt">(values, dtype, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_astype_nansafe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="c1"># in pandas we don&#39;t store numpy str dtypes, so convert to object</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:134,</span> in <span class="ni">_astype_nansafe</span><span class="nt">(arr, dtype, copy, skipna)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">or</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1"># Explicit copy, or required since NumPy can&#39;t view from / to object.</span>
-<span class="ne">--&gt; </span><span class="mi">134</span>     <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: could not convert string to float: &#39;−0.70&#39;
+<span class="ne">ValueError</span>: Length mismatch: Expected axis has 3 elements, new values have 2 elements
 </pre></div>
 </div>
 </div>

@@ -7,7 +7,7 @@ Traceback (most recent call last):
   File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/opt/homebrew/Cellar/python@3.11/3.11.8/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
   File "/Users/ljupco/predmeti/pandas/venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
@@ -25,70 +25,41 @@ temp_svet.avg_tem = temp_svet.avg_temp.astype("float")
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mValueError[0m                                Traceback (most recent call last)
-Cell [0;32mIn[13], line 2[0m
-[1;32m      1[0m temp_svet[38;5;241m.[39mcolumns [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mcountry[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mavg_temp[39m[38;5;124m"[39m]
-[0;32m----> 2[0m temp_svet[38;5;241m.[39mavg_tem [38;5;241m=[39m [43mtemp_svet[49m[38;5;241;43m.[39;49m[43mavg_temp[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mfloat[39;49m[38;5;124;43m"[39;49m[43m)[49m
+Cell [0;32mIn[13], line 1[0m
+[0;32m----> 1[0m [43mtemp_svet[49m[38;5;241;43m.[39;49m[43mcolumns[49m [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mcountry[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mavg_temp[39m[38;5;124m"[39m]
+[1;32m      2[0m temp_svet[38;5;241m.[39mavg_tem [38;5;241m=[39m temp_svet[38;5;241m.[39mavg_temp[38;5;241m.[39mastype([38;5;124m"[39m[38;5;124mfloat[39m[38;5;124m"[39m)
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6532[0m, in [0;36mNDFrame.astype[0;34m(self, dtype, copy, errors)[0m
-[1;32m   6528[0m     results [38;5;241m=[39m [ser[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy) [38;5;28;01mfor[39;00m _, ser [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mitems()]
-[1;32m   6530[0m [38;5;28;01melse[39;00m:
-[1;32m   6531[0m     [38;5;66;03m# else, only a single dtype is given[39;00m
-[0;32m-> 6532[0m     new_data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mgr[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m[43m [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m)[49m
-[1;32m   6533[0m     res [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_constructor_from_mgr(new_data, axes[38;5;241m=[39mnew_data[38;5;241m.[39maxes)
-[1;32m   6534[0m     [38;5;28;01mreturn[39;00m res[38;5;241m.[39m__finalize__([38;5;28mself[39m, method[38;5;241m=[39m[38;5;124m"[39m[38;5;124mastype[39m[38;5;124m"[39m)
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6216[0m, in [0;36mNDFrame.__setattr__[0;34m(self, name, value)[0m
+[1;32m   6214[0m [38;5;28;01mtry[39;00m:
+[1;32m   6215[0m     [38;5;28mobject[39m[38;5;241m.[39m[38;5;21m__getattribute__[39m([38;5;28mself[39m, name)
+[0;32m-> 6216[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mobject[39;49m[38;5;241;43m.[39;49m[38;5;21;43m__setattr__[39;49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mname[49m[43m,[49m[43m [49m[43mvalue[49m[43m)[49m
+[1;32m   6217[0m [38;5;28;01mexcept[39;00m [38;5;167;01mAttributeError[39;00m:
+[1;32m   6218[0m     [38;5;28;01mpass[39;00m
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:414[0m, in [0;36mBaseBlockManager.astype[0;34m(self, dtype, copy, errors)[0m
-[1;32m    411[0m [38;5;28;01melif[39;00m using_copy_on_write():
-[1;32m    412[0m     copy [38;5;241m=[39m [38;5;28;01mFalse[39;00m
-[0;32m--> 414[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m
-[1;32m    415[0m [43m    [49m[38;5;124;43m"[39;49m[38;5;124;43mastype[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m    416[0m [43m    [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m
-[1;32m    417[0m [43m    [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m
-[1;32m    418[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
-[1;32m    419[0m [43m    [49m[43musing_cow[49m[38;5;241;43m=[39;49m[43musing_copy_on_write[49m[43m([49m[43m)[49m[43m,[49m
-[1;32m    420[0m [43m[49m[43m)[49m
+File [0;32mproperties.pyx:69[0m, in [0;36mpandas._libs.properties.AxisProperty.__set__[0;34m()[0m
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354[0m, in [0;36mBaseBlockManager.apply[0;34m(self, f, align_keys, **kwargs)[0m
-[1;32m    352[0m         applied [38;5;241m=[39m b[38;5;241m.[39mapply(f, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[1;32m    353[0m     [38;5;28;01melse[39;00m:
-[0;32m--> 354[0m         applied [38;5;241m=[39m [38;5;28;43mgetattr[39;49m[43m([49m[43mb[49m[43m,[49m[43m [49m[43mf[49m[43m)[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    355[0m     result_blocks [38;5;241m=[39m extend_blocks(applied, result_blocks)
-[1;32m    357[0m out [38;5;241m=[39m [38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39mfrom_blocks(result_blocks, [38;5;28mself[39m[38;5;241m.[39maxes)
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:767[0m, in [0;36mNDFrame._set_axis[0;34m(self, axis, labels)[0m
+[1;32m    762[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[1;32m    763[0m [38;5;124;03mThis is called from the cython code when we set the `index` attribute[39;00m
+[1;32m    764[0m [38;5;124;03mdirectly, e.g. `series.index = [1, 2, 3]`.[39;00m
+[1;32m    765[0m [38;5;124;03m"""[39;00m
+[1;32m    766[0m labels [38;5;241m=[39m ensure_index(labels)
+[0;32m--> 767[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mgr[49m[38;5;241;43m.[39;49m[43mset_axis[49m[43m([49m[43maxis[49m[43m,[49m[43m [49m[43mlabels[49m[43m)[49m
+[1;32m    768[0m [38;5;28mself[39m[38;5;241m.[39m_clear_item_cache()
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:616[0m, in [0;36mBlock.astype[0;34m(self, dtype, copy, errors, using_cow)[0m
-[1;32m    596[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
-[1;32m    597[0m [38;5;124;03mCoerce to the new dtype.[39;00m
-[1;32m    598[0m 
-[0;32m   (...)[0m
-[1;32m    612[0m [38;5;124;03mBlock[39;00m
-[1;32m    613[0m [38;5;124;03m"""[39;00m
-[1;32m    614[0m values [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mvalues
-[0;32m--> 616[0m new_values [38;5;241m=[39m [43mastype_array_safe[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m[43m [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m)[49m
-[1;32m    618[0m new_values [38;5;241m=[39m maybe_coerce_values(new_values)
-[1;32m    620[0m refs [38;5;241m=[39m [38;5;28;01mNone[39;00m
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:227[0m, in [0;36mBaseBlockManager.set_axis[0;34m(self, axis, new_labels)[0m
+[1;32m    225[0m [38;5;28;01mdef[39;00m [38;5;21mset_axis[39m([38;5;28mself[39m, axis: AxisInt, new_labels: Index) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[1;32m    226[0m     [38;5;66;03m# Caller is responsible for ensuring we have an Index object.[39;00m
+[0;32m--> 227[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_set_axis[49m[43m([49m[43maxis[49m[43m,[49m[43m [49m[43mnew_labels[49m[43m)[49m
+[1;32m    228[0m     [38;5;28mself[39m[38;5;241m.[39maxes[axis] [38;5;241m=[39m new_labels
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:238[0m, in [0;36mastype_array_safe[0;34m(values, dtype, copy, errors)[0m
-[1;32m    235[0m     dtype [38;5;241m=[39m dtype[38;5;241m.[39mnumpy_dtype
-[1;32m    237[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 238[0m     new_values [38;5;241m=[39m [43mastype_array[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m)[49m
-[1;32m    239[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mValueError[39;00m, [38;5;167;01mTypeError[39;00m):
-[1;32m    240[0m     [38;5;66;03m# e.g. _astype_nansafe can fail on object-dtype of strings[39;00m
-[1;32m    241[0m     [38;5;66;03m#  trying to convert to float[39;00m
-[1;32m    242[0m     [38;5;28;01mif[39;00m errors [38;5;241m==[39m [38;5;124m"[39m[38;5;124mignore[39m[38;5;124m"[39m:
+File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/base.py:85[0m, in [0;36mDataManager._validate_set_axis[0;34m(self, axis, new_labels)[0m
+[1;32m     82[0m     [38;5;28;01mpass[39;00m
+[1;32m     84[0m [38;5;28;01melif[39;00m new_len [38;5;241m!=[39m old_len:
+[0;32m---> 85[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m     86[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mLength mismatch: Expected axis has [39m[38;5;132;01m{[39;00mold_len[38;5;132;01m}[39;00m[38;5;124m elements, new [39m[38;5;124m"[39m
+[1;32m     87[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mvalues have [39m[38;5;132;01m{[39;00mnew_len[38;5;132;01m}[39;00m[38;5;124m elements[39m[38;5;124m"[39m
+[1;32m     88[0m     )
 
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:183[0m, in [0;36mastype_array[0;34m(values, dtype, copy)[0m
-[1;32m    180[0m     values [38;5;241m=[39m values[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy)
-[1;32m    182[0m [38;5;28;01melse[39;00m:
-[0;32m--> 183[0m     values [38;5;241m=[39m [43m_astype_nansafe[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m)[49m
-[1;32m    185[0m [38;5;66;03m# in pandas we don't store numpy str dtypes, so convert to object[39;00m
-[1;32m    186[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(dtype, np[38;5;241m.[39mdtype) [38;5;129;01mand[39;00m [38;5;28missubclass[39m(values[38;5;241m.[39mdtype[38;5;241m.[39mtype, [38;5;28mstr[39m):
-
-File [0;32m~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:134[0m, in [0;36m_astype_nansafe[0;34m(arr, dtype, copy, skipna)[0m
-[1;32m    130[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
-[1;32m    132[0m [38;5;28;01mif[39;00m copy [38;5;129;01mor[39;00m arr[38;5;241m.[39mdtype [38;5;241m==[39m [38;5;28mobject[39m [38;5;129;01mor[39;00m dtype [38;5;241m==[39m [38;5;28mobject[39m:
-[1;32m    133[0m     [38;5;66;03m# Explicit copy, or required since NumPy can't view from / to object.[39;00m
-[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m [43marr[49m[38;5;241;43m.[39;49m[43mastype[49m[43m([49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
-[1;32m    136[0m [38;5;28;01mreturn[39;00m arr[38;5;241m.[39mastype(dtype, copy[38;5;241m=[39mcopy)
-
-[0;31mValueError[0m: could not convert string to float: '−0.70'
+[0;31mValueError[0m: Length mismatch: Expected axis has 3 elements, new values have 2 elements
 
