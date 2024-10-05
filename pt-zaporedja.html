@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Zaporedja, Series &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
+    <title>Podatkovni tip zaporedje, Series &#8212; Zvezek za predmet Podatkovna analiza in pravno varstvo podatkov</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'pt-zaporedja';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Podatkovni okviri (tudi podatkovne tabele), DataFrame" href="pt-podatkovni-okviri.html" />
-    <link rel="prev" title="Funkcije višjega reda" href="uvod-funkcije-visjega-reda.html" />
+    <link rel="next" title="Podatkovni tip podatkovni okvir (tudi podatkovna tabela), DataFrame" href="pt-podatkovni-okviri.html" />
+    <link rel="prev" title="Knjižnica pandas in tabelarični podatki" href="pt-uvod.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,19 +171,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="uvod-izpeljani-seznami.html">Izpeljani seznami (angl. <em>list comprehensions</em>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uvod-funkcije-visjega-reda.html">Funkcije višjega reda</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Podatkovni tipi v pandas</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvod v pandas</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Zaporedja, <em>Series</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-uvod.html">Knjižnica <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in tabelarični podatki</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Podatkovni tip zaporedje, <em>Series</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt-podatkovni-okviri.html">Podatkovni tip podatkovni okvir (tudi podatkovna tabela), <em>DataFrame</em></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pt-naloge.html">Naloge</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uvoz in urejanje podatkov</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Od podatkov do podatkovnih tabel</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="urejanje-podatkov.html">Od podatkov do podatkovnih tabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-sql.html">Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uvoz-urejanje-ri.html">Urejanje besedilnih podatkov in regularni izrazi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analiza in vizualizacija podatkov</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="osnovna-analiza.html">Osnovna analiza podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vizualizacija.html">Vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prostorska-vizualizacija.html">Prostorska vizualizacija podatkov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="razvrscanje-v-skupine.html">Razvrščanje v skupine</a></li>
 </ul>
 
     </div>
@@ -367,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Zaporedja, Series</h1>
+    <h1>Podatkovni tip zaporedje, Series</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,10 +412,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>Knjižnica <a class="reference external" href="https://pandas.pydata.org/"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></a> omogoča procesiranje, obdelavo in analizo podatkov, shranjenih v podatkovno tabelo. Na začetku dela s knjižnico bomo najprej spoznali osnovne podatkovne tipe za sestavljanje tabel: zaporedje (angl. <em>Series</em>) in podatkovni okvir (angl. <em>DataFrame</em>), ki ga bomo imenovali tudi podatkovna tabela.</p>
-<p>Podatkovna tabela v <code class="docutils literal notranslate"><span class="pre">pandas</span></code> je sestavljena iz vrstic in stolpcev, imenovanih tudi spremenljivke. Vsak stolpec v tabeli je tipe zaporedje. Stolpci (spremenljivke) so v podatkovnih tabelah posebnega pomena, saj večina operacij podatkovne obdelave in analize poteka na stolpcih. Zato bomo najprej dobro spoznali podatkovni tip zaporedje in se naučili delati s posameznimi stolpci tabele, nato pa se naučili delati s podatkovnimi okviri. Pri obdelavi zaporedij bomo si pogosto pomagali z izpeljanimi seznami, o katerih smo govorili v okviru uvodnega predavanja.</p>
-<section class="tex2jax_ignore mathjax_ignore" id="zaporedja-series">
-<h1>Zaporedja, <em>Series</em><a class="headerlink" href="#zaporedja-series" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="podatkovni-tip-zaporedje-series">
+<h1>Podatkovni tip zaporedje, <em>Series</em><a class="headerlink" href="#podatkovni-tip-zaporedje-series" title="Permalink to this heading">#</a></h1>
 <p>Podatkovni tip zaporedje (<code class="docutils literal notranslate"><span class="pre">Series</span></code>) v Pandasu je osnovna struktura za shranjevanje enodimenzionalnih podatkov. Zaporedje je podobno seznamu, vendar ima dodatne funkcionalnosti in je bolj prilagojeno obdelavi podatkov. Vsak element zaporedja je povezan z indeksom, kar olajša dostop do podatkov.</p>
 <p>Zaporedje lahko ustvarimo na več načinov, a najbolj pogosto si bomo pomagali s seznamom ali slovarjem. V primeru, ko zaporedje ustvarimo iz seznama so njegovi indeksi zaporedna naravna števila, pri čemer je indeks prvega elementa, tako kot pri seznamih, enak 0. Zaporedje ustvarimo s pomočjo konstruktorja <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> takole:</p>
 <div class="cell docutils container">
@@ -545,7 +550,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_35228/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_6785/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -1344,12 +1349,12 @@ dtype: period[W-MON]
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="uvod-funkcije-visjega-reda.html"
+       href="pt-uvod.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Funkcije višjega reda</p>
+        <p class="prev-next-title">Knjižnica <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in tabelarični podatki</p>
       </div>
     </a>
     <a class="right-next"
@@ -1357,7 +1362,7 @@ dtype: period[W-MON]
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Podatkovni okviri (tudi podatkovne tabele), <em>DataFrame</em></p>
+        <p class="prev-next-title">Podatkovni tip podatkovni okvir (tudi podatkovna tabela), <em>DataFrame</em></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
