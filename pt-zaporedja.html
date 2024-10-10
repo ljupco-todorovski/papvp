@@ -414,8 +414,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="podatkovni-tip-zaporedje-series">
 <h1>Podatkovni tip zaporedje, <em>Series</em><a class="headerlink" href="#podatkovni-tip-zaporedje-series" title="Permalink to this heading">#</a></h1>
-<p>Podatkovni tip zaporedje (<code class="docutils literal notranslate"><span class="pre">Series</span></code>) v Pandasu je osnovna struktura za shranjevanje enodimenzionalnih podatkov. Zaporedje je podobno seznamu, vendar ima dodatne funkcionalnosti in je bolj prilagojeno obdelavi podatkov. Vsak element zaporedja je povezan z indeksom, kar olajša dostop do podatkov.</p>
-<p>Zaporedje lahko ustvarimo na več načinov, a najbolj pogosto si bomo pomagali s seznamom ali slovarjem. V primeru, ko zaporedje ustvarimo iz seznama so njegovi indeksi zaporedna naravna števila, pri čemer je indeks prvega elementa, tako kot pri seznamih, enak 0. Zaporedje ustvarimo s pomočjo konstruktorja <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> takole:</p>
+<p>Podatkovni tip zaporedje (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html"><code class="docutils literal notranslate"><span class="pre">Series</span></code></a>) je osnovna struktura knjižnice Pandas za shranjevanje seznama ali vektorja podatkov <strong>istega tipa</strong>. Zaporedje je podobno Python-ovemu seznamu (ali stolpcu v Excel-ovi tabeli), vendar ima dodatne funkcionalnosti in je bolj prilagojeno podatkovni analizi. Vsak element zaporedja je povezan z indeksom poljubnega tipa, kar tudi lahko olajša dostop do shranjenih podatkov oziroma posameznih elementov.</p>
+<p>Zaporedje lahko ustvarimo na več načinov, a najbolj pogosto si bomo pomagali z običajnim seznamom ali slovarjem. V primeru, ko zaporedje ustvarimo iz seznama, so indeksi elementov zaporedna naravna števila, pri čemer je indeks prvega elementa, tako kot pri seznamih, enak 0. Če pa zaporedje ustvarimo iz slovarja, postanejo vrednosti elementov slovarja elementi zaporedja, ključi elementov slovarja pa indeksi elementov zaporedja.</p>
+<p>Zaporedje je implementirano kot Python-ovski razred (angl. <em>class</em>) in zato ga ustvarimo s pomočjo konstruktorja <code class="docutils literal notranslate"><span class="pre">Series</span></code> takole:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -436,12 +437,12 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Spoznajmo na začetku nekaj ključnih lastnosti (atributov) zaporedij:</p>
+<p>Spoznajmo na začetku nekaj ključnih lastnosti (atributov) razreda zaporedje:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: število elementov zaporedja, tudi dolžina zaporedja,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: podatkovni tip vrednosti v zaporedju,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: število elementov zaporedja, tudi <em>dolžina</em> zaporedja,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: <em>podatkovni tip</em> vrednosti elementov zaporedja,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">values</span></code>: vrednosti elementov zaporedja, in</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: indeksi elementov v zaporedju (podobno kot <code class="docutils literal notranslate"><span class="pre">keys</span></code> v slovarjih).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: indeksi elementov zaporedja (podobno kot <code class="docutils literal notranslate"><span class="pre">keys</span></code> v običajnih slovarjih).</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -476,7 +477,7 @@ int64
 </div>
 </div>
 </div>
-<p>Lastnost je polje, kot ga definira knjižnica <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>). Izpis vrednosti nam pokaže elemente polja: dejstvo, da v izpisu ni vejic med zaporednimi elementi, nakazuje, da ne gre za navaden Pythonovski seznam. Slednjega lahko dobimo z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code>.</p>
+<p>Lastnost je polje, kot ga definira knjižnica <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>). Izpis vrednosti nam pokaže elemente polja: dejstvo, da v izpisu ni vejic med zaporednimi elementi, nakazuje, da ne gre za navaden Python-ovski seznam. Slednjega lahko dobimo z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code>.</p>
 <p>Poglejmo si še lastnost <code class="docutils literal notranslate"><span class="pre">index</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,8 +497,8 @@ RangeIndex(start=0, stop=5, step=1)
 </div>
 </div>
 </div>
-<p>Vidimo, da tudi ta lastnost je posebnega tipa, v tem primeru <code class="docutils literal notranslate"><span class="pre">RangeIndex</span></code>, ki ga lahko z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code> pretvorimo v navaden seznam.</p>
-<p>Kot smo povedali zgoraj so indeksi elementov zaporedja enaki prvim petim naravnim številom. Če želimo imeti poimenovane elemente, jim lahko imena dodamo na več načinov. En način, ki nam omogoča sprotno spreminjanje indeksov, je neposredno prirejanje, kot kaže ta primer:</p>
+<p>Vidimo, da tudi ta lastnost je posebnega tipa, v tem primeru <code class="docutils literal notranslate"><span class="pre">RangeIndex</span></code>, ki ga lahko z uporabo metode <code class="docutils literal notranslate"><span class="pre">tolist()</span></code> pretvorimo v običajen Python-ovski seznam.</p>
+<p>Kot smo povedali zgoraj so indeksi elementov zaporedja enaki prvim petim naravnim številom. Če želimo z indeksi poimenovati posamezne elemente zaporedja, jim lahko imena dodamo na več načinov. En način, ki nam omogoča sprotno spreminjanje indeksov, je neposredno prirejanje, kot kaže ta primer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -535,9 +536,29 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 </div>
 </div>
 </div>
+<p>Nenazadnje, zaporedje z indeksi poljubnega tipa in vrednosti lahko tvorimo tudi iz Python-ovega slovarja, kot kaže naslednji primer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mf">30.0</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mf">40.0</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    10.0
+b    20.0
+c    30.0
+d    40.0
+e    50.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na prvi pogled zaporedje <code class="docutils literal notranslate"><span class="pre">s3</span></code> je enako zaporedju <code class="docutils literal notranslate"><span class="pre">s2</span></code>, a je v resnici med njima pomembna razlika. Elementi zaporedja <code class="docutils literal notranslate"><span class="pre">s2</span></code> so cela števila tipa <code class="docutils literal notranslate"><span class="pre">int64</span></code>. Elementi <code class="docutils literal notranslate"><span class="pre">s3</span></code> so pa numeričnega tipa <code class="docutils literal notranslate"><span class="pre">float64</span></code>, ki zajame tudi racionalna števila zapisana v formatu <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">plavajoča vejica</a> (angl. <em>floating point</em>).</p>
 <section id="indeksiranje-zaporedij">
 <h2>Indeksiranje zaporedij<a class="headerlink" href="#indeksiranje-zaporedij" title="Permalink to this heading">#</a></h2>
-<p>Posamezne elemente zaporedij lahko dobimo z uporabo običajnega indeksiranja, enakega tistemu za navadne Pythonovske sezname:</p>
+<p>Posamezne elemente zaporedij lahko dobimo z uporabo običajnega indeksiranja, enakega tistemu za navadne Python-ovske sezname:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -550,7 +571,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_9334/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_62573/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -569,7 +590,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 </div>
 </div>
 </div>
-<p>Opozorila ni več. Če želimo dobiti vrednost <em>drugega elementa</em> zaporedja <code class="docutils literal notranslate"><span class="pre">s2</span></code>, kjer npr. ne poznamo njegovega indeksa, to lahko storimo na dva načina:</p>
+<p>Opozorila ni več. Če želimo dobiti vrednost <em>drugega elementa</em> zaporedja <code class="docutils literal notranslate"><span class="pre">s2</span></code>, kjer, na primer, ne poznamo njegovega indeksa, to lahko storimo na dva načina:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="n">s2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
@@ -589,7 +610,7 @@ Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&
 <section id="atributi-zaporedij-iloc-in-loc">
 <h2>Atributi zaporedij <code class="docutils literal notranslate"><span class="pre">iloc</span></code> in <code class="docutils literal notranslate"><span class="pre">loc</span></code><a class="headerlink" href="#atributi-zaporedij-iloc-in-loc" title="Permalink to this heading">#</a></h2>
 <p>Zaporedja imajo dve lastnosti, ki so nam lahko v pomoč pri njihovem indeksiranju.</p>
-<p>Lastnost <code class="docutils literal notranslate"><span class="pre">iloc</span></code> uporabljamo za izbiranje elementov zaporedja <code class="docutils literal notranslate"><span class="pre">s</span></code> na podlagi njihovih <em>pozicij</em>, t.j., zaporednih celoštevilskih indeksov iz <code class="docutils literal notranslate"><span class="pre">range(s.size)</span></code> oz. seznama <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">s.size]</span></code>.</p>
+<p>Lastnost <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.iloc.html"><code class="docutils literal notranslate"><span class="pre">iloc</span></code></a> uporabljamo za izbiranje elementov zaporedja <code class="docutils literal notranslate"><span class="pre">z</span></code> na podlagi njihovih <em>pozicij</em>, t.j., zaporednih celoštevilskih indeksov iz <code class="docutils literal notranslate"><span class="pre">range(z.size)</span></code> oziroma seznama <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">z.size]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -617,9 +638,9 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov navadnega Pythonovskega seznama. Tako npr. indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <strong>pozor</strong>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
-<p>Bodite tudi pozorni na razliko med prvim rezultatom, ki je enostavnega celoštevilskega tipa, ker smo pač indeksirali zgolj en element zaporedja in ostalih treh. Slednji so vsi tipa zaporedje. Za vajo premisli kako bi rezultat indeksiranja spremenil v navaden seznam.</p>
-<p>Lastnost <code class="docutils literal notranslate"><span class="pre">loc</span></code> je podobna <code class="docutils literal notranslate"><span class="pre">iloc</span></code> s pomembno razliko: omogoča nam indeksiranje zaporedij na osnovi <strong>poimenovanih indeksov</strong> in ne pozicijskih indeksov:</p>
+<p>Lastnost nam torej omogoča, da indeksiramo elemente zaporedja na enak način, kot smo vajeni indeksiranja elementov običajnega Python-ovskega seznama. Tako, na primer, indeks <code class="docutils literal notranslate"><span class="pre">[1:3]</span></code> nam indeksira drugi in tretji element seznama (ne pa četrtega, ker, <strong>pozor</strong>, indeks <code class="docutils literal notranslate"><span class="pre">3</span></code> ne sodi v območje <code class="docutils literal notranslate"><span class="pre">1:3</span></code>).</p>
+<p>Bodite tudi pozorni na razliko med zadnjimi tremi in prvim rezultatom, ki je enostavnega celoštevilskega tipa, ker smo pač indeksirali zgolj en element zaporedja. Zadnji trije rezultati so tipa zaporedje. Za vajo premisli kako bi rezultat indeksiranja spremenil v običajen Python-ovski seznam.</p>
+<p>Lastnost <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.loc.html"><code class="docutils literal notranslate"><span class="pre">loc</span></code></a> je podobna <code class="docutils literal notranslate"><span class="pre">iloc</span></code> s pomembno razliko: omogoča nam indeksiranje zaporedij na osnovi <strong>poimenovanih indeksov</strong> in ne pozicijskih indeksov:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>
@@ -648,12 +669,33 @@ dtype: int64
 </section>
 <section id="o-tipih-elementov-zaporedja">
 <h2>O tipih elementov zaporedja<a class="headerlink" href="#o-tipih-elementov-zaporedja" title="Permalink to this heading">#</a></h2>
-<p>Elementi zaporedja so lahko mešanih tipov. Za tvorjenje takega zaporedja, bomo uporabili funkcijo <code class="docutils literal notranslate"><span class="pre">concat</span></code>, ki elemente večjega števila zaporedij iz podanega nabora združi skupaj v eno zaporedje:</p>
+<p>Elementi zaporedja so <strong>praviloma</strong> istega tipa. Izjemoma (res <strong>izjemoma</strong>) so lahko različnih tipov. Za tvorjenje takega zaporedja, bomo uporabili funkcijo <code class="docutils literal notranslate"><span class="pre">concat</span></code>, ki elemente iz zaporedij v podanem naboru združi skupaj v eno zaporedje. Naredimo najprej dva zaporedja, enega s celoštevilčnimi elementi in drugega z elementi, ki so nizi znakov:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_int</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">s_chr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))</span>
-<span class="n">s_cuden</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">s_int</span><span class="p">,</span> <span class="n">s_chr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_chr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    1
+2    2
+dtype: int64
+0    a
+1    b
+2    c
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poglejmo zdaj združeno zaporedje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_cuden</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">s_int</span><span class="p">,</span> <span class="n">s_chr</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s_cuden</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -670,7 +712,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Dobljeni seznam je čuden na več načinov. Najprej, med združevanjem dveh seznamov s celoštevilskimi elementi in nizi znakov, poenoti tipe elementov tako, da celoštevilski elementi dobijo nove vrednosti splošnega tipa <code class="docutils literal notranslate"><span class="pre">object</span></code>. Še bolj nenavadno je, da se indeksi v novem zaporedju ponavljajo. Pogljemo kako poteka indeksiranje z uporabo lastnosti <code class="docutils literal notranslate"><span class="pre">loc</span></code> v takem seznamu:</p>
+<p>Dobljeno zaporedje je čudno na več načinov. Najprej, med združevanjem dveh zaporedij s celoštevilskimi elementi in nizi znakov, poenoti tipe elementov tako, da celoštevilski elementi dobijo nove vrednosti splošnega tipa <code class="docutils literal notranslate"><span class="pre">object</span></code>. Še bolj nenavadno je, da se indeksi v novem zaporedju ponavljajo. Poglejmo zdaj kako poteka indeksiranje z uporabo lastnosti <code class="docutils literal notranslate"><span class="pre">loc</span></code> v takem seznamu:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_cuden</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -703,7 +745,7 @@ dtype: object
 </section>
 <section id="kategorije-angl-categories">
 <h2>Kategorije (angl. <em>categories</em>)<a class="headerlink" href="#kategorije-angl-categories" title="Permalink to this heading">#</a></h2>
-<p>V vseh dosedanjih primerih smo tvorili zaporedja celoštevilskega tipa ali zaporedja nizov znakov. Kategorije so posebni tip zaporedij, katerih vrednosti elementov so iz omejene množice možnih vrednosti. Primer takega zaporedja zapisuje barve opazovanih objektov, pri čemer je posamezen objekt lahko rdeče, zelene ali modre barve.</p>
+<p>V vseh dosedanjih primerih smo tvorili zaporedja numeričnih tipov ali zaporedja nizov znakov. Kategorije so posebni tip zaporedij, katerih vrednosti elementov so iz končne množice možnih vrednosti. Primer takega zaporedja zapisuje barve opazovanih objektov, pri čemer je posamezen objekt lahko rdeče, zelene ali modre barve.</p>
 <p>Tako zaporedje bi seveda lahko zapisali kot navadno zaporedje nizov znakov:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -733,7 +775,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Slabost tega zaporedja je v tem, da pri spreminjanju vrednosti obstoječih elementov nimamo kontrole nad množico dovoljenih vrednosti. Lahko naredimo napako pri poimenovanju barve in pri tem ne dobimo nobenega opozorila:</p>
+<p>Slabost tega zaporedja je, da pri spreminjanju vrednosti obstoječih elementov nimamo kontrole nad množico dovoljenih vrednosti. Lahko naredimo napako pri poimenovanju barve in pri tem ne dobimo nobenega opozorila:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;rdeca&#39;</span>
@@ -757,7 +799,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Če pa ustvarimo kategorijo:</p>
+<p>Če pa ustvarimo zaporedje tipa <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/categorical.html">kategorija</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">barve</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
@@ -782,7 +824,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 </div>
 </div>
 </div>
-<p>dobi ustvarjeno zaporedje lastnost, ki določa množico možnih vrednosti (glej zadnjo vrstico izpisa). Poskus prirejanja vrednosti elementa, ki ni v množici možnih vrednosti kategorije, se konča z napako <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> takole:</p>
+<p>dobi ustvarjeno zaporedje novo lastnost, ki določa množico možnih vrednosti njegovih elementov (glej zadnjo vrstico izpisa). Poskus prirejanja vrednosti elementa, ki ni v množici možnih vrednosti kategorije, se konča z napako <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, kot kaže naslednji primer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
@@ -793,7 +835,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
 
@@ -887,13 +929,13 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 </div>
 <section id="dodatne-prednosti-kategorij">
 <h3>Dodatne prednosti kategorij<a class="headerlink" href="#dodatne-prednosti-kategorij" title="Permalink to this heading">#</a></h3>
-<p>Poleg kontrole nad množico možnih vrednosti, imajo kategorije še dve pomembni lastnosti, ki še posebej pridejo do izraza pri obdelavi in analizi podatkov.</p>
+<p>Poleg kontrole nad množico možnih vrednosti, imajo kategorije še tri pomembne lastnosti, ki so še posebej pomembne pri obdelavi in analizi podatkov.</p>
 <ul class="simple">
-<li><p>Zmanjšanje porabe pomnilnika: kategorije zasedajo manj pomnilnika kot nizi ali števila, saj se vsaka možna vrednost shrani samo enkrat, in nato se uporabijo celoštevilski indeksi za sklicevanje nanje.</p></li>
-<li><p>Hitrejše delovanje: ker so kategorije predhodno določene, so operacije, kot je iskanje ali filtriranje, običajno hitrejše v primerjavi z nizi znakov.</p></li>
-<li><p>Bolj pregledne statistične obdelave in vizualizacijo: lahko npr. izračunamo porazdelitev vrednosti zaporedja po kategorijah ali pa izračunamo povprečne vrednosti neke druge spremenljivke za različne kategorije in podobno.</p></li>
+<li><p><em>Zmanjšanje porabe pomnilnika</em>: kategorije zasedajo manj pomnilnika kot nizi ali števila, saj se vsaka možna vrednost shrani samo enkrat, in nato se uporabijo celoštevilski indeksi za sklicevanje nanje.</p></li>
+<li><p><em>Hitrejše osnovne operacije</em>: ker so kategorije predhodno določene, so operacije, kot je, na primer, iskanje elementa ali filtriranje, običajno hitrejše v primerjavi z nizi znakov.</p></li>
+<li><p><em>Bolj pregledne statistične obdelave in vizualizacija</em>: lahko, na primer, izračunamo porazdelitev vrednosti zaporedja po kategorijah ali pa izračunamo povprečne vrednosti neke druge spremenljivke za različne kategorije.</p></li>
 </ul>
-<p><strong>Pozor</strong>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To se dogaja pogosto v obdelavi podatkov, beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
+<p><strong>Pozor</strong>: v zadnji alineji zgoraj smo besedo kategorije uporabili kot okrajšavo za <code class="docutils literal notranslate"><span class="pre">možne</span> <span class="pre">vrednosti</span> <span class="pre">kategorije</span></code>. To bomo v nadaljevanju počeli večkrat: beseda kategorija bo včasih uporabljena za določanje tipa zaporedja, včasih pa za eno možno vrednost elementov zaporedja. Običajno je iz konteksta razviden specifičen pomen besede.</p>
 <section id="dodajanje-novih-moznih-vrednosti">
 <h4>Dodajanje novih možnih vrednosti<a class="headerlink" href="#dodajanje-novih-moznih-vrednosti" title="Permalink to this heading">#</a></h4>
 <p>Kot smo videli v zgornjem primeru, je seznam možnih kategorij dosegljiv čez lastnost <code class="docutils literal notranslate"><span class="pre">cat</span></code> zaporedja tipa kategorije. Spomnimo se:</p>
@@ -953,7 +995,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rumena&#39;, &#39;zelena&#39;]
 </section>
 <section id="urejene-kategorije">
 <h3>Urejene kategorije<a class="headerlink" href="#urejene-kategorije" title="Permalink to this heading">#</a></h3>
-<p>Možne vrednosti kategorije so v splošnem neurejene. V zgornjem primeru z barvami je to seveda prav, saj ne poznamo relacije urejenost med barvami, a pri kakšnih kategorijah je smiselno imeti urejenost možnih vrednosti. Vzemimo za primer starostne skupine:</p>
+<p>Možne vrednosti kategorije niso urejene oziroma med vrednostmi kategorije ni relacije urejenosti. V zgornjem primeru z barvami je to seveda prav, saj ne poznamo relacije urejenosti med barvami. Po drugi strani, obstajajo kategorije, kjer je smiselno upoštevati urejenost možnih vrednosti. Vzemimo za primer starostne skupine:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">CategoricalDtype</span>
@@ -983,13 +1025,13 @@ Categories (4, object): [&#39;otrok&#39; &lt; &#39;najstnica&#39; &lt; &#39;mlad
 </div>
 </div>
 </div>
-<p>Znaki <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> v seznamu kategorij na koncu izpisa nakazujejo, da je kategorija starostna skupina urejena ter hkrati nakazujejo urejenost možnih vrednosti kategorije.</p>
-<p>Urejene kategorije pogosto tvorimo z <em>diskretizacijo</em> numeričnih vrednosti. Diskretizacija pomeni, da numerično spremenljivko (zaporedje) spremenimo v zaporedje diskretnih, običajno urejenih, vrednosti. V primeru starosti, pri osebah običajno opazujemo starost v letih. Z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> lahko starost podano v letih pretvorimo v starostne skupine iz prejšnjega primera:</p>
+<p>Znaki <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> v seznamu kategorij na koncu izpisa nakazujejo, da je kategorija <code class="docutils literal notranslate"><span class="pre">s_starost</span></code> urejena ter hkrati nakazujejo urejenost možnih vrednosti kategorije.</p>
+<p>Urejene kategorije pogosto tvorimo z <strong>diskretizacijo</strong> numeričnih vrednosti. Diskretizacija pomeni, da zaporedje numeričnih (celoštevilčnih) vrednosti spremenimo v zaporedje diskretnih, običajno urejenih vrednosti. V primeru starosti, pri osebah običajno opazujemo starost v letih. Z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> lahko starost podano v letih pretvorimo v starostne skupine iz prejšnjega primera:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starost_v_letih</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">starost_v_letih</span><span class="p">)</span>
-<span class="n">starostne_meje</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">starostne_meje</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
 <span class="n">starost_kat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">starost_v_letih</span><span class="p">,</span> <span class="n">starostne_meje</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">starostne_skupine</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">starost_kat</span><span class="p">)</span>
 </pre></div>
@@ -1023,7 +1065,7 @@ Categories (4, object): [&#39;otrok&#39; &lt; &#39;najstnica&#39; &lt; &#39;mlad
 </div>
 </div>
 </div>
-<p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> je torej urejena kategorija, nabor določenih vrednosti pa sledi vrednosti argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. Drugi argument funkcije določa seznam mej med starostnimi skupinami in mora biti torej z ena daljši od argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. Prvi argument funkcije je pa originalno zaporedje z numeričnimi vrednostmi.</p>
+<p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">cut</span></code> je torej urejena kategorija, množica njenih možnih vrednosti pa sledi podani vrednosti argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. Drugi argument funkcije poda seznam mej med starostnimi skupinami in mora biti za ena daljši od argumenta <code class="docutils literal notranslate"><span class="pre">labels</span></code>. V zgornjem primeru torej velja, da prva starostna skupina <code class="docutils literal notranslate"><span class="pre">'otrok'</span></code> ustreza numeričnim vrednostim, ki so vsaj <code class="docutils literal notranslate"><span class="pre">-100</span></code> in manjše od <code class="docutils literal notranslate"><span class="pre">12</span></code>, druga skupina <code class="docutils literal notranslate"><span class="pre">'najstnica'</span></code> vrednostim, ki so vsaj <code class="docutils literal notranslate"><span class="pre">12</span></code> in manjše od <code class="docutils literal notranslate"><span class="pre">20</span></code>, in tako naprej. Prvi argument funkcije je pa originalno zaporedje z numeričnimi vrednostmi.</p>
 </section>
 </section>
 <section id="datum-in-cas">
@@ -1046,42 +1088,42 @@ Categories (4, object): [&#39;otrok&#39; &lt; &#39;najstnica&#39; &lt; &#39;mlad
 <p>Drugi, zelo pogosto način ustvarjanja časovnih zaporedij je z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">pd.date_range</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2023-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2024-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s_ct1</span><span class="p">)</span>
-<span class="n">s_ct2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-09&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Mon&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">s_ct2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2024-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Fri&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s_ct2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   2023-10-01
-1   2023-10-02
-2   2023-10-03
-3   2023-10-04
-4   2023-10-05
-5   2023-10-06
-6   2023-10-07
-7   2023-10-08
-8   2023-10-09
-9   2023-10-10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   2024-10-01
+1   2024-10-02
+2   2024-10-03
+3   2024-10-04
+4   2024-10-05
+5   2024-10-06
+6   2024-10-07
+7   2024-10-08
+8   2024-10-09
+9   2024-10-10
 dtype: datetime64[ns]
-0   2022-09-05
-1   2022-09-12
-2   2022-09-19
-3   2022-09-26
-4   2022-10-03
-5   2022-10-10
-6   2022-10-17
-7   2022-10-24
-8   2022-10-31
-9   2022-11-07
+0   2024-10-04
+1   2024-10-11
+2   2024-10-18
+3   2024-10-25
+4   2024-11-01
+5   2024-11-08
+6   2024-11-15
+7   2024-11-22
+8   2024-11-29
+9   2024-12-06
 dtype: datetime64[ns]
 </pre></div>
 </div>
 </div>
 </div>
-<p>V prvem primeru smo ustvarili zaporedje desetih zaporednih dni na začetku oktobra 2023. V drugem primeru pa zaporedje desetih ponedeljkov od začetka septembra 2022.</p>
-<p>Časovno zaporedje lahko uporabimo tudi kot indeks za neko drugo zaporedje opazovanih vrednosti, pravzaprav časovno vrsto opazovanih vrednosti:</p>
+<p>V prvem primeru smo ustvarili zaporedje desetih zaporednih dni na začetku oktobra 2024. V drugem primeru pa zaporedje desetih petkov (<code class="docutils literal notranslate"><span class="pre">W-Fri</span></code>) od začetka oktobra 2024.</p>
+<p>Časovno zaporedje lahko uporabimo tudi kot indeks za neko drugo zaporedje opazovanih numeričnih vrednosti, pravzaprav časovno vrsto opazovanih vrednosti:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">i</span> <span class="o">/</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">s_ct2</span><span class="p">)</span>
@@ -1090,41 +1132,41 @@ dtype: datetime64[ns]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-09-05    0.0
-2022-09-12    0.1
-2022-09-19    0.2
-2022-09-26    0.3
-2022-10-03    0.4
-2022-10-10    0.5
-2022-10-17    0.6
-2022-10-24    0.7
-2022-10-31    0.8
-2022-11-07    0.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-04    0.0
+2024-10-11    0.1
+2024-10-18    0.2
+2024-10-25    0.3
+2024-11-01    0.4
+2024-11-08    0.5
+2024-11-15    0.6
+2024-11-22    0.7
+2024-11-29    0.8
+2024-12-06    0.9
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Indeksiranje v takih primerih zelo prilagodljivo upošteva podan datum, tudi kot časovno obdobje. Tako na primer, zelo enostavno zajamemo del časovne vrste izmerjen v oktobru 2022:</p>
+<p>Indeksiranje takega zaporedja omogoča zelo enostavno določanje časovnega obdobja indeksov elementov, ki jih hočemo nasloviti. Tako, na primer, zajem elementov časovne vrste, ki je bil izmerjen novembra 2024, zajamemo s preprostim ukazom:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_oktobra_22</span> <span class="o">=</span> <span class="n">cv</span><span class="p">[</span><span class="s2">&quot;2022-10&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cv_oktobra_22</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_novembra_24</span> <span class="o">=</span> <span class="n">cv</span><span class="p">[</span><span class="s2">&quot;2024-11&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cv_novembra_24</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-10-03    0.4
-2022-10-10    0.5
-2022-10-17    0.6
-2022-10-24    0.7
-2022-10-31    0.8
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-11-01    0.4
+2024-11-08    0.5
+2024-11-15    0.6
+2024-11-22    0.7
+2024-11-29    0.8
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Časovna zaporedja imajo lastnost <code class="docutils literal notranslate"><span class="pre">dt</span></code>, ki ima veliko različnih metod za računanje različnih datumskih funkcij:</p>
+<p>Časovna zaporedja imajo lastnost <code class="docutils literal notranslate"><span class="pre">dt</span></code>, ki ponuja veliko število koristnih metod za računanje različnih datumskih funkcij:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_ct1</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_of_week</span><span class="p">)</span>
@@ -1161,7 +1203,7 @@ dtype: object
 </div>
 <p>Lahko torej za podan datum dobimo dan v tednu z indeksom ali imenom v angleščini. Indeks je na mojem računalniku izračunan tako, da vrednost <code class="docutils literal notranslate"><span class="pre">0</span></code> ustreza ponedeljku, <code class="docutils literal notranslate"><span class="pre">6</span></code> pa nedelji.</p>
 <p>Preveri indekse dneva v tednu na svojem računalniki. Za vajo napiši funkcijo, ki za podano datumsko zaporedje vrne zaporedje imen dni v tednu v slovenščini. Pri tem lahko seveda uporabiš zgornjo funkcijo, ki vrne indeks dneva v tednu.</p>
-<p>S pomočjo lastnosti časovne točke <code class="docutils literal notranslate"><span class="pre">dt</span></code> lahko izračunamo še veliko drugih časovnih in datumskih funkcij, na primer:</p>
+<p>S pomočjo lastnosti časovne točke <code class="docutils literal notranslate"><span class="pre">dt</span></code> lahko izračunamo še veliko drugih časovnih in datumskih funkcij, na primer, teden ali dan v letu:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_ct2</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span>
@@ -1196,33 +1238,85 @@ dtype: int32
 </div>
 </div>
 </div>
-</section>
-<section id="casovne-razlike">
-<h3>Časovne razlike<a class="headerlink" href="#casovne-razlike" title="Permalink to this heading">#</a></h3>
-<p>Časovna razlika nastane npr. z odštevanjem časovnih točk:</p>
+<p>Poglejmo zdaj še en primer, ki ponazori delo z datumskimi zaporedji in funkcijami. Definirajmo funkcijo <code class="docutils literal notranslate"><span class="pre">zadnji_dnevi</span></code>, ki za podano obdobje od začetka leta <code class="docutils literal notranslate"><span class="pre">od</span></code> do konca leta <code class="docutils literal notranslate"><span class="pre">do</span></code>, vrne kategorično zaporedje imen dni v tednu za vse zadnje dni mesecev v tem obdobju. Elementi zaporedja naj bodo indeksirani z ustreznimi datumi teh dni.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct1</span> <span class="o">-</span> <span class="n">s_ct2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zadnji_dnevi</span><span class="p">(</span><span class="n">od</span><span class="p">,</span> <span class="n">do</span><span class="p">):</span>
+
+    <span class="c1"># Najprej uporabimo funkcijo date_range, da dobimo datume zadnjih dni v mesecih v podanem obdobju</span>
+    <span class="n">zdm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">od</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">do</span><span class="si">}</span><span class="s1">-12-31&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Nato uporabimo metodo dt.day_name, da dobimo imena teh dni</span>
+    <span class="c1"># Pred tem iz `zdm` pridelamo zaporedje z datumskimi indeksi</span>
+    <span class="n">imena</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">zdm</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">zdm</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+
+    <span class="c1"># Na koncu zaporedju imena spremenimo tip v kategorijo</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">imena</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">zadnji_dnevi</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2024</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   391 days
-1   385 days
-2   379 days
-3   373 days
-4   367 days
-5   361 days
-6   355 days
-7   349 days
-8   343 days
-9   337 days
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-31      Tuesday
+2023-02-28      Tuesday
+2023-03-31       Friday
+2023-04-30       Sunday
+2023-05-31    Wednesday
+2023-06-30       Friday
+2023-07-31       Monday
+2023-08-31     Thursday
+2023-09-30     Saturday
+2023-10-31      Tuesday
+2023-11-30     Thursday
+2023-12-31       Sunday
+2024-01-31    Wednesday
+2024-02-29     Thursday
+2024-03-31       Sunday
+2024-04-30      Tuesday
+2024-05-31       Friday
+2024-06-30       Sunday
+2024-07-31    Wednesday
+2024-08-31     Saturday
+2024-09-30       Monday
+2024-10-31     Thursday
+2024-11-30     Saturday
+2024-12-31      Tuesday
+Freq: M, dtype: category
+Categories (7, object): [&#39;Friday&#39;, &#39;Monday&#39;, &#39;Saturday&#39;, &#39;Sunday&#39;, &#39;Thursday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo spremeni definicijo funkcije tako, da bo vračala imena dni v slovenščini.</p>
+</section>
+<section id="casovne-razlike">
+<h3>Časovne razlike<a class="headerlink" href="#casovne-razlike" title="Permalink to this heading">#</a></h3>
+<p>Časovna razlika nastane, na primer, z odštevanjem dveh časovnih točk:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_ct2</span> <span class="o">-</span> <span class="n">s_ct1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    3 days
+1    9 days
+2   15 days
+3   21 days
+4   27 days
+5   33 days
+6   39 days
+7   45 days
+8   51 days
+9   57 days
 dtype: timedelta64[ns]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Lahko jo tudi ustvarimo s funkcijami <code class="docutils literal notranslate"><span class="pre">pd.Timedelta</span></code>:</p>
+<p>Kot vidimo iz izpisa, je časovni interval izražen v časovni enoti dan. Posamezne vrednosti tipa časovne razlike lahko tvorimo iz numeričnih vrednosti z uporabo funkcije <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code>, kjer časovno enoto razlike podamo kot vrednost argumenta <code class="docutils literal notranslate"><span class="pre">unit</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_cr1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)])</span>
@@ -1246,7 +1340,7 @@ dtype: timedelta64[ns]
 </div>
 </div>
 </div>
-<p>ali pa <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta</span></code>:</p>
+<p>Podobno lahko funkcijo <code class="docutils literal notranslate"><span class="pre">to_timedelta</span></code> uporabimo za pretvorbo numeričnega zaporedja v zaporedje časovnih razlik podane časovne enote:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_cv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">))</span>
@@ -1271,49 +1365,92 @@ dtype: int64
 </div>
 </div>
 <p>Časovne razlike torej, tako kot časovne točke, lahko uporabljamo kot indekse zaporedja.</p>
+<p>Poglejmo zdaj primer uporabe časovnih razlik za izračun dolžine mesecev v podanem obdobju. Podobno kot v prejšnjem primeru definirajmo funkcijo <code class="docutils literal notranslate"><span class="pre">meseci</span></code>, ki za podano obdobje od začetka leta <code class="docutils literal notranslate"><span class="pre">od</span></code> do konca leta <code class="docutils literal notranslate"><span class="pre">do</span></code>, vrne celoštevilčno zaporedje dolžin mesecev (v dnevih) v opazovanem obdobju. Zaporedje naj bo indeksirano z imeni mesecev.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meseci</span><span class="p">(</span><span class="n">od</span><span class="p">,</span> <span class="n">do</span><span class="p">):</span>
+
+    <span class="c1"># To smo že videli v prejšnjem primeru: zadnje dni mesecev</span>
+    <span class="n">zdm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">od</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">do</span><span class="si">}</span><span class="s1">-12-31&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Podobno dobimo prve dni mesecev, le vrednost argumenta `freq` nastavimo na MS (month start)</span>
+    <span class="n">pdm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">od</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">do</span><span class="si">}</span><span class="s1">-12-01&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Dolžina meseca je razlika med zadnjim in prvim dnevom povečani za ena</span>
+    <span class="c1"># Pozor, ne moremo napisati &quot;+ 1&quot;, moramo pridelati &quot;1 dan&quot; z uporabo Timedelta</span>
+    <span class="n">dm</span> <span class="o">=</span> <span class="n">zdm</span> <span class="o">-</span> <span class="n">pdm</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Na koncu dm pretvorimo v zaporedje z ustreznim indeksom</span>
+    <span class="c1"># Metoda `dt.month_name` nam vrne imena mesecev za podano zaporedje datumov</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pdm</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month_name</span><span class="p">())</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">meseci</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">2024</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>January     31 days
+February    29 days
+March       31 days
+April       30 days
+May         31 days
+June        30 days
+July        31 days
+August      31 days
+September   30 days
+October     31 days
+November    30 days
+December    31 days
+dtype: timedelta64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Za vajo popravi definicijo funkcije <code class="docutils literal notranslate"><span class="pre">meseci</span></code> tako, da bodo elementi rezultata dolžine mesecev v urah (namesto v dnevih). Pa še v tednih (namig: uporabi funkcijo <code class="docutils literal notranslate"><span class="pre">TimeDelta</span></code>, da dobiš trajanje tedna v dnevih).</p>
 </section>
 <section id="casovna-obdobja">
 <h3>Časovna obdobja<a class="headerlink" href="#casovna-obdobja" title="Permalink to this heading">#</a></h3>
-<p>Morebiti manj uporaben podatkovni tip kot prejšnja dva je še časovno obdobje. Poglejmo uporabo funkcije <code class="docutils literal notranslate"><span class="pre">period_range</span></code> za ustvarjanje časovnih obdobij:</p>
+<p>Nekoliko manj uporaben podatkovni tip, ki se nanaša na čas, je časovno obdobje. Poglejmo uporabo funkcije <code class="docutils literal notranslate"><span class="pre">period_range</span></code> za ustvarjanje časovnih obdobij:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_co1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2023-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_co1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2024-10&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dnevna frekvenca:</span><span class="se">\n</span><span class="si">{</span><span class="n">s_co1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">s_co2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2022-09&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Mon&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">s_co2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2024-09&quot;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;W-Mon&quot;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tedenska frekvenca (ponedeljki):</span><span class="se">\n</span><span class="si">{</span><span class="n">s_co2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dnevna frekvenca:
-0    2023-10-01
-1    2023-10-02
-2    2023-10-03
-3    2023-10-04
-4    2023-10-05
-5    2023-10-06
-6    2023-10-07
-7    2023-10-08
-8    2023-10-09
-9    2023-10-10
+0    2024-10-01
+1    2024-10-02
+2    2024-10-03
+3    2024-10-04
+4    2024-10-05
+5    2024-10-06
+6    2024-10-07
+7    2024-10-08
+8    2024-10-09
+9    2024-10-10
 dtype: period[D]
 Tedenska frekvenca (ponedeljki):
-0    2022-08-30/2022-09-05
-1    2022-09-06/2022-09-12
-2    2022-09-13/2022-09-19
-3    2022-09-20/2022-09-26
-4    2022-09-27/2022-10-03
-5    2022-10-04/2022-10-10
-6    2022-10-11/2022-10-17
-7    2022-10-18/2022-10-24
-8    2022-10-25/2022-10-31
-9    2022-11-01/2022-11-07
+0    2024-08-27/2024-09-02
+1    2024-09-03/2024-09-09
+2    2024-09-10/2024-09-16
+3    2024-09-17/2024-09-23
+4    2024-09-24/2024-09-30
+5    2024-10-01/2024-10-07
+6    2024-10-08/2024-10-14
+7    2024-10-15/2024-10-21
+8    2024-10-22/2024-10-28
+9    2024-10-29/2024-11-04
 dtype: period[W-MON]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Primerjaj rezultat s primeri časovnih točk zgoraj. Delo s časovnimi obdobji je podobno delu s časovnimi točkami.</p>
+<p>Primerjaj zgornji rezultat z rezultati funkcij, ki ustvarjajo časovne točke, v ustreznem razdelku zgoraj. Delo s časovnimi obdobji je podobno delu s časovnimi točkami.</p>
 </section>
 </section>
 </section>
