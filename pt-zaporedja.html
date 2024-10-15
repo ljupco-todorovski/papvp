@@ -571,7 +571,7 @@ dtype: float64
 20
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_91115/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_91239/2625357706.py:2: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   print(s2[1])
 </pre></div>
 </div>
@@ -824,7 +824,20 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 </div>
 </div>
 </div>
-<p>dobi ustvarjeno zaporedje novo lastnost, ki določa množico možnih vrednosti njegovih elementov (glej zadnjo vrstico izpisa). Poskus prirejanja vrednosti elementa, ki ni v množici možnih vrednosti kategorije, se konča z napako <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, kot kaže naslednji primer:</p>
+<p>dobi ustvarjeno zaporedje novo lastnost <code class="docutils literal notranslate"><span class="pre">Categories</span></code>, ki določa množico možnih vrednosti njegovih elementov (glej zadnjo vrstico izpisa). Vrednost te lastnosti je dosegljiv skozi lastnost <code class="docutils literal notranslate"><span class="pre">cat.categories</span></code>, ki jo lahko z metodo <code class="docutils literal notranslate"><span class="pre">tolist</span></code> pretvorimo v navaden Python-ovski seznam:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poskus prirejanja vrednosti elementa, ki ni v množici možnih vrednosti kategorije, se konča z napako <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, kot kaže naslednji primer:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
@@ -835,7 +848,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeca&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
 
@@ -903,8 +916,7 @@ Categories (3, object): [&#39;modra&#39;, &#39;rdeča&#39;, &#39;zelena&#39;]
 <p>Za razliko od tega, prirejanje vrednosti iz množice možnih vrednosti je uspešno:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeča&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_barve</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rdeča&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s_barve</span><span class="p">)</span>
 </pre></div>
 </div>
