@@ -420,22 +420,23 @@ document.write(`
     <span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/rezultati-kolokvijev.xlsx&quot;</span><span class="p">,</span>
     <span class="n">sheet_name</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vse_pt</span><span class="p">)</span>
+<span class="n">vse_pt</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;prvi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
-0     Ana      431            ž-19             80              97
-1  Branko      720            m-20             78              74
-2   David      141            m-19             75              68
-3     Eva      210            ž-20             63              82
-4   Franc      592            m-21             95              82, &#39;drugi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
-0     Ana      431            ž-19             82              95
-1  Cvetka      761            ž-21             63              87
-2   David      141            m-19             92              81
-3     Eva      210            ž-20             82              63
-4   Franc      592            m-21             99              54}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;prvi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
+ 0     Ana      431            ž-19             80              97
+ 1  Branko      720            m-20             78              74
+ 2   David      141            m-19             75              68
+ 3     Eva      210            ž-20             63              82
+ 4   Franc      592            m-21             95              82,
+ &#39;drugi kolokvij&#39;:       ime  telefon spol in starost  prvi semester  drugi semester
+ 0     Ana      431            ž-19             82              95
+ 1  Cvetka      761            ž-21             63              87
+ 2   David      141            m-19             92              81
+ 3     Eva      210            ž-20             82              63
+ 4   Franc      592            m-21             99              54}
 </pre></div>
 </div>
 </div>
@@ -446,25 +447,120 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vse_pt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+<span class="n">pt</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester
-0     Ana      431            ž-19             80              97
-1  Branko      720            m-20             78              74
-2   David      141            m-19             75              68
-3     Eva      210            ž-20             63              82
-4   Franc      592            m-21             95              82
-0     Ana      431            ž-19             82              95
-1  Cvetka      761            ž-21             63              87
-2   David      141            m-19             92              81
-3     Eva      210            ž-20             82              63
-4   Franc      592            m-21             99              54
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>telefon</th>
+      <th>spol in starost</th>
+      <th>prvi semester</th>
+      <th>drugi semester</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>80</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>720</td>
+      <td>m-20</td>
+      <td>78</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>75</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>63</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>95</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>82</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>761</td>
+      <td>ž-21</td>
+      <td>63</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>92</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>82</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>99</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Zato se bomo združevanja lotili drugače, najprej bomo vsaki podatkovni tabeli v slovarju dodali nov stolpec <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code>, ki si zapomni zaporedno številko kolokvija (pravzaprav ime lista v preglednici), nato pa uporabili <code class="docutils literal notranslate"><span class="pre">concat</span></code> za združevanje:</p>
 <div class="cell docutils container">
@@ -472,37 +568,131 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">vse_pt</span><span class="p">:</span>
     <span class="n">vse_pt</span><span class="p">[</span><span class="nb">list</span><span class="p">][</span><span class="s2">&quot;kolokvij&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span>
 <span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vse_pt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+<span class="n">pt</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester  \
-0     Ana      431            ž-19             80              97   
-1  Branko      720            m-20             78              74   
-2   David      141            m-19             75              68   
-3     Eva      210            ž-20             63              82   
-4   Franc      592            m-21             95              82   
-0     Ana      431            ž-19             82              95   
-1  Cvetka      761            ž-21             63              87   
-2   David      141            m-19             92              81   
-3     Eva      210            ž-20             82              63   
-4   Franc      592            m-21             99              54   
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-         kolokvij  
-0   prvi kolokvij  
-1   prvi kolokvij  
-2   prvi kolokvij  
-3   prvi kolokvij  
-4   prvi kolokvij  
-0  drugi kolokvij  
-1  drugi kolokvij  
-2  drugi kolokvij  
-3  drugi kolokvij  
-4  drugi kolokvij  
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>telefon</th>
+      <th>spol in starost</th>
+      <th>prvi semester</th>
+      <th>drugi semester</th>
+      <th>kolokvij</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>80</td>
+      <td>97</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>720</td>
+      <td>m-20</td>
+      <td>78</td>
+      <td>74</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>75</td>
+      <td>68</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>63</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>95</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>82</td>
+      <td>95</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>761</td>
+      <td>ž-21</td>
+      <td>63</td>
+      <td>87</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>92</td>
+      <td>81</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>82</td>
+      <td>63</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>99</td>
+      <td>54</td>
+      <td>drugi kolokvij</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Na tem mestu se zdi, da smo podatke že uvozili in da lahko začnemo z njihovo analizo. A temu ni tako, saj moramo podatke urediti. Namreč, zgornja tabela ima nekaj zelo očitnih pomanjkljivosti:</p>
 <ul class="simple">

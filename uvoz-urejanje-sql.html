@@ -424,12 +424,12 @@ document.write(`
 <p>Najprej se bomo lotili problema v stolpcu <code class="docutils literal notranslate"><span class="pre">spol</span> <span class="pre">in</span> <span class="pre">starost</span></code>, ki združuje vrednosti dveh spremenljivk, spol in starost. V ta namen bomo uporabili funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html"><code class="docutils literal notranslate"><span class="pre">str.split</span></code></a>, ki je pravzaprav metoda podatkovnega tipa zaporedje:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    [ž, 19]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    [ž, 19]
 1    [m, 20]
 2    [m, 19]
 3    [ž, 20]
@@ -447,61 +447,239 @@ Name: spol in starost, dtype: object
 <p>Rezultat funkcije je torej zaporedje seznamov. Če nastavimo argument <code class="docutils literal notranslate"><span class="pre">expand</span></code> te funkcije na vrednost <code class="docutils literal notranslate"><span class="pre">True</span></code>, dobimo kot rezultat podatkovno tabelo z ločenimi stolpci:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0   1
-0  ž  19
-1  m  20
-2  m  19
-3  ž  20
-4  m  21
-0  ž  19
-1  ž  21
-2  m  19
-3  ž  20
-4  m  21
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ž</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ž</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>ž</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ž</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ž</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>S preprostim prirejanjem tega rezultata in posebnim indeksiranjem, ki smo ga spoznali na prejšnjih predavanjih, ga lahko pretvorimo v dva nova stolpca podatkovne tabele <code class="docutils literal notranslate"><span class="pre">pt</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span><span class="p">[[</span><span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pt</span><span class="p">[</span><span class="s2">&quot;spol in starost&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+<span class="n">pt</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  telefon spol in starost  prvi semester  drugi semester  \
-0     Ana      431            ž-19             80              97   
-1  Branko      720            m-20             78              74   
-2   David      141            m-19             75              68   
-3     Eva      210            ž-20             63              82   
-4   Franc      592            m-21             95              82   
-0     Ana      431            ž-19             82              95   
-1  Cvetka      761            ž-21             63              87   
-2   David      141            m-19             92              81   
-3     Eva      210            ž-20             82              63   
-4   Franc      592            m-21             99              54   
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-         kolokvij spol starost  
-0   prvi kolokvij    ž      19  
-1   prvi kolokvij    m      20  
-2   prvi kolokvij    m      19  
-3   prvi kolokvij    ž      20  
-4   prvi kolokvij    m      21  
-0  drugi kolokvij    ž      19  
-1  drugi kolokvij    ž      21  
-2  drugi kolokvij    m      19  
-3  drugi kolokvij    ž      20  
-4  drugi kolokvij    m      21  
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>telefon</th>
+      <th>spol in starost</th>
+      <th>prvi semester</th>
+      <th>drugi semester</th>
+      <th>kolokvij</th>
+      <th>spol</th>
+      <th>starost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>80</td>
+      <td>97</td>
+      <td>prvi kolokvij</td>
+      <td>ž</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>720</td>
+      <td>m-20</td>
+      <td>78</td>
+      <td>74</td>
+      <td>prvi kolokvij</td>
+      <td>m</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>75</td>
+      <td>68</td>
+      <td>prvi kolokvij</td>
+      <td>m</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>63</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+      <td>ž</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>95</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+      <td>m</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>431</td>
+      <td>ž-19</td>
+      <td>82</td>
+      <td>95</td>
+      <td>drugi kolokvij</td>
+      <td>ž</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>761</td>
+      <td>ž-21</td>
+      <td>63</td>
+      <td>87</td>
+      <td>drugi kolokvij</td>
+      <td>ž</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>141</td>
+      <td>m-19</td>
+      <td>92</td>
+      <td>81</td>
+      <td>drugi kolokvij</td>
+      <td>m</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>210</td>
+      <td>ž-20</td>
+      <td>82</td>
+      <td>63</td>
+      <td>drugi kolokvij</td>
+      <td>ž</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>592</td>
+      <td>m-21</td>
+      <td>99</td>
+      <td>54</td>
+      <td>drugi kolokvij</td>
+      <td>m</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="tvorjenje-in-urejanje-tabele-studenti">
@@ -510,120 +688,480 @@ Name: spol in starost, dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+<span class="n">studenti</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
-0     Ana    ž      19      431
-1  Branko    m      20      720
-2   David    m      19      141
-3     Eva    ž      20      210
-4   Franc    m      21      592
-0     Ana    ž      19      431
-1  Cvetka    ž      21      761
-2   David    m      19      141
-3     Eva    ž      20      210
-4   Franc    m      21      592
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Ta tabela še vedno po nepotrebnem dva krat ponavlja vrstico za vsako študentko. Na prvi pogled, bi lahko zadevo rešili tako, da izberemo zgolj prvih pet vrstic tabele:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;spol&quot;</span><span class="p">,</span> <span class="s2">&quot;starost&quot;</span><span class="p">,</span> <span class="s2">&quot;telefon&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
-0     Ana    ž      19      431
-0     Ana    ž      19      431
-1  Branko    m      20      720
-1  Cvetka    ž      21      761
-2   David    m      19      141
-2   David    m      19      141
-3     Eva    ž      20      210
-3     Eva    ž      20      210
-4   Franc    m      21      592
-4   Franc    m      21      592
-1  Branko    m      20      720
-1  Cvetka    ž      21      761
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Zaradi ponavljajočih se indeksov vrstic ta poskus ni bil uspešen. Lahko bi pa to naredili s pozicijskimi indeksi:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
-0     Ana    ž      19      431
-1  Branko    m      20      720
-2   David    m      19      141
-3     Eva    ž      20      210
-4   Franc    m      21      592
-1  Cvetka    ž      21      761
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Kar je malo zoprno, ker moramo šteti na roke. Tega seveda ne moremo narediti za velike tabele s podatki.</p>
 <p>Pravi pristop sloni na uporabi funkcije oziroma metode podatkovnega tipa podatkovna tabela <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html"><code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>, ki zbriše podvojene vrstice v podani podatkovni tabeli:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+<span class="n">studenti</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
-0     Ana    ž      19      431
-1  Branko    m      20      720
-2   David    m      19      141
-3     Eva    ž      20      210
-4   Franc    m      21      592
-1  Cvetka    ž      21      761
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Pri urejanju podatkov običajno poskrbimo, da so vrstice urejene v naraščajočem vrstnem redu glede na vrednost dimenzijske spremenljivke. V ta namen bomo uporabili metodo podatkovnega tipa podatkovna tabela <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html"><code class="docutils literal notranslate"><span class="pre">sort_values</span></code></a>. Njen prvi argument <code class="docutils literal notranslate"><span class="pre">by</span></code> nastavimo na ime stolpca (ali seznam imen stolpcev) za urejanje:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;ime&quot;</span><span class="p">)</span>
+<span class="n">studenti</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol starost  telefon
-0     Ana    ž      19      431
-1  Branko    m      20      720
-1  Cvetka    ž      21      761
-2   David    m      19      141
-3     Eva    ž      20      210
-4   Franc    m      21      592
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Preverimo zdaj tipe stolpcev v podatkovni tabeli:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime        object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime        object
 spol       object
 starost    object
 telefon     int64
@@ -640,20 +1178,12 @@ dtype: object
 <span class="n">studenti</span><span class="o">.</span><span class="n">spol</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">spol</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">spol</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()))</span>
 <span class="n">studenti</span><span class="o">.</span><span class="n">starost</span> <span class="o">=</span> <span class="n">studenti</span><span class="o">.</span><span class="n">starost</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int64&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="n">studenti</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime spol  starost  telefon
-0     Ana    ž       19      431
-1  Branko    m       20      720
-1  Cvetka    ž       21      761
-2   David    m       19      141
-3     Eva    ž       20      210
-4   Franc    m       21      592
-ime          object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime          object
 spol       category
 starost       int64
 telefon       int64
@@ -661,6 +1191,85 @@ dtype: object
 </pre></div>
 </div>
 </div>
+</div>
+<p>Poglejmo torej zadnjo različico tabelo <code class="docutils literal notranslate"><span class="pre">studenti</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>spol</th>
+      <th>starost</th>
+      <th>telefon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>ž</td>
+      <td>19</td>
+      <td>431</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>m</td>
+      <td>20</td>
+      <td>720</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>ž</td>
+      <td>21</td>
+      <td>761</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>m</td>
+      <td>19</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>ž</td>
+      <td>20</td>
+      <td>210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>m</td>
+      <td>21</td>
+      <td>592</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Zadnja podrobnost je indeksiranje. Za vajo spremenite indekse vrstic v zadnji tabeli <code class="docutils literal notranslate"><span class="pre">studenti</span></code> na dva načina. Najprej tako, da bodo indeksi vrstic naravna števila od <code class="docutils literal notranslate"><span class="pre">0</span></code> do <code class="docutils literal notranslate"><span class="pre">5</span></code>, brez ponavljanja. Nato pa tako, da so indeksi vrstic imena študentov.</p>
 </section>
@@ -670,25 +1279,109 @@ dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">pt</span><span class="p">[[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;prvi semester&quot;</span><span class="p">,</span> <span class="s2">&quot;drugi semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  prvi semester  drugi semester        kolokvij
-0     Ana             80              97   prvi kolokvij
-1  Branko             78              74   prvi kolokvij
-2   David             75              68   prvi kolokvij
-3     Eva             63              82   prvi kolokvij
-4   Franc             95              82   prvi kolokvij
-0     Ana             82              95  drugi kolokvij
-1  Cvetka             63              87  drugi kolokvij
-2   David             92              81  drugi kolokvij
-3     Eva             82              63  drugi kolokvij
-4   Franc             99              54  drugi kolokvij
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>prvi semester</th>
+      <th>drugi semester</th>
+      <th>kolokvij</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>80</td>
+      <td>97</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>78</td>
+      <td>74</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>75</td>
+      <td>68</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>63</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>95</td>
+      <td>82</td>
+      <td>prvi kolokvij</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>82</td>
+      <td>95</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>63</td>
+      <td>87</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>92</td>
+      <td>81</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>82</td>
+      <td>63</td>
+      <td>drugi kolokvij</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>99</td>
+      <td>54</td>
+      <td>drugi kolokvij</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Zamenjajmo najprej vrednosti v zadnjem stolpcu s celoštevilskimi vrednostmi. Uporabimo funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.replace.html"><code class="docutils literal notranslate"><span class="pre">replace</span></code></a>:</p>
 <div class="cell docutils container">
@@ -697,25 +1390,109 @@ dtype: object
     <span class="s2">&quot;prvi kolokvij&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;drugi kolokvij&quot;</span><span class="p">:</span> <span class="mi">2</span>
 <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ime  prvi semester  drugi semester  kolokvij
-0     Ana             80              97         1
-1  Branko             78              74         1
-2   David             75              68         1
-3     Eva             63              82         1
-4   Franc             95              82         1
-0     Ana             82              95         2
-1  Cvetka             63              87         2
-2   David             92              81         2
-3     Eva             82              63         2
-4   Franc             99              54         2
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>prvi semester</th>
+      <th>drugi semester</th>
+      <th>kolokvij</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>80</td>
+      <td>97</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>78</td>
+      <td>74</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>75</td>
+      <td>68</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>63</td>
+      <td>82</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>95</td>
+      <td>82</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>82</td>
+      <td>95</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cvetka</td>
+      <td>63</td>
+      <td>87</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>92</td>
+      <td>81</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>82</td>
+      <td>63</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>99</td>
+      <td>54</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Spomnimo se še, da je naslednja težava tabele <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> v tem, da bi imeni spremenljivk <code class="docutils literal notranslate"><span class="pre">prvi</span> <span class="pre">semester</span></code> in <code class="docutils literal notranslate"><span class="pre">drugi</span> <span class="pre">semester</span></code> morali pravzaprav biti vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code>. Za pretvorbo imen stolpcev v spremenljivko uporabljamo funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"><code class="docutils literal notranslate"><span class="pre">melt</span></code></a> z naslednjimi argumenti:</p>
 <ul class="simple">
@@ -733,35 +1510,179 @@ dtype: object
     <span class="n">var_name</span> <span class="o">=</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span>
     <span class="n">value_name</span> <span class="o">=</span> <span class="s2">&quot;rezultat&quot;</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  kolokvij        semester  rezultat
-0      Ana         1   prvi semester        80
-1   Branko         1   prvi semester        78
-2    David         1   prvi semester        75
-3      Eva         1   prvi semester        63
-4    Franc         1   prvi semester        95
-5      Ana         2   prvi semester        82
-6   Cvetka         2   prvi semester        63
-7    David         2   prvi semester        92
-8      Eva         2   prvi semester        82
-9    Franc         2   prvi semester        99
-10     Ana         1  drugi semester        97
-11  Branko         1  drugi semester        74
-12   David         1  drugi semester        68
-13     Eva         1  drugi semester        82
-14   Franc         1  drugi semester        82
-15     Ana         2  drugi semester        95
-16  Cvetka         2  drugi semester        87
-17   David         2  drugi semester        81
-18     Eva         2  drugi semester        63
-19   Franc         2  drugi semester        54
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>kolokvij</th>
+      <th>semester</th>
+      <th>rezultat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>prvi semester</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>prvi semester</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>1</td>
+      <td>prvi semester</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>prvi semester</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>prvi semester</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>prvi semester</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>prvi semester</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>David</td>
+      <td>2</td>
+      <td>prvi semester</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>prvi semester</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>prvi semester</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>drugi semester</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>drugi semester</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>David</td>
+      <td>1</td>
+      <td>drugi semester</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>drugi semester</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>drugi semester</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>drugi semester</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>drugi semester</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>David</td>
+      <td>2</td>
+      <td>drugi semester</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>drugi semester</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>drugi semester</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Zamenjajmo vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">semester</span></code> kot smo to storili zgoraj za <code class="docutils literal notranslate"><span class="pre">kolokvij</span></code>:</p>
 <div class="cell docutils container">
@@ -770,35 +1691,179 @@ dtype: object
     <span class="s2">&quot;prvi semester&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;drugi semester&quot;</span><span class="p">:</span> <span class="mi">2</span>
 <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  kolokvij  semester  rezultat
-0      Ana         1         1        80
-1   Branko         1         1        78
-2    David         1         1        75
-3      Eva         1         1        63
-4    Franc         1         1        95
-5      Ana         2         1        82
-6   Cvetka         2         1        63
-7    David         2         1        92
-8      Eva         2         1        82
-9    Franc         2         1        99
-10     Ana         1         2        97
-11  Branko         1         2        74
-12   David         1         2        68
-13     Eva         1         2        82
-14   Franc         1         2        82
-15     Ana         2         2        95
-16  Cvetka         2         2        87
-17   David         2         2        81
-18     Eva         2         2        63
-19   Franc         2         2        54
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>kolokvij</th>
+      <th>semester</th>
+      <th>rezultat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>1</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>1</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>1</td>
+      <td>1</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>1</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>1</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>1</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>David</td>
+      <td>2</td>
+      <td>1</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>1</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>2</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>2</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>David</td>
+      <td>1</td>
+      <td>2</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>2</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>2</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>David</td>
+      <td>2</td>
+      <td>2</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>2</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>2</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Uredimo stolpce v želenem vrstnem redu in vrstice v naraščajočem vrstnem redu glede na vrednosti dimenzijskih spremenljivk:</p>
 <div class="cell docutils container">
@@ -806,45 +1871,189 @@ dtype: object
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="p">[[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">,</span> <span class="s2">&quot;rezultat&quot;</span><span class="p">]]</span>
 <span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ime&quot;</span><span class="p">,</span> <span class="s2">&quot;semester&quot;</span><span class="p">,</span> <span class="s2">&quot;kolokvij&quot;</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij  rezultat
-0      Ana         1         1        80
-5      Ana         1         2        82
-10     Ana         2         1        97
-15     Ana         2         2        95
-1   Branko         1         1        78
-11  Branko         2         1        74
-6   Cvetka         1         2        63
-16  Cvetka         2         2        87
-2    David         1         1        75
-7    David         1         2        92
-12   David         2         1        68
-17   David         2         2        81
-3      Eva         1         1        63
-8      Eva         1         2        82
-13     Eva         2         1        82
-18     Eva         2         2        63
-4    Franc         1         1        95
-9    Franc         1         2        99
-14   Franc         2         1        82
-19   Franc         2         2        54
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>semester</th>
+      <th>kolokvij</th>
+      <th>rezultat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>1</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>1</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>2</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>1</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Branko</td>
+      <td>2</td>
+      <td>1</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Cvetka</td>
+      <td>1</td>
+      <td>2</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>2</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David</td>
+      <td>1</td>
+      <td>1</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>David</td>
+      <td>1</td>
+      <td>2</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>David</td>
+      <td>2</td>
+      <td>1</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>David</td>
+      <td>2</td>
+      <td>2</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>1</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>2</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>1</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>2</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>2</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>In preverimo tipe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime         object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ime         object
 semester     int64
 kolokvij     int64
 rezultat     int64
@@ -883,142 +2092,661 @@ dtype: object
   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
   <span class="s2">&quot;vrednost&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;x11&quot;</span><span class="p">,</span> <span class="s2">&quot;x12&quot;</span><span class="p">,</span> <span class="s2">&quot;x21&quot;</span><span class="p">,</span> <span class="s2">&quot;x22&quot;</span><span class="p">,</span> <span class="s2">&quot;x3&quot;</span><span class="p">])</span>
 <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="p">)</span>
-
-<span class="n">dt_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
-  <span class="s2">&quot;vrednost&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;y1&quot;</span><span class="p">,</span> <span class="s2">&quot;y21&quot;</span><span class="p">,</span> <span class="s2">&quot;y22&quot;</span><span class="p">,</span> <span class="s2">&quot;y41&quot;</span><span class="p">,</span> <span class="s2">&quot;y42&quot;</span><span class="p">])</span>
-<span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dt_y</span><span class="p">)</span>
+<span class="n">dt_x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost
-0   1      x11
-1   1      x12
-2   2      x21
-3   2      x22
-4   3       x3
-   id vrednost
-0   1       y1
-1   2      y21
-2   2      y22
-3   4      y41
-4   4      y42
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>x21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>x22</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>x3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
+  <span class="s2">&quot;vrednost&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;y1&quot;</span><span class="p">,</span> <span class="s2">&quot;y21&quot;</span><span class="p">,</span> <span class="s2">&quot;y22&quot;</span><span class="p">,</span> <span class="s2">&quot;y41&quot;</span><span class="p">,</span> <span class="s2">&quot;y42&quot;</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="n">dt_y</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Levo združevanje ohrani vse vrstice iz leve tabele <code class="docutils literal notranslate"><span class="pre">dt_x</span></code>. Če v desni tabeli ni vrstice z vrednostjo izbrane spremenljivke iz leve tabele, potem je vrednost <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
-0   1        x11         y1
-1   1        x12         y1
-2   2        x21        y21
-3   2        x21        y22
-4   2        x22        y21
-5   2        x22        y22
-6   3         x3        NaN
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost_x</th>
+      <th>vrednost_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Desno združevanje naredi obratno in ohrani vse vrstice iz desne tabele:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
-0   1        x11         y1
-1   1        x12         y1
-2   2        x21        y21
-3   2        x22        y21
-4   2        x21        y22
-5   2        x22        y22
-6   4        NaN        y41
-7   4        NaN        y42
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost_x</th>
+      <th>vrednost_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Poglejmo še <code class="docutils literal notranslate"><span class="pre">inner</span></code> in <code class="docutils literal notranslate"><span class="pre">outer</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id vrednost_x vrednost_y
-0   1        x11         y1
-1   1        x12         y1
-2   2        x21        y21
-3   2        x21        y22
-4   2        x22        y21
-5   2        x22        y22
-   id vrednost_x vrednost_y
-0   1        x11         y1
-1   1        x12         y1
-2   2        x21        y21
-3   2        x21        y22
-4   2        x22        y21
-5   2        x22        y22
-6   3         x3        NaN
-7   4        NaN        y41
-8   4        NaN        y42
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost_x</th>
+      <th>vrednost_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y22</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>vrednost_x</th>
+      <th>vrednost_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Po pričakovanjih, podatkovna tabela združena z <code class="docutils literal notranslate"><span class="pre">inner</span></code> nima neznanih vrednosti, saj upošteva zgolj vrednosti izbrane spremenljivke <code class="docutils literal notranslate"><span class="pre">id</span></code>, ki so skupne obema tabelama. Podatkovna tabela združena z <code class="docutils literal notranslate"><span class="pre">outer</span></code> pa vključuje vse vrednosti spremenljivke <code class="docutils literal notranslate"><span class="pre">id</span></code> in zato vpelje tri neznane vrednosti.</p>
 <p>Nenazadnje združevanje tipa <code class="docutils literal notranslate"><span class="pre">cross</span></code> vrne kartezični produkt vrstic leve in desne tabele, ne da bi pri tem upoštevali izbrane skupne spremenljivke:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dt_y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;cross&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    id_x vrednost_x  id_y vrednost_y
-0      1        x11     1         y1
-1      1        x11     2        y21
-2      1        x11     2        y22
-3      1        x11     4        y41
-4      1        x11     4        y42
-5      1        x12     1         y1
-6      1        x12     2        y21
-7      1        x12     2        y22
-8      1        x12     4        y41
-9      1        x12     4        y42
-10     2        x21     1         y1
-11     2        x21     2        y21
-12     2        x21     2        y22
-13     2        x21     4        y41
-14     2        x21     4        y42
-15     2        x22     1         y1
-16     2        x22     2        y21
-17     2        x22     2        y22
-18     2        x22     4        y41
-19     2        x22     4        y42
-20     3         x3     1         y1
-21     3         x3     2        y21
-22     3         x3     2        y22
-23     3         x3     4        y41
-24     3         x3     4        y42
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_x</th>
+      <th>vrednost_x</th>
+      <th>id_y</th>
+      <th>vrednost_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>x11</td>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>x12</td>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2</td>
+      <td>x21</td>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2</td>
+      <td>x22</td>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>2</td>
+      <td>y21</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>2</td>
+      <td>y22</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>4</td>
+      <td>y41</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>4</td>
+      <td>y42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="dokoncno-urejanje-tabele-studenti-ocene">
@@ -1036,79 +2764,390 @@ dtype: object
     <span class="s2">&quot;kolokvij&quot;</span><span class="p">:</span> <span class="n">studenti_ocene</span><span class="o">.</span><span class="n">kolokvij</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 <span class="p">})</span>
 
-<span class="n">d_vse</span> <span class="o">=</span> <span class="n">d_ime</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_semester</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_kolokvij</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;cross&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d_vse</span><span class="p">)</span>
+<span class="n">d_vse</span> <span class="o">=</span> <span class="n">d_ime</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_semester</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;cross&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d_kolokvij</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;cross&quot;</span><span class="p">)</span>
+<span class="n">d_vse</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij
-0      Ana         1         1
-1      Ana         1         2
-2      Ana         2         1
-3      Ana         2         2
-4   Branko         1         1
-5   Branko         1         2
-6   Branko         2         1
-7   Branko         2         2
-8   Cvetka         1         1
-9   Cvetka         1         2
-10  Cvetka         2         1
-11  Cvetka         2         2
-12   David         1         1
-13   David         1         2
-14   David         2         1
-15   David         2         2
-16     Eva         1         1
-17     Eva         1         2
-18     Eva         2         1
-19     Eva         2         2
-20   Franc         1         1
-21   Franc         1         2
-22   Franc         2         1
-23   Franc         2         2
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>semester</th>
+      <th>kolokvij</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Branko</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Branko</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Cvetka</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Cvetka</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>David</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>David</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>David</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>David</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Po pričakovanjih, ima tabela s kartezičnim produktom 24 vrstic (za vajo ugotovi zakaj oziroma kako na osnovi vrednosti dimenzijskih spremenljivk v tabeli <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> pridemo do tega števila vrstic).</p>
 <p>Zdaj lahko dopolnimo tabelo <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> tako, da jo s klicem funkcije <code class="docutils literal notranslate"><span class="pre">merge</span></code> združimo z zgornjo tabelo in tako torej tabeli s kartezičnim produktom dodamo rezultate kolokvijev:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">d_vse</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">studenti_ocene</span> <span class="o">=</span> <span class="n">d_vse</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">studenti_ocene</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">studenti_ocene</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       ime  semester  kolokvij  rezultat
-0      Ana         1         1      80.0
-1      Ana         1         2      82.0
-2      Ana         2         1      97.0
-3      Ana         2         2      95.0
-4   Branko         1         1      78.0
-5   Branko         1         2       NaN
-6   Branko         2         1      74.0
-7   Branko         2         2       NaN
-8   Cvetka         1         1       NaN
-9   Cvetka         1         2      63.0
-10  Cvetka         2         1       NaN
-11  Cvetka         2         2      87.0
-12   David         1         1      75.0
-13   David         1         2      92.0
-14   David         2         1      68.0
-15   David         2         2      81.0
-16     Eva         1         1      63.0
-17     Eva         1         2      82.0
-18     Eva         2         1      82.0
-19     Eva         2         2      63.0
-20   Franc         1         1      95.0
-21   Franc         1         2      99.0
-22   Franc         2         1      82.0
-23   Franc         2         2      54.0
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ime</th>
+      <th>semester</th>
+      <th>kolokvij</th>
+      <th>rezultat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>1</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ana</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>1</td>
+      <td>97.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ana</td>
+      <td>2</td>
+      <td>2</td>
+      <td>95.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>1</td>
+      <td>78.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Branko</td>
+      <td>1</td>
+      <td>2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Branko</td>
+      <td>2</td>
+      <td>1</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Branko</td>
+      <td>2</td>
+      <td>2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Cvetka</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Cvetka</td>
+      <td>1</td>
+      <td>2</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Cvetka</td>
+      <td>2</td>
+      <td>2</td>
+      <td>87.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>David</td>
+      <td>1</td>
+      <td>1</td>
+      <td>75.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>David</td>
+      <td>1</td>
+      <td>2</td>
+      <td>92.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>David</td>
+      <td>2</td>
+      <td>1</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>David</td>
+      <td>2</td>
+      <td>2</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>1</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Eva</td>
+      <td>1</td>
+      <td>2</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Eva</td>
+      <td>2</td>
+      <td>2</td>
+      <td>63.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>1</td>
+      <td>95.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Franc</td>
+      <td>1</td>
+      <td>2</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>1</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Franc</td>
+      <td>2</td>
+      <td>2</td>
+      <td>54.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Vidimo lahko, da ima sedaj tabela <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> vseh 24 vrstic, ki ustrezajo vsem možnim kombinacijam vrednosti njenih dimenzijskih spremenljivk. S tem je urejanje podatkov o rezultatih kolokvijev končano. Tabeli <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> sta pripravljeni za podatkovno analizo in vizualizacijo.</p>
 </section>
