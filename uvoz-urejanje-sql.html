@@ -403,7 +403,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="urejanje-podatkov-v-pandas">
 <h1>Urejanje podatkov v <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#urejanje-podatkov-v-pandas" title="Permalink to this heading">#</a></h1>
-<p>V nadaljevanju predavanja bomo skozi sestavljanje podatkovnih tabel <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> spoznali funkcije knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, ki jih uporabljamo pri urejanju podatkov iz osnovne tabele <code class="docutils literal notranslate"><span class="pre">pt</span></code> uvožene iz preglednice Excel.</p>
+<p>V nadaljevanju predavanja bomo skozi sestavljanje podatkovnih tabel <code class="docutils literal notranslate"><span class="pre">studenti</span></code> in <code class="docutils literal notranslate"><span class="pre">studenti_ocene</span></code> spoznali funkcije knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, ki jih uporabljamo pri urejanju podatkov iz osnovne tabele <code class="docutils literal notranslate"><span class="pre">pt</span></code>, ki jih zdaj še enkrat uvozimo iz preglednice Excel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">vse_pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">&quot;https://kt.ijs.si/~ljupco/lectures/papvp-2324/rezultati-kolokvijev.xlsx&quot;</span><span class="p">,</span>
+    <span class="n">sheet_name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">vse_pt</span><span class="p">:</span>
+    <span class="n">vse_pt</span><span class="p">[</span><span class="nb">list</span><span class="p">][</span><span class="s2">&quot;kolokvij&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span>
+<span class="n">pt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vse_pt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="razdruzevanje-vrednosti">
 <h2>Razdruževanje vrednosti<a class="headerlink" href="#razdruzevanje-vrednosti" title="Permalink to this heading">#</a></h2>
 <p>Najprej se bomo lotili problema v stolpcu <code class="docutils literal notranslate"><span class="pre">spol</span> <span class="pre">in</span> <span class="pre">starost</span></code>, ki združuje vrednosti dveh spremenljivk, spol in starost. V ta namen bomo uporabili funkcijo <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html"><code class="docutils literal notranslate"><span class="pre">str.split</span></code></a>, ki je pravzaprav metoda podatkovnega tipa zaporedje:</p>
@@ -414,12 +429,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="nn">----&gt; 1 print(pt[&quot;spol</span> in <span class="ni">starost&quot;].str.split</span><span class="nt">(&quot;-&quot;))</span>
-
-<span class="ne">NameError</span>: name &#39;pt&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    [ž, 19]
+1    [m, 20]
+2    [m, 19]
+3    [ž, 20]
+4    [m, 21]
+0    [ž, 19]
+1    [ž, 21]
+2    [m, 19]
+3    [ž, 20]
+4    [m, 21]
+Name: spol in starost, dtype: object
 </pre></div>
 </div>
 </div>
