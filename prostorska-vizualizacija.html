@@ -1004,9 +1004,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52542/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52603/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 
-/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52542/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52603/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1651,7 +1651,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Opažamo, da nekaj administrativnih enot (Češka ter Bosna in Hercegovina) so ostale brez ustrezne barve. Preverimo zakaj. Imena Bosne in Hercegovine ter Češke so različno navedena v obeh tabelah, zato bomo popravili njihovi imeni v tabeli <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>. Nazadnje, lahko ugotovimo, da tabela s povprečnimi temperaturami ne vsebuje podatkov o Kosovu:</p>
+<p>Opažamo, da nekaj administrativnih enot (Češka ter Bosna in Hercegovina) so ostale brez ustrezne barve. Preverimo zakaj. Imena Bosne in Hercegovine ter Češke so različno navedena v obeh tabelah, zato bomo popravili njihovi imeni v tabeli <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Bosnia and Herz.&quot;</span><span class="p">,</span> <span class="s2">&quot;Bosnia and Herzegovina&quot;</span><span class="p">)</span>
