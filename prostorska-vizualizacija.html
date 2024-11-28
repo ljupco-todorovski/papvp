@@ -386,7 +386,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viri-zemljepisnih-podatkov">Viri zemljepisnih podatkov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljepis-sveta-in-evrope">Zemljepis sveta in Evrope</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave">Mapa povprečnih temperatur zraka za Evropske države</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevid-povprecnih-temperatur-zraka-za-evropske-drzave">Zemljevid povprečnih temperatur zraka za Evropske države</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevidi-administrativnih-enot-slovenije">Zemljevidi administrativnih enot Slovenije</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
@@ -411,7 +411,7 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.naturalearthdata.com/downloads/">Natural Earth Data</a> ponuja zemljepisne podatke za svet. Podatki so v treh resolucijah, 10, 50 in 110 metrov. Za nas so še posebej zanimivi podatki tipa <code class="docutils literal notranslate"><span class="pre">Cultural</span></code>, ki definirajo poligone za zemljepisne enote, ki ustrezajo državam sveta. Format podatkov je zgoraj omenjeni <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/ned/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
 <li><p><a class="reference external" href="https://ipi.eprostor.gov.si/jgp/data">Portal e-prostor</a> ponuja podatke za različne zemljepisne enote v Sloveniji (regije, občine, volilne enote in podobno). Format podatkov je zgoraj omenjeni <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/eprostor/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
-<li><p><a class="reference external" href="https://ec.europa.eu/eurostat/web/nuts/background">Portal Eurostat</a> ponuja podatke za zemljepisne enote v Evropi, države in regije. Podatki so na voljo v različnih formatih, v formatu <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>, so dostopni <a class="reference external" href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">tukaj</a>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/nuts/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
+<li><p><a class="reference external" href="https://ec.europa.eu/eurostat/web/nuts/">Portal Eurostat</a> ponuja podatke za zemljepisne enote v Evropi, države in regije. Podatki so na voljo v različnih formatih, v formatu <code class="docutils literal notranslate"><span class="pre">shapefile</span></code>, so dostopni <a class="reference external" href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">tukaj</a>. V tem zvezku uporabljamo <a class="reference external" href="https://kt.ijs.si/~ljupco/lectures/papvp-2324/shp/nuts/">kopijo podatkov</a>, ki smo jih prenesli decembra 2023.</p></li>
 </ul>
 </section>
 <section id="zemljepis-sveta-in-evrope">
@@ -741,7 +741,7 @@ document.write(`
 </div></div></div>
 </div>
 <p>Rezultat funkcije <code class="docutils literal notranslate"><span class="pre">read_file</span></code> je torej podatkovna tabela (tipa <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">pandas</span></code>). V tem primeru ima tabela 258 vrstic, ki ustrezajo vsem administrativnim enotam sveta. Večina teh je suverenih držav, kakšne so zgolj administrativna območja brez dokončnega mednarodnega statusa. Izpis zgoraj kaže nekaj od 169 spremenljivk podatkovne tabele.</p>
-<p>Za izris administrativnih enot je ključna zadnja spremenljivka <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. To spremenljivko uporabi geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom_map</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. Poglejmo osnovni izris te podatkovne tabele:</p>
+<p>Za izrisovanje zemljevida administrativnih enot je ključna zadnja spremenljivka <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. To spremenljivko uporabi geometrijski objekt <code class="docutils literal notranslate"><span class="pre">geom_map</span></code> knjižnice <code class="docutils literal notranslate"><span class="pre">plotnine</span></code>. Poglejmo osnovni izris te podatkovne tabele:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -777,7 +777,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code> je ime države oziroma administrativne enote.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CONTINENT</span></code> je ime celine, kamor pripada opazovana administrativna enota.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ISO_A2</span></code> in <code class="docutils literal notranslate"><span class="pre">ISO_A3</span></code> sta kratici (dve črkovna in tri črkovna) <a class="reference external" href="https://en.wikipedia.org/wiki/International_Organization_for_Standardization">ISO</a> opazovane administrativne enote.</p></li>
-<li><p>Spremenljivke s predpono <code class="docutils literal notranslate"><span class="pre">MAPCOLOR</span></code> ponujajo smiselno številčenje držav za barvanje mape tako, da sosednje države so čim bolj kontrastnih barv. Vrednosti spremenljivk so celoštevilčne, pred uporabo jih moramo sami poskrbeti za njihovo pretvorbo v kategorije (spodaj je primer).</p></li>
+<li><p>Spremenljivke s predpono <code class="docutils literal notranslate"><span class="pre">MAPCOLOR</span></code> ponujajo smiselno številčenje držav za barvanje zemljevida tako, da sosednje države so čim bolj kontrastnih barv. Vrednosti spremenljivk so celoštevilčne, pred uporabo jih moramo sami poskrbeti za njihovo pretvorbo v kategorije (spodaj je primer).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">geomety</span></code> vsebuje definicije poligonov, s katerimi izrišemo obrobo izbrane administrativne enote.</p></li>
 </ul>
 <p>Poglejmo:</p>
@@ -946,7 +946,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Narišimo zdaj mapo Evrope. To dosežemo tako, da iz podatkovne tabele <code class="docutils literal notranslate"><span class="pre">gp_svet</span></code> izberemo tiste vrstice, kjer je vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">CONTINENT</span></code> enaka <code class="docutils literal notranslate"><span class="pre">Europe</span></code>. Za barvanje administrativnih enote tokrat izberemo spremenljivko <code class="docutils literal notranslate"><span class="pre">MAPCOLOR7</span></code>:</p>
+<p>Narišimo zdaj zemljevid Evrope. To dosežemo tako, da iz podatkovne tabele <code class="docutils literal notranslate"><span class="pre">gp_svet</span></code> izberemo tiste vrstice, kjer je vrednost spremenljivke <code class="docutils literal notranslate"><span class="pre">CONTINENT</span></code> enaka <code class="docutils literal notranslate"><span class="pre">Europe</span></code>. Za barvanje administrativnih enot tokrat izberemo spremenljivko <code class="docutils literal notranslate"><span class="pre">MAPCOLOR7</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_evropa</span> <span class="o">=</span> <span class="n">gp_svet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gp_svet</span><span class="o">.</span><span class="n">CONTINENT</span> <span class="o">==</span> <span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="p">:]</span>
@@ -968,7 +968,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Vidimo, da je Evropa široko raztegnjena čez celotni zemljevid sveta. Z uporabo funkcij <code class="docutils literal notranslate"><span class="pre">xlim</span></code> in <code class="docutils literal notranslate"><span class="pre">ylim</span></code> lahko ustrezno zožimo obseg zemljevida na <em>celinsko</em> Evropo takole:</p>
+<p>Vidimo, da je Evropa široko raztegnjena čez celotno geografsko širino zemljevida sveta. Z uporabo funkcij <code class="docutils literal notranslate"><span class="pre">xlim</span></code> in <code class="docutils literal notranslate"><span class="pre">ylim</span></code> lahko ustrezno zožimo obseg zemljevida na <em>celinsko</em> Evropo takole:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -990,7 +990,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Poglejmo zdaj, kako na zemljevidu dodamo administrativnim enotam dve črkovni kratici ISO. Pripravimo najprej podatkovno tabelo s tremi spremenljivkami. Prvi dve sta <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code> koordinati centralne točke (centroida) poligonov, ki omejujejo državo, tretja spremenljivka je <code class="docutils literal notranslate"><span class="pre">ime</span></code>, katere vrednost je enaka dve črkovna kratica ISO za državo. Pri tem uporabimo atribut <a class="reference external" href="https://geopandas.org/en/stable/docs/user_guide/geometric_manipulations.html#GeoSeries.centroid"><code class="docutils literal notranslate"><span class="pre">centroid</span></code></a> spremenljivke <code class="docutils literal notranslate"><span class="pre">geometry</span></code>:</p>
+<p>Poglejmo zdaj, kako posamezne administrativne enote na zemljevidu označimo z dve črkovnimi kratici ISO. Pripravimo najprej podatkovno tabelo s tremi spremenljivkami. Prvi dve sta <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">y</span></code>, koordinati centralne točke (centroida) poligonov, ki omejujejo administrativno enoto, tretja spremenljivka je <code class="docutils literal notranslate"><span class="pre">ime</span></code>, katere vrednost je enaka dve črkovni kratici ISO te enote. Pri tem uporabimo atribut <a class="reference external" href="https://geopandas.org/en/stable/docs/user_guide/geometric_manipulations.html#GeoSeries.centroid"><code class="docutils literal notranslate"><span class="pre">centroid</span></code></a> spremenljivke <code class="docutils literal notranslate"><span class="pre">geometry</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroid_ime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -1004,9 +1004,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_9298/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52542/891285855.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 
-/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_9298/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+/var/folders/g7/xgt9ckmj6g1404knwg8j5rkc0000gn/T/ipykernel_52542/891285855.py:3: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1382,10 +1382,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>V naslednjem podpoglavju bomo države pobarvali tako, da bo barva ustrezala letni povprečni temperaturi zraka.</p>
+<p>V naslednjem podpoglavju bomo države (administrativne enote) na zemljevidu Evrope pobarvali tako, da bo barva ustrezala letni povprečni temperaturi zraka.</p>
 </section>
-<section id="mapa-povprecnih-temperatur-zraka-za-evropske-drzave">
-<h2>Mapa povprečnih temperatur zraka za Evropske države<a class="headerlink" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave" title="Permalink to this heading">#</a></h2>
+<section id="zemljevid-povprecnih-temperatur-zraka-za-evropske-drzave">
+<h2>Zemljevid povprečnih temperatur zraka za Evropske države<a class="headerlink" href="#zemljevid-povprecnih-temperatur-zraka-za-evropske-drzave" title="Permalink to this heading">#</a></h2>
 <p>Pripravimo najprej podatkovno tabelo s povprečnimi letnimi temperaturami zraka v državah sveta. V ta namen uporabimo podatke, ki jih ponuja članek <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">List of countries by average yearly temperature</a> splete enciklopedije Wikipedia:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1511,51 +1511,87 @@ dtype: object
 <p>Poenostavimo imeni spremenljivk in popravimo tip druge spremenljivke:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
-<span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
+
+<span class="n">dodatek</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+°C\s+\(.*\)&quot;</span><span class="p">)</span>
+<span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">dodatek</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="p">]</span>
+
+<span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_temp&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_tem</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dodatek</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+°C\s+\(.*\)&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">dodatek</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">avg_temp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6216,</span> in <span class="ni">NDFrame.__setattr__</span><span class="nt">(self, name, value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6214</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6215</span>     <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">6216</span>     <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6217</span> <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6218</span>     <span class="k">pass</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:6532,</span> in <span class="ni">NDFrame.astype</span><span class="nt">(self, dtype, copy, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6528</span>     <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">ser</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">ser</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="g g-Whitespace">   </span><span class="mi">6530</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6531</span>     <span class="c1"># else, only a single dtype is given</span>
+<span class="ne">-&gt; </span><span class="mi">6532</span>     <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6533</span>     <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_from_mgr</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">new_data</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6534</span>     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;astype&quot;</span><span class="p">)</span>
 
-<span class="nn">File properties.pyx:69,</span> in <span class="ni">pandas._libs.properties.AxisProperty.__set__</span><span class="nt">()</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:414,</span> in <span class="ni">BaseBlockManager.astype</span><span class="nt">(self, dtype, copy, errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="k">elif</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">--&gt; </span><span class="mi">414</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span>     <span class="s2">&quot;astype&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span>     <span class="n">using_cow</span><span class="o">=</span><span class="n">using_copy_on_write</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span> <span class="p">)</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/generic.py:767,</span> in <span class="ni">NDFrame._set_axis</span><span class="nt">(self, axis, labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">762</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">763</span><span class="sd"> This is called from the cython code when we set the `index` attribute</span>
-<span class="g g-Whitespace">    </span><span class="mi">764</span><span class="sd"> directly, e.g. `series.index = [1, 2, 3]`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">765</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">766</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">767</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clear_item_cache</span><span class="p">()</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:354,</span> in <span class="ni">BaseBlockManager.apply</span><span class="nt">(self, f, align_keys, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>         <span class="n">applied</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">354</span>         <span class="n">applied</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="n">result_blocks</span> <span class="o">=</span> <span class="n">extend_blocks</span><span class="p">(</span><span class="n">applied</span><span class="p">,</span> <span class="n">result_blocks</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_blocks</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/managers.py:227,</span> in <span class="ni">BaseBlockManager.set_axis</span><span class="nt">(self, axis, new_labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">def</span> <span class="nf">set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">AxisInt</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="c1"># Caller is responsible for ensuring we have an Index object.</span>
-<span class="ne">--&gt; </span><span class="mi">227</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_labels</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py:616,</span> in <span class="ni">Block.astype</span><span class="nt">(self, dtype, copy, errors, using_cow)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span><span class="sd"> Coerce to the new dtype.</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd"> Block</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span> <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
+<span class="ne">--&gt; </span><span class="mi">616</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array_safe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">maybe_coerce_values</span><span class="p">(</span><span class="n">new_values</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="n">refs</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/internals/base.py:85,</span> in <span class="ni">DataManager._validate_set_axis</span><span class="nt">(self, axis, new_labels)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="k">pass</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="k">elif</span> <span class="n">new_len</span> <span class="o">!=</span> <span class="n">old_len</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="sa">f</span><span class="s2">&quot;Length mismatch: Expected axis has </span><span class="si">{</span><span class="n">old_len</span><span class="si">}</span><span class="s2"> elements, new &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="sa">f</span><span class="s2">&quot;values have </span><span class="si">{</span><span class="n">new_len</span><span class="si">}</span><span class="s2"> elements&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="p">)</span>
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:238,</span> in <span class="ni">astype_array_safe</span><span class="nt">(values, dtype, copy, errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">numpy_dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="c1"># e.g. _astype_nansafe can fail on object-dtype of strings</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="c1">#  trying to convert to float</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;ignore&quot;</span><span class="p">:</span>
 
-<span class="ne">ValueError</span>: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:183,</span> in <span class="ni">astype_array</span><span class="nt">(values, dtype, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_astype_nansafe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="c1"># in pandas we don&#39;t store numpy str dtypes, so convert to object</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+<span class="nn">File ~/predmeti/pandas/venv/lib/python3.11/site-packages/pandas/core/dtypes/astype.py:134,</span> in <span class="ni">_astype_nansafe</span><span class="nt">(arr, dtype, copy, skipna)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">or</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1"># Explicit copy, or required since NumPy can&#39;t view from / to object.</span>
+<span class="ne">--&gt; </span><span class="mi">134</span>     <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: could not convert string to float: &#39;−3.79&#39;
 </pre></div>
 </div>
 </div>
@@ -1577,7 +1613,8 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country      object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i             int64
+country      object
 avg_temp    float64
 dtype: object
 </pre></div>
@@ -1608,17 +1645,16 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f9ec5b288c5b6ef7c06c9d987f0e62338705e27dfd6a0c1903b119c71c262230.png" src="_images/f9ec5b288c5b6ef7c06c9d987f0e62338705e27dfd6a0c1903b119c71c262230.png" />
+<img alt="_images/555d1b78709b09b132b171ef781e389ba2abe5f7be59bd9f851b9567cff3249b.png" src="_images/555d1b78709b09b132b171ef781e389ba2abe5f7be59bd9f851b9567cff3249b.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Opažamo, da nekaj administrativnih enot (Norveška, Danska, Češka, Bosna in Hercegovina ter Kosovo) so ostale brez ustrezne barve. Preverimo zakaj. Norveška in Danska so v tabeli, ki smo jo prenesli iz spletne enciklopedije Wikipedia, navedene z opombo v oglatih oklepajih. Zato bomo najprej iz stolpca <code class="docutils literal notranslate"><span class="pre">contry</span></code> odstranili opombe v oglatih oklepajih: pri tem bomo uporabili regularni izraz <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">\[.*\]&quot;</span></code>. Nadalje, lahko opazimo, da imena Bosne in Hercegovine ter Češke so različno navedena v obeh tabelah, zato bomo popravili njihovi imeni v tabeli <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>. Nazadnje, lahko ugotovimo, da tabela s povprečnimi temperaturami ne vsebuje podatkov o Kosovu:</p>
+<p>Opažamo, da nekaj administrativnih enot (Češka ter Bosna in Hercegovina) so ostale brez ustrezne barve. Preverimo zakaj. Imena Bosne in Hercegovine ter Češke so različno navedena v obeh tabelah, zato bomo popravili njihovi imeni v tabeli <code class="docutils literal notranslate"><span class="pre">gp_evropa</span></code>. Nazadnje, lahko ugotovimo, da tabela s povprečnimi temperaturami ne vsebuje podatkov o Kosovu:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_svet</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;country&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_svet</span><span class="o">.</span><span class="n">country</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot; \[.*\]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Bosnia and Herz.&quot;</span><span class="p">,</span> <span class="s2">&quot;Bosnia and Herzegovina&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Bosnia and Herz.&quot;</span><span class="p">,</span> <span class="s2">&quot;Bosnia and Herzegovina&quot;</span><span class="p">)</span>
 <span class="n">gp_evropa</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">NAME</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Czechia&quot;</span><span class="p">,</span> <span class="s2">&quot;Czech Republic&quot;</span><span class="p">)</span>
 
 <span class="n">temp_evropa</span> <span class="o">=</span> <span class="n">gp_evropa</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">temp_svet</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span><span class="p">)</span>
@@ -1637,7 +1673,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10bbee056836f1bfcee8b3b18ac01d49c946fe551244d9b971d5200f95f148a6.png" src="_images/10bbee056836f1bfcee8b3b18ac01d49c946fe551244d9b971d5200f95f148a6.png" />
+<img alt="_images/05659100c45745b6e269941181e61dc89802a41d4fcf89e10023d8b63d3e3610.png" src="_images/05659100c45745b6e269941181e61dc89802a41d4fcf89e10023d8b63d3e3610.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -1852,7 +1888,7 @@ dtype: object
             <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
             <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;ime&quot;</span>
         <span class="p">),</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
         <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#222222&quot;</span>
     <span class="p">)</span> <span class="o">+</span>
     <span class="n">p9</span><span class="o">.</span><span class="n">theme_classic</span><span class="p">()</span>
@@ -1861,7 +1897,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a1e766a168b0ae068be147f5cd25c5b8f3238b0a00c484b71f0641ddc35f72d.png" src="_images/5a1e766a168b0ae068be147f5cd25c5b8f3238b0a00c484b71f0641ddc35f72d.png" />
+<img alt="_images/109f1bf318d3caf250f92bf9de9a9de9be7b2dbb585122e3f70ed6f6ca7fb118.png" src="_images/109f1bf318d3caf250f92bf9de9a9de9be7b2dbb585122e3f70ed6f6ca7fb118.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure Size: (640 x 480)&gt;
 </pre></div>
 </div>
@@ -2126,7 +2162,7 @@ dtype: object
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viri-zemljepisnih-podatkov">Viri zemljepisnih podatkov</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljepis-sveta-in-evrope">Zemljepis sveta in Evrope</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-povprecnih-temperatur-zraka-za-evropske-drzave">Mapa povprečnih temperatur zraka za Evropske države</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevid-povprecnih-temperatur-zraka-za-evropske-drzave">Zemljevid povprečnih temperatur zraka za Evropske države</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zemljevidi-administrativnih-enot-slovenije">Zemljevidi administrativnih enot Slovenije</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naloge">Naloge</a></li>
 </ul>
