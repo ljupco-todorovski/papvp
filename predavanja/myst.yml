@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  title: Zapiski za predmet Podatkovna analiza in pravno varstvo podatkov
+  authors:
+    - name: Ljupčo Todorovski
+  bibliography:
+    - reference.bib
+
+  toc:
+    - file: intro.md
+    - title: Namesto uvoda
+      children:
+        - file: uvod-izpeljani-seznami.ipynb
+        - file: uvod-funkcije-visjega-reda.ipynb
+    - title: Uvod v pandas
+      children:
+        - file: pt-uvod.ipynb
+        - file: pt-zaporedja.ipynb
+        - file: pt-podatkovni-okviri.ipynb
+        - file: pt-naloge.ipynb
+    - title: Uvoz in urejanje podatkov
+      children:
+        - file: urejanje-podatkov.ipynb
+        - file: uvoz-urejanje-sql.ipynb
+        - file: uvoz-urejanje-ri.ipynb
+    - title: Analiza in vizualizacija podatkov
+      children:
+        - file: osnovna-analiza.ipynb
+        - file: vizualizacija.ipynb
+        - file: prostorska-vizualizacija.ipynb
+        - file: razvrscanje-v-skupine.ipynb
+
+site:
+  template: book-theme
+  options:
+    url: https://ljupco-todorovski.github.io
+    baseurl: /uui/
