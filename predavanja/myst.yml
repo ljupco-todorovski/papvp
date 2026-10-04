@@ -35,4 +35,4 @@ site:
   template: book-theme
   options:
     url: https://ljupco-todorovski.github.io
-    baseurl: /uui/
+    baseurl: /papvp/
