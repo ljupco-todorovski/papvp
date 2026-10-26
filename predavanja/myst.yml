@@ -23,8 +23,9 @@ project:
     - title: Uvoz in urejanje podatkov
       children:
         - file: urejanje-podatkov.ipynb
-        - file: uvoz-urejanje-sql.ipynb
-        - file: uvoz-urejanje-ri.ipynb
+        - file: urejanje-uvoz-sql.ipynb
+        - file: urejanje-uvoz-ri.ipynb
+        - file: urejanje-naloge.ipynb
     - title: Analiza in vizualizacija podatkov
       children:
         - file: osnovna-analiza.ipynb
