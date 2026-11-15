@@ -28,10 +28,11 @@ project:
         - file: urejanje-naloge.ipynb
     - title: Analiza in vizualizacija podatkov
       children:
-        - file: osnovna-analiza.ipynb
-        - file: vizualizacija.ipynb
-        - file: prostorska-vizualizacija.ipynb
-        - file: razvrscanje-v-skupine.ipynb
+        - file: analiza-osnovna.ipynb
+        - file: analiza-diagrami.ipynb
+        - file: analiza-prostorski-diagrami.ipynb
+        - file: analiza-razvrscanje-v-skupine.ipynb
+        - file: analiza-naloge.ipynb
 
 site:
   template: book-theme

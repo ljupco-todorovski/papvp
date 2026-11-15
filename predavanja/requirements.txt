@@ -3,3 +3,7 @@ matplotlib
 numpy
 pandas
 plotnine
+geopandas
+scikit-learn>=1.2
+scipy
+lxml
